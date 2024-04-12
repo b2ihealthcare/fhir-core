@@ -61,9 +61,18 @@ public class UsageContext extends Type implements ICompositeType {
    * A value that defines the context specified in this context of use. The
    * interpretation of the value is defined by the code.
    */
-  @Child(name = "value", type = { CodeableConcept.class, Quantity.class, Range.class, PlanDefinition.class,
-      ResearchStudy.class, InsurancePlan.class, HealthcareService.class, Group.class, Location.class,
-      Organization.class }, order = 1, min = 1, max = 1, modifier = false, summary = true)
+  @Child(name = "value", type = {
+		  CodeableConcept.class, 
+		  Quantity.class, 
+		  Range.class, 
+		  // XXX NOT NEEDED for Terminology Module
+//		  PlanDefinition.class,
+//		  ResearchStudy.class, 
+//		  InsurancePlan.class, 
+		  HealthcareService.class, 
+		  Group.class, 
+		  Location.class,
+		  Organization.class }, order = 1, min = 1, max = 1, modifier = false, summary = true)
   @Description(shortDefinition = "Value that defines the context", formalDefinition = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.")
   @ca.uhn.fhir.model.api.annotation.Binding(valueSet = "http://hl7.org/fhir/ValueSet/use-context")
   protected Type value;
