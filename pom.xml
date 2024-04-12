@@ -11,6 +11,7 @@
 	<properties>
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.12.0</commons.lang3.version>
+	    <commons.codec.version>1.16.1</commons.codec.version>
 	</properties>
 
 	<dependencies>
@@ -23,6 +24,11 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons.lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons.codec.version}</version>
 		</dependency>
 	</dependencies>
 
