@@ -8,6 +8,24 @@
 	<name>FHIR Terminology Objects and Converters</name>
 	<description>FHIR Terminology Model Object Classes and Converters (R4, R4B, R5)</description>
 
+	<properties>
+		<jsr305.version>3.0.2</jsr305.version>
+		<commons.lang3.version>3.12.0</commons.lang3.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>${jsr305.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>

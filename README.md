@@ -2,6 +2,8 @@
 
 The main object of this library is to shrink the original [org.hl7.fhir.core](https://github.com/hapifhir/org.hl7.fhir.core) model (R4, R4B and R5) and convertor jars into a single jar with as few dependencies as possible.
 
+This library is based on the 6.3.4 version.
+
 ## Steps to shrink the vanilla jars
 
 NOTE: repeat these steps for each required FHIR version. This library starts from R4 and omits the previous versions.
@@ -63,3 +65,44 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
     * org.hl7.fhir.r?.model.ParameterDefinition
     * org.hl7.fhir.r?.model.TriggerDefinition
     * org.hl7.fhir.r?.model.UsageContext
+    * org.hl7.fhir.r?.model.Property
+    * org.hl7.fhir.r?.model.Annotation
+
+3. Copy the following annotations, interfaces and classes from 'hapi-fhir-base' (version: 6.4.1)
+    * ca.uhn.fhir.context.FhirVersionEnum
+    * ca.uhn.fhir.i18n.Msg
+    * ca.uhn.fhir.util.DatatypeUtil
+    * ca.uhn.fhir.util.ElementUtil
+    * ca.uhn.fhir.util.ObjectUtil
+    * ca.uhn.fhir.model.api.IElement
+    * ca.uhn.fhir.model.api.Include
+    * ca.uhn.fhir.model.api.TemporalPrecisionEnum
+    * ca.uhn.fhir.model.api.annotation.* (all of them)
+    * ca.uhn.fhir.parser.DataFormatException
+    * ca.uhn.fhir.rest.api.Constants
+    * org.hl7.fhir.instance.model.api.IAnyResource
+    * org.hl7.fhir.instance.model.api.IBase
+    * org.hl7.fhir.instance.model.api.IBaseBackboneElement
+    * org.hl7.fhir.instance.model.api.IBaseBinary
+    * org.hl7.fhir.instance.model.api.IBaseBooleanDatatype
+    * org.hl7.fhir.instance.model.api.IBaseCoding
+    * org.hl7.fhir.instance.model.api.IBaseConformance
+    * org.hl7.fhir.instance.model.api.IBaseDatatype
+    * org.hl7.fhir.instance.model.api.IBaseDatatypeElement
+    * org.hl7.fhir.instance.model.api.IBaseDecimalDatatype
+    * org.hl7.fhir.instance.model.api.IBaseElement
+    * org.hl7.fhir.instance.model.api.IBaseEnumFactory
+    * org.hl7.fhir.instance.model.api.IBaseEnumeration
+    * org.hl7.fhir.instance.model.api.IBaseExtension
+    * org.hl7.fhir.instance.model.api.IBaseHasModifierExtensions
+    * org.hl7.fhir.instance.model.api.IBaseIntegerDatatype
+    * org.hl7.fhir.instance.model.api.IBaseMetaType
+    * org.hl7.fhir.instance.model.api.IBaseReference
+    * org.hl7.fhir.instance.model.api.IBaseResource
+    * org.hl7.fhir.instance.model.api.ICompositeType
+    * org.hl7.fhir.instance.model.api.ICompositeElement
+    * org.hl7.fhir.instance.model.api.IDomainResource
+    * org.hl7.fhir.instance.model.api.IIdType
+    * org.hl7.fhir.instance.model.api.INarrative
+    * org.hl7.fhir.instance.model.api.IPrimitiveType
+    * add dependencies `com.google.code.findbugs:jsr305:3.0.2` and 'org.apache.commons:commons-lang3:3.12.0'
