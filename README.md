@@ -112,3 +112,8 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
 
 5. Comment out all instances of `ca.uhn.fhir.rest.gclient.*` search parameter definitions in all model classes and/or interfaces
 
+6. Copy `org.hl7.fhir.utilities.xhtml.*` classes that are required by Base and Narrative model classes
+
+    * The capability of adding markdown nodes to XHTML should be commented out
+    * The capability of parsing XHtmlNodes/Docs with pull parser should be commented out
+

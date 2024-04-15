@@ -2,6 +2,7 @@ package org.hl7.fhir.utilities;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
+import java.util.Collection;
 import java.util.List;
 
 // XXX B2i Healthcare - unwanted dependencies and utilities have been disabled
@@ -244,27 +245,27 @@ public class Utilities {
 //  public static String upperCamelCase(String value) {
 //    return new Inflector().upperCamelCase(value.trim().replace(" ", "_"));
 //  }
-//
-//  public static String escapeXml(String doco) {
-//    if (doco == null)
-//      return "";
-//
-//    StringBuilder b = new StringBuilder();
-//    for (char c : doco.toCharArray()) {
-//      if (c == '<')
-//        b.append("&lt;");
-//      else if (c == '>')
-//        b.append("&gt;");
-//      else if (c == '&')
-//        b.append("&amp;");
-//      else if (c == '"')
-//        b.append("&quot;");
-//      else
-//        b.append(c);
-//    }
-//    return b.toString();
-//  }
-//
+
+  public static String escapeXml(String doco) {
+    if (doco == null)
+      return "";
+
+    StringBuilder b = new StringBuilder();
+    for (char c : doco.toCharArray()) {
+      if (c == '<')
+        b.append("&lt;");
+      else if (c == '>')
+        b.append("&gt;");
+      else if (c == '&')
+        b.append("&amp;");
+      else if (c == '"')
+        b.append("&quot;");
+      else
+        b.append(c);
+    }
+    return b.toString();
+  }
+
 //  public static String titleize(String s) {
 //    StringBuilder b = new StringBuilder();
 //    boolean up = true;
@@ -1442,57 +1443,57 @@ public class Utilities {
 //  private static String pad(long v, int i) {
 //    return padLeft(Long.toString(v), '0', i);
 //  }
-//
-//  public static boolean startsWithInList(String s, String... list) {
-//    if (s == null) {
-//      return false;
-//    }
-//    for (String l : list) {
-//      if (l != null) {
-//        if (s.startsWith(l)) {
-//          return true;
-//        }
-//      }
-//    }
-//    return false;
-//  }
-//
-//  public static boolean startsWithInList(String s, Collection<String> list) {
-//    if (s == null) {
-//      return false;
-//    }
-//    for (String l : list) {
-//      if (s.startsWith(l)) {
-//        return true;
-//      }
-//    }
-//    return false;
-//  }
-//
-//  public static boolean endsWithInList(String s, String... list) {
-//    if (s == null) {
-//      return false;
-//    }
-//    for (String l : list) {
-//      if (s.endsWith(l)) {
-//        return true;
-//      }
-//    }
-//    return false;
-//  }
-//
-//  public static boolean endsWithInList(String s, Collection<String> list) {
-//    if (s == null) {
-//      return false;
-//    }
-//    for (String l : list) {
-//      if (s.endsWith(l)) {
-//        return true;
-//      }
-//    }
-//    return false;
-//  }
-//
+
+  public static boolean startsWithInList(String s, String... list) {
+    if (s == null) {
+      return false;
+    }
+    for (String l : list) {
+      if (l != null) {
+        if (s.startsWith(l)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public static boolean startsWithInList(String s, Collection<String> list) {
+    if (s == null) {
+      return false;
+    }
+    for (String l : list) {
+      if (s.startsWith(l)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public static boolean endsWithInList(String s, String... list) {
+    if (s == null) {
+      return false;
+    }
+    for (String l : list) {
+      if (s.endsWith(l)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public static boolean endsWithInList(String s, Collection<String> list) {
+    if (s == null) {
+      return false;
+    }
+    for (String l : list) {
+      if (s.endsWith(l)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 //  public static final int ONE_MB = 1024;
 //  public static final String GB = "Gb";
 //  public static final String MB = "Mb";
