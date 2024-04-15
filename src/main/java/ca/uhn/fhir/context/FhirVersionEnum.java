@@ -21,8 +21,6 @@ package ca.uhn.fhir.context;
  */
 
 import ca.uhn.fhir.i18n.Msg;
-import ca.uhn.fhir.model.api.IFhirVersion;
-import ca.uhn.fhir.rest.server.exceptions.InternalErrorException;
 
 public enum FhirVersionEnum {
 
@@ -55,7 +53,7 @@ public enum FhirVersionEnum {
 	private final boolean myIsRi;
 	private final String myVersionClass;
 	private volatile Boolean myPresentOnClasspath;
-	private volatile IFhirVersion myVersionImplementation;
+//	private volatile IFhirVersion myVersionImplementation;
 	private String myFhirVersionString;
 
 	FhirVersionEnum(String theVersionClass, FhirVersionEnum theEquivalent, boolean theIsRi, IVersionProvider theVersionExtractor) {
@@ -69,19 +67,19 @@ public enum FhirVersionEnum {
 		return myFhirVersionString;
 	}
 
-	public IFhirVersion getVersionImplementation() {
-		if (!isPresentOnClasspath()) {
-			throw new IllegalStateException(Msg.code(1709) + "Version " + name() + " is not present on classpath");
-		}
-		if (myVersionImplementation == null) {
-			try {
-				myVersionImplementation = (IFhirVersion) Class.forName(myVersionClass).newInstance();
-			} catch (Exception e) {
-				throw new InternalErrorException(Msg.code(1710) + "Failed to instantiate FHIR version " + name(), e);
-			}
-		}
-		return myVersionImplementation;
-	}
+//	public IFhirVersion getVersionImplementation() {
+//		if (!isPresentOnClasspath()) {
+//			throw new IllegalStateException(Msg.code(1709) + "Version " + name() + " is not present on classpath");
+//		}
+//		if (myVersionImplementation == null) {
+//			try {
+//				myVersionImplementation = (IFhirVersion) Class.forName(myVersionClass).newInstance();
+//			} catch (Exception e) {
+//				throw new InternalErrorException(Msg.code(1710) + "Failed to instantiate FHIR version " + name(), e);
+//			}
+//		}
+//		return myVersionImplementation;
+//	}
 
 	public boolean isEqualOrNewerThan(FhirVersionEnum theVersion) {
 		return ordinal() >= theVersion.ordinal();
@@ -129,25 +127,25 @@ public enum FhirVersionEnum {
 		return myIsRi;
 	}
 
-	public FhirContext newContext() {
-		switch (this) {
-			case DSTU2:
-				return FhirContext.forDstu2();
-			case DSTU2_HL7ORG:
-				return FhirContext.forDstu2Hl7Org();
-			case DSTU2_1:
-				return FhirContext.forDstu2_1();
-			case DSTU3:
-				return FhirContext.forDstu3();
-			case R4:
-				return FhirContext.forR4();
-			case R4B:
-				return FhirContext.forR4B();
-			case R5:
-				return FhirContext.forR5();
-		}
-		throw new IllegalStateException(Msg.code(1711) + "Unknown version: " + this); // should not happen
-	}
+//	public FhirContext newContext() {
+//		switch (this) {
+//			case DSTU2:
+//				return FhirContext.forDstu2();
+//			case DSTU2_HL7ORG:
+//				return FhirContext.forDstu2Hl7Org();
+//			case DSTU2_1:
+//				return FhirContext.forDstu2_1();
+//			case DSTU3:
+//				return FhirContext.forDstu3();
+//			case R4:
+//				return FhirContext.forR4();
+//			case R4B:
+//				return FhirContext.forR4B();
+//			case R5:
+//				return FhirContext.forR5();
+//		}
+//		throw new IllegalStateException(Msg.code(1711) + "Unknown version: " + this); // should not happen
+//	}
 
 	private interface IVersionProvider {
 		String provideVersion();
