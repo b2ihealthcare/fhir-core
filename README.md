@@ -9,6 +9,7 @@ This library is based on the 6.3.4 version.
 NOTE: repeat these steps for each required FHIR version. This library starts from R4 and omits the previous versions.
 
 1. Start with copying the following classes/packages from the original `org.hl7.fhir.r?` library:
+    * org.hl7.fhir.r?.model.Bundle
     * org.hl7.fhir.r?.model.CodeSystem
     * org.hl7.fhir.r?.model.ConceptMap
     * org.hl7.fhir.r?.model.ValueSet
