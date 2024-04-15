@@ -694,32 +694,29 @@ public class Utilities {
 //    }
 //    return s.toString();
 //  }
-//
-//
-//  public static boolean isToken(String tail) {
-//    if (tail == null || tail.length() == 0)
-//      return false;
-//    boolean result = isAlphabetic(tail.charAt(0));
-//    for (int i = 1; i < tail.length(); i++) {
-//      result = result && (isAlphabetic(tail.charAt(i)) || isDigit(tail.charAt(i)) || (tail.charAt(i) == '_') || (tail.charAt(i) == '[') || (tail.charAt(i) == ']'));
-//    }
-//    return result;
-//  }
-//
-//  public static boolean isTokenChar(char ch) {
-//    return isAlphabetic(ch) || (ch == '_'); 
-//  }
-//
-//  public static boolean isDigit(char c) {
-//    return (c >= '0') && (c <= '9');
-//  }
-//
-//
-//  public static boolean isAlphabetic(char c) {
-//    return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
-//  }
-//
-//
+
+  public static boolean isToken(String tail) {
+    if (tail == null || tail.length() == 0)
+      return false;
+    boolean result = isAlphabetic(tail.charAt(0));
+    for (int i = 1; i < tail.length(); i++) {
+      result = result && (isAlphabetic(tail.charAt(i)) || isDigit(tail.charAt(i)) || (tail.charAt(i) == '_') || (tail.charAt(i) == '[') || (tail.charAt(i) == ']'));
+    }
+    return result;
+  }
+
+  public static boolean isTokenChar(char ch) {
+    return isAlphabetic(ch) || (ch == '_'); 
+  }
+
+  public static boolean isDigit(char c) {
+    return (c >= '0') && (c <= '9');
+  }
+
+  public static boolean isAlphabetic(char c) {
+    return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
+  }
+
 //  public static String getDirectoryForFile(String filepath) throws IOException {
 //    File f = ManagedFileAccess.file(filepath);
 //    return f.getParent();
@@ -1054,24 +1051,24 @@ public class Utilities {
 //    else
 //      return b.toString();
 //  }
-//
-//
-//  public static String uncapitalize(String s) {
-//    if (s == null) return null;
-//    if (s.length() == 0) return s;
-//    if (s.length() == 1) return s.toLowerCase();
-//
-//    return s.substring(0, 1).toLowerCase() + s.substring(1);
-//  }
-//
-//  public static int charCount(String s, char c) {
-//    int res = 0;
-//    for (char ch : s.toCharArray())
-//      if (ch == c)
-//        res++;
-//    return res;
-//  }
-//
+
+
+  public static String uncapitalize(String s) {
+    if (s == null) return null;
+    if (s.length() == 0) return s;
+    if (s.length() == 1) return s.toLowerCase();
+
+    return s.substring(0, 1).toLowerCase() + s.substring(1);
+  }
+
+  public static int charCount(String s, char c) {
+    int res = 0;
+    for (char ch : s.toCharArray())
+      if (ch == c)
+        res++;
+    return res;
+  }
+
 //  public static boolean isOid(String cc) {
 //    return cc.matches(OID_REGEX);
 //  }
@@ -1146,28 +1143,28 @@ public class Utilities {
 //  public static boolean compareIgnoreWhitespace(String fn1, String fn2) throws IOException {
 //    return compareIgnoreWhitespace(ManagedFileAccess.file(fn1), ManagedFileAccess.file(fn2));
 //  }
-//
-//
-//  public static boolean isAbsoluteUrl(String ref) {
-//    if (ref != null && ref.contains(":")) {
-//      String scheme = ref.substring(0, ref.indexOf(":"));
-//      String details = ref.substring(ref.indexOf(":")+1);
-//      return (existsInList(scheme, "http", "https", "urn", "file:") || (isToken(scheme) && scheme.equals(scheme.toLowerCase())) || Utilities.startsWithInList(ref, "urn:iso:", "urn:iso-iec:", "urn:iso-cie:", "urn:iso-astm:", "urn:iso-ieee:", "urn:iec:"))
-//          && details != null && details.length() > 0 && !details.contains(" "); // rfc5141
-//    }
-//    return false; 
-//  }
-//
-//  public static boolean isAbsoluteUrlLinkable(String ref) {
-//    if (ref != null && ref.contains(":")) {
-//      String scheme = ref.substring(0, ref.indexOf(":"));
-//      String details = ref.substring(ref.indexOf(":")+1);
-//      return (existsInList(scheme, "http", "https", "ftp"))
-//          && details != null && details.length() > 0 && !details.contains(" "); // rfc5141
-//    }
-//    return false; 
-//  }
-//
+
+
+  public static boolean isAbsoluteUrl(String ref) {
+    if (ref != null && ref.contains(":")) {
+      String scheme = ref.substring(0, ref.indexOf(":"));
+      String details = ref.substring(ref.indexOf(":")+1);
+      return (existsInList(scheme, "http", "https", "urn", "file:") || (isToken(scheme) && scheme.equals(scheme.toLowerCase())) || Utilities.startsWithInList(ref, "urn:iso:", "urn:iso-iec:", "urn:iso-cie:", "urn:iso-astm:", "urn:iso-ieee:", "urn:iec:"))
+          && details != null && details.length() > 0 && !details.contains(" "); // rfc5141
+    }
+    return false; 
+  }
+
+  public static boolean isAbsoluteUrlLinkable(String ref) {
+    if (ref != null && ref.contains(":")) {
+      String scheme = ref.substring(0, ref.indexOf(":"));
+      String details = ref.substring(ref.indexOf(":")+1);
+      return (existsInList(scheme, "http", "https", "ftp"))
+          && details != null && details.length() > 0 && !details.contains(" "); // rfc5141
+    }
+    return false; 
+  }
+
 //  public static boolean equivalent(String l, String r) {
 //    if (Utilities.noString(l) && Utilities.noString(r))
 //      return true;
