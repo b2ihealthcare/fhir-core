@@ -962,9 +962,10 @@ public abstract class Base implements Serializable, IBase, IElement {
     if (b == null) {
       return null;
     }
-    if (b instanceof Element) {
-      return ((Element) b).getValue();
-    } else if (b instanceof XhtmlType) {
+//    if (b instanceof org.hl7.fhir.r4.elementmodel.Element) {
+//      return ((org.hl7.fhir.r4.elementmodel.Element) b).getValue();
+//    } else 
+    if (b instanceof XhtmlType) {
       try {
         return new XhtmlComposer(true).compose(((XhtmlType) b).getValue());
       } catch (IOException e) {
