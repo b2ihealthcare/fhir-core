@@ -14,6 +14,7 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
     * org.hl7.fhir.r?.model.ConceptMap
     * org.hl7.fhir.r?.model.ValueSet
     * org.hl7.fhir.r?.model.CapabilityStatement
+    * org.hl7.fhir.r?.model.TerminologyCapabilities
     * org.hl7.fhir.r?.model.StructureDefinition
     * org.hl7.fhir.r?.model.NamingSystem
 
