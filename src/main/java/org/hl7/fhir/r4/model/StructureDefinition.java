@@ -47,7 +47,6 @@ import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 
 /**
  * A definition of a FHIR structure. This resource is used to describe the
@@ -4243,584 +4242,586 @@ public class StructureDefinition extends MetadataResource {
     return ResourceType.StructureDefinition;
   }
 
-  /**
-   * Search parameter: <b>date</b>
-   * <p>
-   * Description: <b>The structure definition publication date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>StructureDefinition.date</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "date", path = "StructureDefinition.date", description = "The structure definition publication date", type = "date")
-  public static final String SP_DATE = "date";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>date</b>
-   * <p>
-   * Description: <b>The structure definition publication date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>StructureDefinition.date</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
-      SP_DATE);
-
-  /**
-   * Search parameter: <b>context-type-value</b>
-   * <p>
-   * Description: <b>A use context type and value assigned to the structure
-   * definition</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-type-value", path = "StructureDefinition.useContext", description = "A use context type and value assigned to the structure definition", type = "composite", compositeOf = {
-      "context-type", "context" })
-  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
-   * <p>
-   * Description: <b>A use context type and value assigned to the structure
-   * definition</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
-      SP_CONTEXT_TYPE_VALUE);
-
-  /**
-   * Search parameter: <b>jurisdiction</b>
-   * <p>
-   * Description: <b>Intended jurisdiction for the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.jurisdiction</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "jurisdiction", path = "StructureDefinition.jurisdiction", description = "Intended jurisdiction for the structure definition", type = "token")
-  public static final String SP_JURISDICTION = "jurisdiction";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
-   * <p>
-   * Description: <b>Intended jurisdiction for the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.jurisdiction</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_JURISDICTION);
-
-  /**
-   * Search parameter: <b>description</b>
-   * <p>
-   * Description: <b>The description of the structure definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.description</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "description", path = "StructureDefinition.description", description = "The description of the structure definition", type = "string")
-  public static final String SP_DESCRIPTION = "description";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>description</b>
-   * <p>
-   * Description: <b>The description of the structure definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.description</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_DESCRIPTION);
-
-  /**
-   * Search parameter: <b>context-type</b>
-   * <p>
-   * Description: <b>A type of use context assigned to the structure
-   * definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.useContext.code</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-type", path = "StructureDefinition.useContext.code", description = "A type of use context assigned to the structure definition", type = "token")
-  public static final String SP_CONTEXT_TYPE = "context-type";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
-   * <p>
-   * Description: <b>A type of use context assigned to the structure
-   * definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.useContext.code</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_CONTEXT_TYPE);
-
-  /**
-   * Search parameter: <b>experimental</b>
-   * <p>
-   * Description: <b>For testing purposes, not real usage</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.experimental</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "experimental", path = "StructureDefinition.experimental", description = "For testing purposes, not real usage", type = "token")
-  public static final String SP_EXPERIMENTAL = "experimental";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>experimental</b>
-   * <p>
-   * Description: <b>For testing purposes, not real usage</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.experimental</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXPERIMENTAL = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_EXPERIMENTAL);
-
-  /**
-   * Search parameter: <b>title</b>
-   * <p>
-   * Description: <b>The human-friendly name of the structure definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.title</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "title", path = "StructureDefinition.title", description = "The human-friendly name of the structure definition", type = "string")
-  public static final String SP_TITLE = "title";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>title</b>
-   * <p>
-   * Description: <b>The human-friendly name of the structure definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.title</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_TITLE);
-
-  /**
-   * Search parameter: <b>type</b>
-   * <p>
-   * Description: <b>Type defined or constrained by this structure</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>StructureDefinition.type</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "type", path = "StructureDefinition.type", description = "Type defined or constrained by this structure", type = "uri")
-  public static final String SP_TYPE = "type";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>type</b>
-   * <p>
-   * Description: <b>Type defined or constrained by this structure</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>StructureDefinition.type</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.UriClientParam TYPE = new ca.uhn.fhir.rest.gclient.UriClientParam(
-      SP_TYPE);
-
-  /**
-   * Search parameter: <b>context-quantity</b>
-   * <p>
-   * Description: <b>A quantity- or range-valued use context assigned to the
-   * structure definition</b><br>
-   * Type: <b>quantity</b><br>
-   * Path: <b>StructureDefinition.useContext.valueQuantity,
-   * StructureDefinition.useContext.valueRange</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-quantity", path = "(StructureDefinition.useContext.value as Quantity) | (StructureDefinition.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the structure definition", type = "quantity")
-  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
-   * <p>
-   * Description: <b>A quantity- or range-valued use context assigned to the
-   * structure definition</b><br>
-   * Type: <b>quantity</b><br>
-   * Path: <b>StructureDefinition.useContext.valueQuantity,
-   * StructureDefinition.useContext.valueRange</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
-      SP_CONTEXT_QUANTITY);
-
-  /**
-   * Search parameter: <b>path</b>
-   * <p>
-   * Description: <b>A path that is constrained in the StructureDefinition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.snapshot.element.path,
-   * StructureDefinition.differential.element.path</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "path", path = "StructureDefinition.snapshot.element.path | StructureDefinition.differential.element.path", description = "A path that is constrained in the StructureDefinition", type = "token")
-  public static final String SP_PATH = "path";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>path</b>
-   * <p>
-   * Description: <b>A path that is constrained in the StructureDefinition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.snapshot.element.path,
-   * StructureDefinition.differential.element.path</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PATH = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_PATH);
-
-  /**
-   * Search parameter: <b>context</b>
-   * <p>
-   * Description: <b>A use context assigned to the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.useContext.valueCodeableConcept</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context", path = "(StructureDefinition.useContext.value as CodeableConcept)", description = "A use context assigned to the structure definition", type = "token")
-  public static final String SP_CONTEXT = "context";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context</b>
-   * <p>
-   * Description: <b>A use context assigned to the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.useContext.valueCodeableConcept</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_CONTEXT);
-
-  /**
-   * Search parameter: <b>base-path</b>
-   * <p>
-   * Description: <b>Path that identifies the base element</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.snapshot.element.base.path,
-   * StructureDefinition.differential.element.base.path</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "base-path", path = "StructureDefinition.snapshot.element.base.path | StructureDefinition.differential.element.base.path", description = "Path that identifies the base element", type = "token")
-  public static final String SP_BASE_PATH = "base-path";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>base-path</b>
-   * <p>
-   * Description: <b>Path that identifies the base element</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.snapshot.element.base.path,
-   * StructureDefinition.differential.element.base.path</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam BASE_PATH = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_BASE_PATH);
-
-  /**
-   * Search parameter: <b>keyword</b>
-   * <p>
-   * Description: <b>A code for the StructureDefinition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.keyword</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "keyword", path = "StructureDefinition.keyword", description = "A code for the StructureDefinition", type = "token")
-  public static final String SP_KEYWORD = "keyword";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>keyword</b>
-   * <p>
-   * Description: <b>A code for the StructureDefinition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.keyword</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam KEYWORD = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_KEYWORD);
-
-  /**
-   * Search parameter: <b>context-type-quantity</b>
-   * <p>
-   * Description: <b>A use context type and quantity- or range-based value
-   * assigned to the structure definition</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-type-quantity", path = "StructureDefinition.useContext", description = "A use context type and quantity- or range-based value assigned to the structure definition", type = "composite", compositeOf = {
-      "context-type", "context-quantity" })
-  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
-  /**
-   * <b>Fluent Client</b> search parameter constant for
-   * <b>context-type-quantity</b>
-   * <p>
-   * Description: <b>A use context type and quantity- or range-based value
-   * assigned to the structure definition</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
-      SP_CONTEXT_TYPE_QUANTITY);
-
-  /**
-   * Search parameter: <b>identifier</b>
-   * <p>
-   * Description: <b>External identifier for the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.identifier</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "identifier", path = "StructureDefinition.identifier", description = "External identifier for the structure definition", type = "token")
-  public static final String SP_IDENTIFIER = "identifier";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
-   * <p>
-   * Description: <b>External identifier for the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.identifier</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_IDENTIFIER);
-
-  /**
-   * Search parameter: <b>valueset</b>
-   * <p>
-   * Description: <b>A vocabulary binding reference</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>StructureDefinition.snapshot.element.binding.valueSet</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "valueset", path = "StructureDefinition.snapshot.element.binding.valueSet", description = "A vocabulary binding reference", type = "reference", target = {
-      ValueSet.class })
-  public static final String SP_VALUESET = "valueset";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>valueset</b>
-   * <p>
-   * Description: <b>A vocabulary binding reference</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>StructureDefinition.snapshot.element.binding.valueSet</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam VALUESET = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
-      SP_VALUESET);
-
-  /**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>StructureDefinition:valueset</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_VALUESET = new ca.uhn.fhir.model.api.Include(
-      "StructureDefinition:valueset").toLocked();
-
-  /**
-   * Search parameter: <b>kind</b>
-   * <p>
-   * Description: <b>primitive-type | complex-type | resource | logical</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.kind</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "kind", path = "StructureDefinition.kind", description = "primitive-type | complex-type | resource | logical", type = "token")
-  public static final String SP_KIND = "kind";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>kind</b>
-   * <p>
-   * Description: <b>primitive-type | complex-type | resource | logical</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.kind</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam KIND = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_KIND);
-
-  /**
-   * Search parameter: <b>abstract</b>
-   * <p>
-   * Description: <b>Whether the structure is abstract</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.abstract</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "abstract", path = "StructureDefinition.abstract", description = "Whether the structure is abstract", type = "token")
-  public static final String SP_ABSTRACT = "abstract";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>abstract</b>
-   * <p>
-   * Description: <b>Whether the structure is abstract</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.abstract</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ABSTRACT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_ABSTRACT);
-
-  /**
-   * Search parameter: <b>version</b>
-   * <p>
-   * Description: <b>The business version of the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.version</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "version", path = "StructureDefinition.version", description = "The business version of the structure definition", type = "token")
-  public static final String SP_VERSION = "version";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>version</b>
-   * <p>
-   * Description: <b>The business version of the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.version</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_VERSION);
-
-  /**
-   * Search parameter: <b>url</b>
-   * <p>
-   * Description: <b>The uri that identifies the structure definition</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>StructureDefinition.url</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "url", path = "StructureDefinition.url", description = "The uri that identifies the structure definition", type = "uri")
-  public static final String SP_URL = "url";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>url</b>
-   * <p>
-   * Description: <b>The uri that identifies the structure definition</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>StructureDefinition.url</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
-
-  /**
-   * Search parameter: <b>ext-context</b>
-   * <p>
-   * Description: <b>The system is the URL for the context-type: e.g.
-   * http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.context.type</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "ext-context", path = "StructureDefinition.context.type", description = "The system is the URL for the context-type: e.g. http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text", type = "token")
-  public static final String SP_EXT_CONTEXT = "ext-context";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>ext-context</b>
-   * <p>
-   * Description: <b>The system is the URL for the context-type: e.g.
-   * http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.context.type</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXT_CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_EXT_CONTEXT);
-
-  /**
-   * Search parameter: <b>name</b>
-   * <p>
-   * Description: <b>Computationally friendly name of the structure
-   * definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.name</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "name", path = "StructureDefinition.name", description = "Computationally friendly name of the structure definition", type = "string")
-  public static final String SP_NAME = "name";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>name</b>
-   * <p>
-   * Description: <b>Computationally friendly name of the structure
-   * definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.name</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_NAME);
-
-  /**
-   * Search parameter: <b>publisher</b>
-   * <p>
-   * Description: <b>Name of the publisher of the structure definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.publisher</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "publisher", path = "StructureDefinition.publisher", description = "Name of the publisher of the structure definition", type = "string")
-  public static final String SP_PUBLISHER = "publisher";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
-   * <p>
-   * Description: <b>Name of the publisher of the structure definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>StructureDefinition.publisher</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_PUBLISHER);
-
-  /**
-   * Search parameter: <b>derivation</b>
-   * <p>
-   * Description: <b>specialization | constraint - How relates to base
-   * definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.derivation</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "derivation", path = "StructureDefinition.derivation", description = "specialization | constraint - How relates to base definition", type = "token")
-  public static final String SP_DERIVATION = "derivation";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>derivation</b>
-   * <p>
-   * Description: <b>specialization | constraint - How relates to base
-   * definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.derivation</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam DERIVATION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_DERIVATION);
-
-  /**
-   * Search parameter: <b>status</b>
-   * <p>
-   * Description: <b>The current status of the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.status</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "status", path = "StructureDefinition.status", description = "The current status of the structure definition", type = "token")
-  public static final String SP_STATUS = "status";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>status</b>
-   * <p>
-   * Description: <b>The current status of the structure definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>StructureDefinition.status</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_STATUS);
-
-  /**
-   * Search parameter: <b>base</b>
-   * <p>
-   * Description: <b>Definition that this type is constrained/specialized
-   * from</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>StructureDefinition.baseDefinition</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "base", path = "StructureDefinition.baseDefinition", description = "Definition that this type is constrained/specialized from", type = "reference", target = {
-      StructureDefinition.class })
-  public static final String SP_BASE = "base";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>base</b>
-   * <p>
-   * Description: <b>Definition that this type is constrained/specialized
-   * from</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>StructureDefinition.baseDefinition</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam BASE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
-      SP_BASE);
+// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+  
+//  /**
+//   * Search parameter: <b>date</b>
+//   * <p>
+//   * Description: <b>The structure definition publication date</b><br>
+//   * Type: <b>date</b><br>
+//   * Path: <b>StructureDefinition.date</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "date", path = "StructureDefinition.date", description = "The structure definition publication date", type = "date")
+//  public static final String SP_DATE = "date";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>date</b>
+//   * <p>
+//   * Description: <b>The structure definition publication date</b><br>
+//   * Type: <b>date</b><br>
+//   * Path: <b>StructureDefinition.date</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
+//      SP_DATE);
+//
+//  /**
+//   * Search parameter: <b>context-type-value</b>
+//   * <p>
+//   * Description: <b>A use context type and value assigned to the structure
+//   * definition</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-type-value", path = "StructureDefinition.useContext", description = "A use context type and value assigned to the structure definition", type = "composite", compositeOf = {
+//      "context-type", "context" })
+//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
+//   * <p>
+//   * Description: <b>A use context type and value assigned to the structure
+//   * definition</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
+//      SP_CONTEXT_TYPE_VALUE);
+//
+//  /**
+//   * Search parameter: <b>jurisdiction</b>
+//   * <p>
+//   * Description: <b>Intended jurisdiction for the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.jurisdiction</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "jurisdiction", path = "StructureDefinition.jurisdiction", description = "Intended jurisdiction for the structure definition", type = "token")
+//  public static final String SP_JURISDICTION = "jurisdiction";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
+//   * <p>
+//   * Description: <b>Intended jurisdiction for the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.jurisdiction</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_JURISDICTION);
+//
+//  /**
+//   * Search parameter: <b>description</b>
+//   * <p>
+//   * Description: <b>The description of the structure definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.description</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "description", path = "StructureDefinition.description", description = "The description of the structure definition", type = "string")
+//  public static final String SP_DESCRIPTION = "description";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>description</b>
+//   * <p>
+//   * Description: <b>The description of the structure definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.description</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_DESCRIPTION);
+//
+//  /**
+//   * Search parameter: <b>context-type</b>
+//   * <p>
+//   * Description: <b>A type of use context assigned to the structure
+//   * definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.useContext.code</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-type", path = "StructureDefinition.useContext.code", description = "A type of use context assigned to the structure definition", type = "token")
+//  public static final String SP_CONTEXT_TYPE = "context-type";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
+//   * <p>
+//   * Description: <b>A type of use context assigned to the structure
+//   * definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.useContext.code</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_CONTEXT_TYPE);
+//
+//  /**
+//   * Search parameter: <b>experimental</b>
+//   * <p>
+//   * Description: <b>For testing purposes, not real usage</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.experimental</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "experimental", path = "StructureDefinition.experimental", description = "For testing purposes, not real usage", type = "token")
+//  public static final String SP_EXPERIMENTAL = "experimental";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>experimental</b>
+//   * <p>
+//   * Description: <b>For testing purposes, not real usage</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.experimental</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXPERIMENTAL = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_EXPERIMENTAL);
+//
+//  /**
+//   * Search parameter: <b>title</b>
+//   * <p>
+//   * Description: <b>The human-friendly name of the structure definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.title</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "title", path = "StructureDefinition.title", description = "The human-friendly name of the structure definition", type = "string")
+//  public static final String SP_TITLE = "title";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>title</b>
+//   * <p>
+//   * Description: <b>The human-friendly name of the structure definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.title</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_TITLE);
+//
+//  /**
+//   * Search parameter: <b>type</b>
+//   * <p>
+//   * Description: <b>Type defined or constrained by this structure</b><br>
+//   * Type: <b>uri</b><br>
+//   * Path: <b>StructureDefinition.type</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "type", path = "StructureDefinition.type", description = "Type defined or constrained by this structure", type = "uri")
+//  public static final String SP_TYPE = "type";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>type</b>
+//   * <p>
+//   * Description: <b>Type defined or constrained by this structure</b><br>
+//   * Type: <b>uri</b><br>
+//   * Path: <b>StructureDefinition.type</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.UriClientParam TYPE = new ca.uhn.fhir.rest.gclient.UriClientParam(
+//      SP_TYPE);
+//
+//  /**
+//   * Search parameter: <b>context-quantity</b>
+//   * <p>
+//   * Description: <b>A quantity- or range-valued use context assigned to the
+//   * structure definition</b><br>
+//   * Type: <b>quantity</b><br>
+//   * Path: <b>StructureDefinition.useContext.valueQuantity,
+//   * StructureDefinition.useContext.valueRange</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-quantity", path = "(StructureDefinition.useContext.value as Quantity) | (StructureDefinition.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the structure definition", type = "quantity")
+//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
+//   * <p>
+//   * Description: <b>A quantity- or range-valued use context assigned to the
+//   * structure definition</b><br>
+//   * Type: <b>quantity</b><br>
+//   * Path: <b>StructureDefinition.useContext.valueQuantity,
+//   * StructureDefinition.useContext.valueRange</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
+//      SP_CONTEXT_QUANTITY);
+//
+//  /**
+//   * Search parameter: <b>path</b>
+//   * <p>
+//   * Description: <b>A path that is constrained in the StructureDefinition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.snapshot.element.path,
+//   * StructureDefinition.differential.element.path</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "path", path = "StructureDefinition.snapshot.element.path | StructureDefinition.differential.element.path", description = "A path that is constrained in the StructureDefinition", type = "token")
+//  public static final String SP_PATH = "path";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>path</b>
+//   * <p>
+//   * Description: <b>A path that is constrained in the StructureDefinition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.snapshot.element.path,
+//   * StructureDefinition.differential.element.path</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PATH = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_PATH);
+//
+//  /**
+//   * Search parameter: <b>context</b>
+//   * <p>
+//   * Description: <b>A use context assigned to the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.useContext.valueCodeableConcept</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context", path = "(StructureDefinition.useContext.value as CodeableConcept)", description = "A use context assigned to the structure definition", type = "token")
+//  public static final String SP_CONTEXT = "context";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context</b>
+//   * <p>
+//   * Description: <b>A use context assigned to the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.useContext.valueCodeableConcept</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_CONTEXT);
+//
+//  /**
+//   * Search parameter: <b>base-path</b>
+//   * <p>
+//   * Description: <b>Path that identifies the base element</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.snapshot.element.base.path,
+//   * StructureDefinition.differential.element.base.path</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "base-path", path = "StructureDefinition.snapshot.element.base.path | StructureDefinition.differential.element.base.path", description = "Path that identifies the base element", type = "token")
+//  public static final String SP_BASE_PATH = "base-path";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>base-path</b>
+//   * <p>
+//   * Description: <b>Path that identifies the base element</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.snapshot.element.base.path,
+//   * StructureDefinition.differential.element.base.path</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam BASE_PATH = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_BASE_PATH);
+//
+//  /**
+//   * Search parameter: <b>keyword</b>
+//   * <p>
+//   * Description: <b>A code for the StructureDefinition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.keyword</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "keyword", path = "StructureDefinition.keyword", description = "A code for the StructureDefinition", type = "token")
+//  public static final String SP_KEYWORD = "keyword";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>keyword</b>
+//   * <p>
+//   * Description: <b>A code for the StructureDefinition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.keyword</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam KEYWORD = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_KEYWORD);
+//
+//  /**
+//   * Search parameter: <b>context-type-quantity</b>
+//   * <p>
+//   * Description: <b>A use context type and quantity- or range-based value
+//   * assigned to the structure definition</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-type-quantity", path = "StructureDefinition.useContext", description = "A use context type and quantity- or range-based value assigned to the structure definition", type = "composite", compositeOf = {
+//      "context-type", "context-quantity" })
+//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for
+//   * <b>context-type-quantity</b>
+//   * <p>
+//   * Description: <b>A use context type and quantity- or range-based value
+//   * assigned to the structure definition</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
+//      SP_CONTEXT_TYPE_QUANTITY);
+//
+//  /**
+//   * Search parameter: <b>identifier</b>
+//   * <p>
+//   * Description: <b>External identifier for the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.identifier</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "identifier", path = "StructureDefinition.identifier", description = "External identifier for the structure definition", type = "token")
+//  public static final String SP_IDENTIFIER = "identifier";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+//   * <p>
+//   * Description: <b>External identifier for the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.identifier</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_IDENTIFIER);
+//
+//  /**
+//   * Search parameter: <b>valueset</b>
+//   * <p>
+//   * Description: <b>A vocabulary binding reference</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>StructureDefinition.snapshot.element.binding.valueSet</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "valueset", path = "StructureDefinition.snapshot.element.binding.valueSet", description = "A vocabulary binding reference", type = "reference", target = {
+//      ValueSet.class })
+//  public static final String SP_VALUESET = "valueset";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>valueset</b>
+//   * <p>
+//   * Description: <b>A vocabulary binding reference</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>StructureDefinition.snapshot.element.binding.valueSet</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam VALUESET = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
+//      SP_VALUESET);
+//
+//  /**
+//   * Constant for fluent queries to be used to add include statements. Specifies
+//   * the path value of "<b>StructureDefinition:valueset</b>".
+//   */
+//  public static final ca.uhn.fhir.model.api.Include INCLUDE_VALUESET = new ca.uhn.fhir.model.api.Include(
+//      "StructureDefinition:valueset").toLocked();
+//
+//  /**
+//   * Search parameter: <b>kind</b>
+//   * <p>
+//   * Description: <b>primitive-type | complex-type | resource | logical</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.kind</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "kind", path = "StructureDefinition.kind", description = "primitive-type | complex-type | resource | logical", type = "token")
+//  public static final String SP_KIND = "kind";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>kind</b>
+//   * <p>
+//   * Description: <b>primitive-type | complex-type | resource | logical</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.kind</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam KIND = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_KIND);
+//
+//  /**
+//   * Search parameter: <b>abstract</b>
+//   * <p>
+//   * Description: <b>Whether the structure is abstract</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.abstract</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "abstract", path = "StructureDefinition.abstract", description = "Whether the structure is abstract", type = "token")
+//  public static final String SP_ABSTRACT = "abstract";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>abstract</b>
+//   * <p>
+//   * Description: <b>Whether the structure is abstract</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.abstract</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ABSTRACT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_ABSTRACT);
+//
+//  /**
+//   * Search parameter: <b>version</b>
+//   * <p>
+//   * Description: <b>The business version of the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.version</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "version", path = "StructureDefinition.version", description = "The business version of the structure definition", type = "token")
+//  public static final String SP_VERSION = "version";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>version</b>
+//   * <p>
+//   * Description: <b>The business version of the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.version</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_VERSION);
+//
+//  /**
+//   * Search parameter: <b>url</b>
+//   * <p>
+//   * Description: <b>The uri that identifies the structure definition</b><br>
+//   * Type: <b>uri</b><br>
+//   * Path: <b>StructureDefinition.url</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "url", path = "StructureDefinition.url", description = "The uri that identifies the structure definition", type = "uri")
+//  public static final String SP_URL = "url";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>url</b>
+//   * <p>
+//   * Description: <b>The uri that identifies the structure definition</b><br>
+//   * Type: <b>uri</b><br>
+//   * Path: <b>StructureDefinition.url</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
+//
+//  /**
+//   * Search parameter: <b>ext-context</b>
+//   * <p>
+//   * Description: <b>The system is the URL for the context-type: e.g.
+//   * http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.context.type</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "ext-context", path = "StructureDefinition.context.type", description = "The system is the URL for the context-type: e.g. http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text", type = "token")
+//  public static final String SP_EXT_CONTEXT = "ext-context";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>ext-context</b>
+//   * <p>
+//   * Description: <b>The system is the URL for the context-type: e.g.
+//   * http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.context.type</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXT_CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_EXT_CONTEXT);
+//
+//  /**
+//   * Search parameter: <b>name</b>
+//   * <p>
+//   * Description: <b>Computationally friendly name of the structure
+//   * definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.name</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "name", path = "StructureDefinition.name", description = "Computationally friendly name of the structure definition", type = "string")
+//  public static final String SP_NAME = "name";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>name</b>
+//   * <p>
+//   * Description: <b>Computationally friendly name of the structure
+//   * definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.name</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_NAME);
+//
+//  /**
+//   * Search parameter: <b>publisher</b>
+//   * <p>
+//   * Description: <b>Name of the publisher of the structure definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.publisher</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "publisher", path = "StructureDefinition.publisher", description = "Name of the publisher of the structure definition", type = "string")
+//  public static final String SP_PUBLISHER = "publisher";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
+//   * <p>
+//   * Description: <b>Name of the publisher of the structure definition</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>StructureDefinition.publisher</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_PUBLISHER);
+//
+//  /**
+//   * Search parameter: <b>derivation</b>
+//   * <p>
+//   * Description: <b>specialization | constraint - How relates to base
+//   * definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.derivation</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "derivation", path = "StructureDefinition.derivation", description = "specialization | constraint - How relates to base definition", type = "token")
+//  public static final String SP_DERIVATION = "derivation";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>derivation</b>
+//   * <p>
+//   * Description: <b>specialization | constraint - How relates to base
+//   * definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.derivation</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam DERIVATION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_DERIVATION);
+//
+//  /**
+//   * Search parameter: <b>status</b>
+//   * <p>
+//   * Description: <b>The current status of the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.status</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "status", path = "StructureDefinition.status", description = "The current status of the structure definition", type = "token")
+//  public static final String SP_STATUS = "status";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+//   * <p>
+//   * Description: <b>The current status of the structure definition</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>StructureDefinition.status</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_STATUS);
+//
+//  /**
+//   * Search parameter: <b>base</b>
+//   * <p>
+//   * Description: <b>Definition that this type is constrained/specialized
+//   * from</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>StructureDefinition.baseDefinition</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "base", path = "StructureDefinition.baseDefinition", description = "Definition that this type is constrained/specialized from", type = "reference", target = {
+//      StructureDefinition.class })
+//  public static final String SP_BASE = "base";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>base</b>
+//   * <p>
+//   * Description: <b>Definition that this type is constrained/specialized
+//   * from</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>StructureDefinition.baseDefinition</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam BASE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
+//      SP_BASE);
 
   /**
    * Constant for fluent queries to be used to add include statements. Specifies

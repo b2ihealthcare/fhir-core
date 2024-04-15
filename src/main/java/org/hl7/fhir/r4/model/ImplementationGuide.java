@@ -47,7 +47,6 @@ import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 
 /**
  * A set of rules of how a particular interoperability or standards problem is
@@ -18482,419 +18481,421 @@ public class ImplementationGuide extends MetadataResource {
     return ResourceType.ImplementationGuide;
   }
 
-  /**
-   * Search parameter: <b>date</b>
-   * <p>
-   * Description: <b>The implementation guide publication date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>ImplementationGuide.date</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "date", path = "ImplementationGuide.date", description = "The implementation guide publication date", type = "date")
-  public static final String SP_DATE = "date";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>date</b>
-   * <p>
-   * Description: <b>The implementation guide publication date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>ImplementationGuide.date</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
-      SP_DATE);
-
-  /**
-   * Search parameter: <b>context-type-value</b>
-   * <p>
-   * Description: <b>A use context type and value assigned to the implementation
-   * guide</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-type-value", path = "ImplementationGuide.useContext", description = "A use context type and value assigned to the implementation guide", type = "composite", compositeOf = {
-      "context-type", "context" })
-  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
-   * <p>
-   * Description: <b>A use context type and value assigned to the implementation
-   * guide</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
-      SP_CONTEXT_TYPE_VALUE);
-
-  /**
-   * Search parameter: <b>resource</b>
-   * <p>
-   * Description: <b>Location of the resource</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ImplementationGuide.definition.resource.reference</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "resource", path = "ImplementationGuide.definition.resource.reference", description = "Location of the resource", type = "reference")
-  public static final String SP_RESOURCE = "resource";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>resource</b>
-   * <p>
-   * Description: <b>Location of the resource</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ImplementationGuide.definition.resource.reference</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam RESOURCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
-      SP_RESOURCE);
-
-  /**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ImplementationGuide:resource</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_RESOURCE = new ca.uhn.fhir.model.api.Include(
-      "ImplementationGuide:resource").toLocked();
-
-  /**
-   * Search parameter: <b>jurisdiction</b>
-   * <p>
-   * Description: <b>Intended jurisdiction for the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.jurisdiction</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "jurisdiction", path = "ImplementationGuide.jurisdiction", description = "Intended jurisdiction for the implementation guide", type = "token")
-  public static final String SP_JURISDICTION = "jurisdiction";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
-   * <p>
-   * Description: <b>Intended jurisdiction for the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.jurisdiction</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_JURISDICTION);
-
-  /**
-   * Search parameter: <b>description</b>
-   * <p>
-   * Description: <b>The description of the implementation guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.description</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "description", path = "ImplementationGuide.description", description = "The description of the implementation guide", type = "string")
-  public static final String SP_DESCRIPTION = "description";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>description</b>
-   * <p>
-   * Description: <b>The description of the implementation guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.description</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_DESCRIPTION);
-
-  /**
-   * Search parameter: <b>context-type</b>
-   * <p>
-   * Description: <b>A type of use context assigned to the implementation
-   * guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.useContext.code</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-type", path = "ImplementationGuide.useContext.code", description = "A type of use context assigned to the implementation guide", type = "token")
-  public static final String SP_CONTEXT_TYPE = "context-type";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
-   * <p>
-   * Description: <b>A type of use context assigned to the implementation
-   * guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.useContext.code</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_CONTEXT_TYPE);
-
-  /**
-   * Search parameter: <b>experimental</b>
-   * <p>
-   * Description: <b>For testing purposes, not real usage</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.experimental</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "experimental", path = "ImplementationGuide.experimental", description = "For testing purposes, not real usage", type = "token")
-  public static final String SP_EXPERIMENTAL = "experimental";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>experimental</b>
-   * <p>
-   * Description: <b>For testing purposes, not real usage</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.experimental</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXPERIMENTAL = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_EXPERIMENTAL);
-
-  /**
-   * Search parameter: <b>global</b>
-   * <p>
-   * Description: <b>Profile that all resources must conform to</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ImplementationGuide.global.profile</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "global", path = "ImplementationGuide.global.profile", description = "Profile that all resources must conform to", type = "reference", target = {
-      StructureDefinition.class })
-  public static final String SP_GLOBAL = "global";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>global</b>
-   * <p>
-   * Description: <b>Profile that all resources must conform to</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ImplementationGuide.global.profile</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam GLOBAL = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
-      SP_GLOBAL);
-
-  /**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ImplementationGuide:global</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_GLOBAL = new ca.uhn.fhir.model.api.Include(
-      "ImplementationGuide:global").toLocked();
-
-  /**
-   * Search parameter: <b>title</b>
-   * <p>
-   * Description: <b>The human-friendly name of the implementation guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.title</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "title", path = "ImplementationGuide.title", description = "The human-friendly name of the implementation guide", type = "string")
-  public static final String SP_TITLE = "title";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>title</b>
-   * <p>
-   * Description: <b>The human-friendly name of the implementation guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.title</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_TITLE);
-
-  /**
-   * Search parameter: <b>version</b>
-   * <p>
-   * Description: <b>The business version of the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.version</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "version", path = "ImplementationGuide.version", description = "The business version of the implementation guide", type = "token")
-  public static final String SP_VERSION = "version";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>version</b>
-   * <p>
-   * Description: <b>The business version of the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.version</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_VERSION);
-
-  /**
-   * Search parameter: <b>url</b>
-   * <p>
-   * Description: <b>The uri that identifies the implementation guide</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>ImplementationGuide.url</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "url", path = "ImplementationGuide.url", description = "The uri that identifies the implementation guide", type = "uri")
-  public static final String SP_URL = "url";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>url</b>
-   * <p>
-   * Description: <b>The uri that identifies the implementation guide</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>ImplementationGuide.url</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
-
-  /**
-   * Search parameter: <b>context-quantity</b>
-   * <p>
-   * Description: <b>A quantity- or range-valued use context assigned to the
-   * implementation guide</b><br>
-   * Type: <b>quantity</b><br>
-   * Path: <b>ImplementationGuide.useContext.valueQuantity,
-   * ImplementationGuide.useContext.valueRange</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-quantity", path = "(ImplementationGuide.useContext.value as Quantity) | (ImplementationGuide.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the implementation guide", type = "quantity")
-  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
-   * <p>
-   * Description: <b>A quantity- or range-valued use context assigned to the
-   * implementation guide</b><br>
-   * Type: <b>quantity</b><br>
-   * Path: <b>ImplementationGuide.useContext.valueQuantity,
-   * ImplementationGuide.useContext.valueRange</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
-      SP_CONTEXT_QUANTITY);
-
-  /**
-   * Search parameter: <b>depends-on</b>
-   * <p>
-   * Description: <b>Identity of the IG that this depends on</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ImplementationGuide.dependsOn.uri</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "depends-on", path = "ImplementationGuide.dependsOn.uri", description = "Identity of the IG that this depends on", type = "reference", target = {
-      ImplementationGuide.class })
-  public static final String SP_DEPENDS_ON = "depends-on";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>depends-on</b>
-   * <p>
-   * Description: <b>Identity of the IG that this depends on</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ImplementationGuide.dependsOn.uri</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam DEPENDS_ON = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
-      SP_DEPENDS_ON);
-
-  /**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ImplementationGuide:depends-on</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_DEPENDS_ON = new ca.uhn.fhir.model.api.Include(
-      "ImplementationGuide:depends-on").toLocked();
-
-  /**
-   * Search parameter: <b>name</b>
-   * <p>
-   * Description: <b>Computationally friendly name of the implementation
-   * guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.name</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "name", path = "ImplementationGuide.name", description = "Computationally friendly name of the implementation guide", type = "string")
-  public static final String SP_NAME = "name";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>name</b>
-   * <p>
-   * Description: <b>Computationally friendly name of the implementation
-   * guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.name</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_NAME);
-
-  /**
-   * Search parameter: <b>context</b>
-   * <p>
-   * Description: <b>A use context assigned to the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.useContext.valueCodeableConcept</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context", path = "(ImplementationGuide.useContext.value as CodeableConcept)", description = "A use context assigned to the implementation guide", type = "token")
-  public static final String SP_CONTEXT = "context";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>context</b>
-   * <p>
-   * Description: <b>A use context assigned to the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.useContext.valueCodeableConcept</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_CONTEXT);
-
-  /**
-   * Search parameter: <b>publisher</b>
-   * <p>
-   * Description: <b>Name of the publisher of the implementation guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.publisher</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "publisher", path = "ImplementationGuide.publisher", description = "Name of the publisher of the implementation guide", type = "string")
-  public static final String SP_PUBLISHER = "publisher";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
-   * <p>
-   * Description: <b>Name of the publisher of the implementation guide</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>ImplementationGuide.publisher</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
-      SP_PUBLISHER);
-
-  /**
-   * Search parameter: <b>context-type-quantity</b>
-   * <p>
-   * Description: <b>A use context type and quantity- or range-based value
-   * assigned to the implementation guide</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "context-type-quantity", path = "ImplementationGuide.useContext", description = "A use context type and quantity- or range-based value assigned to the implementation guide", type = "composite", compositeOf = {
-      "context-type", "context-quantity" })
-  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
-  /**
-   * <b>Fluent Client</b> search parameter constant for
-   * <b>context-type-quantity</b>
-   * <p>
-   * Description: <b>A use context type and quantity- or range-based value
-   * assigned to the implementation guide</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
-      SP_CONTEXT_TYPE_QUANTITY);
-
-  /**
-   * Search parameter: <b>status</b>
-   * <p>
-   * Description: <b>The current status of the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.status</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name = "status", path = "ImplementationGuide.status", description = "The current status of the implementation guide", type = "token")
-  public static final String SP_STATUS = "status";
-  /**
-   * <b>Fluent Client</b> search parameter constant for <b>status</b>
-   * <p>
-   * Description: <b>The current status of the implementation guide</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ImplementationGuide.status</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(
-      SP_STATUS);
+// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+  
+//  /**
+//   * Search parameter: <b>date</b>
+//   * <p>
+//   * Description: <b>The implementation guide publication date</b><br>
+//   * Type: <b>date</b><br>
+//   * Path: <b>ImplementationGuide.date</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "date", path = "ImplementationGuide.date", description = "The implementation guide publication date", type = "date")
+//  public static final String SP_DATE = "date";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>date</b>
+//   * <p>
+//   * Description: <b>The implementation guide publication date</b><br>
+//   * Type: <b>date</b><br>
+//   * Path: <b>ImplementationGuide.date</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
+//      SP_DATE);
+//
+//  /**
+//   * Search parameter: <b>context-type-value</b>
+//   * <p>
+//   * Description: <b>A use context type and value assigned to the implementation
+//   * guide</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-type-value", path = "ImplementationGuide.useContext", description = "A use context type and value assigned to the implementation guide", type = "composite", compositeOf = {
+//      "context-type", "context" })
+//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
+//   * <p>
+//   * Description: <b>A use context type and value assigned to the implementation
+//   * guide</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
+//      SP_CONTEXT_TYPE_VALUE);
+//
+//  /**
+//   * Search parameter: <b>resource</b>
+//   * <p>
+//   * Description: <b>Location of the resource</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>ImplementationGuide.definition.resource.reference</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "resource", path = "ImplementationGuide.definition.resource.reference", description = "Location of the resource", type = "reference")
+//  public static final String SP_RESOURCE = "resource";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>resource</b>
+//   * <p>
+//   * Description: <b>Location of the resource</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>ImplementationGuide.definition.resource.reference</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam RESOURCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
+//      SP_RESOURCE);
+//
+//  /**
+//   * Constant for fluent queries to be used to add include statements. Specifies
+//   * the path value of "<b>ImplementationGuide:resource</b>".
+//   */
+//  public static final ca.uhn.fhir.model.api.Include INCLUDE_RESOURCE = new ca.uhn.fhir.model.api.Include(
+//      "ImplementationGuide:resource").toLocked();
+//
+//  /**
+//   * Search parameter: <b>jurisdiction</b>
+//   * <p>
+//   * Description: <b>Intended jurisdiction for the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.jurisdiction</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "jurisdiction", path = "ImplementationGuide.jurisdiction", description = "Intended jurisdiction for the implementation guide", type = "token")
+//  public static final String SP_JURISDICTION = "jurisdiction";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
+//   * <p>
+//   * Description: <b>Intended jurisdiction for the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.jurisdiction</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_JURISDICTION);
+//
+//  /**
+//   * Search parameter: <b>description</b>
+//   * <p>
+//   * Description: <b>The description of the implementation guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.description</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "description", path = "ImplementationGuide.description", description = "The description of the implementation guide", type = "string")
+//  public static final String SP_DESCRIPTION = "description";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>description</b>
+//   * <p>
+//   * Description: <b>The description of the implementation guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.description</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_DESCRIPTION);
+//
+//  /**
+//   * Search parameter: <b>context-type</b>
+//   * <p>
+//   * Description: <b>A type of use context assigned to the implementation
+//   * guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.useContext.code</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-type", path = "ImplementationGuide.useContext.code", description = "A type of use context assigned to the implementation guide", type = "token")
+//  public static final String SP_CONTEXT_TYPE = "context-type";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
+//   * <p>
+//   * Description: <b>A type of use context assigned to the implementation
+//   * guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.useContext.code</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_CONTEXT_TYPE);
+//
+//  /**
+//   * Search parameter: <b>experimental</b>
+//   * <p>
+//   * Description: <b>For testing purposes, not real usage</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.experimental</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "experimental", path = "ImplementationGuide.experimental", description = "For testing purposes, not real usage", type = "token")
+//  public static final String SP_EXPERIMENTAL = "experimental";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>experimental</b>
+//   * <p>
+//   * Description: <b>For testing purposes, not real usage</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.experimental</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXPERIMENTAL = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_EXPERIMENTAL);
+//
+//  /**
+//   * Search parameter: <b>global</b>
+//   * <p>
+//   * Description: <b>Profile that all resources must conform to</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>ImplementationGuide.global.profile</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "global", path = "ImplementationGuide.global.profile", description = "Profile that all resources must conform to", type = "reference", target = {
+//      StructureDefinition.class })
+//  public static final String SP_GLOBAL = "global";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>global</b>
+//   * <p>
+//   * Description: <b>Profile that all resources must conform to</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>ImplementationGuide.global.profile</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam GLOBAL = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
+//      SP_GLOBAL);
+//
+//  /**
+//   * Constant for fluent queries to be used to add include statements. Specifies
+//   * the path value of "<b>ImplementationGuide:global</b>".
+//   */
+//  public static final ca.uhn.fhir.model.api.Include INCLUDE_GLOBAL = new ca.uhn.fhir.model.api.Include(
+//      "ImplementationGuide:global").toLocked();
+//
+//  /**
+//   * Search parameter: <b>title</b>
+//   * <p>
+//   * Description: <b>The human-friendly name of the implementation guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.title</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "title", path = "ImplementationGuide.title", description = "The human-friendly name of the implementation guide", type = "string")
+//  public static final String SP_TITLE = "title";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>title</b>
+//   * <p>
+//   * Description: <b>The human-friendly name of the implementation guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.title</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_TITLE);
+//
+//  /**
+//   * Search parameter: <b>version</b>
+//   * <p>
+//   * Description: <b>The business version of the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.version</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "version", path = "ImplementationGuide.version", description = "The business version of the implementation guide", type = "token")
+//  public static final String SP_VERSION = "version";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>version</b>
+//   * <p>
+//   * Description: <b>The business version of the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.version</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_VERSION);
+//
+//  /**
+//   * Search parameter: <b>url</b>
+//   * <p>
+//   * Description: <b>The uri that identifies the implementation guide</b><br>
+//   * Type: <b>uri</b><br>
+//   * Path: <b>ImplementationGuide.url</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "url", path = "ImplementationGuide.url", description = "The uri that identifies the implementation guide", type = "uri")
+//  public static final String SP_URL = "url";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>url</b>
+//   * <p>
+//   * Description: <b>The uri that identifies the implementation guide</b><br>
+//   * Type: <b>uri</b><br>
+//   * Path: <b>ImplementationGuide.url</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
+//
+//  /**
+//   * Search parameter: <b>context-quantity</b>
+//   * <p>
+//   * Description: <b>A quantity- or range-valued use context assigned to the
+//   * implementation guide</b><br>
+//   * Type: <b>quantity</b><br>
+//   * Path: <b>ImplementationGuide.useContext.valueQuantity,
+//   * ImplementationGuide.useContext.valueRange</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-quantity", path = "(ImplementationGuide.useContext.value as Quantity) | (ImplementationGuide.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the implementation guide", type = "quantity")
+//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
+//   * <p>
+//   * Description: <b>A quantity- or range-valued use context assigned to the
+//   * implementation guide</b><br>
+//   * Type: <b>quantity</b><br>
+//   * Path: <b>ImplementationGuide.useContext.valueQuantity,
+//   * ImplementationGuide.useContext.valueRange</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
+//      SP_CONTEXT_QUANTITY);
+//
+//  /**
+//   * Search parameter: <b>depends-on</b>
+//   * <p>
+//   * Description: <b>Identity of the IG that this depends on</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>ImplementationGuide.dependsOn.uri</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "depends-on", path = "ImplementationGuide.dependsOn.uri", description = "Identity of the IG that this depends on", type = "reference", target = {
+//      ImplementationGuide.class })
+//  public static final String SP_DEPENDS_ON = "depends-on";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>depends-on</b>
+//   * <p>
+//   * Description: <b>Identity of the IG that this depends on</b><br>
+//   * Type: <b>reference</b><br>
+//   * Path: <b>ImplementationGuide.dependsOn.uri</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam DEPENDS_ON = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(
+//      SP_DEPENDS_ON);
+//
+//  /**
+//   * Constant for fluent queries to be used to add include statements. Specifies
+//   * the path value of "<b>ImplementationGuide:depends-on</b>".
+//   */
+//  public static final ca.uhn.fhir.model.api.Include INCLUDE_DEPENDS_ON = new ca.uhn.fhir.model.api.Include(
+//      "ImplementationGuide:depends-on").toLocked();
+//
+//  /**
+//   * Search parameter: <b>name</b>
+//   * <p>
+//   * Description: <b>Computationally friendly name of the implementation
+//   * guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.name</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "name", path = "ImplementationGuide.name", description = "Computationally friendly name of the implementation guide", type = "string")
+//  public static final String SP_NAME = "name";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>name</b>
+//   * <p>
+//   * Description: <b>Computationally friendly name of the implementation
+//   * guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.name</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_NAME);
+//
+//  /**
+//   * Search parameter: <b>context</b>
+//   * <p>
+//   * Description: <b>A use context assigned to the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.useContext.valueCodeableConcept</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context", path = "(ImplementationGuide.useContext.value as CodeableConcept)", description = "A use context assigned to the implementation guide", type = "token")
+//  public static final String SP_CONTEXT = "context";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>context</b>
+//   * <p>
+//   * Description: <b>A use context assigned to the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.useContext.valueCodeableConcept</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_CONTEXT);
+//
+//  /**
+//   * Search parameter: <b>publisher</b>
+//   * <p>
+//   * Description: <b>Name of the publisher of the implementation guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.publisher</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "publisher", path = "ImplementationGuide.publisher", description = "Name of the publisher of the implementation guide", type = "string")
+//  public static final String SP_PUBLISHER = "publisher";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
+//   * <p>
+//   * Description: <b>Name of the publisher of the implementation guide</b><br>
+//   * Type: <b>string</b><br>
+//   * Path: <b>ImplementationGuide.publisher</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
+//      SP_PUBLISHER);
+//
+//  /**
+//   * Search parameter: <b>context-type-quantity</b>
+//   * <p>
+//   * Description: <b>A use context type and quantity- or range-based value
+//   * assigned to the implementation guide</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "context-type-quantity", path = "ImplementationGuide.useContext", description = "A use context type and quantity- or range-based value assigned to the implementation guide", type = "composite", compositeOf = {
+//      "context-type", "context-quantity" })
+//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for
+//   * <b>context-type-quantity</b>
+//   * <p>
+//   * Description: <b>A use context type and quantity- or range-based value
+//   * assigned to the implementation guide</b><br>
+//   * Type: <b>composite</b><br>
+//   * Path: <b></b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
+//      SP_CONTEXT_TYPE_QUANTITY);
+//
+//  /**
+//   * Search parameter: <b>status</b>
+//   * <p>
+//   * Description: <b>The current status of the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.status</b><br>
+//   * </p>
+//   */
+//  @SearchParamDefinition(name = "status", path = "ImplementationGuide.status", description = "The current status of the implementation guide", type = "token")
+//  public static final String SP_STATUS = "status";
+//  /**
+//   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+//   * <p>
+//   * Description: <b>The current status of the implementation guide</b><br>
+//   * Type: <b>token</b><br>
+//   * Path: <b>ImplementationGuide.status</b><br>
+//   * </p>
+//   */
+//  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(
+//      SP_STATUS);
 
 }

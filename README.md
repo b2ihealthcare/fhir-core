@@ -110,3 +110,5 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
 
 4. Comment out all utility functions in Utilities that are not being used at all by the classes above
 
+5. Comment out all instances of `ca.uhn.fhir.rest.gclient.*` search parameter definitions in all model classes and/or interfaces
+
