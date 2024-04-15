@@ -38,8 +38,6 @@ import java.util.Map;
 
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IBase;
-import org.hl7.fhir.r4.elementmodel.Element;
-import org.hl7.fhir.r4.elementmodel.ObjectConverter;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -326,8 +324,8 @@ public abstract class Base implements Serializable, IBase, IElement {
     }
     if (b instanceof Type)
       return (Type) b;
-    else if (b.isMetadataBased())
-      return ((org.hl7.fhir.r4.elementmodel.Element) b).asType();
+//    else if (b.isMetadataBased())
+//      return ((org.hl7.fhir.r4.elementmodel.Element) b).asType();
     else
       throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Reference");
   }
@@ -576,10 +574,10 @@ public abstract class Base implements Serializable, IBase, IElement {
     if (b == null) {
       return null;
     }
-    if (b instanceof CodeableConcept)
+    if (b instanceof CodeableConcept) {
       return (CodeableConcept) b;
-    else if (b instanceof Element) {
-      return ObjectConverter.readAsCodeableConcept((Element) b);
+//    else if (b instanceof org.hl7.fhir.r4.elementmodel.Element) {
+//      return ObjectConverter.readAsCodeableConcept((org.hl7.fhir.r4.elementmodel.Element) b);
     } else if (b instanceof CodeType) {
       CodeableConcept cc = new CodeableConcept();
       cc.addCoding().setCode(((CodeType) b).asStringValue());
@@ -602,14 +600,14 @@ public abstract class Base implements Serializable, IBase, IElement {
     if (b == null) {
       return null;
     }
-    if (b instanceof Coding)
+    if (b instanceof Coding) {
       return (Coding) b;
-    else if (b instanceof Element) {
-      ICoding c = ((Element) b).getAsICoding();
-      if (c == null)
-        throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Coding");
-      return new Coding().setCode(c.getCode()).setSystem(c.getSystem()).setVersion(c.getVersion())
-          .setDisplay(c.getDisplay());
+//    else if (b instanceof org.hl7.fhir.r4.elementmodel.Element) {
+//      ICoding c = ((org.hl7.fhir.r4.elementmodel.Element) b).getAsICoding();
+//      if (c == null)
+//        throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Coding");
+//      return new Coding().setCode(c.getCode()).setSystem(c.getSystem()).setVersion(c.getVersion())
+//          .setDisplay(c.getDisplay());
     } else if (b instanceof ICoding) {
       ICoding c = (ICoding) b;
       return new Coding().setCode(c.getCode()).setSystem(c.getSystem()).setVersion(c.getVersion())
@@ -801,13 +799,13 @@ public abstract class Base implements Serializable, IBase, IElement {
     if (b == null) {
       return null;
     }
-    if (b instanceof Reference)
+    if (b instanceof Reference) {
       return (Reference) b;
-    else if (b.isPrimitive() && Utilities.isURL(b.primitiveValue()))
+    } else if (b.isPrimitive() && Utilities.isURL(b.primitiveValue())) {
       return new Reference().setReference(b.primitiveValue());
-    else if (b instanceof org.hl7.fhir.r4.elementmodel.Element && b.fhirType().equals("Reference")) {
-      org.hl7.fhir.r4.elementmodel.Element e = (org.hl7.fhir.r4.elementmodel.Element) b;
-      return new Reference().setReference(e.getChildValue("reference")).setDisplay(e.getChildValue("display"));
+//    } else if (b instanceof org.hl7.fhir.r4.elementmodel.Element && b.fhirType().equals("Reference")) {
+//      org.hl7.fhir.r4.elementmodel.Element e = (org.hl7.fhir.r4.elementmodel.Element) b;
+//      return new Reference().setReference(e.getChildValue("reference")).setDisplay(e.getChildValue("display"));
     } else
       throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Reference");
   }
