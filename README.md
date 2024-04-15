@@ -15,6 +15,7 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
     * org.hl7.fhir.r?.model.ValueSet
     * org.hl7.fhir.r?.model.CapabilityStatement
     * org.hl7.fhir.r?.model.StructureDefinition
+    * org.hl7.fhir.r?.model.NamingSystem
 
 2. Then copy the following abstract, base and data type classes from the `org.hl7.fhir.r?.model` package:
     * org.hl7.fhir.r?.model.Base
