@@ -106,3 +106,7 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
     * org.hl7.fhir.instance.model.api.INarrative
     * org.hl7.fhir.instance.model.api.IPrimitiveType
     * add dependencies `com.google.code.findbugs:jsr305:3.0.2` and 'org.apache.commons:commons-lang3:3.12.0'
+    * NOTE: this represents our final class set for the given FHIR Normative R version.
+
+4. Comment out all utility functions in Utilities that are not being used at all by the classes above
+
