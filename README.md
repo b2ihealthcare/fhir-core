@@ -117,3 +117,6 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
     * The capability of adding markdown nodes to XHTML should be commented out
     * The capability of parsing XHtmlNodes/Docs with pull parser should be commented out
 
+7. Copy `org.hl7.fhir.r4.utils.ToolingExtensions` and `org.hl7.fhir.r4.model.ExtensionHelper`
+    * Make sure all unwanted methods in the ToolingExtensions classes are disabled
+
