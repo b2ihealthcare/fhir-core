@@ -4,7 +4,7 @@ The main object of this library is to shrink the original [org.hl7.fhir.core](ht
 
 This library is based on the 6.3.4 version.
 
-## Steps to shrink the vanilla jars
+## Create a shrinked object class library
 
 NOTE: repeat these steps for each required FHIR version. This library starts from R4 and omits the previous versions.
 
@@ -123,3 +123,12 @@ NOTE: repeat these steps for each required FHIR version. This library starts fro
 7. Copy `org.hl7.fhir.r4.utils.ToolingExtensions` and `org.hl7.fhir.r4.model.ExtensionHelper`
     * Make sure all unwanted methods in the ToolingExtensions classes are disabled
 
+## Create a shrinked object class converter library
+
+1. Copy classes from the `org.hl7.fhir.convertors.conv*` package according to the required R? versions.
+
+For example: copy the `org.hl7.fhir.convertors.conv40_50` package and all related infrastructure packages/classes.
+
+2. Delete all convertor classes that reference unwanted object classes
+
+3. Copy and/or enable the necessary extra infrastructure methods, etc. if needed

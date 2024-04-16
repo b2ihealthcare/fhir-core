@@ -1,5 +1,8 @@
 package org.hl7.fhir.r4.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -568,23 +571,23 @@ public class ToolingExtensions {
 //      }
 //    eld.getExtension().add(new Extension().setUrl(EXT_ALLOWABLE_UNITS).setValue(cc));
 //  }
-//
-//  public static List<Extension> getExtensions(Element element, String url) {
-//    List<Extension> results = new ArrayList<Extension>();
-//    for (Extension ex : element.getExtension())
-//      if (ex.getUrl().equals(url))
-//        results.add(ex);
-//    return results;
-//  }
-//
-//  public static List<Extension> getExtensions(DomainResource resource, String url) {
-//    List<Extension> results = new ArrayList<Extension>();
-//    for (Extension ex : resource.getExtension())
-//      if (ex.getUrl().equals(url))
-//        results.add(ex);
-//    return results;
-//  }
-//
+
+  public static List<Extension> getExtensions(Element element, String url) {
+    List<Extension> results = new ArrayList<Extension>();
+    for (Extension ex : element.getExtension())
+      if (ex.getUrl().equals(url))
+        results.add(ex);
+    return results;
+  }
+
+  public static List<Extension> getExtensions(DomainResource resource, String url) {
+    List<Extension> results = new ArrayList<Extension>();
+    for (Extension ex : resource.getExtension())
+      if (ex.getUrl().equals(url))
+        results.add(ex);
+    return results;
+  }
+
 ////  public static void addDEReference(DataElement de, String value) {
 ////    for (Extension e : de.getExtension()) 
 ////      if (e.getUrl().equals(EXT_CIMI_REFERENCE)) {
