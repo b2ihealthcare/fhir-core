@@ -58,6 +58,7 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>com.b2ihealthcare.fhir.terminology.service.model</Bundle-SymbolicName>
+						<_noclassforname>true</_noclassforname>
 					</instructions>
 				</configuration>
 			</plugin>	
