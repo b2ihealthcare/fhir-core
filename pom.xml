@@ -12,10 +12,17 @@
 	<properties>
 		<!-- Build Configuration -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
 		<!-- Dependency Versions -->
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.12.0</commons.lang3.version>
 	    <commons.codec.version>1.16.1</commons.codec.version>
+	    
+	    <!-- Deployment -->
+		<maven.repository.id>nexus_deployment</maven.repository.id>
+		<maven.releases.repository>https://nexus.b2i.sg/repository/maven-releases</maven.releases.repository>
+		<maven.snapshots.repository>https://nexus.b2i.sg/repository/maven-snapshots</maven.snapshots.repository>
 	</properties>
 
 	<dependencies>
@@ -75,4 +82,22 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+		<repository>
+			<id>${maven.repository.id}</id>
+			<url>${maven.releases.repository}</url>
+		</repository>
+		<snapshotRepository>
+			<id>${maven.repository.id}</id>
+			<url>${maven.snapshots.repository}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<url>https://github.com/b2ihealthcare/fhir-terminology-service-model</url>
+		<connection>scm:git:ssh://github.com/b2ihealthcare/fhir-terminology-service-model.git</connection>
+		<developerConnection>scm:git:ssh@github.com:b2ihealthcare/fhir-terminology-service-model.git</developerConnection>
+	</scm>
+	
 </project>
