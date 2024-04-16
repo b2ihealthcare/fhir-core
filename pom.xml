@@ -2,13 +2,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fhir-terminology-service-model</groupId>
+	<groupId>com.b2ihealthcare</groupId>
 	<artifactId>fhir-terminology-service-model</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<name>FHIR Terminology Objects and Converters</name>
 	<description>FHIR Terminology Model Object Classes and Converters (R4, R4B, R5)</description>
+	<packaging>bundle</packaging>
 
 	<properties>
+		<!-- Build Configuration -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Dependency Versions -->
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.12.0</commons.lang3.version>
 	    <commons.codec.version>1.16.1</commons.codec.version>
@@ -39,6 +43,17 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>5.1.9</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>com.b2ihealthcare.fhir.terminology.service.model</Bundle-SymbolicName>
+					</instructions>
+				</configuration>
+			</plugin>	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
