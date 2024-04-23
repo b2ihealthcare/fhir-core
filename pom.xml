@@ -6,20 +6,21 @@
 	<artifactId>fhir-terminology-service-model</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<name>FHIR Terminology Objects and Converters</name>
-	<description>FHIR Terminology Model Object Classes and Converters (R4, R4B, R5)</description>
+	<description>FHIR Terminology Model Object Classes and Converters (R4, R4B,
+		R5)</description>
 	<packaging>bundle</packaging>
 
 	<properties>
 		<!-- Build Configuration -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		
+
 		<!-- Dependency Versions -->
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.12.0</commons.lang3.version>
-	    <commons.codec.version>1.16.1</commons.codec.version>
-	    
-	    <!-- Deployment -->
+		<commons.codec.version>1.16.1</commons.codec.version>
+
+		<!-- Deployment -->
 		<maven.repository.id>nexus_deployment</maven.repository.id>
 		<maven.releases.repository>https://nexus.b2i.sg/repository/maven-releases</maven.releases.repository>
 		<maven.snapshots.repository>https://nexus.b2i.sg/repository/maven-snapshots</maven.snapshots.repository>
@@ -61,11 +62,25 @@
 						<_noclassforname>true</_noclassforname>
 					</instructions>
 				</configuration>
-			</plugin>	
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.3.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -83,7 +98,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>${maven.repository.id}</id>
@@ -97,8 +112,10 @@
 
 	<scm>
 		<url>https://github.com/b2ihealthcare/fhir-terminology-service-model</url>
-		<connection>scm:git:ssh://github.com/b2ihealthcare/fhir-terminology-service-model.git</connection>
-		<developerConnection>scm:git:ssh@github.com:b2ihealthcare/fhir-terminology-service-model.git</developerConnection>
+		<connection>
+			scm:git:ssh://github.com/b2ihealthcare/fhir-terminology-service-model.git</connection>
+		<developerConnection>
+			scm:git:ssh@github.com:b2ihealthcare/fhir-terminology-service-model.git</developerConnection>
 	</scm>
-	
+
 </project>
