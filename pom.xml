@@ -22,8 +22,8 @@
 
 		<!-- Deployment -->
 		<maven.repository.id>nexus_deployment</maven.repository.id>
-		<maven.releases.repository>https://nexus.b2i.sg/repository/maven-releases</maven.releases.repository>
-		<maven.snapshots.repository>https://nexus.b2i.sg/repository/maven-snapshots</maven.snapshots.repository>
+		<maven.releases.repository>https://artifacts.b2ihealthcare.com/repository/maven-releases</maven.releases.repository>
+		<maven.snapshots.repository>https://artifacts.b2ihealthcare.com/repository/maven-snapshots</maven.snapshots.repository>
 	</properties>
 
 	<dependencies>
