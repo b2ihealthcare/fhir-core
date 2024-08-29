@@ -37,10 +37,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IBaseBackboneElement;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * The details of a healthcare service available at a location.
@@ -3683,18 +3680,18 @@ public class HealthcareService extends DomainResource {
     return ResourceType.HealthcareService;
   }
   
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>External identifiers for this item</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "HealthcareService.identifier", description = "External identifiers for this item", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>External identifiers for this item</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "HealthcareService.identifier", description = "External identifiers for this item", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -3706,17 +3703,17 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
 //
-//  /**
-//   * Search parameter: <b>specialty</b>
-//   * <p>
-//   * Description: <b>The specialty of the service provided by this healthcare
-//   * service</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.specialty</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "specialty", path = "HealthcareService.specialty", description = "The specialty of the service provided by this healthcare service", type = "token")
-//  public static final String SP_SPECIALTY = "specialty";
+  /**
+   * Search parameter: <b>specialty</b>
+   * <p>
+   * Description: <b>The specialty of the service provided by this healthcare
+   * service</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.specialty</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "specialty", path = "HealthcareService.specialty", description = "The specialty of the service provided by this healthcare service", type = "token")
+  public static final String SP_SPECIALTY = "specialty";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>specialty</b>
 //   * <p>
@@ -3729,18 +3726,18 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SPECIALTY = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_SPECIALTY);
 //
-//  /**
-//   * Search parameter: <b>endpoint</b>
-//   * <p>
-//   * Description: <b>Technical endpoints providing access to electronic services
-//   * operated for the healthcare service</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>HealthcareService.endpoint</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "endpoint", path = "HealthcareService.endpoint", description = "Technical endpoints providing access to electronic services operated for the healthcare service", type = "reference", target = {
-//      Endpoint.class })
-//  public static final String SP_ENDPOINT = "endpoint";
+  /**
+   * Search parameter: <b>endpoint</b>
+   * <p>
+   * Description: <b>Technical endpoints providing access to electronic services
+   * operated for the healthcare service</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>HealthcareService.endpoint</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "endpoint", path = "HealthcareService.endpoint", description = "Technical endpoints providing access to electronic services operated for the healthcare service", type = "reference", target = {
+      Endpoint.class })
+  public static final String SP_ENDPOINT = "endpoint";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>endpoint</b>
 //   * <p>
@@ -3760,16 +3757,16 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_ENDPOINT = new ca.uhn.fhir.model.api.Include(
 //      "HealthcareService:endpoint").toLocked();
 //
-//  /**
-//   * Search parameter: <b>service-category</b>
-//   * <p>
-//   * Description: <b>Service Category of the Healthcare Service</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.category</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "service-category", path = "HealthcareService.category", description = "Service Category of the Healthcare Service", type = "token")
-//  public static final String SP_SERVICE_CATEGORY = "service-category";
+  /**
+   * Search parameter: <b>service-category</b>
+   * <p>
+   * Description: <b>Service Category of the Healthcare Service</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.category</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "service-category", path = "HealthcareService.category", description = "Service Category of the Healthcare Service", type = "token")
+  public static final String SP_SERVICE_CATEGORY = "service-category";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>service-category</b>
 //   * <p>
@@ -3781,17 +3778,17 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SERVICE_CATEGORY = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_SERVICE_CATEGORY);
 //
-//  /**
-//   * Search parameter: <b>coverage-area</b>
-//   * <p>
-//   * Description: <b>Location(s) service is intended for/available to</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>HealthcareService.coverageArea</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "coverage-area", path = "HealthcareService.coverageArea", description = "Location(s) service is intended for/available to", type = "reference", target = {
-//      Location.class })
-//  public static final String SP_COVERAGE_AREA = "coverage-area";
+  /**
+   * Search parameter: <b>coverage-area</b>
+   * <p>
+   * Description: <b>Location(s) service is intended for/available to</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>HealthcareService.coverageArea</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "coverage-area", path = "HealthcareService.coverageArea", description = "Location(s) service is intended for/available to", type = "reference", target = {
+      Location.class })
+  public static final String SP_COVERAGE_AREA = "coverage-area";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>coverage-area</b>
 //   * <p>
@@ -3810,17 +3807,17 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_COVERAGE_AREA = new ca.uhn.fhir.model.api.Include(
 //      "HealthcareService:coverage-area").toLocked();
 //
-//  /**
-//   * Search parameter: <b>service-type</b>
-//   * <p>
-//   * Description: <b>The type of service provided by this healthcare
-//   * service</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "service-type", path = "HealthcareService.type", description = "The type of service provided by this healthcare service", type = "token")
-//  public static final String SP_SERVICE_TYPE = "service-type";
+  /**
+   * Search parameter: <b>service-type</b>
+   * <p>
+   * Description: <b>The type of service provided by this healthcare
+   * service</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "service-type", path = "HealthcareService.type", description = "The type of service provided by this healthcare service", type = "token")
+  public static final String SP_SERVICE_TYPE = "service-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>service-type</b>
 //   * <p>
@@ -3833,18 +3830,18 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SERVICE_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_SERVICE_TYPE);
 //
-//  /**
-//   * Search parameter: <b>organization</b>
-//   * <p>
-//   * Description: <b>The organization that provides this Healthcare
-//   * Service</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>HealthcareService.providedBy</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "organization", path = "HealthcareService.providedBy", description = "The organization that provides this Healthcare Service", type = "reference", target = {
-//      Organization.class })
-//  public static final String SP_ORGANIZATION = "organization";
+  /**
+   * Search parameter: <b>organization</b>
+   * <p>
+   * Description: <b>The organization that provides this Healthcare
+   * Service</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>HealthcareService.providedBy</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "organization", path = "HealthcareService.providedBy", description = "The organization that provides this Healthcare Service", type = "reference", target = {
+      Organization.class })
+  public static final String SP_ORGANIZATION = "organization";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>organization</b>
 //   * <p>
@@ -3864,16 +3861,16 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATION = new ca.uhn.fhir.model.api.Include(
 //      "HealthcareService:organization").toLocked();
 //
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>A portion of the Healthcare service name</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>HealthcareService.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "HealthcareService.name", description = "A portion of the Healthcare service name", type = "string")
-//  public static final String SP_NAME = "name";
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>A portion of the Healthcare service name</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>HealthcareService.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "HealthcareService.name", description = "A portion of the Healthcare service name", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -3885,16 +3882,16 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
 //
-//  /**
-//   * Search parameter: <b>active</b>
-//   * <p>
-//   * Description: <b>The Healthcare Service is currently marked as active</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.active</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "active", path = "HealthcareService.active", description = "The Healthcare Service is currently marked as active", type = "token")
-//  public static final String SP_ACTIVE = "active";
+  /**
+   * Search parameter: <b>active</b>
+   * <p>
+   * Description: <b>The Healthcare Service is currently marked as active</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.active</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "active", path = "HealthcareService.active", description = "The Healthcare Service is currently marked as active", type = "token")
+  public static final String SP_ACTIVE = "active";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>active</b>
 //   * <p>
@@ -3906,17 +3903,17 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ACTIVE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_ACTIVE);
 //
-//  /**
-//   * Search parameter: <b>location</b>
-//   * <p>
-//   * Description: <b>The location of the Healthcare Service</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>HealthcareService.location</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "location", path = "HealthcareService.location", description = "The location of the Healthcare Service", type = "reference", target = {
-//      Location.class })
-//  public static final String SP_LOCATION = "location";
+  /**
+   * Search parameter: <b>location</b>
+   * <p>
+   * Description: <b>The location of the Healthcare Service</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>HealthcareService.location</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "location", path = "HealthcareService.location", description = "The location of the Healthcare Service", type = "reference", target = {
+      Location.class })
+  public static final String SP_LOCATION = "location";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>location</b>
 //   * <p>
@@ -3935,17 +3932,17 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_LOCATION = new ca.uhn.fhir.model.api.Include(
 //      "HealthcareService:location").toLocked();
 //
-//  /**
-//   * Search parameter: <b>program</b>
-//   * <p>
-//   * Description: <b>One of the Programs supported by this
-//   * HealthcareService</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.program</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "program", path = "HealthcareService.program", description = "One of the Programs supported by this HealthcareService", type = "token")
-//  public static final String SP_PROGRAM = "program";
+  /**
+   * Search parameter: <b>program</b>
+   * <p>
+   * Description: <b>One of the Programs supported by this
+   * HealthcareService</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.program</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "program", path = "HealthcareService.program", description = "One of the Programs supported by this HealthcareService", type = "token")
+  public static final String SP_PROGRAM = "program";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>program</b>
 //   * <p>
@@ -3958,16 +3955,16 @@ public class HealthcareService extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PROGRAM = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_PROGRAM);
 //
-//  /**
-//   * Search parameter: <b>characteristic</b>
-//   * <p>
-//   * Description: <b>One of the HealthcareService's characteristics</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>HealthcareService.characteristic</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "characteristic", path = "HealthcareService.characteristic", description = "One of the HealthcareService's characteristics", type = "token")
-//  public static final String SP_CHARACTERISTIC = "characteristic";
+  /**
+   * Search parameter: <b>characteristic</b>
+   * <p>
+   * Description: <b>One of the HealthcareService's characteristics</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>HealthcareService.characteristic</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "characteristic", path = "HealthcareService.characteristic", description = "One of the HealthcareService's characteristics", type = "token")
+  public static final String SP_CHARACTERISTIC = "characteristic";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>characteristic</b>
 //   * <p>

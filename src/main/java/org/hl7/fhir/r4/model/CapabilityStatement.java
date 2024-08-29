@@ -37,19 +37,10 @@ import java.util.List;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IBaseBackboneElement;
 import org.hl7.fhir.instance.model.api.IBaseConformance;
-import org.hl7.fhir.r4.model.Enumerations.FHIRVersion;
-import org.hl7.fhir.r4.model.Enumerations.FHIRVersionEnumFactory;
-import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.r4.model.Enumerations.PublicationStatusEnumFactory;
-import org.hl7.fhir.r4.model.Enumerations.SearchParamType;
-import org.hl7.fhir.r4.model.Enumerations.SearchParamTypeEnumFactory;
+import org.hl7.fhir.r4.model.Enumerations.*;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.ChildOrder;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * A Capability Statement documents a set of capabilities (behaviors) of a FHIR
@@ -10945,19 +10936,19 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
     return ResourceType.CapabilityStatement;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+  // B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>date</b>
-//   * <p>
-//   * Description: <b>The capability statement publication date</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>CapabilityStatement.date</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "date", path = "CapabilityStatement.date", description = "The capability statement publication date", type = "date")
-//  public static final String SP_DATE = "date";
-//
+  /**
+   * Search parameter: <b>date</b>
+   * <p>
+   * Description: <b>The capability statement publication date</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>CapabilityStatement.date</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "date", path = "CapabilityStatement.date", description = "The capability statement publication date", type = "date")
+  public static final String SP_DATE = "date";
+
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>date</b>
 //   * <p>
@@ -10968,18 +10959,19 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_DATE);
-//
-//  /**
-//   * Search parameter: <b>resource-profile</b>
-//   * <p>
-//   * Description: <b>A profile id invoked in a capability statement</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>CapabilityStatement.rest.resource.profile</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "resource-profile", path = "CapabilityStatement.rest.resource.profile", description = "A profile id invoked in a capability statement", type = "reference", target = {
-//      StructureDefinition.class })
-//  public static final String SP_RESOURCE_PROFILE = "resource-profile";
+
+  /**
+   * Search parameter: <b>resource-profile</b>
+   * <p>
+   * Description: <b>A profile id invoked in a capability statement</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>CapabilityStatement.rest.resource.profile</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "resource-profile", path = "CapabilityStatement.rest.resource.profile", description = "A profile id invoked in a capability statement", type = "reference", target = {
+      StructureDefinition.class })
+  public static final String SP_RESOURCE_PROFILE = "resource-profile";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>resource-profile</b>
 //   * <p>
@@ -10997,20 +10989,20 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_RESOURCE_PROFILE = new ca.uhn.fhir.model.api.Include(
 //      "CapabilityStatement:resource-profile").toLocked();
-//
-//  /**
-//   * Search parameter: <b>context-type-value</b>
-//   * <p>
-//   * Description: <b>A use context type and value assigned to the capability
-//   * statement</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-value", path = "CapabilityStatement.useContext", description = "A use context type and value assigned to the capability statement", type = "composite", compositeOf = {
-//      "context-type", "context" })
-//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
-// 
+
+  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the capability
+   * statement</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-value", path = "CapabilityStatement.useContext", description = "A use context type and value assigned to the capability statement", type = "composite", compositeOf = {
+      "context-type", "context" })
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+ 
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
 //   * <p>
@@ -11022,17 +11014,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
 //      SP_CONTEXT_TYPE_VALUE);
-//
-//  /**
-//   * Search parameter: <b>software</b>
-//   * <p>
-//   * Description: <b>Part of the name of a software application</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CapabilityStatement.software.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "software", path = "CapabilityStatement.software.name", description = "Part of the name of a software application", type = "string")
-//  public static final String SP_SOFTWARE = "software";
+
+  /**
+   * Search parameter: <b>software</b>
+   * <p>
+   * Description: <b>Part of the name of a software application</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CapabilityStatement.software.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "software", path = "CapabilityStatement.software.name", description = "Part of the name of a software application", type = "string")
+  public static final String SP_SOFTWARE = "software";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>software</b>
 //   * <p>
@@ -11043,18 +11036,19 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam SOFTWARE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_SOFTWARE);
-//
-//  /**
-//   * Search parameter: <b>resource</b>
-//   * <p>
-//   * Description: <b>Name of a resource mentioned in a capability
-//   * statement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.rest.resource.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "resource", path = "CapabilityStatement.rest.resource.type", description = "Name of a resource mentioned in a capability statement", type = "token")
-//  public static final String SP_RESOURCE = "resource";
+
+  /**
+   * Search parameter: <b>resource</b>
+   * <p>
+   * Description: <b>Name of a resource mentioned in a capability
+   * statement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.rest.resource.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "resource", path = "CapabilityStatement.rest.resource.type", description = "Name of a resource mentioned in a capability statement", type = "token")
+  public static final String SP_RESOURCE = "resource";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>resource</b>
 //   * <p>
@@ -11066,17 +11060,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam RESOURCE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_RESOURCE);
-//
-//  /**
-//   * Search parameter: <b>jurisdiction</b>
-//   * <p>
-//   * Description: <b>Intended jurisdiction for the capability statement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.jurisdiction</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "jurisdiction", path = "CapabilityStatement.jurisdiction", description = "Intended jurisdiction for the capability statement", type = "token")
-//  public static final String SP_JURISDICTION = "jurisdiction";
+
+  /**
+   * Search parameter: <b>jurisdiction</b>
+   * <p>
+   * Description: <b>Intended jurisdiction for the capability statement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.jurisdiction</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "jurisdiction", path = "CapabilityStatement.jurisdiction", description = "Intended jurisdiction for the capability statement", type = "token")
+  public static final String SP_JURISDICTION = "jurisdiction";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
 //   * <p>
@@ -11087,17 +11082,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_JURISDICTION);
-//
-//  /**
-//   * Search parameter: <b>format</b>
-//   * <p>
-//   * Description: <b>formats supported (xml | json | ttl | mime type)</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.format</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "format", path = "CapabilityStatement.format", description = "formats supported (xml | json | ttl | mime type)", type = "token")
-//  public static final String SP_FORMAT = "format";
+
+  /**
+   * Search parameter: <b>format</b>
+   * <p>
+   * Description: <b>formats supported (xml | json | ttl | mime type)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.format</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "format", path = "CapabilityStatement.format", description = "formats supported (xml | json | ttl | mime type)", type = "token")
+  public static final String SP_FORMAT = "format";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>format</b>
 //   * <p>
@@ -11109,16 +11105,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam FORMAT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_FORMAT);
 //
-//  /**
-//   * Search parameter: <b>description</b>
-//   * <p>
-//   * Description: <b>The description of the capability statement</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CapabilityStatement.description</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "description", path = "CapabilityStatement.description", description = "The description of the capability statement", type = "string")
-//  public static final String SP_DESCRIPTION = "description";
+  /**
+   * Search parameter: <b>description</b>
+   * <p>
+   * Description: <b>The description of the capability statement</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CapabilityStatement.description</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "description", path = "CapabilityStatement.description", description = "The description of the capability statement", type = "string")
+  public static final String SP_DESCRIPTION = "description";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>description</b>
 //   * <p>
@@ -11130,17 +11127,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_DESCRIPTION);
 //
-//  /**
-//   * Search parameter: <b>context-type</b>
-//   * <p>
-//   * Description: <b>A type of use context assigned to the capability
-//   * statement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.useContext.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type", path = "CapabilityStatement.useContext.code", description = "A type of use context assigned to the capability statement", type = "token")
-//  public static final String SP_CONTEXT_TYPE = "context-type";
+  /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the capability
+   * statement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type", path = "CapabilityStatement.useContext.code", description = "A type of use context assigned to the capability statement", type = "token")
+  public static final String SP_CONTEXT_TYPE = "context-type";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
 //   * <p>
@@ -11153,16 +11151,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT_TYPE);
 //
-//  /**
-//   * Search parameter: <b>title</b>
-//   * <p>
-//   * Description: <b>The human-friendly name of the capability statement</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CapabilityStatement.title</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "title", path = "CapabilityStatement.title", description = "The human-friendly name of the capability statement", type = "string")
-//  public static final String SP_TITLE = "title";
+  /**
+   * Search parameter: <b>title</b>
+   * <p>
+   * Description: <b>The human-friendly name of the capability statement</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CapabilityStatement.title</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "title", path = "CapabilityStatement.title", description = "The human-friendly name of the capability statement", type = "string")
+  public static final String SP_TITLE = "title";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>title</b>
 //   * <p>
@@ -11174,16 +11173,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_TITLE);
 //
-//  /**
-//   * Search parameter: <b>fhirversion</b>
-//   * <p>
-//   * Description: <b>The version of FHIR</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.version</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "fhirversion", path = "CapabilityStatement.version", description = "The version of FHIR", type = "token")
-//  public static final String SP_FHIRVERSION = "fhirversion";
+  /**
+   * Search parameter: <b>fhirversion</b>
+   * <p>
+   * Description: <b>The version of FHIR</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.version</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "fhirversion", path = "CapabilityStatement.version", description = "The version of FHIR", type = "token")
+  public static final String SP_FHIRVERSION = "fhirversion";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>fhirversion</b>
 //   * <p>
@@ -11195,16 +11195,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam FHIRVERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_FHIRVERSION);
 //
-//  /**
-//   * Search parameter: <b>version</b>
-//   * <p>
-//   * Description: <b>The business version of the capability statement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.version</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "version", path = "CapabilityStatement.version", description = "The business version of the capability statement", type = "token")
-//  public static final String SP_VERSION = "version";
+  /**
+   * Search parameter: <b>version</b>
+   * <p>
+   * Description: <b>The business version of the capability statement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.version</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "version", path = "CapabilityStatement.version", description = "The business version of the capability statement", type = "token")
+  public static final String SP_VERSION = "version";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>version</b>
 //   * <p>
@@ -11216,16 +11217,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_VERSION);
 //
-//  /**
-//   * Search parameter: <b>url</b>
-//   * <p>
-//   * Description: <b>The uri that identifies the capability statement</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>CapabilityStatement.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "url", path = "CapabilityStatement.url", description = "The uri that identifies the capability statement", type = "uri")
-//  public static final String SP_URL = "url";
+  /**
+   * Search parameter: <b>url</b>
+   * <p>
+   * Description: <b>The uri that identifies the capability statement</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>CapabilityStatement.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "url", path = "CapabilityStatement.url", description = "The uri that identifies the capability statement", type = "uri")
+  public static final String SP_URL = "url";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>url</b>
 //   * <p>
@@ -11236,17 +11238,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
 //
-//  /**
-//   * Search parameter: <b>supported-profile</b>
-//   * <p>
-//   * Description: <b>Profiles for use cases supported</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>CapabilityStatement.rest.resource.supportedProfile</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "supported-profile", path = "CapabilityStatement.rest.resource.supportedProfile", description = "Profiles for use cases supported", type = "reference", target = {
-//      StructureDefinition.class })
-//  public static final String SP_SUPPORTED_PROFILE = "supported-profile";
+  /**
+   * Search parameter: <b>supported-profile</b>
+   * <p>
+   * Description: <b>Profiles for use cases supported</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>CapabilityStatement.rest.resource.supportedProfile</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "supported-profile", path = "CapabilityStatement.rest.resource.supportedProfile", description = "Profiles for use cases supported", type = "reference", target = {
+      StructureDefinition.class })
+  public static final String SP_SUPPORTED_PROFILE = "supported-profile";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>supported-profile</b>
 //   * <p>
@@ -11264,18 +11267,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUPPORTED_PROFILE = new ca.uhn.fhir.model.api.Include(
 //      "CapabilityStatement:supported-profile").toLocked();
-//
-//  /**
-//   * Search parameter: <b>mode</b>
-//   * <p>
-//   * Description: <b>Mode - restful (server/client) or messaging
-//   * (sender/receiver)</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.rest.mode</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "mode", path = "CapabilityStatement.rest.mode", description = "Mode - restful (server/client) or messaging (sender/receiver)", type = "token")
-//  public static final String SP_MODE = "mode";
+
+  /**
+   * Search parameter: <b>mode</b>
+   * <p>
+   * Description: <b>Mode - restful (server/client) or messaging
+   * (sender/receiver)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.rest.mode</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "mode", path = "CapabilityStatement.rest.mode", description = "Mode - restful (server/client) or messaging (sender/receiver)", type = "token")
+  public static final String SP_MODE = "mode";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>mode</b>
 //   * <p>
@@ -11287,19 +11290,19 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam MODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_MODE);
-//
-//  /**
-//   * Search parameter: <b>context-quantity</b>
-//   * <p>
-//   * Description: <b>A quantity- or range-valued use context assigned to the
-//   * capability statement</b><br>
-//   * Type: <b>quantity</b><br>
-//   * Path: <b>CapabilityStatement.useContext.valueQuantity,
-//   * CapabilityStatement.useContext.valueRange</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-quantity", path = "(CapabilityStatement.useContext.value as Quantity) | (CapabilityStatement.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the capability statement", type = "quantity")
-//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+
+  /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the
+   * capability statement</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>CapabilityStatement.useContext.valueQuantity,
+   * CapabilityStatement.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-quantity", path = "(CapabilityStatement.useContext.value as Quantity) | (CapabilityStatement.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the capability statement", type = "quantity")
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
 //   * <p>
@@ -11312,18 +11315,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
 //      SP_CONTEXT_QUANTITY);
-//
-//  /**
-//   * Search parameter: <b>security-service</b>
-//   * <p>
-//   * Description: <b>OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos |
-//   * Certificates</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.rest.security.service</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "security-service", path = "CapabilityStatement.rest.security.service", description = "OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates", type = "token")
-//  public static final String SP_SECURITY_SERVICE = "security-service";
+
+  /**
+   * Search parameter: <b>security-service</b>
+   * <p>
+   * Description: <b>OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos |
+   * Certificates</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.rest.security.service</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "security-service", path = "CapabilityStatement.rest.security.service", description = "OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates", type = "token")
+  public static final String SP_SECURITY_SERVICE = "security-service";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>security-service</b>
 //   * <p>
@@ -11335,18 +11338,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SECURITY_SERVICE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_SECURITY_SERVICE);
-//
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>Computationally friendly name of the capability
-//   * statement</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CapabilityStatement.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "CapabilityStatement.name", description = "Computationally friendly name of the capability statement", type = "string")
-//  public static final String SP_NAME = "name";
+
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the capability
+   * statement</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CapabilityStatement.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "CapabilityStatement.name", description = "Computationally friendly name of the capability statement", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -11358,17 +11361,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
-//
-//  /**
-//   * Search parameter: <b>context</b>
-//   * <p>
-//   * Description: <b>A use context assigned to the capability statement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.useContext.valueCodeableConcept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context", path = "(CapabilityStatement.useContext.value as CodeableConcept)", description = "A use context assigned to the capability statement", type = "token")
-//  public static final String SP_CONTEXT = "context";
+
+  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the capability statement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context", path = "(CapabilityStatement.useContext.value as CodeableConcept)", description = "A use context assigned to the capability statement", type = "token")
+  public static final String SP_CONTEXT = "context";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context</b>
 //   * <p>
@@ -11379,17 +11382,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT);
-//
-//  /**
-//   * Search parameter: <b>publisher</b>
-//   * <p>
-//   * Description: <b>Name of the publisher of the capability statement</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CapabilityStatement.publisher</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "publisher", path = "CapabilityStatement.publisher", description = "Name of the publisher of the capability statement", type = "string")
-//  public static final String SP_PUBLISHER = "publisher";
+
+  /**
+   * Search parameter: <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the capability statement</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CapabilityStatement.publisher</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "publisher", path = "CapabilityStatement.publisher", description = "Name of the publisher of the capability statement", type = "string")
+  public static final String SP_PUBLISHER = "publisher";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
 //   * <p>
@@ -11400,19 +11403,19 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_PUBLISHER);
-//
-//  /**
-//   * Search parameter: <b>context-type-quantity</b>
-//   * <p>
-//   * Description: <b>A use context type and quantity- or range-based value
-//   * assigned to the capability statement</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-quantity", path = "CapabilityStatement.useContext", description = "A use context type and quantity- or range-based value assigned to the capability statement", type = "composite", compositeOf = {
-//      "context-type", "context-quantity" })
-//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+
+  /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value
+   * assigned to the capability statement</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-quantity", path = "CapabilityStatement.useContext", description = "A use context type and quantity- or range-based value assigned to the capability statement", type = "composite", compositeOf = {
+      "context-type", "context-quantity" })
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for
 //   * <b>context-type-quantity</b>
@@ -11425,18 +11428,18 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
 //      SP_CONTEXT_TYPE_QUANTITY);
-//
-//  /**
-//   * Search parameter: <b>guide</b>
-//   * <p>
-//   * Description: <b>Implementation guides supported</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>CapabilityStatement.implementationGuide</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "guide", path = "CapabilityStatement.implementationGuide", description = "Implementation guides supported", type = "reference", target = {
-//      ImplementationGuide.class })
-//  public static final String SP_GUIDE = "guide";
+
+  /**
+   * Search parameter: <b>guide</b>
+   * <p>
+   * Description: <b>Implementation guides supported</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>CapabilityStatement.implementationGuide</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "guide", path = "CapabilityStatement.implementationGuide", description = "Implementation guides supported", type = "reference", target = {
+      ImplementationGuide.class })
+  public static final String SP_GUIDE = "guide";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>guide</b>
 //   * <p>
@@ -11454,17 +11457,17 @@ public class CapabilityStatement extends MetadataResource implements IBaseConfor
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_GUIDE = new ca.uhn.fhir.model.api.Include(
 //      "CapabilityStatement:guide").toLocked();
-//
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>The current status of the capability statement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CapabilityStatement.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "CapabilityStatement.status", description = "The current status of the capability statement", type = "token")
-//  public static final String SP_STATUS = "status";
+
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>The current status of the capability statement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CapabilityStatement.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "CapabilityStatement.status", description = "The current status of the capability statement", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>

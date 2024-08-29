@@ -40,11 +40,7 @@ import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatusEnumFactory;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.ChildOrder;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * The CodeSystem resource is used to declare the existence of and describe a
@@ -5771,18 +5767,19 @@ public class CodeSystem extends MetadataResource {
     return ResourceType.CodeSystem;
   }
 
-  // B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+  // B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>date</b>
-//   * <p>
-//   * Description: <b>The code system publication date</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>CodeSystem.date</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "date", path = "CodeSystem.date", description = "The code system publication date", type = "date")
-//  public static final String SP_DATE = "date";
+  /**
+   * Search parameter: <b>date</b>
+   * <p>
+   * Description: <b>The code system publication date</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>CodeSystem.date</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "date", path = "CodeSystem.date", description = "The code system publication date", type = "date")
+  public static final String SP_DATE = "date";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>date</b>
 //   * <p>
@@ -5793,17 +5790,18 @@ public class CodeSystem extends MetadataResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_DATE);
-//
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>External identifier for the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "CodeSystem.identifier", description = "External identifier for the code system", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>External identifier for the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "CodeSystem.identifier", description = "External identifier for the code system", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -5814,17 +5812,18 @@ public class CodeSystem extends MetadataResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
-//
-//  /**
-//   * Search parameter: <b>code</b>
-//   * <p>
-//   * Description: <b>A code defined in the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.concept.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "code", path = "CodeSystem.concept.code", description = "A code defined in the code system", type = "token")
-//  public static final String SP_CODE = "code";
+
+  /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>A code defined in the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.concept.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "code", path = "CodeSystem.concept.code", description = "A code defined in the code system", type = "token")
+  public static final String SP_CODE = "code";
+
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code</b>
 //   * <p>
@@ -5835,19 +5834,20 @@ public class CodeSystem extends MetadataResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CODE);
-//
-//  /**
-//   * Search parameter: <b>context-type-value</b>
-//   * <p>
-//   * Description: <b>A use context type and value assigned to the code
-//   * system</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-value", path = "CodeSystem.useContext", description = "A use context type and value assigned to the code system", type = "composite", compositeOf = {
-//      "context-type", "context" })
-//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+
+  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the code
+   * system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-value", path = "CodeSystem.useContext", description = "A use context type and value assigned to the code system", type = "composite", compositeOf = {
+      "context-type", "context" })
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+  
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
 //   * <p>
@@ -5860,17 +5860,17 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
 //      SP_CONTEXT_TYPE_VALUE);
 //
-//  /**
-//   * Search parameter: <b>content-mode</b>
-//   * <p>
-//   * Description: <b>not-present | example | fragment | complete |
-//   * supplement</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.content</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "content-mode", path = "CodeSystem.content", description = "not-present | example | fragment | complete | supplement", type = "token")
-//  public static final String SP_CONTENT_MODE = "content-mode";
+  /**
+   * Search parameter: <b>content-mode</b>
+   * <p>
+   * Description: <b>not-present | example | fragment | complete |
+   * supplement</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.content</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "content-mode", path = "CodeSystem.content", description = "not-present | example | fragment | complete | supplement", type = "token")
+  public static final String SP_CONTENT_MODE = "content-mode";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>content-mode</b>
 //   * <p>
@@ -5883,16 +5883,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTENT_MODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTENT_MODE);
 //
-//  /**
-//   * Search parameter: <b>jurisdiction</b>
-//   * <p>
-//   * Description: <b>Intended jurisdiction for the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.jurisdiction</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "jurisdiction", path = "CodeSystem.jurisdiction", description = "Intended jurisdiction for the code system", type = "token")
-//  public static final String SP_JURISDICTION = "jurisdiction";
+  /**
+   * Search parameter: <b>jurisdiction</b>
+   * <p>
+   * Description: <b>Intended jurisdiction for the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.jurisdiction</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "jurisdiction", path = "CodeSystem.jurisdiction", description = "Intended jurisdiction for the code system", type = "token")
+  public static final String SP_JURISDICTION = "jurisdiction";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
 //   * <p>
@@ -5904,16 +5904,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_JURISDICTION);
 //
-//  /**
-//   * Search parameter: <b>description</b>
-//   * <p>
-//   * Description: <b>The description of the code system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CodeSystem.description</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "description", path = "CodeSystem.description", description = "The description of the code system", type = "string")
-//  public static final String SP_DESCRIPTION = "description";
+  /**
+   * Search parameter: <b>description</b>
+   * <p>
+   * Description: <b>The description of the code system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CodeSystem.description</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "description", path = "CodeSystem.description", description = "The description of the code system", type = "string")
+  public static final String SP_DESCRIPTION = "description";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>description</b>
 //   * <p>
@@ -5925,16 +5925,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_DESCRIPTION);
 //
-//  /**
-//   * Search parameter: <b>context-type</b>
-//   * <p>
-//   * Description: <b>A type of use context assigned to the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.useContext.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type", path = "CodeSystem.useContext.code", description = "A type of use context assigned to the code system", type = "token")
-//  public static final String SP_CONTEXT_TYPE = "context-type";
+  /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type", path = "CodeSystem.useContext.code", description = "A type of use context assigned to the code system", type = "token")
+  public static final String SP_CONTEXT_TYPE = "context-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
 //   * <p>
@@ -5946,16 +5946,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT_TYPE);
 //
-//  /**
-//   * Search parameter: <b>language</b>
-//   * <p>
-//   * Description: <b>A language in which a designation is provided</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.concept.designation.language</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "language", path = "CodeSystem.concept.designation.language", description = "A language in which a designation is provided", type = "token")
-//  public static final String SP_LANGUAGE = "language";
+  /**
+   * Search parameter: <b>language</b>
+   * <p>
+   * Description: <b>A language in which a designation is provided</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.concept.designation.language</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "language", path = "CodeSystem.concept.designation.language", description = "A language in which a designation is provided", type = "token")
+  public static final String SP_LANGUAGE = "language";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>language</b>
 //   * <p>
@@ -5967,16 +5967,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam LANGUAGE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_LANGUAGE);
 //
-//  /**
-//   * Search parameter: <b>title</b>
-//   * <p>
-//   * Description: <b>The human-friendly name of the code system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CodeSystem.title</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "title", path = "CodeSystem.title", description = "The human-friendly name of the code system", type = "string")
-//  public static final String SP_TITLE = "title";
+  /**
+   * Search parameter: <b>title</b>
+   * <p>
+   * Description: <b>The human-friendly name of the code system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CodeSystem.title</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "title", path = "CodeSystem.title", description = "The human-friendly name of the code system", type = "string")
+  public static final String SP_TITLE = "title";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>title</b>
 //   * <p>
@@ -5988,16 +5988,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_TITLE);
 //
-//  /**
-//   * Search parameter: <b>version</b>
-//   * <p>
-//   * Description: <b>The business version of the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.version</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "version", path = "CodeSystem.version", description = "The business version of the code system", type = "token")
-//  public static final String SP_VERSION = "version";
+  /**
+   * Search parameter: <b>version</b>
+   * <p>
+   * Description: <b>The business version of the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.version</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "version", path = "CodeSystem.version", description = "The business version of the code system", type = "token")
+  public static final String SP_VERSION = "version";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>version</b>
 //   * <p>
@@ -6009,16 +6009,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_VERSION);
 //
-//  /**
-//   * Search parameter: <b>url</b>
-//   * <p>
-//   * Description: <b>The uri that identifies the code system</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>CodeSystem.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "url", path = "CodeSystem.url", description = "The uri that identifies the code system", type = "uri")
-//  public static final String SP_URL = "url";
+  /**
+   * Search parameter: <b>url</b>
+   * <p>
+   * Description: <b>The uri that identifies the code system</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>CodeSystem.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "url", path = "CodeSystem.url", description = "The uri that identifies the code system", type = "uri")
+  public static final String SP_URL = "url";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>url</b>
 //   * <p>
@@ -6029,18 +6029,18 @@ public class CodeSystem extends MetadataResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
 //
-//  /**
-//   * Search parameter: <b>context-quantity</b>
-//   * <p>
-//   * Description: <b>A quantity- or range-valued use context assigned to the code
-//   * system</b><br>
-//   * Type: <b>quantity</b><br>
-//   * Path: <b>CodeSystem.useContext.valueQuantity,
-//   * CodeSystem.useContext.valueRange</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-quantity", path = "(CodeSystem.useContext.value as Quantity) | (CodeSystem.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the code system", type = "quantity")
-//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+  /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the code
+   * system</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>CodeSystem.useContext.valueQuantity,
+   * CodeSystem.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-quantity", path = "(CodeSystem.useContext.value as Quantity) | (CodeSystem.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the code system", type = "quantity")
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
 //   * <p>
@@ -6054,18 +6054,18 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
 //      SP_CONTEXT_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>supplements</b>
-//   * <p>
-//   * Description: <b>Find code system supplements for the referenced code
-//   * system</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>CodeSystem.supplements</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "supplements", path = "CodeSystem.supplements", description = "Find code system supplements for the referenced code system", type = "reference", target = {
-//      CodeSystem.class })
-//  public static final String SP_SUPPLEMENTS = "supplements";
+  /**
+   * Search parameter: <b>supplements</b>
+   * <p>
+   * Description: <b>Find code system supplements for the referenced code
+   * system</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>CodeSystem.supplements</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "supplements", path = "CodeSystem.supplements", description = "Find code system supplements for the referenced code system", type = "reference", target = {
+      CodeSystem.class })
+  public static final String SP_SUPPLEMENTS = "supplements";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>supplements</b>
 //   * <p>
@@ -6085,17 +6085,17 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUPPLEMENTS = new ca.uhn.fhir.model.api.Include(
 //      "CodeSystem:supplements").toLocked();
 //
-//  /**
-//   * Search parameter: <b>system</b>
-//   * <p>
-//   * Description: <b>The system for any codes defined by this code system (same as
-//   * 'url')</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>CodeSystem.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "system", path = "CodeSystem.url", description = "The system for any codes defined by this code system (same as 'url')", type = "uri")
-//  public static final String SP_SYSTEM = "system";
+  /**
+   * Search parameter: <b>system</b>
+   * <p>
+   * Description: <b>The system for any codes defined by this code system (same as
+   * 'url')</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>CodeSystem.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "system", path = "CodeSystem.url", description = "The system for any codes defined by this code system (same as 'url')", type = "uri")
+  public static final String SP_SYSTEM = "system";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>system</b>
 //   * <p>
@@ -6108,16 +6108,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam SYSTEM = new ca.uhn.fhir.rest.gclient.UriClientParam(
 //      SP_SYSTEM);
 //
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>Computationally friendly name of the code system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CodeSystem.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "CodeSystem.name", description = "Computationally friendly name of the code system", type = "string")
-//  public static final String SP_NAME = "name";
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the code system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CodeSystem.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "CodeSystem.name", description = "Computationally friendly name of the code system", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -6129,16 +6129,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
 //
-//  /**
-//   * Search parameter: <b>context</b>
-//   * <p>
-//   * Description: <b>A use context assigned to the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.useContext.valueCodeableConcept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context", path = "(CodeSystem.useContext.value as CodeableConcept)", description = "A use context assigned to the code system", type = "token")
-//  public static final String SP_CONTEXT = "context";
+  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context", path = "(CodeSystem.useContext.value as CodeableConcept)", description = "A use context assigned to the code system", type = "token")
+  public static final String SP_CONTEXT = "context";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context</b>
 //   * <p>
@@ -6150,16 +6150,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT);
 //
-//  /**
-//   * Search parameter: <b>publisher</b>
-//   * <p>
-//   * Description: <b>Name of the publisher of the code system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>CodeSystem.publisher</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "publisher", path = "CodeSystem.publisher", description = "Name of the publisher of the code system", type = "string")
-//  public static final String SP_PUBLISHER = "publisher";
+  /**
+   * Search parameter: <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the code system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CodeSystem.publisher</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "publisher", path = "CodeSystem.publisher", description = "Name of the publisher of the code system", type = "string")
+  public static final String SP_PUBLISHER = "publisher";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
 //   * <p>
@@ -6171,18 +6171,18 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_PUBLISHER);
 //
-//  /**
-//   * Search parameter: <b>context-type-quantity</b>
-//   * <p>
-//   * Description: <b>A use context type and quantity- or range-based value
-//   * assigned to the code system</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-quantity", path = "CodeSystem.useContext", description = "A use context type and quantity- or range-based value assigned to the code system", type = "composite", compositeOf = {
-//      "context-type", "context-quantity" })
-//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+  /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value
+   * assigned to the code system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-quantity", path = "CodeSystem.useContext", description = "A use context type and quantity- or range-based value assigned to the code system", type = "composite", compositeOf = {
+      "context-type", "context-quantity" })
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for
 //   * <b>context-type-quantity</b>
@@ -6196,16 +6196,16 @@ public class CodeSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
 //      SP_CONTEXT_TYPE_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>The current status of the code system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>CodeSystem.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "CodeSystem.status", description = "The current status of the code system", type = "token")
-//  public static final String SP_STATUS = "status";
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>The current status of the code system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CodeSystem.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "CodeSystem.status", description = "The current status of the code system", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>

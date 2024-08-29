@@ -42,11 +42,7 @@ import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatusEnumFactory;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.ChildOrder;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * A statement of relationships from one set of concepts to one or more other
@@ -4614,18 +4610,18 @@ public class ConceptMap extends MetadataResource {
     return ResourceType.ConceptMap;
   }
 
-  // B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+  // B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>date</b>
-//   * <p>
-//   * Description: <b>The concept map publication date</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>ConceptMap.date</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "date", path = "ConceptMap.date", description = "The concept map publication date", type = "date")
-//  public static final String SP_DATE = "date";
+  /**
+   * Search parameter: <b>date</b>
+   * <p>
+   * Description: <b>The concept map publication date</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>ConceptMap.date</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "date", path = "ConceptMap.date", description = "The concept map publication date", type = "date")
+  public static final String SP_DATE = "date";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>date</b>
 //   * <p>
@@ -4637,18 +4633,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_DATE);
 //
-//  /**
-//   * Search parameter: <b>other</b>
-//   * <p>
-//   * Description: <b>canonical reference to an additional ConceptMap to use for
-//   * mapping if the source concept is unmapped</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>ConceptMap.group.unmapped.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "other", path = "ConceptMap.group.unmapped.url", description = "canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped", type = "reference", target = {
-//      ConceptMap.class })
-//  public static final String SP_OTHER = "other";
+  /**
+   * Search parameter: <b>other</b>
+   * <p>
+   * Description: <b>canonical reference to an additional ConceptMap to use for
+   * mapping if the source concept is unmapped</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ConceptMap.group.unmapped.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "other", path = "ConceptMap.group.unmapped.url", description = "canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped", type = "reference", target = {
+      ConceptMap.class })
+  public static final String SP_OTHER = "other";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>other</b>
 //   * <p>
@@ -4668,18 +4664,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_OTHER = new ca.uhn.fhir.model.api.Include(
 //      "ConceptMap:other").toLocked();
 //
-//  /**
-//   * Search parameter: <b>context-type-value</b>
-//   * <p>
-//   * Description: <b>A use context type and value assigned to the concept
-//   * map</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-value", path = "ConceptMap.useContext", description = "A use context type and value assigned to the concept map", type = "composite", compositeOf = {
-//      "context-type", "context" })
-//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the concept
+   * map</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-value", path = "ConceptMap.useContext", description = "A use context type and value assigned to the concept map", type = "composite", compositeOf = {
+      "context-type", "context" })
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
 //   * <p>
@@ -4692,16 +4688,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
 //      SP_CONTEXT_TYPE_VALUE);
 //
-//  /**
-//   * Search parameter: <b>target-system</b>
-//   * <p>
-//   * Description: <b>Target system that the concepts are to be mapped to</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>ConceptMap.group.target</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "target-system", path = "ConceptMap.group.target", description = "Target system that the concepts are to be mapped to", type = "uri")
-//  public static final String SP_TARGET_SYSTEM = "target-system";
+  /**
+   * Search parameter: <b>target-system</b>
+   * <p>
+   * Description: <b>Target system that the concepts are to be mapped to</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>ConceptMap.group.target</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "target-system", path = "ConceptMap.group.target", description = "Target system that the concepts are to be mapped to", type = "uri")
+  public static final String SP_TARGET_SYSTEM = "target-system";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>target-system</b>
 //   * <p>
@@ -4713,16 +4709,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam TARGET_SYSTEM = new ca.uhn.fhir.rest.gclient.UriClientParam(
 //      SP_TARGET_SYSTEM);
 //
-//  /**
-//   * Search parameter: <b>dependson</b>
-//   * <p>
-//   * Description: <b>Reference to property mapping depends on</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>ConceptMap.group.element.target.dependsOn.property</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "dependson", path = "ConceptMap.group.element.target.dependsOn.property", description = "Reference to property mapping depends on", type = "uri")
-//  public static final String SP_DEPENDSON = "dependson";
+  /**
+   * Search parameter: <b>dependson</b>
+   * <p>
+   * Description: <b>Reference to property mapping depends on</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>ConceptMap.group.element.target.dependsOn.property</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "dependson", path = "ConceptMap.group.element.target.dependsOn.property", description = "Reference to property mapping depends on", type = "uri")
+  public static final String SP_DEPENDSON = "dependson";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>dependson</b>
 //   * <p>
@@ -4734,16 +4730,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam DEPENDSON = new ca.uhn.fhir.rest.gclient.UriClientParam(
 //      SP_DEPENDSON);
 //
-//  /**
-//   * Search parameter: <b>jurisdiction</b>
-//   * <p>
-//   * Description: <b>Intended jurisdiction for the concept map</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.jurisdiction</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "jurisdiction", path = "ConceptMap.jurisdiction", description = "Intended jurisdiction for the concept map", type = "token")
-//  public static final String SP_JURISDICTION = "jurisdiction";
+  /**
+   * Search parameter: <b>jurisdiction</b>
+   * <p>
+   * Description: <b>Intended jurisdiction for the concept map</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.jurisdiction</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "jurisdiction", path = "ConceptMap.jurisdiction", description = "Intended jurisdiction for the concept map", type = "token")
+  public static final String SP_JURISDICTION = "jurisdiction";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
 //   * <p>
@@ -4755,16 +4751,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_JURISDICTION);
 //
-//  /**
-//   * Search parameter: <b>description</b>
-//   * <p>
-//   * Description: <b>The description of the concept map</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>ConceptMap.description</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "description", path = "ConceptMap.description", description = "The description of the concept map", type = "string")
-//  public static final String SP_DESCRIPTION = "description";
+  /**
+   * Search parameter: <b>description</b>
+   * <p>
+   * Description: <b>The description of the concept map</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>ConceptMap.description</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "description", path = "ConceptMap.description", description = "The description of the concept map", type = "string")
+  public static final String SP_DESCRIPTION = "description";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>description</b>
 //   * <p>
@@ -4776,16 +4772,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_DESCRIPTION);
 //
-//  /**
-//   * Search parameter: <b>context-type</b>
-//   * <p>
-//   * Description: <b>A type of use context assigned to the concept map</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.useContext.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type", path = "ConceptMap.useContext.code", description = "A type of use context assigned to the concept map", type = "token")
-//  public static final String SP_CONTEXT_TYPE = "context-type";
+  /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the concept map</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type", path = "ConceptMap.useContext.code", description = "A type of use context assigned to the concept map", type = "token")
+  public static final String SP_CONTEXT_TYPE = "context-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
 //   * <p>
@@ -4797,18 +4793,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT_TYPE);
 //
-//  /**
-//   * Search parameter: <b>source</b>
-//   * <p>
-//   * Description: <b>The source value set that contains the concepts that are
-//   * being mapped</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>ConceptMap.sourceCanonical</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "source", path = "(ConceptMap.source as canonical)", description = "The source value set that contains the concepts that are being mapped", type = "reference", target = {
-//      ValueSet.class })
-//  public static final String SP_SOURCE = "source";
+  /**
+   * Search parameter: <b>source</b>
+   * <p>
+   * Description: <b>The source value set that contains the concepts that are
+   * being mapped</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ConceptMap.sourceCanonical</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "source", path = "(ConceptMap.source as canonical)", description = "The source value set that contains the concepts that are being mapped", type = "reference", target = {
+      ValueSet.class })
+  public static final String SP_SOURCE = "source";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>source</b>
 //   * <p>
@@ -4828,16 +4824,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_SOURCE = new ca.uhn.fhir.model.api.Include(
 //      "ConceptMap:source").toLocked();
 //
-//  /**
-//   * Search parameter: <b>title</b>
-//   * <p>
-//   * Description: <b>The human-friendly name of the concept map</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>ConceptMap.title</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "title", path = "ConceptMap.title", description = "The human-friendly name of the concept map", type = "string")
-//  public static final String SP_TITLE = "title";
+  /**
+   * Search parameter: <b>title</b>
+   * <p>
+   * Description: <b>The human-friendly name of the concept map</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>ConceptMap.title</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "title", path = "ConceptMap.title", description = "The human-friendly name of the concept map", type = "string")
+  public static final String SP_TITLE = "title";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>title</b>
 //   * <p>
@@ -4849,18 +4845,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_TITLE);
 //
-//  /**
-//   * Search parameter: <b>context-quantity</b>
-//   * <p>
-//   * Description: <b>A quantity- or range-valued use context assigned to the
-//   * concept map</b><br>
-//   * Type: <b>quantity</b><br>
-//   * Path: <b>ConceptMap.useContext.valueQuantity,
-//   * ConceptMap.useContext.valueRange</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-quantity", path = "(ConceptMap.useContext.value as Quantity) | (ConceptMap.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the concept map", type = "quantity")
-//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+  /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the
+   * concept map</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>ConceptMap.useContext.valueQuantity,
+   * ConceptMap.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-quantity", path = "(ConceptMap.useContext.value as Quantity) | (ConceptMap.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the concept map", type = "quantity")
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
 //   * <p>
@@ -4874,18 +4870,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
 //      SP_CONTEXT_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>source-uri</b>
-//   * <p>
-//   * Description: <b>The source value set that contains the concepts that are
-//   * being mapped</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>ConceptMap.sourceUri</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "source-uri", path = "(ConceptMap.source as uri)", description = "The source value set that contains the concepts that are being mapped", type = "reference", target = {
-//      ValueSet.class })
-//  public static final String SP_SOURCE_URI = "source-uri";
+  /**
+   * Search parameter: <b>source-uri</b>
+   * <p>
+   * Description: <b>The source value set that contains the concepts that are
+   * being mapped</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ConceptMap.sourceUri</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "source-uri", path = "(ConceptMap.source as uri)", description = "The source value set that contains the concepts that are being mapped", type = "reference", target = {
+      ValueSet.class })
+  public static final String SP_SOURCE_URI = "source-uri";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>source-uri</b>
 //   * <p>
@@ -4905,16 +4901,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_SOURCE_URI = new ca.uhn.fhir.model.api.Include(
 //      "ConceptMap:source-uri").toLocked();
 //
-//  /**
-//   * Search parameter: <b>context</b>
-//   * <p>
-//   * Description: <b>A use context assigned to the concept map</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.useContext.valueCodeableConcept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context", path = "(ConceptMap.useContext.value as CodeableConcept)", description = "A use context assigned to the concept map", type = "token")
-//  public static final String SP_CONTEXT = "context";
+  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the concept map</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context", path = "(ConceptMap.useContext.value as CodeableConcept)", description = "A use context assigned to the concept map", type = "token")
+  public static final String SP_CONTEXT = "context";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context</b>
 //   * <p>
@@ -4926,18 +4922,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT);
 //
-//  /**
-//   * Search parameter: <b>context-type-quantity</b>
-//   * <p>
-//   * Description: <b>A use context type and quantity- or range-based value
-//   * assigned to the concept map</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-quantity", path = "ConceptMap.useContext", description = "A use context type and quantity- or range-based value assigned to the concept map", type = "composite", compositeOf = {
-//      "context-type", "context-quantity" })
-//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+  /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value
+   * assigned to the concept map</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-quantity", path = "ConceptMap.useContext", description = "A use context type and quantity- or range-based value assigned to the concept map", type = "composite", compositeOf = {
+      "context-type", "context-quantity" })
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for
 //   * <b>context-type-quantity</b>
@@ -4951,16 +4947,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
 //      SP_CONTEXT_TYPE_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>source-system</b>
-//   * <p>
-//   * Description: <b>Source system where concepts to be mapped are defined</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>ConceptMap.group.source</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "source-system", path = "ConceptMap.group.source", description = "Source system where concepts to be mapped are defined", type = "uri")
-//  public static final String SP_SOURCE_SYSTEM = "source-system";
+  /**
+   * Search parameter: <b>source-system</b>
+   * <p>
+   * Description: <b>Source system where concepts to be mapped are defined</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>ConceptMap.group.source</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "source-system", path = "ConceptMap.group.source", description = "Source system where concepts to be mapped are defined", type = "uri")
+  public static final String SP_SOURCE_SYSTEM = "source-system";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>source-system</b>
 //   * <p>
@@ -4972,16 +4968,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam SOURCE_SYSTEM = new ca.uhn.fhir.rest.gclient.UriClientParam(
 //      SP_SOURCE_SYSTEM);
 //
-//  /**
-//   * Search parameter: <b>target-code</b>
-//   * <p>
-//   * Description: <b>Code that identifies the target element</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.group.element.target.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "target-code", path = "ConceptMap.group.element.target.code", description = "Code that identifies the target element", type = "token")
-//  public static final String SP_TARGET_CODE = "target-code";
+  /**
+   * Search parameter: <b>target-code</b>
+   * <p>
+   * Description: <b>Code that identifies the target element</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.group.element.target.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "target-code", path = "ConceptMap.group.element.target.code", description = "Code that identifies the target element", type = "token")
+  public static final String SP_TARGET_CODE = "target-code";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>target-code</b>
 //   * <p>
@@ -4993,18 +4989,18 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TARGET_CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_TARGET_CODE);
 //
-//  /**
-//   * Search parameter: <b>target-uri</b>
-//   * <p>
-//   * Description: <b>The target value set which provides context for the
-//   * mappings</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>ConceptMap.targetUri</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "target-uri", path = "(ConceptMap.target as uri)", description = "The target value set which provides context for the mappings", type = "reference", target = {
-//      ValueSet.class })
-//  public static final String SP_TARGET_URI = "target-uri";
+  /**
+   * Search parameter: <b>target-uri</b>
+   * <p>
+   * Description: <b>The target value set which provides context for the
+   * mappings</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ConceptMap.targetUri</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "target-uri", path = "(ConceptMap.target as uri)", description = "The target value set which provides context for the mappings", type = "reference", target = {
+      ValueSet.class })
+  public static final String SP_TARGET_URI = "target-uri";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>target-uri</b>
 //   * <p>
@@ -5024,16 +5020,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_TARGET_URI = new ca.uhn.fhir.model.api.Include(
 //      "ConceptMap:target-uri").toLocked();
 //
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>External identifier for the concept map</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "ConceptMap.identifier", description = "External identifier for the concept map", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>External identifier for the concept map</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "ConceptMap.identifier", description = "External identifier for the concept map", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -5045,16 +5041,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
 //
-//  /**
-//   * Search parameter: <b>product</b>
-//   * <p>
-//   * Description: <b>Reference to property mapping depends on</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>ConceptMap.group.element.target.product.property</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "product", path = "ConceptMap.group.element.target.product.property", description = "Reference to property mapping depends on", type = "uri")
-//  public static final String SP_PRODUCT = "product";
+  /**
+   * Search parameter: <b>product</b>
+   * <p>
+   * Description: <b>Reference to property mapping depends on</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>ConceptMap.group.element.target.product.property</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "product", path = "ConceptMap.group.element.target.product.property", description = "Reference to property mapping depends on", type = "uri")
+  public static final String SP_PRODUCT = "product";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>product</b>
 //   * <p>
@@ -5066,16 +5062,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam PRODUCT = new ca.uhn.fhir.rest.gclient.UriClientParam(
 //      SP_PRODUCT);
 //
-//  /**
-//   * Search parameter: <b>version</b>
-//   * <p>
-//   * Description: <b>The business version of the concept map</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.version</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "version", path = "ConceptMap.version", description = "The business version of the concept map", type = "token")
-//  public static final String SP_VERSION = "version";
+  /**
+   * Search parameter: <b>version</b>
+   * <p>
+   * Description: <b>The business version of the concept map</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.version</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "version", path = "ConceptMap.version", description = "The business version of the concept map", type = "token")
+  public static final String SP_VERSION = "version";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>version</b>
 //   * <p>
@@ -5087,16 +5083,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_VERSION);
 //
-//  /**
-//   * Search parameter: <b>url</b>
-//   * <p>
-//   * Description: <b>The uri that identifies the concept map</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>ConceptMap.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "url", path = "ConceptMap.url", description = "The uri that identifies the concept map", type = "uri")
-//  public static final String SP_URL = "url";
+  /**
+   * Search parameter: <b>url</b>
+   * <p>
+   * Description: <b>The uri that identifies the concept map</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>ConceptMap.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "url", path = "ConceptMap.url", description = "The uri that identifies the concept map", type = "uri")
+  public static final String SP_URL = "url";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>url</b>
 //   * <p>
@@ -5107,18 +5103,18 @@ public class ConceptMap extends MetadataResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
 //
-//  /**
-//   * Search parameter: <b>target</b>
-//   * <p>
-//   * Description: <b>The target value set which provides context for the
-//   * mappings</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>ConceptMap.targetCanonical</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "target", path = "(ConceptMap.target as canonical)", description = "The target value set which provides context for the mappings", type = "reference", target = {
-//      ValueSet.class })
-//  public static final String SP_TARGET = "target";
+  /**
+   * Search parameter: <b>target</b>
+   * <p>
+   * Description: <b>The target value set which provides context for the
+   * mappings</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ConceptMap.targetCanonical</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "target", path = "(ConceptMap.target as canonical)", description = "The target value set which provides context for the mappings", type = "reference", target = {
+      ValueSet.class })
+  public static final String SP_TARGET = "target";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>target</b>
 //   * <p>
@@ -5138,16 +5134,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_TARGET = new ca.uhn.fhir.model.api.Include(
 //      "ConceptMap:target").toLocked();
 //
-//  /**
-//   * Search parameter: <b>source-code</b>
-//   * <p>
-//   * Description: <b>Identifies element being mapped</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.group.element.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "source-code", path = "ConceptMap.group.element.code", description = "Identifies element being mapped", type = "token")
-//  public static final String SP_SOURCE_CODE = "source-code";
+  /**
+   * Search parameter: <b>source-code</b>
+   * <p>
+   * Description: <b>Identifies element being mapped</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.group.element.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "source-code", path = "ConceptMap.group.element.code", description = "Identifies element being mapped", type = "token")
+  public static final String SP_SOURCE_CODE = "source-code";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>source-code</b>
 //   * <p>
@@ -5159,16 +5155,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SOURCE_CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_SOURCE_CODE);
 //
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>Computationally friendly name of the concept map</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>ConceptMap.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "ConceptMap.name", description = "Computationally friendly name of the concept map", type = "string")
-//  public static final String SP_NAME = "name";
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the concept map</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>ConceptMap.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "ConceptMap.name", description = "Computationally friendly name of the concept map", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -5180,16 +5176,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
 //
-//  /**
-//   * Search parameter: <b>publisher</b>
-//   * <p>
-//   * Description: <b>Name of the publisher of the concept map</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>ConceptMap.publisher</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "publisher", path = "ConceptMap.publisher", description = "Name of the publisher of the concept map", type = "string")
-//  public static final String SP_PUBLISHER = "publisher";
+  /**
+   * Search parameter: <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the concept map</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>ConceptMap.publisher</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "publisher", path = "ConceptMap.publisher", description = "Name of the publisher of the concept map", type = "string")
+  public static final String SP_PUBLISHER = "publisher";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
 //   * <p>
@@ -5201,16 +5197,16 @@ public class ConceptMap extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_PUBLISHER);
 //
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>The current status of the concept map</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>ConceptMap.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "ConceptMap.status", description = "The current status of the concept map", type = "token")
-//  public static final String SP_STATUS = "status";
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>The current status of the concept map</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ConceptMap.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "ConceptMap.status", description = "The current status of the concept map", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>

@@ -37,10 +37,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IBaseBackboneElement;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * The characteristics, operational status and capabilities of a medical-related
@@ -4230,19 +4227,19 @@ public class DeviceDefinition extends DomainResource {
     return ResourceType.DeviceDefinition;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>parent</b>
-//   * <p>
-//   * Description: <b>The parent DeviceDefinition resource</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>DeviceDefinition.parentDevice</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "parent", path = "DeviceDefinition.parentDevice", description = "The parent DeviceDefinition resource", type = "reference", target = {
-//      DeviceDefinition.class })
-//  public static final String SP_PARENT = "parent";
+  /**
+   * Search parameter: <b>parent</b>
+   * <p>
+   * Description: <b>The parent DeviceDefinition resource</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DeviceDefinition.parentDevice</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "parent", path = "DeviceDefinition.parentDevice", description = "The parent DeviceDefinition resource", type = "reference", target = {
+      DeviceDefinition.class })
+  public static final String SP_PARENT = "parent";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>parent</b>
 //   * <p>
@@ -4261,16 +4258,16 @@ public class DeviceDefinition extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_PARENT = new ca.uhn.fhir.model.api.Include(
 //      "DeviceDefinition:parent").toLocked();
 //
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>The identifier of the component</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>DeviceDefinition.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "DeviceDefinition.identifier", description = "The identifier of the component", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>The identifier of the component</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DeviceDefinition.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "DeviceDefinition.identifier", description = "The identifier of the component", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -4282,16 +4279,16 @@ public class DeviceDefinition extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
 //
-//  /**
-//   * Search parameter: <b>type</b>
-//   * <p>
-//   * Description: <b>The device component type</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>DeviceDefinition.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "type", path = "DeviceDefinition.type", description = "The device component type", type = "token")
-//  public static final String SP_TYPE = "type";
+  /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>The device component type</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DeviceDefinition.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "type", path = "DeviceDefinition.type", description = "The device component type", type = "token")
+  public static final String SP_TYPE = "type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>type</b>
 //   * <p>

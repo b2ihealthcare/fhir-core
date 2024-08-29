@@ -38,10 +38,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IBaseBackboneElement;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * This resource is primarily used for the identification and definition of a
@@ -1602,18 +1599,18 @@ public class Medication extends DomainResource {
     return ResourceType.Medication;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>ingredient-code</b>
-//   * <p>
-//   * Description: <b>Returns medications for this ingredient code</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Medication.ingredient.itemCodeableConcept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "ingredient-code", path = "(Medication.ingredient.item as CodeableConcept)", description = "Returns medications for this ingredient code", type = "token")
-//  public static final String SP_INGREDIENT_CODE = "ingredient-code";
+  /**
+   * Search parameter: <b>ingredient-code</b>
+   * <p>
+   * Description: <b>Returns medications for this ingredient code</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Medication.ingredient.itemCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "ingredient-code", path = "(Medication.ingredient.item as CodeableConcept)", description = "Returns medications for this ingredient code", type = "token")
+  public static final String SP_INGREDIENT_CODE = "ingredient-code";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>ingredient-code</b>
 //   * <p>
@@ -1625,16 +1622,16 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam INGREDIENT_CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_INGREDIENT_CODE);
 //
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>Returns medications with this external identifier</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Medication.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "Medication.identifier", description = "Returns medications with this external identifier", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Returns medications with this external identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Medication.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "Medication.identifier", description = "Returns medications with this external identifier", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -1646,16 +1643,16 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
 //
-//  /**
-//   * Search parameter: <b>code</b>
-//   * <p>
-//   * Description: <b>Returns medications for a specific code</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Medication.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "code", path = "Medication.code", description = "Returns medications for a specific code", type = "token")
-//  public static final String SP_CODE = "code";
+  /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>Returns medications for a specific code</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Medication.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "code", path = "Medication.code", description = "Returns medications for a specific code", type = "token")
+  public static final String SP_CODE = "code";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code</b>
 //   * <p>
@@ -1667,17 +1664,17 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CODE);
 //
-//  /**
-//   * Search parameter: <b>ingredient</b>
-//   * <p>
-//   * Description: <b>Returns medications for this ingredient reference</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Medication.ingredient.itemReference</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "ingredient", path = "(Medication.ingredient.item as Reference)", description = "Returns medications for this ingredient reference", type = "reference", target = {
-//      Medication.class, Substance.class })
-//  public static final String SP_INGREDIENT = "ingredient";
+  /**
+   * Search parameter: <b>ingredient</b>
+   * <p>
+   * Description: <b>Returns medications for this ingredient reference</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Medication.ingredient.itemReference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "ingredient", path = "(Medication.ingredient.item as Reference)", description = "Returns medications for this ingredient reference", type = "reference", target = {
+      Medication.class, Substance.class })
+  public static final String SP_INGREDIENT = "ingredient";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>ingredient</b>
 //   * <p>
@@ -1696,16 +1693,16 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_INGREDIENT = new ca.uhn.fhir.model.api.Include(
 //      "Medication:ingredient").toLocked();
 //
-//  /**
-//   * Search parameter: <b>form</b>
-//   * <p>
-//   * Description: <b>Returns medications for a specific dose form</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Medication.form</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "form", path = "Medication.form", description = "Returns medications for a specific dose form", type = "token")
-//  public static final String SP_FORM = "form";
+  /**
+   * Search parameter: <b>form</b>
+   * <p>
+   * Description: <b>Returns medications for a specific dose form</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Medication.form</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "form", path = "Medication.form", description = "Returns medications for a specific dose form", type = "token")
+  public static final String SP_FORM = "form";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>form</b>
 //   * <p>
@@ -1717,16 +1714,16 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam FORM = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_FORM);
 //
-//  /**
-//   * Search parameter: <b>lot-number</b>
-//   * <p>
-//   * Description: <b>Returns medications in a batch with this lot number</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Medication.batch.lotNumber</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "lot-number", path = "Medication.batch.lotNumber", description = "Returns medications in a batch with this lot number", type = "token")
-//  public static final String SP_LOT_NUMBER = "lot-number";
+  /**
+   * Search parameter: <b>lot-number</b>
+   * <p>
+   * Description: <b>Returns medications in a batch with this lot number</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Medication.batch.lotNumber</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "lot-number", path = "Medication.batch.lotNumber", description = "Returns medications in a batch with this lot number", type = "token")
+  public static final String SP_LOT_NUMBER = "lot-number";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>lot-number</b>
 //   * <p>
@@ -1738,17 +1735,17 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam LOT_NUMBER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_LOT_NUMBER);
 //
-//  /**
-//   * Search parameter: <b>expiration-date</b>
-//   * <p>
-//   * Description: <b>Returns medications in a batch with this expiration
-//   * date</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>Medication.batch.expirationDate</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "expiration-date", path = "Medication.batch.expirationDate", description = "Returns medications in a batch with this expiration date", type = "date")
-//  public static final String SP_EXPIRATION_DATE = "expiration-date";
+  /**
+   * Search parameter: <b>expiration-date</b>
+   * <p>
+   * Description: <b>Returns medications in a batch with this expiration
+   * date</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Medication.batch.expirationDate</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "expiration-date", path = "Medication.batch.expirationDate", description = "Returns medications in a batch with this expiration date", type = "date")
+  public static final String SP_EXPIRATION_DATE = "expiration-date";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>expiration-date</b>
 //   * <p>
@@ -1761,18 +1758,18 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam EXPIRATION_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_EXPIRATION_DATE);
 //
-//  /**
-//   * Search parameter: <b>manufacturer</b>
-//   * <p>
-//   * Description: <b>Returns medications made or sold for this
-//   * manufacturer</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Medication.manufacturer</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "manufacturer", path = "Medication.manufacturer", description = "Returns medications made or sold for this manufacturer", type = "reference", target = {
-//      Organization.class })
-//  public static final String SP_MANUFACTURER = "manufacturer";
+  /**
+   * Search parameter: <b>manufacturer</b>
+   * <p>
+   * Description: <b>Returns medications made or sold for this
+   * manufacturer</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Medication.manufacturer</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "manufacturer", path = "Medication.manufacturer", description = "Returns medications made or sold for this manufacturer", type = "reference", target = {
+      Organization.class })
+  public static final String SP_MANUFACTURER = "manufacturer";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>manufacturer</b>
 //   * <p>
@@ -1792,16 +1789,16 @@ public class Medication extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_MANUFACTURER = new ca.uhn.fhir.model.api.Include(
 //      "Medication:manufacturer").toLocked();
 //
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>Returns medications for this status</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Medication.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "Medication.status", description = "Returns medications for this status", type = "token")
-//  public static final String SP_STATUS = "status";
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>Returns medications for this status</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Medication.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "Medication.status", description = "Returns medications for this status", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>

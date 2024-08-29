@@ -5754,18 +5754,18 @@ public class TerminologyCapabilities extends MetadataResource {
     return ResourceType.TerminologyCapabilities;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>date</b>
-//   * <p>
-//   * Description: <b>The terminology capabilities publication date</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>TerminologyCapabilities.date</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "date", path = "TerminologyCapabilities.date", description = "The terminology capabilities publication date", type = "date")
-//  public static final String SP_DATE = "date";
+  /**
+   * Search parameter: <b>date</b>
+   * <p>
+   * Description: <b>The terminology capabilities publication date</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>TerminologyCapabilities.date</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "date", path = "TerminologyCapabilities.date", description = "The terminology capabilities publication date", type = "date")
+  public static final String SP_DATE = "date";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>date</b>
 //   * <p>
@@ -5777,18 +5777,18 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_DATE);
 //
-//  /**
-//   * Search parameter: <b>context-type-value</b>
-//   * <p>
-//   * Description: <b>A use context type and value assigned to the terminology
-//   * capabilities</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-value", path = "TerminologyCapabilities.useContext", description = "A use context type and value assigned to the terminology capabilities", type = "composite", compositeOf = {
-//      "context-type", "context" })
-//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the terminology
+   * capabilities</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-value", path = "TerminologyCapabilities.useContext", description = "A use context type and value assigned to the terminology capabilities", type = "composite", compositeOf = {
+      "context-type", "context" })
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
 //   * <p>
@@ -5801,17 +5801,17 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
 //      SP_CONTEXT_TYPE_VALUE);
 //
-//  /**
-//   * Search parameter: <b>jurisdiction</b>
-//   * <p>
-//   * Description: <b>Intended jurisdiction for the terminology
-//   * capabilities</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>TerminologyCapabilities.jurisdiction</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "jurisdiction", path = "TerminologyCapabilities.jurisdiction", description = "Intended jurisdiction for the terminology capabilities", type = "token")
-//  public static final String SP_JURISDICTION = "jurisdiction";
+  /**
+   * Search parameter: <b>jurisdiction</b>
+   * <p>
+   * Description: <b>Intended jurisdiction for the terminology
+   * capabilities</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>TerminologyCapabilities.jurisdiction</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "jurisdiction", path = "TerminologyCapabilities.jurisdiction", description = "Intended jurisdiction for the terminology capabilities", type = "token")
+  public static final String SP_JURISDICTION = "jurisdiction";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
 //   * <p>
@@ -5824,16 +5824,16 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_JURISDICTION);
 //
-//  /**
-//   * Search parameter: <b>description</b>
-//   * <p>
-//   * Description: <b>The description of the terminology capabilities</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>TerminologyCapabilities.description</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "description", path = "TerminologyCapabilities.description", description = "The description of the terminology capabilities", type = "string")
-//  public static final String SP_DESCRIPTION = "description";
+  /**
+   * Search parameter: <b>description</b>
+   * <p>
+   * Description: <b>The description of the terminology capabilities</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>TerminologyCapabilities.description</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "description", path = "TerminologyCapabilities.description", description = "The description of the terminology capabilities", type = "string")
+  public static final String SP_DESCRIPTION = "description";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>description</b>
 //   * <p>
@@ -5845,17 +5845,17 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_DESCRIPTION);
 //
-//  /**
-//   * Search parameter: <b>context-type</b>
-//   * <p>
-//   * Description: <b>A type of use context assigned to the terminology
-//   * capabilities</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>TerminologyCapabilities.useContext.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type", path = "TerminologyCapabilities.useContext.code", description = "A type of use context assigned to the terminology capabilities", type = "token")
-//  public static final String SP_CONTEXT_TYPE = "context-type";
+  /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the terminology
+   * capabilities</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>TerminologyCapabilities.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type", path = "TerminologyCapabilities.useContext.code", description = "A type of use context assigned to the terminology capabilities", type = "token")
+  public static final String SP_CONTEXT_TYPE = "context-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
 //   * <p>
@@ -5868,17 +5868,17 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT_TYPE);
 //
-//  /**
-//   * Search parameter: <b>title</b>
-//   * <p>
-//   * Description: <b>The human-friendly name of the terminology
-//   * capabilities</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>TerminologyCapabilities.title</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "title", path = "TerminologyCapabilities.title", description = "The human-friendly name of the terminology capabilities", type = "string")
-//  public static final String SP_TITLE = "title";
+  /**
+   * Search parameter: <b>title</b>
+   * <p>
+   * Description: <b>The human-friendly name of the terminology
+   * capabilities</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>TerminologyCapabilities.title</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "title", path = "TerminologyCapabilities.title", description = "The human-friendly name of the terminology capabilities", type = "string")
+  public static final String SP_TITLE = "title";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>title</b>
 //   * <p>
@@ -5891,16 +5891,16 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_TITLE);
 //
-//  /**
-//   * Search parameter: <b>version</b>
-//   * <p>
-//   * Description: <b>The business version of the terminology capabilities</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>TerminologyCapabilities.version</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "version", path = "TerminologyCapabilities.version", description = "The business version of the terminology capabilities", type = "token")
-//  public static final String SP_VERSION = "version";
+  /**
+   * Search parameter: <b>version</b>
+   * <p>
+   * Description: <b>The business version of the terminology capabilities</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>TerminologyCapabilities.version</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "version", path = "TerminologyCapabilities.version", description = "The business version of the terminology capabilities", type = "token")
+  public static final String SP_VERSION = "version";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>version</b>
 //   * <p>
@@ -5912,16 +5912,16 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_VERSION);
 //
-//  /**
-//   * Search parameter: <b>url</b>
-//   * <p>
-//   * Description: <b>The uri that identifies the terminology capabilities</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>TerminologyCapabilities.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "url", path = "TerminologyCapabilities.url", description = "The uri that identifies the terminology capabilities", type = "uri")
-//  public static final String SP_URL = "url";
+  /**
+   * Search parameter: <b>url</b>
+   * <p>
+   * Description: <b>The uri that identifies the terminology capabilities</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>TerminologyCapabilities.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "url", path = "TerminologyCapabilities.url", description = "The uri that identifies the terminology capabilities", type = "uri")
+  public static final String SP_URL = "url";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>url</b>
 //   * <p>
@@ -5932,18 +5932,18 @@ public class TerminologyCapabilities extends MetadataResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
 //
-//  /**
-//   * Search parameter: <b>context-quantity</b>
-//   * <p>
-//   * Description: <b>A quantity- or range-valued use context assigned to the
-//   * terminology capabilities</b><br>
-//   * Type: <b>quantity</b><br>
-//   * Path: <b>TerminologyCapabilities.useContext.valueQuantity,
-//   * TerminologyCapabilities.useContext.valueRange</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-quantity", path = "(TerminologyCapabilities.useContext.value as Quantity) | (TerminologyCapabilities.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the terminology capabilities", type = "quantity")
-//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+  /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the
+   * terminology capabilities</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>TerminologyCapabilities.useContext.valueQuantity,
+   * TerminologyCapabilities.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-quantity", path = "(TerminologyCapabilities.useContext.value as Quantity) | (TerminologyCapabilities.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the terminology capabilities", type = "quantity")
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
 //   * <p>
@@ -5957,17 +5957,17 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
 //      SP_CONTEXT_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>Computationally friendly name of the terminology
-//   * capabilities</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>TerminologyCapabilities.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "TerminologyCapabilities.name", description = "Computationally friendly name of the terminology capabilities", type = "string")
-//  public static final String SP_NAME = "name";
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the terminology
+   * capabilities</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>TerminologyCapabilities.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "TerminologyCapabilities.name", description = "Computationally friendly name of the terminology capabilities", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -5980,17 +5980,17 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
 //
-//  /**
-//   * Search parameter: <b>context</b>
-//   * <p>
-//   * Description: <b>A use context assigned to the terminology
-//   * capabilities</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>TerminologyCapabilities.useContext.valueCodeableConcept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context", path = "(TerminologyCapabilities.useContext.value as CodeableConcept)", description = "A use context assigned to the terminology capabilities", type = "token")
-//  public static final String SP_CONTEXT = "context";
+  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the terminology
+   * capabilities</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>TerminologyCapabilities.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context", path = "(TerminologyCapabilities.useContext.value as CodeableConcept)", description = "A use context assigned to the terminology capabilities", type = "token")
+  public static final String SP_CONTEXT = "context";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context</b>
 //   * <p>
@@ -6003,16 +6003,16 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT);
 //
-//  /**
-//   * Search parameter: <b>publisher</b>
-//   * <p>
-//   * Description: <b>Name of the publisher of the terminology capabilities</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>TerminologyCapabilities.publisher</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "publisher", path = "TerminologyCapabilities.publisher", description = "Name of the publisher of the terminology capabilities", type = "string")
-//  public static final String SP_PUBLISHER = "publisher";
+  /**
+   * Search parameter: <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the terminology capabilities</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>TerminologyCapabilities.publisher</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "publisher", path = "TerminologyCapabilities.publisher", description = "Name of the publisher of the terminology capabilities", type = "string")
+  public static final String SP_PUBLISHER = "publisher";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
 //   * <p>
@@ -6024,18 +6024,18 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_PUBLISHER);
 //
-//  /**
-//   * Search parameter: <b>context-type-quantity</b>
-//   * <p>
-//   * Description: <b>A use context type and quantity- or range-based value
-//   * assigned to the terminology capabilities</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-quantity", path = "TerminologyCapabilities.useContext", description = "A use context type and quantity- or range-based value assigned to the terminology capabilities", type = "composite", compositeOf = {
-//      "context-type", "context-quantity" })
-//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+  /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value
+   * assigned to the terminology capabilities</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-quantity", path = "TerminologyCapabilities.useContext", description = "A use context type and quantity- or range-based value assigned to the terminology capabilities", type = "composite", compositeOf = {
+      "context-type", "context-quantity" })
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for
 //   * <b>context-type-quantity</b>
@@ -6049,16 +6049,16 @@ public class TerminologyCapabilities extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
 //      SP_CONTEXT_TYPE_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>The current status of the terminology capabilities</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>TerminologyCapabilities.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "TerminologyCapabilities.status", description = "The current status of the terminology capabilities", type = "token")
-//  public static final String SP_STATUS = "status";
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>The current status of the terminology capabilities</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>TerminologyCapabilities.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "TerminologyCapabilities.status", description = "The current status of the terminology capabilities", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>

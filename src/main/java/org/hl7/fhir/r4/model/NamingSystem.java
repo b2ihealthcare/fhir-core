@@ -40,11 +40,7 @@ import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatusEnumFactory;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.ChildOrder;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * A curated namespace that issues unique symbols within that namespace for the
@@ -2110,18 +2106,18 @@ public class NamingSystem extends MetadataResource {
     return ResourceType.NamingSystem;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>date</b>
-//   * <p>
-//   * Description: <b>The naming system publication date</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>NamingSystem.date</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "date", path = "NamingSystem.date", description = "The naming system publication date", type = "date")
-//  public static final String SP_DATE = "date";
+  /**
+   * Search parameter: <b>date</b>
+   * <p>
+   * Description: <b>The naming system publication date</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>NamingSystem.date</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "date", path = "NamingSystem.date", description = "The naming system publication date", type = "date")
+  public static final String SP_DATE = "date";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>date</b>
 //   * <p>
@@ -2133,16 +2129,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_DATE);
 //
-//  /**
-//   * Search parameter: <b>period</b>
-//   * <p>
-//   * Description: <b>When is identifier valid?</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>NamingSystem.uniqueId.period</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "period", path = "NamingSystem.uniqueId.period", description = "When is identifier valid?", type = "date")
-//  public static final String SP_PERIOD = "period";
+  /**
+   * Search parameter: <b>period</b>
+   * <p>
+   * Description: <b>When is identifier valid?</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>NamingSystem.uniqueId.period</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "period", path = "NamingSystem.uniqueId.period", description = "When is identifier valid?", type = "date")
+  public static final String SP_PERIOD = "period";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>period</b>
 //   * <p>
@@ -2154,18 +2150,18 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam PERIOD = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_PERIOD);
 //
-//  /**
-//   * Search parameter: <b>context-type-value</b>
-//   * <p>
-//   * Description: <b>A use context type and value assigned to the naming
-//   * system</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-value", path = "NamingSystem.useContext", description = "A use context type and value assigned to the naming system", type = "composite", compositeOf = {
-//      "context-type", "context" })
-//  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the naming
+   * system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-value", path = "NamingSystem.useContext", description = "A use context type and value assigned to the naming system", type = "composite", compositeOf = {
+      "context-type", "context" })
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
 //   * <p>
@@ -2178,16 +2174,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(
 //      SP_CONTEXT_TYPE_VALUE);
 //
-//  /**
-//   * Search parameter: <b>kind</b>
-//   * <p>
-//   * Description: <b>codesystem | identifier | root</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.kind</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "kind", path = "NamingSystem.kind", description = "codesystem | identifier | root", type = "token")
-//  public static final String SP_KIND = "kind";
+  /**
+   * Search parameter: <b>kind</b>
+   * <p>
+   * Description: <b>codesystem | identifier | root</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.kind</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "kind", path = "NamingSystem.kind", description = "codesystem | identifier | root", type = "token")
+  public static final String SP_KIND = "kind";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>kind</b>
 //   * <p>
@@ -2199,16 +2195,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam KIND = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_KIND);
 //
-//  /**
-//   * Search parameter: <b>jurisdiction</b>
-//   * <p>
-//   * Description: <b>Intended jurisdiction for the naming system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.jurisdiction</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "jurisdiction", path = "NamingSystem.jurisdiction", description = "Intended jurisdiction for the naming system", type = "token")
-//  public static final String SP_JURISDICTION = "jurisdiction";
+  /**
+   * Search parameter: <b>jurisdiction</b>
+   * <p>
+   * Description: <b>Intended jurisdiction for the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.jurisdiction</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "jurisdiction", path = "NamingSystem.jurisdiction", description = "Intended jurisdiction for the naming system", type = "token")
+  public static final String SP_JURISDICTION = "jurisdiction";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
 //   * <p>
@@ -2220,16 +2216,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_JURISDICTION);
 //
-//  /**
-//   * Search parameter: <b>description</b>
-//   * <p>
-//   * Description: <b>The description of the naming system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>NamingSystem.description</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "description", path = "NamingSystem.description", description = "The description of the naming system", type = "string")
-//  public static final String SP_DESCRIPTION = "description";
+  /**
+   * Search parameter: <b>description</b>
+   * <p>
+   * Description: <b>The description of the naming system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>NamingSystem.description</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "description", path = "NamingSystem.description", description = "The description of the naming system", type = "string")
+  public static final String SP_DESCRIPTION = "description";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>description</b>
 //   * <p>
@@ -2241,16 +2237,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_DESCRIPTION);
 //
-//  /**
-//   * Search parameter: <b>context-type</b>
-//   * <p>
-//   * Description: <b>A type of use context assigned to the naming system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.useContext.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type", path = "NamingSystem.useContext.code", description = "A type of use context assigned to the naming system", type = "token")
-//  public static final String SP_CONTEXT_TYPE = "context-type";
+  /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type", path = "NamingSystem.useContext.code", description = "A type of use context assigned to the naming system", type = "token")
+  public static final String SP_CONTEXT_TYPE = "context-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
 //   * <p>
@@ -2262,16 +2258,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT_TYPE);
 //
-//  /**
-//   * Search parameter: <b>type</b>
-//   * <p>
-//   * Description: <b>e.g. driver, provider, patient, bank etc.</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "type", path = "NamingSystem.type", description = "e.g. driver,  provider,  patient, bank etc.", type = "token")
-//  public static final String SP_TYPE = "type";
+  /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>e.g. driver, provider, patient, bank etc.</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "type", path = "NamingSystem.type", description = "e.g. driver,  provider,  patient, bank etc.", type = "token")
+  public static final String SP_TYPE = "type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>type</b>
 //   * <p>
@@ -2283,16 +2279,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_TYPE);
 //
-//  /**
-//   * Search parameter: <b>id-type</b>
-//   * <p>
-//   * Description: <b>oid | uuid | uri | other</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.uniqueId.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "id-type", path = "NamingSystem.uniqueId.type", description = "oid | uuid | uri | other", type = "token")
-//  public static final String SP_ID_TYPE = "id-type";
+  /**
+   * Search parameter: <b>id-type</b>
+   * <p>
+   * Description: <b>oid | uuid | uri | other</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.uniqueId.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "id-type", path = "NamingSystem.uniqueId.type", description = "oid | uuid | uri | other", type = "token")
+  public static final String SP_ID_TYPE = "id-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>id-type</b>
 //   * <p>
@@ -2304,18 +2300,18 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ID_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_ID_TYPE);
 //
-//  /**
-//   * Search parameter: <b>context-quantity</b>
-//   * <p>
-//   * Description: <b>A quantity- or range-valued use context assigned to the
-//   * naming system</b><br>
-//   * Type: <b>quantity</b><br>
-//   * Path: <b>NamingSystem.useContext.valueQuantity,
-//   * NamingSystem.useContext.valueRange</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-quantity", path = "(NamingSystem.useContext.value as Quantity) | (NamingSystem.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the naming system", type = "quantity")
-//  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+  /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the
+   * naming system</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>NamingSystem.useContext.valueQuantity,
+   * NamingSystem.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-quantity", path = "(NamingSystem.useContext.value as Quantity) | (NamingSystem.useContext.value as Range)", description = "A quantity- or range-valued use context assigned to the naming system", type = "quantity")
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
 //   * <p>
@@ -2329,16 +2325,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(
 //      SP_CONTEXT_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>responsible</b>
-//   * <p>
-//   * Description: <b>Who maintains system namespace?</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>NamingSystem.responsible</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "responsible", path = "NamingSystem.responsible", description = "Who maintains system namespace?", type = "string")
-//  public static final String SP_RESPONSIBLE = "responsible";
+  /**
+   * Search parameter: <b>responsible</b>
+   * <p>
+   * Description: <b>Who maintains system namespace?</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>NamingSystem.responsible</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "responsible", path = "NamingSystem.responsible", description = "Who maintains system namespace?", type = "string")
+  public static final String SP_RESPONSIBLE = "responsible";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>responsible</b>
 //   * <p>
@@ -2350,16 +2346,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam RESPONSIBLE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_RESPONSIBLE);
 //
-//  /**
-//   * Search parameter: <b>contact</b>
-//   * <p>
-//   * Description: <b>Name of an individual to contact</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>NamingSystem.contact.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "contact", path = "NamingSystem.contact.name", description = "Name of an individual to contact", type = "string")
-//  public static final String SP_CONTACT = "contact";
+  /**
+   * Search parameter: <b>contact</b>
+   * <p>
+   * Description: <b>Name of an individual to contact</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>NamingSystem.contact.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "contact", path = "NamingSystem.contact.name", description = "Name of an individual to contact", type = "string")
+  public static final String SP_CONTACT = "contact";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>contact</b>
 //   * <p>
@@ -2371,16 +2367,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam CONTACT = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_CONTACT);
 //
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>Computationally friendly name of the naming system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>NamingSystem.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "NamingSystem.name", description = "Computationally friendly name of the naming system", type = "string")
-//  public static final String SP_NAME = "name";
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the naming system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>NamingSystem.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "NamingSystem.name", description = "Computationally friendly name of the naming system", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -2392,16 +2388,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
 //
-//  /**
-//   * Search parameter: <b>context</b>
-//   * <p>
-//   * Description: <b>A use context assigned to the naming system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.useContext.valueCodeableConcept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context", path = "(NamingSystem.useContext.value as CodeableConcept)", description = "A use context assigned to the naming system", type = "token")
-//  public static final String SP_CONTEXT = "context";
+  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context", path = "(NamingSystem.useContext.value as CodeableConcept)", description = "A use context assigned to the naming system", type = "token")
+  public static final String SP_CONTEXT = "context";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>context</b>
 //   * <p>
@@ -2413,16 +2409,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONTEXT);
 //
-//  /**
-//   * Search parameter: <b>publisher</b>
-//   * <p>
-//   * Description: <b>Name of the publisher of the naming system</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>NamingSystem.publisher</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "publisher", path = "NamingSystem.publisher", description = "Name of the publisher of the naming system", type = "string")
-//  public static final String SP_PUBLISHER = "publisher";
+  /**
+   * Search parameter: <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the naming system</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>NamingSystem.publisher</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "publisher", path = "NamingSystem.publisher", description = "Name of the publisher of the naming system", type = "string")
+  public static final String SP_PUBLISHER = "publisher";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
 //   * <p>
@@ -2434,16 +2430,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_PUBLISHER);
 //
-//  /**
-//   * Search parameter: <b>telecom</b>
-//   * <p>
-//   * Description: <b>Contact details for individual or organization</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.contact.telecom</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "telecom", path = "NamingSystem.contact.telecom", description = "Contact details for individual or organization", type = "token")
-//  public static final String SP_TELECOM = "telecom";
+  /**
+   * Search parameter: <b>telecom</b>
+   * <p>
+   * Description: <b>Contact details for individual or organization</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.contact.telecom</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "telecom", path = "NamingSystem.contact.telecom", description = "Contact details for individual or organization", type = "token")
+  public static final String SP_TELECOM = "telecom";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>telecom</b>
 //   * <p>
@@ -2455,16 +2451,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TELECOM = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_TELECOM);
 //
-//  /**
-//   * Search parameter: <b>value</b>
-//   * <p>
-//   * Description: <b>The unique identifier</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>NamingSystem.uniqueId.value</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "value", path = "NamingSystem.uniqueId.value", description = "The unique identifier", type = "string")
-//  public static final String SP_VALUE = "value";
+  /**
+   * Search parameter: <b>value</b>
+   * <p>
+   * Description: <b>The unique identifier</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>NamingSystem.uniqueId.value</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "value", path = "NamingSystem.uniqueId.value", description = "The unique identifier", type = "string")
+  public static final String SP_VALUE = "value";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>value</b>
 //   * <p>
@@ -2476,18 +2472,18 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam VALUE = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_VALUE);
 //
-//  /**
-//   * Search parameter: <b>context-type-quantity</b>
-//   * <p>
-//   * Description: <b>A use context type and quantity- or range-based value
-//   * assigned to the naming system</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b></b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "context-type-quantity", path = "NamingSystem.useContext", description = "A use context type and quantity- or range-based value assigned to the naming system", type = "composite", compositeOf = {
-//      "context-type", "context-quantity" })
-//  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+  /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value
+   * assigned to the naming system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "context-type-quantity", path = "NamingSystem.useContext", description = "A use context type and quantity- or range-based value assigned to the naming system", type = "composite", compositeOf = {
+      "context-type", "context-quantity" })
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for
 //   * <b>context-type-quantity</b>
@@ -2501,16 +2497,16 @@ public class NamingSystem extends MetadataResource {
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(
 //      SP_CONTEXT_TYPE_QUANTITY);
 //
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>The current status of the naming system</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>NamingSystem.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "NamingSystem.status", description = "The current status of the naming system", type = "token")
-//  public static final String SP_STATUS = "status";
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>The current status of the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "NamingSystem.status", description = "The current status of the naming system", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>
