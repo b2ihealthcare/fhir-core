@@ -3904,8 +3904,7 @@ public class Bundle extends Resource implements IBaseBundle {
    * Path: <b>Bundle.entry(0).resource</b><br>
    * </p>
    */
-  @SearchParamDefinition(name = "composition", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to search its contents", type = "reference", target = {
-      Composition.class })
+  @SearchParamDefinition(name = "composition", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to search its contents", type = "reference", target = { /*Composition.class*/ })
   public static final String SP_COMPOSITION = "composition";
   
 //  /**
@@ -3962,8 +3961,7 @@ public class Bundle extends Resource implements IBaseBundle {
    * Path: <b>Bundle.entry(0).resource</b><br>
    * </p>
    */
-  @SearchParamDefinition(name = "message", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents", type = "reference", target = {
-      MessageHeader.class })
+  @SearchParamDefinition(name = "message", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents", type = "reference", target = { /*MessageHeader.class*/ })
   public static final String SP_MESSAGE = "message";
   
 //  /**

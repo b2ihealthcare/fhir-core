@@ -3186,8 +3186,7 @@ public class Patient extends DomainResource {
    * <b>DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')</b><br>
    * </p>
    */
-  @SearchParamDefinition(name = "part-agree", path = "DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')", description = "Search by url for a participation agreement, which is stored in a DocumentReference", type = "reference", target = {
-      DocumentReference.class })
+  @SearchParamDefinition(name = "part-agree", path = "DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')", description = "Search by url for a participation agreement, which is stored in a DocumentReference", type = "reference", target = { /*DocumentReference.class*/ })
   public static final String SP_PART_AGREE = "part-agree";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>part-agree</b>
