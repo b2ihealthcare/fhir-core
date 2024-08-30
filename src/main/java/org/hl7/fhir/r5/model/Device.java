@@ -4612,18 +4612,18 @@ public class Device extends DomainResource {
     return ResourceType.Device;
    }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-// /**
-//   * Search parameter: <b>biological-source-event</b>
-//   * <p>
-//   * Description: <b>The biological source for the device</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Device.biologicalSourceEvent</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="biological-source-event", path="Device.biologicalSourceEvent", description="The biological source for the device", type="token" )
-//  public static final String SP_BIOLOGICAL_SOURCE_EVENT = "biological-source-event";
+ /**
+   * Search parameter: <b>biological-source-event</b>
+   * <p>
+   * Description: <b>The biological source for the device</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Device.biologicalSourceEvent</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="biological-source-event", path="Device.biologicalSourceEvent", description="The biological source for the device", type="token" )
+  public static final String SP_BIOLOGICAL_SOURCE_EVENT = "biological-source-event";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>biological-source-event</b>
 //   * <p>
@@ -4634,16 +4634,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam BIOLOGICAL_SOURCE_EVENT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_BIOLOGICAL_SOURCE_EVENT);
 //
-// /**
-//   * Search parameter: <b>code-value-concept</b>
-//   * <p>
-//   * Description: <b>Code and value parameter pair</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b>Device</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="code-value-concept", path="Device", description="Code and value parameter pair", type="composite", compositeOf={"specification", "version"} )
-//  public static final String SP_CODE_VALUE_CONCEPT = "code-value-concept";
+ /**
+   * Search parameter: <b>code-value-concept</b>
+   * <p>
+   * Description: <b>Code and value parameter pair</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b>Device</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code-value-concept", path="Device", description="Code and value parameter pair", type="composite", compositeOf={"specification", "version"} )
+  public static final String SP_CODE_VALUE_CONCEPT = "code-value-concept";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code-value-concept</b>
 //   * <p>
@@ -4654,16 +4654,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.StringClientParam> CODE_VALUE_CONCEPT = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.StringClientParam>(SP_CODE_VALUE_CONCEPT);
 //
-// /**
-//   * Search parameter: <b>code</b>
-//   * <p>
-//   * Description: <b>The definition / type of the device (code)</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Device.definition.concept</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="code", path="Device.definition.concept", description="The definition / type of the device (code)", type="token" )
-//  public static final String SP_CODE = "code";
+ /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>The definition / type of the device (code)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Device.definition.concept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code", path="Device.definition.concept", description="The definition / type of the device (code)", type="token" )
+  public static final String SP_CODE = "code";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code</b>
 //   * <p>
@@ -4674,16 +4674,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
 //
-// /**
-//   * Search parameter: <b>definition</b>
-//   * <p>
-//   * Description: <b>The definition / type of the device</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Device.definition.reference</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="definition", path="Device.definition.reference", description="The definition / type of the device", type="reference", target={DeviceDefinition.class } )
-//  public static final String SP_DEFINITION = "definition";
+ /**
+   * Search parameter: <b>definition</b>
+   * <p>
+   * Description: <b>The definition / type of the device</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Device.definition.reference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="definition", path="Device.definition.reference", description="The definition / type of the device", type="reference", target={DeviceDefinition.class } )
+  public static final String SP_DEFINITION = "definition";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>definition</b>
 //   * <p>
@@ -4700,16 +4700,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_DEFINITION = new ca.uhn.fhir.model.api.Include("Device:definition").toLocked();
 //
-// /**
-//   * Search parameter: <b>device-name</b>
-//   * <p>
-//   * Description: <b>A server defined search that may match any of the string fields in Device.name or Device.type.</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.name.value | Device.type.coding.display | Device.type.text</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="device-name", path="Device.name.value | Device.type.coding.display | Device.type.text", description="A server defined search that may match any of the string fields in Device.name or Device.type.", type="string" )
-//  public static final String SP_DEVICE_NAME = "device-name";
+ /**
+   * Search parameter: <b>device-name</b>
+   * <p>
+   * Description: <b>A server defined search that may match any of the string fields in Device.name or Device.type.</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.name.value | Device.type.coding.display | Device.type.text</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="device-name", path="Device.name.value | Device.type.coding.display | Device.type.text", description="A server defined search that may match any of the string fields in Device.name or Device.type.", type="string" )
+  public static final String SP_DEVICE_NAME = "device-name";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>device-name</b>
 //   * <p>
@@ -4720,16 +4720,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DEVICE_NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_DEVICE_NAME);
 //
-// /**
-//   * Search parameter: <b>expiration-date</b>
-//   * <p>
-//   * Description: <b>The expiration date of the device</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>Device.expirationDate</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="expiration-date", path="Device.expirationDate", description="The expiration date of the device", type="date" )
-//  public static final String SP_EXPIRATION_DATE = "expiration-date";
+ /**
+   * Search parameter: <b>expiration-date</b>
+   * <p>
+   * Description: <b>The expiration date of the device</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Device.expirationDate</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="expiration-date", path="Device.expirationDate", description="The expiration date of the device", type="date" )
+  public static final String SP_EXPIRATION_DATE = "expiration-date";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>expiration-date</b>
 //   * <p>
@@ -4740,16 +4740,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam EXPIRATION_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_EXPIRATION_DATE);
 //
-// /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>Instance id from manufacturer, owner, and others</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Device.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="identifier", path="Device.identifier", description="Instance id from manufacturer, owner, and others", type="token" )
-//  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Instance id from manufacturer, owner, and others</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Device.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="Device.identifier", description="Instance id from manufacturer, owner, and others", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -4760,16 +4760,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 //
-// /**
-//   * Search parameter: <b>location</b>
-//   * <p>
-//   * Description: <b>A location, where the resource is found</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Device.location</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="location", path="Device.location", description="A location, where the resource is found", type="reference", target={Location.class } )
-//  public static final String SP_LOCATION = "location";
+ /**
+   * Search parameter: <b>location</b>
+   * <p>
+   * Description: <b>A location, where the resource is found</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Device.location</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="location", path="Device.location", description="A location, where the resource is found", type="reference", target={Location.class } )
+  public static final String SP_LOCATION = "location";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>location</b>
 //   * <p>
@@ -4786,16 +4786,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_LOCATION = new ca.uhn.fhir.model.api.Include("Device:location").toLocked();
 //
-// /**
-//   * Search parameter: <b>lot-number</b>
-//   * <p>
-//   * Description: <b>The lot number of the device</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.lotNumber</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="lot-number", path="Device.lotNumber", description="The lot number of the device", type="string" )
-//  public static final String SP_LOT_NUMBER = "lot-number";
+ /**
+   * Search parameter: <b>lot-number</b>
+   * <p>
+   * Description: <b>The lot number of the device</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.lotNumber</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="lot-number", path="Device.lotNumber", description="The lot number of the device", type="string" )
+  public static final String SP_LOT_NUMBER = "lot-number";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>lot-number</b>
 //   * <p>
@@ -4806,16 +4806,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam LOT_NUMBER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_LOT_NUMBER);
 //
-// /**
-//   * Search parameter: <b>manufacture-date</b>
-//   * <p>
-//   * Description: <b>The manufacture date of the device</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>Device.manufactureDate</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="manufacture-date", path="Device.manufactureDate", description="The manufacture date of the device", type="date" )
-//  public static final String SP_MANUFACTURE_DATE = "manufacture-date";
+ /**
+   * Search parameter: <b>manufacture-date</b>
+   * <p>
+   * Description: <b>The manufacture date of the device</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Device.manufactureDate</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="manufacture-date", path="Device.manufactureDate", description="The manufacture date of the device", type="date" )
+  public static final String SP_MANUFACTURE_DATE = "manufacture-date";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>manufacture-date</b>
 //   * <p>
@@ -4826,16 +4826,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam MANUFACTURE_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_MANUFACTURE_DATE);
 //
-// /**
-//   * Search parameter: <b>manufacturer</b>
-//   * <p>
-//   * Description: <b>The manufacturer of the device</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.manufacturer</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="manufacturer", path="Device.manufacturer", description="The manufacturer of the device", type="string" )
-//  public static final String SP_MANUFACTURER = "manufacturer";
+ /**
+   * Search parameter: <b>manufacturer</b>
+   * <p>
+   * Description: <b>The manufacturer of the device</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.manufacturer</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="manufacturer", path="Device.manufacturer", description="The manufacturer of the device", type="string" )
+  public static final String SP_MANUFACTURER = "manufacturer";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>manufacturer</b>
 //   * <p>
@@ -4846,16 +4846,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam MANUFACTURER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_MANUFACTURER);
 //
-// /**
-//   * Search parameter: <b>model</b>
-//   * <p>
-//   * Description: <b>The model of the device</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.modelNumber</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="model", path="Device.modelNumber", description="The model of the device", type="string" )
-//  public static final String SP_MODEL = "model";
+ /**
+   * Search parameter: <b>model</b>
+   * <p>
+   * Description: <b>The model of the device</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.modelNumber</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="model", path="Device.modelNumber", description="The model of the device", type="string" )
+  public static final String SP_MODEL = "model";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>model</b>
 //   * <p>
@@ -4866,16 +4866,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam MODEL = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_MODEL);
 //
-// /**
-//   * Search parameter: <b>organization</b>
-//   * <p>
-//   * Description: <b>The organization responsible for the device</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Device.owner</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="organization", path="Device.owner", description="The organization responsible for the device", type="reference", target={Organization.class } )
-//  public static final String SP_ORGANIZATION = "organization";
+ /**
+   * Search parameter: <b>organization</b>
+   * <p>
+   * Description: <b>The organization responsible for the device</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Device.owner</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="organization", path="Device.owner", description="The organization responsible for the device", type="reference", target={Organization.class } )
+  public static final String SP_ORGANIZATION = "organization";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>organization</b>
 //   * <p>
@@ -4892,16 +4892,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATION = new ca.uhn.fhir.model.api.Include("Device:organization").toLocked();
 //
-// /**
-//   * Search parameter: <b>parent</b>
-//   * <p>
-//   * Description: <b>The parent device</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Device.parent</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="parent", path="Device.parent", description="The parent device", type="reference", target={Device.class } )
-//  public static final String SP_PARENT = "parent";
+ /**
+   * Search parameter: <b>parent</b>
+   * <p>
+   * Description: <b>The parent device</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Device.parent</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="parent", path="Device.parent", description="The parent device", type="reference", target={Device.class } )
+  public static final String SP_PARENT = "parent";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>parent</b>
 //   * <p>
@@ -4918,16 +4918,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_PARENT = new ca.uhn.fhir.model.api.Include("Device:parent").toLocked();
 //
-// /**
-//   * Search parameter: <b>serial-number</b>
-//   * <p>
-//   * Description: <b>The serial number of the device</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.serialNumber | Device.identifier.where(type='SNO')</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="serial-number", path="Device.serialNumber | Device.identifier.where(type='SNO')", description="The serial number of the device", type="string" )
-//  public static final String SP_SERIAL_NUMBER = "serial-number";
+ /**
+   * Search parameter: <b>serial-number</b>
+   * <p>
+   * Description: <b>The serial number of the device</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.serialNumber | Device.identifier.where(type='SNO')</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="serial-number", path="Device.serialNumber | Device.identifier.where(type='SNO')", description="The serial number of the device", type="string" )
+  public static final String SP_SERIAL_NUMBER = "serial-number";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>serial-number</b>
 //   * <p>
@@ -4938,16 +4938,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam SERIAL_NUMBER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_SERIAL_NUMBER);
 //
-// /**
-//   * Search parameter: <b>specification-version</b>
-//   * <p>
-//   * Description: <b>A composite of both specification and version</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b>Device.conformsTo</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="specification-version", path="Device.conformsTo", description="A composite of both specification and version", type="composite", compositeOf={"specification", "version"} )
-//  public static final String SP_SPECIFICATION_VERSION = "specification-version";
+ /**
+   * Search parameter: <b>specification-version</b>
+   * <p>
+   * Description: <b>A composite of both specification and version</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b>Device.conformsTo</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="specification-version", path="Device.conformsTo", description="A composite of both specification and version", type="composite", compositeOf={"specification", "version"} )
+  public static final String SP_SPECIFICATION_VERSION = "specification-version";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>specification-version</b>
 //   * <p>
@@ -4958,16 +4958,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.StringClientParam> SPECIFICATION_VERSION = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.StringClientParam>(SP_SPECIFICATION_VERSION);
 //
-// /**
-//   * Search parameter: <b>specification</b>
-//   * <p>
-//   * Description: <b>The standards, specifications, or formal guidances.</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Device.conformsTo.specification</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="specification", path="Device.conformsTo.specification", description="The standards, specifications, or formal guidances.", type="token" )
-//  public static final String SP_SPECIFICATION = "specification";
+ /**
+   * Search parameter: <b>specification</b>
+   * <p>
+   * Description: <b>The standards, specifications, or formal guidances.</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Device.conformsTo.specification</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="specification", path="Device.conformsTo.specification", description="The standards, specifications, or formal guidances.", type="token" )
+  public static final String SP_SPECIFICATION = "specification";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>specification</b>
 //   * <p>
@@ -4978,16 +4978,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SPECIFICATION = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_SPECIFICATION);
 //
-// /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>active | inactive | entered-in-error | unknown</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Device.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="status", path="Device.status", description="active | inactive | entered-in-error | unknown", type="token" )
-//  public static final String SP_STATUS = "status";
+ /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>active | inactive | entered-in-error | unknown</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Device.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="status", path="Device.status", description="active | inactive | entered-in-error | unknown", type="token" )
+  public static final String SP_STATUS = "status";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>
@@ -4998,16 +4998,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
 //
-// /**
-//   * Search parameter: <b>type</b>
-//   * <p>
-//   * Description: <b>The type of the device</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Device.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="type", path="Device.type", description="The type of the device", type="token" )
-//  public static final String SP_TYPE = "type";
+ /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>The type of the device</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Device.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="type", path="Device.type", description="The type of the device", type="token" )
+  public static final String SP_TYPE = "type";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>type</b>
 //   * <p>
@@ -5018,16 +5018,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_TYPE);
 //
-// /**
-//   * Search parameter: <b>udi-carrier</b>
-//   * <p>
-//   * Description: <b>UDI Barcode (RFID or other technology) string in *HRF* format.</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.udiCarrier.carrierHRF</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="udi-carrier", path="Device.udiCarrier.carrierHRF", description="UDI Barcode (RFID or other technology) string in *HRF* format.", type="string" )
-//  public static final String SP_UDI_CARRIER = "udi-carrier";
+ /**
+   * Search parameter: <b>udi-carrier</b>
+   * <p>
+   * Description: <b>UDI Barcode (RFID or other technology) string in *HRF* format.</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.udiCarrier.carrierHRF</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="udi-carrier", path="Device.udiCarrier.carrierHRF", description="UDI Barcode (RFID or other technology) string in *HRF* format.", type="string" )
+  public static final String SP_UDI_CARRIER = "udi-carrier";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>udi-carrier</b>
 //   * <p>
@@ -5038,16 +5038,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam UDI_CARRIER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_UDI_CARRIER);
 //
-// /**
-//   * Search parameter: <b>udi-di</b>
-//   * <p>
-//   * Description: <b>The udi Device Identifier (DI)</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.udiCarrier.deviceIdentifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="udi-di", path="Device.udiCarrier.deviceIdentifier", description="The udi Device Identifier (DI)", type="string" )
-//  public static final String SP_UDI_DI = "udi-di";
+ /**
+   * Search parameter: <b>udi-di</b>
+   * <p>
+   * Description: <b>The udi Device Identifier (DI)</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.udiCarrier.deviceIdentifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="udi-di", path="Device.udiCarrier.deviceIdentifier", description="The udi Device Identifier (DI)", type="string" )
+  public static final String SP_UDI_DI = "udi-di";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>udi-di</b>
 //   * <p>
@@ -5058,16 +5058,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam UDI_DI = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_UDI_DI);
 //
-// /**
-//   * Search parameter: <b>url</b>
-//   * <p>
-//   * Description: <b>Network address to contact device</b><br>
-//   * Type: <b>uri</b><br>
-//   * Path: <b>Device.url</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="url", path="Device.url", description="Network address to contact device", type="uri" )
-//  public static final String SP_URL = "url";
+ /**
+   * Search parameter: <b>url</b>
+   * <p>
+   * Description: <b>Network address to contact device</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>Device.url</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="url", path="Device.url", description="Network address to contact device", type="uri" )
+  public static final String SP_URL = "url";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>url</b>
 //   * <p>
@@ -5078,16 +5078,16 @@ public class Device extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
 //
-// /**
-//   * Search parameter: <b>version</b>
-//   * <p>
-//   * Description: <b>The specific version of the device</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Device.version.value</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="version", path="Device.version.value", description="The specific version of the device", type="string" )
-//  public static final String SP_VERSION = "version";
+ /**
+   * Search parameter: <b>version</b>
+   * <p>
+   * Description: <b>The specific version of the device</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Device.version.value</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="version", path="Device.version.value", description="The specific version of the device", type="string" )
+  public static final String SP_VERSION = "version";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>version</b>
 //   * <p>

@@ -1182,18 +1182,18 @@ public class Substance extends DomainResource {
     return ResourceType.Substance;
    }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-// /**
-//   * Search parameter: <b>category</b>
-//   * <p>
-//   * Description: <b>The category of the substance</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Substance.category</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="category", path="Substance.category", description="The category of the substance", type="token" )
-//  public static final String SP_CATEGORY = "category";
+ /**
+   * Search parameter: <b>category</b>
+   * <p>
+   * Description: <b>The category of the substance</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Substance.category</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="category", path="Substance.category", description="The category of the substance", type="token" )
+  public static final String SP_CATEGORY = "category";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>category</b>
 //   * <p>
@@ -1204,16 +1204,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CATEGORY = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CATEGORY);
 //
-// /**
-//   * Search parameter: <b>code-reference</b>
-//   * <p>
-//   * Description: <b>A reference to the defining substance</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Substance.code.reference</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="code-reference", path="Substance.code.reference", description="A reference to the defining substance", type="reference", target={SubstanceDefinition.class } )
-//  public static final String SP_CODE_REFERENCE = "code-reference";
+ /**
+   * Search parameter: <b>code-reference</b>
+   * <p>
+   * Description: <b>A reference to the defining substance</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Substance.code.reference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code-reference", path="Substance.code.reference", description="A reference to the defining substance", type="reference", target={/*SubstanceDefinition.class*/ } )
+  public static final String SP_CODE_REFERENCE = "code-reference";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code-reference</b>
 //   * <p>
@@ -1230,16 +1230,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_CODE_REFERENCE = new ca.uhn.fhir.model.api.Include("Substance:code-reference").toLocked();
 //
-// /**
-//   * Search parameter: <b>code</b>
-//   * <p>
-//   * Description: <b>The code of the substance or ingredient</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Substance.code.concept | (Substance.ingredient.substance.ofType(CodeableConcept))</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="code", path="Substance.code.concept | (Substance.ingredient.substance.ofType(CodeableConcept))", description="The code of the substance or ingredient", type="token" )
-//  public static final String SP_CODE = "code";
+ /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>The code of the substance or ingredient</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Substance.code.concept | (Substance.ingredient.substance.ofType(CodeableConcept))</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code", path="Substance.code.concept | (Substance.ingredient.substance.ofType(CodeableConcept))", description="The code of the substance or ingredient", type="token" )
+  public static final String SP_CODE = "code";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code</b>
 //   * <p>
@@ -1250,16 +1250,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
 //
-// /**
-//   * Search parameter: <b>expiry</b>
-//   * <p>
-//   * Description: <b>Expiry date of package or container of substance</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>Substance.expiry</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="expiry", path="Substance.expiry", description="Expiry date of package or container of substance", type="date" )
-//  public static final String SP_EXPIRY = "expiry";
+ /**
+   * Search parameter: <b>expiry</b>
+   * <p>
+   * Description: <b>Expiry date of package or container of substance</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Substance.expiry</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="expiry", path="Substance.expiry", description="Expiry date of package or container of substance", type="date" )
+  public static final String SP_EXPIRY = "expiry";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>expiry</b>
 //   * <p>
@@ -1270,16 +1270,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam EXPIRY = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_EXPIRY);
 //
-// /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>Unique identifier for the substance</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Substance.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="identifier", path="Substance.identifier", description="Unique identifier for the substance", type="token" )
-//  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Unique identifier for the substance</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Substance.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="Substance.identifier", description="Unique identifier for the substance", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -1290,16 +1290,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 //
-// /**
-//   * Search parameter: <b>quantity</b>
-//   * <p>
-//   * Description: <b>Amount of substance in the package</b><br>
-//   * Type: <b>quantity</b><br>
-//   * Path: <b>Substance.quantity</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="quantity", path="Substance.quantity", description="Amount of substance in the package", type="quantity" )
-//  public static final String SP_QUANTITY = "quantity";
+ /**
+   * Search parameter: <b>quantity</b>
+   * <p>
+   * Description: <b>Amount of substance in the package</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>Substance.quantity</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="quantity", path="Substance.quantity", description="Amount of substance in the package", type="quantity" )
+  public static final String SP_QUANTITY = "quantity";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>quantity</b>
 //   * <p>
@@ -1310,16 +1310,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_QUANTITY);
 //
-// /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>active | inactive | entered-in-error</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Substance.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="status", path="Substance.status", description="active | inactive | entered-in-error", type="token" )
-//  public static final String SP_STATUS = "status";
+ /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>active | inactive | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Substance.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="status", path="Substance.status", description="active | inactive | entered-in-error", type="token" )
+  public static final String SP_STATUS = "status";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>
@@ -1330,16 +1330,16 @@ public class Substance extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
 //
-// /**
-//   * Search parameter: <b>substance-reference</b>
-//   * <p>
-//   * Description: <b>A component of the substance</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>(Substance.ingredient.substance.ofType(Reference))</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="substance-reference", path="(Substance.ingredient.substance.ofType(Reference))", description="A component of the substance", type="reference", target={Substance.class } )
-//  public static final String SP_SUBSTANCE_REFERENCE = "substance-reference";
+ /**
+   * Search parameter: <b>substance-reference</b>
+   * <p>
+   * Description: <b>A component of the substance</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>(Substance.ingredient.substance.ofType(Reference))</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="substance-reference", path="(Substance.ingredient.substance.ofType(Reference))", description="A component of the substance", type="reference", target={Substance.class } )
+  public static final String SP_SUBSTANCE_REFERENCE = "substance-reference";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>substance-reference</b>
 //   * <p>

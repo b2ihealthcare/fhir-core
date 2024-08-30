@@ -8042,18 +8042,18 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     return ResourceType.DeviceDefinition;
    }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-// /**
-//   * Search parameter: <b>device-name</b>
-//   * <p>
-//   * Description: <b>A server defined search that may match any of the string fields in DeviceDefinition.name or DeviceDefinition.classification.type - the latter to search for 'generic' devices.</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>DeviceDefinition.deviceName.name | DeviceDefinition.classification.type.coding.display | DeviceDefinition.classification.type.text</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="device-name", path="DeviceDefinition.deviceName.name | DeviceDefinition.classification.type.coding.display | DeviceDefinition.classification.type.text", description="A server defined search that may match any of the string fields in DeviceDefinition.name or DeviceDefinition.classification.type - the latter to search for 'generic' devices.", type="string" )
-//  public static final String SP_DEVICE_NAME = "device-name";
+ /**
+   * Search parameter: <b>device-name</b>
+   * <p>
+   * Description: <b>A server defined search that may match any of the string fields in DeviceDefinition.name or DeviceDefinition.classification.type - the latter to search for 'generic' devices.</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>DeviceDefinition.deviceName.name | DeviceDefinition.classification.type.coding.display | DeviceDefinition.classification.type.text</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="device-name", path="DeviceDefinition.deviceName.name | DeviceDefinition.classification.type.coding.display | DeviceDefinition.classification.type.text", description="A server defined search that may match any of the string fields in DeviceDefinition.name or DeviceDefinition.classification.type - the latter to search for 'generic' devices.", type="string" )
+  public static final String SP_DEVICE_NAME = "device-name";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>device-name</b>
 //   * <p>
@@ -8064,16 +8064,16 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam DEVICE_NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_DEVICE_NAME);
 //
-// /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>The identifier of the component</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>DeviceDefinition.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="identifier", path="DeviceDefinition.identifier", description="The identifier of the component", type="token" )
-//  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>The identifier of the component</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DeviceDefinition.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="DeviceDefinition.identifier", description="The identifier of the component", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -8084,16 +8084,16 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 //
-// /**
-//   * Search parameter: <b>manufacturer</b>
-//   * <p>
-//   * Description: <b>The manufacturer of the device</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>DeviceDefinition.manufacturer</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="manufacturer", path="DeviceDefinition.manufacturer", description="The manufacturer of the device", type="reference", target={Organization.class } )
-//  public static final String SP_MANUFACTURER = "manufacturer";
+ /**
+   * Search parameter: <b>manufacturer</b>
+   * <p>
+   * Description: <b>The manufacturer of the device</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DeviceDefinition.manufacturer</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="manufacturer", path="DeviceDefinition.manufacturer", description="The manufacturer of the device", type="reference", target={Organization.class } )
+  public static final String SP_MANUFACTURER = "manufacturer";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>manufacturer</b>
 //   * <p>
@@ -8110,16 +8110,16 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_MANUFACTURER = new ca.uhn.fhir.model.api.Include("DeviceDefinition:manufacturer").toLocked();
 //
-// /**
-//   * Search parameter: <b>organization</b>
-//   * <p>
-//   * Description: <b>The organization responsible for the device</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>DeviceDefinition.owner</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="organization", path="DeviceDefinition.owner", description="The organization responsible for the device", type="reference", target={Organization.class } )
-//  public static final String SP_ORGANIZATION = "organization";
+ /**
+   * Search parameter: <b>organization</b>
+   * <p>
+   * Description: <b>The organization responsible for the device</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DeviceDefinition.owner</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="organization", path="DeviceDefinition.owner", description="The organization responsible for the device", type="reference", target={Organization.class } )
+  public static final String SP_ORGANIZATION = "organization";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>organization</b>
 //   * <p>
@@ -8136,16 +8136,16 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATION = new ca.uhn.fhir.model.api.Include("DeviceDefinition:organization").toLocked();
 //
-// /**
-//   * Search parameter: <b>specification</b>
-//   * <p>
-//   * Description: <b>The specification that the device conforms to</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>DeviceDefinition.conformsTo.specification</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="specification", path="DeviceDefinition.conformsTo.specification", description="The specification that the device conforms to", type="token" )
-//  public static final String SP_SPECIFICATION = "specification";
+ /**
+   * Search parameter: <b>specification</b>
+   * <p>
+   * Description: <b>The specification that the device conforms to</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DeviceDefinition.conformsTo.specification</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="specification", path="DeviceDefinition.conformsTo.specification", description="The specification that the device conforms to", type="token" )
+  public static final String SP_SPECIFICATION = "specification";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>specification</b>
 //   * <p>
@@ -8156,16 +8156,16 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SPECIFICATION = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_SPECIFICATION);
 //
-// /**
-//   * Search parameter: <b>type</b>
-//   * <p>
-//   * Description: <b>The device type</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>DeviceDefinition.conformsTo.category</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="type", path="DeviceDefinition.conformsTo.category", description="The device type", type="token" )
-//  public static final String SP_TYPE = "type";
+ /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>The device type</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DeviceDefinition.conformsTo.category</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="type", path="DeviceDefinition.conformsTo.category", description="The device type", type="token" )
+  public static final String SP_TYPE = "type";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>type</b>
 //   * <p>

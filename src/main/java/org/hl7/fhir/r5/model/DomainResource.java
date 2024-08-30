@@ -415,18 +415,18 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
           , modifierExtension);
       }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
       
-// /**
-//   * Search parameter: <b>_text</b>
-//   * <p>
-//   * Description: <b>Search on the narrative of the resource</b><br>
-//   * Type: <b>special</b><br>
-//   * Path: <b>null</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="_text", path="", description="Search on the narrative of the resource", type="special" )
-//  public static final String SP_TEXT = "_text";
+ /**
+   * Search parameter: <b>_text</b>
+   * <p>
+   * Description: <b>Search on the narrative of the resource</b><br>
+   * Type: <b>special</b><br>
+   * Path: <b>null</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="_text", path="", description="Search on the narrative of the resource", type="special" )
+  public static final String SP_TEXT = "_text";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>_text</b>
 //   * <p>

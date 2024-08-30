@@ -1,5 +1,7 @@
 package org.hl7.fhir.instance.model.api;
 
+import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
+
 /*
  * #%L
  * HAPI FHIR - Core Library
@@ -25,13 +27,13 @@ package org.hl7.fhir.instance.model.api;
  */
 public interface IAnyResource extends IBaseResource {
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+	// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
 	
-//	/**
-//	 * Search parameter constant for <b>_id</b>
-//	 */
-//	@SearchParamDefinition(name="_id", path="", description="The ID of the resource", type="token")
-//	String SP_RES_ID = "_id";
+	/**
+	 * Search parameter constant for <b>_id</b>
+	 */
+	@SearchParamDefinition(name="_id", path="", description="The ID of the resource", type="token")
+	String SP_RES_ID = "_id";
 
 //	/**
 //	 * <b>Fluent Client</b> search parameter constant for <b>_id</b>

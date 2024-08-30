@@ -2023,18 +2023,20 @@ public class Group extends DomainResource {
     return ResourceType.Group;
    }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-// /**
-//   * Search parameter: <b>characteristic-reference</b>
-//   * <p>
-//   * Description: <b>An entity referenced in a characteristic</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>(Group.characteristic.value.ofType(Reference))</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="characteristic-reference", path="(Group.characteristic.value.ofType(Reference))", description="An entity referenced in a characteristic", type="reference", target={Account.class, ActivityDefinition.class, ActorDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BiologicallyDerivedProductDispense.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceAssociation.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentReference.class, Encounter.class, EncounterHistory.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, FormularyItem.class, GenomicStudy.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryItem.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationStatement.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Parameters.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestOrchestration.class, Requirements.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestPlan.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
-//  public static final String SP_CHARACTERISTIC_REFERENCE = "characteristic-reference";
+ /**
+   * Search parameter: <b>characteristic-reference</b>
+   * <p>
+   * Description: <b>An entity referenced in a characteristic</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>(Group.characteristic.value.ofType(Reference))</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="characteristic-reference", path="(Group.characteristic.value.ofType(Reference))", description="An entity referenced in a characteristic", type="reference", target={
+//    Account.class, ActivityDefinition.class, ActorDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BiologicallyDerivedProductDispense.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceAssociation.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentReference.class, Encounter.class, EncounterHistory.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, FormularyItem.class, GenomicStudy.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryItem.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationStatement.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Parameters.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestOrchestration.class, Requirements.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestPlan.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class 
+  })
+  public static final String SP_CHARACTERISTIC_REFERENCE = "characteristic-reference";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>characteristic-reference</b>
 //   * <p>
@@ -2051,16 +2053,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_CHARACTERISTIC_REFERENCE = new ca.uhn.fhir.model.api.Include("Group:characteristic-reference").toLocked();
 //
-// /**
-//   * Search parameter: <b>characteristic-value</b>
-//   * <p>
-//   * Description: <b>A composite of both characteristic and value</b><br>
-//   * Type: <b>composite</b><br>
-//   * Path: <b>Group.characteristic</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="characteristic-value", path="Group.characteristic", description="A composite of both characteristic and value", type="composite", compositeOf={"characteristic", "value"} )
-//  public static final String SP_CHARACTERISTIC_VALUE = "characteristic-value";
+ /**
+   * Search parameter: <b>characteristic-value</b>
+   * <p>
+   * Description: <b>A composite of both characteristic and value</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b>Group.characteristic</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="characteristic-value", path="Group.characteristic", description="A composite of both characteristic and value", type="composite", compositeOf={"characteristic", "value"} )
+  public static final String SP_CHARACTERISTIC_VALUE = "characteristic-value";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>characteristic-value</b>
 //   * <p>
@@ -2071,16 +2073,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CHARACTERISTIC_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(SP_CHARACTERISTIC_VALUE);
 //
-// /**
-//   * Search parameter: <b>characteristic</b>
-//   * <p>
-//   * Description: <b>Kind of characteristic</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Group.characteristic.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="characteristic", path="Group.characteristic.code", description="Kind of characteristic", type="token" )
-//  public static final String SP_CHARACTERISTIC = "characteristic";
+ /**
+   * Search parameter: <b>characteristic</b>
+   * <p>
+   * Description: <b>Kind of characteristic</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.characteristic.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="characteristic", path="Group.characteristic.code", description="Kind of characteristic", type="token" )
+  public static final String SP_CHARACTERISTIC = "characteristic";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>characteristic</b>
 //   * <p>
@@ -2091,16 +2093,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CHARACTERISTIC = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CHARACTERISTIC);
 //
-// /**
-//   * Search parameter: <b>code</b>
-//   * <p>
-//   * Description: <b>The kind of resources contained</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Group.code</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="code", path="Group.code", description="The kind of resources contained", type="token" )
-//  public static final String SP_CODE = "code";
+ /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>The kind of resources contained</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code", path="Group.code", description="The kind of resources contained", type="token" )
+  public static final String SP_CODE = "code";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>code</b>
 //   * <p>
@@ -2111,16 +2113,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
 //
-// /**
-//   * Search parameter: <b>exclude</b>
-//   * <p>
-//   * Description: <b>Group includes or excludes</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Group.characteristic.exclude</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="exclude", path="Group.characteristic.exclude", description="Group includes or excludes", type="token" )
-//  public static final String SP_EXCLUDE = "exclude";
+ /**
+   * Search parameter: <b>exclude</b>
+   * <p>
+   * Description: <b>Group includes or excludes</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.characteristic.exclude</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="exclude", path="Group.characteristic.exclude", description="Group includes or excludes", type="token" )
+  public static final String SP_EXCLUDE = "exclude";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>exclude</b>
 //   * <p>
@@ -2131,16 +2133,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EXCLUDE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_EXCLUDE);
 //
-// /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>Unique id</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Group.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="identifier", path="Group.identifier", description="Unique id", type="token" )
-//  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Unique id</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="Group.identifier", description="Unique id", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -2151,16 +2153,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 //
-// /**
-//   * Search parameter: <b>managing-entity</b>
-//   * <p>
-//   * Description: <b>Entity that is the custodian of the Group's definition</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Group.managingEntity</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="managing-entity", path="Group.managingEntity", description="Entity that is the custodian of the Group's definition", type="reference", target={Organization.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
-//  public static final String SP_MANAGING_ENTITY = "managing-entity";
+ /**
+   * Search parameter: <b>managing-entity</b>
+   * <p>
+   * Description: <b>Entity that is the custodian of the Group's definition</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Group.managingEntity</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="managing-entity", path="Group.managingEntity", description="Entity that is the custodian of the Group's definition", type="reference", target={Organization.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
+  public static final String SP_MANAGING_ENTITY = "managing-entity";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>managing-entity</b>
 //   * <p>
@@ -2177,16 +2179,18 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_MANAGING_ENTITY = new ca.uhn.fhir.model.api.Include("Group:managing-entity").toLocked();
 //
-// /**
-//   * Search parameter: <b>member</b>
-//   * <p>
-//   * Description: <b>Reference to the group member</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Group.member.entity</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="member", path="Group.member.entity", description="Reference to the group member", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Practitioner") }, target={CareTeam.class, Device.class, Group.class, HealthcareService.class, Location.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class, Specimen.class } )
-//  public static final String SP_MEMBER = "member";
+ /**
+   * Search parameter: <b>member</b>
+   * <p>
+   * Description: <b>Reference to the group member</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Group.member.entity</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="member", path="Group.member.entity", description="Reference to the group member", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Practitioner") }, target={
+//    CareTeam.class, Device.class, Group.class, HealthcareService.class, Location.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class, Specimen.class 
+  })
+  public static final String SP_MEMBER = "member";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>member</b>
 //   * <p>
@@ -2203,16 +2207,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_MEMBER = new ca.uhn.fhir.model.api.Include("Group:member").toLocked();
 //
-// /**
-//   * Search parameter: <b>membership</b>
-//   * <p>
-//   * Description: <b>Definitional or enumerated group</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Group.membership</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="membership", path="Group.membership", description="Definitional or enumerated group", type="token" )
-//  public static final String SP_MEMBERSHIP = "membership";
+ /**
+   * Search parameter: <b>membership</b>
+   * <p>
+   * Description: <b>Definitional or enumerated group</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.membership</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="membership", path="Group.membership", description="Definitional or enumerated group", type="token" )
+  public static final String SP_MEMBERSHIP = "membership";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>membership</b>
 //   * <p>
@@ -2223,16 +2227,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam MEMBERSHIP = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_MEMBERSHIP);
 //
-// /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>A portion of the Group's name</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Group.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="name", path="Group.name", description="A portion of the Group's name", type="string" )
-//  public static final String SP_NAME = "name";
+ /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>A portion of the Group's name</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Group.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="name", path="Group.name", description="A portion of the Group's name", type="string" )
+  public static final String SP_NAME = "name";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -2243,16 +2247,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_NAME);
 //
-// /**
-//   * Search parameter: <b>type</b>
-//   * <p>
-//   * Description: <b>The type of resources the group contains</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Group.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="type", path="Group.type", description="The type of resources the group contains", type="token" )
-//  public static final String SP_TYPE = "type";
+ /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>The type of resources the group contains</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="type", path="Group.type", description="The type of resources the group contains", type="token" )
+  public static final String SP_TYPE = "type";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>type</b>
 //   * <p>
@@ -2263,16 +2267,16 @@ public class Group extends DomainResource {
 //   */
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_TYPE);
 //
-// /**
-//   * Search parameter: <b>value</b>
-//   * <p>
-//   * Description: <b>Value held by characteristic</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>(Group.characteristic.value.ofType(CodeableConcept)) | (Group.characteristic.value.ofType(boolean))</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name="value", path="(Group.characteristic.value.ofType(CodeableConcept)) | (Group.characteristic.value.ofType(boolean))", description="Value held by characteristic", type="token" )
-//  public static final String SP_VALUE = "value";
+ /**
+   * Search parameter: <b>value</b>
+   * <p>
+   * Description: <b>Value held by characteristic</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>(Group.characteristic.value.ofType(CodeableConcept)) | (Group.characteristic.value.ofType(boolean))</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="value", path="(Group.characteristic.value.ofType(CodeableConcept)) | (Group.characteristic.value.ofType(boolean))", description="Value held by characteristic", type="token" )
+  public static final String SP_VALUE = "value";
 // /**
 //   * <b>Fluent Client</b> search parameter constant for <b>value</b>
 //   * <p>

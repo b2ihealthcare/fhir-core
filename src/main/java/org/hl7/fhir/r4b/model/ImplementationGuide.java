@@ -18667,15 +18667,15 @@ public class ImplementationGuide extends CanonicalResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_GLOBAL = new ca.uhn.fhir.model.api.Include(
 //      "ImplementationGuide:global").toLocked();
 //
-//  /**
-//   * Search parameter: <b>resource</b>
-//   * <p>
-//   * Description: <b>Location of the resource</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>ImplementationGuide.definition.resource.reference</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "resource", path = "ImplementationGuide.definition.resource.reference", description = "Location of the resource", type = "reference", target = {
+  /**
+   * Search parameter: <b>resource</b>
+   * <p>
+   * Description: <b>Location of the resource</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ImplementationGuide.definition.resource.reference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "resource", path = "ImplementationGuide.definition.resource.reference", description = "Location of the resource", type = "reference", target = {
 //      Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class,
 //      AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, AuditEvent.class, Basic.class,
 //      Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class,
@@ -18705,8 +18705,9 @@ public class ImplementationGuide extends CanonicalResource {
 //      StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class,
 //      SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SupplyDelivery.class, SupplyRequest.class,
 //      Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, ValueSet.class,
-//      VerificationResult.class, VisionPrescription.class })
-//  public static final String SP_RESOURCE = "resource";
+//      VerificationResult.class, VisionPrescription.class
+  })
+  public static final String SP_RESOURCE = "resource";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>resource</b>
 //   * <p>
