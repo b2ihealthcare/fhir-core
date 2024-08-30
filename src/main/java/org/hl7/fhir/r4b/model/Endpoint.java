@@ -39,6 +39,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 
 /**
  * The technical details of an endpoint that can be used for electronic
@@ -1311,19 +1312,19 @@ public class Endpoint extends DomainResource {
     return ResourceType.Endpoint;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>connection-type</b>
-//   * <p>
-//   * Description: <b>Protocol/Profile/Standard to be used with this endpoint
-//   * connection</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Endpoint.connectionType</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "connection-type", path = "Endpoint.connectionType", description = "Protocol/Profile/Standard to be used with this endpoint connection", type = "token")
-//  public static final String SP_CONNECTION_TYPE = "connection-type";
+  /**
+   * Search parameter: <b>connection-type</b>
+   * <p>
+   * Description: <b>Protocol/Profile/Standard to be used with this endpoint
+   * connection</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Endpoint.connectionType</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "connection-type", path = "Endpoint.connectionType", description = "Protocol/Profile/Standard to be used with this endpoint connection", type = "token")
+  public static final String SP_CONNECTION_TYPE = "connection-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>connection-type</b>
 //   * <p>
@@ -1336,16 +1337,16 @@ public class Endpoint extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONNECTION_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_CONNECTION_TYPE);
 //
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>Identifies this endpoint across multiple systems</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Endpoint.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "Endpoint.identifier", description = "Identifies this endpoint across multiple systems", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Identifies this endpoint across multiple systems</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Endpoint.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "Endpoint.identifier", description = "Identifies this endpoint across multiple systems", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -1357,16 +1358,16 @@ public class Endpoint extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
 //
-//  /**
-//   * Search parameter: <b>name</b>
-//   * <p>
-//   * Description: <b>A name that this endpoint can be identified by</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>Endpoint.name</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "name", path = "Endpoint.name", description = "A name that this endpoint can be identified by", type = "string")
-//  public static final String SP_NAME = "name";
+  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>A name that this endpoint can be identified by</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>Endpoint.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "name", path = "Endpoint.name", description = "A name that this endpoint can be identified by", type = "string")
+  public static final String SP_NAME = "name";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>name</b>
 //   * <p>
@@ -1378,17 +1379,17 @@ public class Endpoint extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(
 //      SP_NAME);
 //
-//  /**
-//   * Search parameter: <b>organization</b>
-//   * <p>
-//   * Description: <b>The organization that is managing the endpoint</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Endpoint.managingOrganization</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "organization", path = "Endpoint.managingOrganization", description = "The organization that is managing the endpoint", type = "reference", target = {
-//      Organization.class })
-//  public static final String SP_ORGANIZATION = "organization";
+  /**
+   * Search parameter: <b>organization</b>
+   * <p>
+   * Description: <b>The organization that is managing the endpoint</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Endpoint.managingOrganization</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "organization", path = "Endpoint.managingOrganization", description = "The organization that is managing the endpoint", type = "reference", target = {
+      Organization.class })
+  public static final String SP_ORGANIZATION = "organization";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>organization</b>
 //   * <p>
@@ -1407,17 +1408,17 @@ public class Endpoint extends DomainResource {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATION = new ca.uhn.fhir.model.api.Include(
 //      "Endpoint:organization").toLocked();
 //
-//  /**
-//   * Search parameter: <b>payload-type</b>
-//   * <p>
-//   * Description: <b>The type of content that may be used at this endpoint (e.g.
-//   * XDS Discharge summaries)</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Endpoint.payloadType</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "payload-type", path = "Endpoint.payloadType", description = "The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)", type = "token")
-//  public static final String SP_PAYLOAD_TYPE = "payload-type";
+  /**
+   * Search parameter: <b>payload-type</b>
+   * <p>
+   * Description: <b>The type of content that may be used at this endpoint (e.g.
+   * XDS Discharge summaries)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Endpoint.payloadType</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "payload-type", path = "Endpoint.payloadType", description = "The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)", type = "token")
+  public static final String SP_PAYLOAD_TYPE = "payload-type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>payload-type</b>
 //   * <p>
@@ -1430,17 +1431,17 @@ public class Endpoint extends DomainResource {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PAYLOAD_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_PAYLOAD_TYPE);
 //
-//  /**
-//   * Search parameter: <b>status</b>
-//   * <p>
-//   * Description: <b>The current status of the Endpoint (usually expected to be
-//   * active)</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Endpoint.status</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "status", path = "Endpoint.status", description = "The current status of the Endpoint (usually expected to be active)", type = "token")
-//  public static final String SP_STATUS = "status";
+  /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>The current status of the Endpoint (usually expected to be
+   * active)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Endpoint.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "status", path = "Endpoint.status", description = "The current status of the Endpoint (usually expected to be active)", type = "token")
+  public static final String SP_STATUS = "status";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>status</b>
 //   * <p>

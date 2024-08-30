@@ -41,10 +41,7 @@ import org.hl7.fhir.instance.model.api.IBaseBackboneElement;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.utilities.Utilities;
 
-import ca.uhn.fhir.model.api.annotation.Block;
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.Description;
-import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import ca.uhn.fhir.model.api.annotation.*;
 
 /**
  * A container for a collection of resources.
@@ -3821,20 +3818,20 @@ public class Bundle extends Resource implements IBaseBundle {
     return ResourceType.Bundle;
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>composition</b>
-//   * <p>
-//   * Description: <b>The first resource in the bundle, if the bundle type is
-//   * "document" - this is a composition, and this parameter provides access to
-//   * search its contents</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Bundle.entry[0].resource</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "composition", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to search its contents", type = "reference")
-//  public static final String SP_COMPOSITION = "composition";
+  /**
+   * Search parameter: <b>composition</b>
+   * <p>
+   * Description: <b>The first resource in the bundle, if the bundle type is
+   * "document" - this is a composition, and this parameter provides access to
+   * search its contents</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Bundle.entry[0].resource</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "composition", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to search its contents", type = "reference")
+  public static final String SP_COMPOSITION = "composition";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>composition</b>
 //   * <p>
@@ -3855,16 +3852,16 @@ public class Bundle extends Resource implements IBaseBundle {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_COMPOSITION = new ca.uhn.fhir.model.api.Include(
 //      "Bundle:composition").toLocked();
 //
-//  /**
-//   * Search parameter: <b>identifier</b>
-//   * <p>
-//   * Description: <b>Persistent identifier for the bundle</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Bundle.identifier</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "identifier", path = "Bundle.identifier", description = "Persistent identifier for the bundle", type = "token")
-//  public static final String SP_IDENTIFIER = "identifier";
+  /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Persistent identifier for the bundle</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Bundle.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "identifier", path = "Bundle.identifier", description = "Persistent identifier for the bundle", type = "token")
+  public static final String SP_IDENTIFIER = "identifier";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
 //   * <p>
@@ -3876,18 +3873,18 @@ public class Bundle extends Resource implements IBaseBundle {
 //  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(
 //      SP_IDENTIFIER);
 //
-//  /**
-//   * Search parameter: <b>message</b>
-//   * <p>
-//   * Description: <b>The first resource in the bundle, if the bundle type is
-//   * "message" - this is a message header, and this parameter provides access to
-//   * search its contents</b><br>
-//   * Type: <b>reference</b><br>
-//   * Path: <b>Bundle.entry[0].resource</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "message", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents", type = "reference")
-//  public static final String SP_MESSAGE = "message";
+  /**
+   * Search parameter: <b>message</b>
+   * <p>
+   * Description: <b>The first resource in the bundle, if the bundle type is
+   * "message" - this is a message header, and this parameter provides access to
+   * search its contents</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Bundle.entry[0].resource</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "message", path = "Bundle.entry[0].resource", description = "The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents", type = "reference")
+  public static final String SP_MESSAGE = "message";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>message</b>
 //   * <p>
@@ -3908,16 +3905,16 @@ public class Bundle extends Resource implements IBaseBundle {
 //  public static final ca.uhn.fhir.model.api.Include INCLUDE_MESSAGE = new ca.uhn.fhir.model.api.Include(
 //      "Bundle:message").toLocked();
 //
-//  /**
-//   * Search parameter: <b>timestamp</b>
-//   * <p>
-//   * Description: <b>When the bundle was assembled</b><br>
-//   * Type: <b>date</b><br>
-//   * Path: <b>Bundle.timestamp</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "timestamp", path = "Bundle.timestamp", description = "When the bundle was assembled", type = "date")
-//  public static final String SP_TIMESTAMP = "timestamp";
+  /**
+   * Search parameter: <b>timestamp</b>
+   * <p>
+   * Description: <b>When the bundle was assembled</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Bundle.timestamp</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "timestamp", path = "Bundle.timestamp", description = "When the bundle was assembled", type = "date")
+  public static final String SP_TIMESTAMP = "timestamp";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>timestamp</b>
 //   * <p>
@@ -3929,17 +3926,17 @@ public class Bundle extends Resource implements IBaseBundle {
 //  public static final ca.uhn.fhir.rest.gclient.DateClientParam TIMESTAMP = new ca.uhn.fhir.rest.gclient.DateClientParam(
 //      SP_TIMESTAMP);
 //
-//  /**
-//   * Search parameter: <b>type</b>
-//   * <p>
-//   * Description: <b>document | message | transaction | transaction-response |
-//   * batch | batch-response | history | searchset | collection</b><br>
-//   * Type: <b>token</b><br>
-//   * Path: <b>Bundle.type</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "type", path = "Bundle.type", description = "document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection", type = "token")
-//  public static final String SP_TYPE = "type";
+  /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>document | message | transaction | transaction-response |
+   * batch | batch-response | history | searchset | collection</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Bundle.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "type", path = "Bundle.type", description = "document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection", type = "token")
+  public static final String SP_TYPE = "type";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>type</b>
 //   * <p>

@@ -41,6 +41,7 @@ import org.hl7.fhir.instance.model.api.IDomainResource;
 
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.Description;
+import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 
 /**
  * A resource that includes narrative, extensions, and contained resources.
@@ -508,18 +509,18 @@ public abstract class DomainResource extends Resource
     return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(text, contained, extension, modifierExtension);
   }
 
-// B2i Healthcare: SEACH PARAMETERS ARE NOT REQUIRED FOR OBJECT CLASSES
+// B2i Healthcare: ONLY SEARCH PARAMETER CONSTANT STRING VALUES ARE REQUIRED (rest client params are commented out)
   
-//  /**
-//   * Search parameter: <b>_text</b>
-//   * <p>
-//   * Description: <b>Search on the narrative of the resource</b><br>
-//   * Type: <b>string</b><br>
-//   * Path: <b>null</b><br>
-//   * </p>
-//   */
-//  @SearchParamDefinition(name = "_text", path = "", description = "Search on the narrative of the resource", type = "string")
-//  public static final String SP_TEXT = "_text";
+  /**
+   * Search parameter: <b>_text</b>
+   * <p>
+   * Description: <b>Search on the narrative of the resource</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>null</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name = "_text", path = "", description = "Search on the narrative of the resource", type = "string")
+  public static final String SP_TEXT = "_text";
 //  /**
 //   * <b>Fluent Client</b> search parameter constant for <b>_text</b>
 //   * <p>
