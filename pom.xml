@@ -19,6 +19,7 @@
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.12.0</commons.lang3.version>
 		<commons.codec.version>1.16.1</commons.codec.version>
+		<jackson.version>2.16.1</jackson.version>
 
 		<!-- Deployment -->
 		<maven.repository.id>nexus_deployment</maven.repository.id>
@@ -46,6 +47,21 @@
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>${commons.codec.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ogce</groupId>
+			<artifactId>xpp3</artifactId>
+			<version>1.1.6</version>
 		</dependency>
 	</dependencies>
 
