@@ -16,10 +16,14 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Dependency Versions -->
+		<hl7.fhir.version>6.3.25</hl7.fhir.version>
+		<hapifhir.version>6.10.5</hapifhir.version>
+		
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.12.0</commons.lang3.version>
 		<commons.codec.version>1.16.1</commons.codec.version>
 		<jackson.version>2.16.1</jackson.version>
+		
 
 		<!-- Deployment -->
 		<maven.repository.id>nexus_deployment</maven.repository.id>
@@ -49,20 +53,95 @@
 			<version>${commons.codec.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>${jackson.version}</version>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>org.hl7.fhir.convertors</artifactId>
+			<version>${hl7.fhir.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>ca.uhn.hapi.fhir</groupId>
+					<artifactId>org.hl7.fhir.dstu2016may</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ca.uhn.hapi.fhir</groupId>
+					<artifactId>org.hl7.fhir.dstu2</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ca.uhn.hapi.fhir</groupId>
+					<artifactId>org.hl7.fhir.dstu3</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.sf.saxon</groupId>
+					<artifactId>Saxon-HE</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.xerial</groupId>
+					<artifactId>sqlite-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>org.hl7.fhir.r4</artifactId>
+			<version>${hl7.fhir.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.ogce</groupId>
-			<artifactId>xpp3</artifactId>
-			<version>1.1.6</version>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>org.hl7.fhir.r4b</artifactId>
+			<version>${hl7.fhir.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>org.hl7.fhir.r5</artifactId>
+			<version>${hl7.fhir.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.nimbusds</groupId>
+					<artifactId>nimbus-jose-jwt</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.sourceforge.plantuml</groupId>
+					<artifactId>plantuml-mit</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-base</artifactId>
+			<version>${hapifhir.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-annotations</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-databind</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.datatype</groupId>
+					<artifactId>jackson-datatype-jsr310</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.core</groupId>-->
+<!--			<artifactId>jackson-core</artifactId>-->
+<!--			<version>${jackson.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.core</groupId>-->
+<!--			<artifactId>jackson-databind</artifactId>-->
+<!--			<version>${jackson.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.ogce</groupId>-->
+<!--			<artifactId>xpp3</artifactId>-->
+<!--			<version>1.1.6</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -75,6 +154,9 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>com.b2ihealthcare.fhir.terminology.service.model</Bundle-SymbolicName>
+						<Embed-Directory>lib</Embed-Directory>
+						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
 						<_noclassforname>true</_noclassforname>
 					</instructions>
 				</configuration>

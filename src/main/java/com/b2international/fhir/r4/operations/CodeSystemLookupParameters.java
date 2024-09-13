@@ -22,8 +22,6 @@ import java.util.Set;
 import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.r4.model.Parameters.ParametersParameterComponent;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * @since 0.1
  */
@@ -140,7 +138,6 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	 * Helper to get access to the raw property values.
 	 * @return the list of actual values instead of a list with wrapped {@link StringType} instances.
 	 */
-	@JsonIgnore
 	public List<String> getPropertyValues() {
 		return getParameters("property").stream().map(ParametersParameterComponent::getValue).map(t -> ((StringType) t).getValueNotNull()).toList();
 	}
