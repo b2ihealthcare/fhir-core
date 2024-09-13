@@ -233,6 +233,17 @@
 							!org.xmlpull.v1.*,
 							*
 						</Import-Package>
+						<!-- Using exportcontens directive instead of Export-Package header to prevent copying packages from embedded jars in the final bundle -->
+						<_exportcontents>
+							com.b2international.*,
+							org.hl7.fhir.exceptions.*,
+							org.hl7.fhir.utilities.*,
+							org.hl7.fhir.r4.*,
+							org.hl7.fhir.r4b.*,
+							org.hl7.fhir.r5.*,
+							org.hl7.fhir.convertors.conv40_50.*,
+							org.hl7.fhir.convertors.conv43_50.*
+						</_exportcontents>
 						<_noclassforname>true</_noclassforname>
 					</instructions>
 				</configuration>
