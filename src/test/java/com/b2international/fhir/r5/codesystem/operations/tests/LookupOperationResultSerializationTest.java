@@ -122,6 +122,82 @@ public class LookupOperationResultSerializationTest {
 	
 	@Test
 	public void property_without_designation() throws Exception {
+		String json = """
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
+				{
+					"name": "code",
+					"valueString": "testCode" 
+				},
+				{
+					"name": "system",
+					"valueString": "testSystem"
+				},
+				{
+					"name": "display",
+					"valueString": "testDisplay"
+				},
+				{
+					"name": "definition",
+					"valueString": "Test definition"
+				},
+				{
+					"name": "property",
+					"part": [
+						{
+							"name": "code",
+							"valueCode": "testPropertyCode"
+						},
+						{
+							"name": "value",
+							"valueCoding": {
+								"system": "testCodingSystem",
+								"code": "testCodingCode",
+								"display": "Display test"
+							}
+						},
+						{
+							"name": "description",
+							"valueString": "Test description"
+						},
+						{
+							"name": "source",
+							"valueCanonical": "testUri"
+						},
+						{
+							"name": "subproperty",
+							"part": [
+								{
+									"name": "code",
+									"valueCode": "testSubPropertyCode"
+								},
+								{
+									"name": "value",
+									"valueCoding": {
+										"system": "testSubCodingSystem",
+										"code": "testSubCodingCode",
+										"display": "Sub Display test"
+									}
+								},
+								{
+									"name": "description",
+									"valueString": "Test subdescription"
+								},
+								{
+									"name": "source",
+									"valueCanonical": "testSubUri"
+								}
+							]
+						}
+					]
+				}
+			]
+		}""";
+				
+		Resource resource = parser.parse(json);
+		
+		assertThat(resource).isInstanceOf(Parameters.class);
 	}
 	
 	@Test
