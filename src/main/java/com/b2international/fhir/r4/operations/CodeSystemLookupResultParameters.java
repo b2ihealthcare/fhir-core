@@ -15,10 +15,14 @@
  */
 package com.b2international.fhir.r4.operations;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptPropertyComponent;
+import org.hl7.fhir.r4.model.CodeType;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.StringType;
 
@@ -61,7 +65,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 
-	public StringType getVersionDisplay() {
+	public StringType getVersion() {
 		return (StringType) getParameterValue("version", Parameters.ParametersParameterComponent::getValue);
 	}
 	
@@ -73,7 +77,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		getParameters().addParameter("version", version);
 		return this;
 	}
-
+	
 	public CodeSystemLookupResultParameters setDesignation(List<ConceptDefinitionDesignationComponent> designations) {
 		if (designations == null) {
 			return this;
@@ -138,5 +142,68 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	
 		return this;
 	}
-
+	
+	public static class Designation {
+		
+		private List<Parameters.ParametersParameterComponent> part;
+		
+		public Designation() {
+			this(new ArrayList<>());
+		}
+		
+		public Designation(List<Parameters.ParametersParameterComponent> part) {
+			this.part = part == null ? new ArrayList<>(1) : part;
+		}
+		
+		public CodeType getLanguage() {
+			StringType type = (StringType) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return new CodeType(type.getValueAsString());
+		}
+		
+		public Coding getUse() {
+			return (Coding) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public String getValue() {
+			StringType type = (StringType) getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return type.getValueAsString();
+		}
+		
+		public Designation setLanguage(CodeType language) {
+			if (language == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("language")
+					.setValue(language));
+		}
+		
+		public Designation setUser(Coding use) {
+			if (use == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("use")
+					.setValue(use));
+		}
+		
+		public Designation setValue(String value) {
+			if (value == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("value")
+					.setValue(new StringType(value)));
+		}
+		
+		public Designation addParameter(Parameters.ParametersParameterComponent parameter) {
+			part.add(parameter);
+			return this;
+		}
+		
+		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
+			return part.stream().filter(param -> param.getName().equals(name)).findFirst();
+		}
+		
+	}
 }
