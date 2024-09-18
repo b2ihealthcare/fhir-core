@@ -171,7 +171,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public Coding getUse() {
-			return (Coding) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return (Coding) getParameter("use").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
 		}
 		
 		public String getValue() {
