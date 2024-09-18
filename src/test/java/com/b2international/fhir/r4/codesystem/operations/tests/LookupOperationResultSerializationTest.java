@@ -18,9 +18,12 @@ package com.b2international.fhir.r4.codesystem.operations.tests;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.hl7.fhir.r4.formats.JsonParser;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Resource;
 import org.junit.Test;
+
+import com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters;
 
 
 /**
@@ -145,20 +148,16 @@ public class LookupOperationResultSerializationTest {
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueString": "testCode" 
+					"name": "name",
+					"valueString": "testName" 
 				},
 				{
-					"name": "system",
-					"valueString": "testSystem"
+					"name": "version",
+					"valueString": "testVersion"
 				},
 				{
 					"name": "display",
 					"valueString": "testDisplay"
-				},
-				{
-					"name": "definition",
-					"valueString": "Test definition"
 				},
 				{
 					"name": "property",
@@ -180,10 +179,6 @@ public class LookupOperationResultSerializationTest {
 							"valueString": "Test description"
 						},
 						{
-							"name": "source",
-							"valueCanonical": "testUri"
-						},
-						{
 							"name": "subproperty",
 							"part": [
 								{
@@ -202,10 +197,6 @@ public class LookupOperationResultSerializationTest {
 									"name": "description",
 									"valueString": "Test subdescription"
 								},
-								{
-									"name": "source",
-									"valueCanonical": "testSubUri"
-								}
 							]
 						}
 					]
@@ -216,5 +207,26 @@ public class LookupOperationResultSerializationTest {
 		Resource resource = parser.parse(json);
 		
 		assertThat(resource).isInstanceOf(Parameters.class);
+		
+		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		// Name
+		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
+		
+		// Version
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		
+		// Display
+		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
+		
+		// Property.code
+		assertThat(parameters.getProperty().get(0).getCode().getValueAsString()).isEqualTo("testPropertyCode");
+		
+		// Property.value
+		Coding coding = (Coding) parameters.getProperty().get(0).getValue();
+		assertThat(coding.getSystem()).isEqualTo("testCodingSystem");
+		
+		// Property.description
+		assertThat(parameters.getProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test description");
 	}
 }
