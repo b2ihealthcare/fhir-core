@@ -87,6 +87,16 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 				.collect(Collectors.toList());
 	}
 	
+	public List<Property> getProperty() {
+		List<ParametersParameterComponent> propertyParameters = getParameters("property");
+		return propertyParameters.stream()
+				.map(propertyParameter -> {
+					List<ParametersParameterComponent> part = propertyParameter.getPart();
+					return new Property(part);
+				})
+				.collect(Collectors.toList());
+	} 
+	
 	public CodeSystemLookupResultParameters setDesignation(List<Designation> designations) {
 		if (designations == null) {
 			return this;
@@ -215,6 +225,47 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return part.stream()
 					.filter(param -> param.getName().equals(name))
 					.findFirst();
+		}
+	}
+	
+	public static class Property {
+		
+		private List<Parameters.ParametersParameterComponent> part;
+		
+		public Property() {
+			this(new ArrayList<>());
+		}
+		
+		public Property(List<Parameters.ParametersParameterComponent> part) {
+			this.part = part == null ? new ArrayList<>(1) : part;
+		}
+		
+		public CodeType getCode() {
+			return (CodeType) getParameter("code").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public Type getValue() {
+			return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public StringType getDescription() {
+			return (StringType) getParameter("description").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public List<Parameters.ParametersParameterComponent> getPart() {
+			return part;
+		}
+		
+		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
+			return part.stream()
+					.filter(param -> param.getName().equals(name))
+					.findFirst();
+		}
+		
+		private List<Parameters.ParametersParameterComponent> getSubPropertyParameters() {
+			return part.stream()
+					.filter(param -> param.getName().equals("subproperty"))
+					.collect(Collectors.toList());
 		}
 	}
 }
