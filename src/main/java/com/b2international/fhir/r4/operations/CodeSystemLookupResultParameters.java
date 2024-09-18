@@ -18,13 +18,11 @@ package com.b2international.fhir.r4.operations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptPropertyComponent;
-import org.hl7.fhir.r4.model.CodeType;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.Parameters;
-import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.Parameters.ParametersParameterComponent;
 
 /**
  * @since 0.1
@@ -78,7 +76,18 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 	
-	public CodeSystemLookupResultParameters setDesignation(List<ConceptDefinitionDesignationComponent> designations) {
+	public List<Designation> getDesignation() {
+		List<ParametersParameterComponent> designationParameters = getParameters("designation");
+		return designationParameters.stream()
+				.map(designationParameter -> {
+					
+					List<ParametersParameterComponent> part = designationParameter.getPart();
+					return new Designation(part);
+				})
+				.collect(Collectors.toList());
+	}
+	
+	public CodeSystemLookupResultParameters setDesignation(List<Designation> designations) {
 		if (designations == null) {
 			return this;
 		}
@@ -91,13 +100,14 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 				designationParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("value")
-						.setValue(designation.getValueElement())
+						.setValue(new StringType(designation.getValue()))
 				);
+				
 				// add language part
 				designationParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("language")
-						.setValue(designation.getLanguageElement())
+						.setValue(designation.getLanguage())
 				);
 				// add use part
 				designationParameter.addPart(
@@ -178,7 +188,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.setValue(language));
 		}
 		
-		public Designation setUser(Coding use) {
+		public Designation setUse(Coding use) {
 			if (use == null) {
 				return this;
 			}
@@ -202,8 +212,9 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
-			return part.stream().filter(param -> param.getName().equals(name)).findFirst();
+			return part.stream()
+					.filter(param -> param.getName().equals(name))
+					.findFirst();
 		}
-		
 	}
 }
