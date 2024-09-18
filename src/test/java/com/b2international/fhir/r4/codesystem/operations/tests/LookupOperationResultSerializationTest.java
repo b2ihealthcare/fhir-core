@@ -37,27 +37,34 @@ public class LookupOperationResultSerializationTest {
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueString": "testCode" 
+					"name": "name",
+					"valueString": "testName" 
 				},
 				{
-					"name": "system",
-					"valueString": "testSystem"
+					"name": "version",
+					"valueString": "testVersion"
 				},
 				{
 					"name": "display",
 					"valueString": "testDisplay"
-				},
-				{
-					"name": "definition",
-					"valueString": "Test definition"
-				}	
+				}
 			]
 		}""";
 		
 		Resource resource = parser.parse(json);
 		
 		assertThat(resource).isInstanceOf(Parameters.class);
+		
+		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		// Name
+		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
+		
+		// Version
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		
+		// Display
+		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
 	}
 	
 	@Test
@@ -68,20 +75,16 @@ public class LookupOperationResultSerializationTest {
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueString": "testCode" 
+					"name": "name",
+					"valueString": "testName" 
 				},
 				{
-					"name": "system",
-					"valueString": "testSystem"
+					"name": "version",
+					"valueString": "testVersion"
 				},
 				{
 					"name": "display",
 					"valueString": "testDisplay"
-				},
-				{
-					"name": "definition",
-					"valueString": "Test definition"
 				},
 				{
 					"name": "designation",
@@ -99,14 +102,6 @@ public class LookupOperationResultSerializationTest {
 							}
 						},
 						{
-							"name": "additionalUse",
-							"valueCoding": {
-								"system": "addTestCodingSystem2",
-								"code": "addTestCodingCode",
-								"display": "Additional Display test"
-							}
-						},
-						{
 							"name": "value",
 							"valueString": "testValue"
 						}
@@ -118,6 +113,29 @@ public class LookupOperationResultSerializationTest {
 		Resource resource = parser.parse(json);
 		
 		assertThat(resource).isInstanceOf(Parameters.class);
+		
+		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		// Name
+		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
+		
+		// Version
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		
+		// Display
+		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
+		
+		// Designation.language
+		assertThat(parameters.getDesignation().get(0).getLanguage().getValueAsString()).isEqualTo("en");
+		
+		// Designation.use
+		assertThat(parameters.getDesignation().get(0).getUse().getSystem()).isEqualTo("testCodingSystem");
+		assertThat(parameters.getDesignation().get(0).getUse().getCode()).isEqualTo("testCodingCode");
+		assertThat(parameters.getDesignation().get(0).getUse().getDisplay()).isEqualTo("Display test");
+		
+		// Designation.value
+		assertThat(parameters.getDesignation().get(0).getValue()).isEqualTo("testValue");
+		
 	}
 	
 	@Test
