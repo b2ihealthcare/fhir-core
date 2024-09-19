@@ -142,6 +142,10 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return getParameterValue("value", Parameters.ParametersParameterComponent::getValueStringType);
 		}
 		
+		public Designation setLanguage(String language) {
+			return setLanguage(new CodeType(language));
+		}
+		
 		public Designation setLanguage(CodeType language) {
 			addParameter("language", language);
 			return this;
@@ -207,9 +211,17 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.toList();
 		}
 		
+		public Property setCode(String code) {
+			return setCode(new CodeType(code));
+		}
+		
 		public Property setCode(CodeType code) {
 			addParameter("code", code);
 			return this;
+		}
+		
+		public Property setValue(String value) {
+			return setValue(new StringType(value));
 		}
 		
 		public Property setValue(DataType value) {
@@ -217,9 +229,17 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return this;
 		}
 		
+		public Property setDescription(String description) {
+			return setDescription(new StringType(description));
+		}
+		
 		public Property setDescription(StringType description) {
 			addParameter("description", description);
 			return this;
+		}
+		
+		public Property setSource(String source) {
+			return setSource(new CanonicalType(source));
 		}
 		
 		public Property setSource(CanonicalType source) {
