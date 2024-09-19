@@ -171,7 +171,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 	
-public static class Designation {
+	public static class Designation {
 		
 		private List<Parameters.ParametersParameterComponent> part;
 		
