@@ -15,13 +15,9 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.hl7.fhir.r5.model.*;
-import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
 
 /**
  * @since 0.1
@@ -95,37 +91,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		designations.stream()
-			.map(designation -> {
-				var designationParameter = new Parameters.ParametersParameterComponent().setName("designation");
-				
-				// add value part, which is the term of the designation
-				designationParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("value")
-						.setValue(new StringType(designation.getValue()))
-				);
-				// add language part
-				designationParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("language")
-						.setValue(designation.getLanguage())
-				);
-				// add use part
-				designationParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("use")
-						.setValue(designation.getUse())
-				);
-				// add additional use part
-				designation.getAdditionalUse().forEach(additionalUse -> {
-					designationParameter.addPart(
-						new Parameters.ParametersParameterComponent()
-						.setName("additionalUse")
-						.setValue(additionalUse)
-					);
-				});
-				return designationParameter;
-			})
+			.map(designation -> new Parameters.ParametersParameterComponent().setName("designation").setPart(designation.getPart()))
 			.forEach(getParameters()::addParameter);
 		
 		return this;
@@ -137,214 +103,118 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		properties.stream()
-			.map(property -> {
-				var propertyParameter = new Parameters.ParametersParameterComponent().setName("property");
-				
-				// property.code
-				propertyParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("code")
-						.setValue(property.getCode())
-				);
-				
-				// property.value
-				propertyParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("value")
-						.setValue(property.getValue())
-				);
-				
-				// property.description
-				propertyParameter.addPart(new Parameters.ParametersParameterComponent()
-						.setName("description")
-						.setValue(property.getDescription()));
-				
-				// property.source
-				propertyParameter.addPart(new Parameters.ParametersParameterComponent()
-						.setName("source")
-						.setValue(property.getSource()));
-				
-				return propertyParameter; 
-			})
+			.map(property -> new Parameters.ParametersParameterComponent().setName("property").setPart(property.getPart()))
 			.forEach(getParameters()::addParameter);
 	
 		return this;
 	}
 	
-	public static class Designation {
-		
-		private List<Parameters.ParametersParameterComponent> part;
+	public static final class Designation extends BasePart {
 		
 		public Designation() {
-			this(new ArrayList<>());
+			super(null);
 		}
 		
 		public Designation(List<Parameters.ParametersParameterComponent> part) {
-			this.part = part == null ? new ArrayList<>(1) : part;
+			super(part);
 		}
 		
 		public CodeType getLanguage() {
-			StringType type = getParameter("language").map(Parameters.ParametersParameterComponent::getValueStringType).orElse(null);
-			return new CodeType(type.getValueAsString());
+			return getParameterValue("language", Parameters.ParametersParameterComponent::getValueCodeType);
 		}
 		
 		public Coding getUse() {
-			return getParameter("use").map(Parameters.ParametersParameterComponent::getValueCoding).orElse(null);
+			return getParameterValue("use", Parameters.ParametersParameterComponent::getValueCoding);
 		}
 		
 		public List<Coding> getAdditionalUse() {
-			return getParameters("additionalUse").stream()
+			return getParameters("additionalUse")
 					.map(Parameters.ParametersParameterComponent::getValueCoding)
-					.collect(Collectors.toList());
+					.toList();
 		}
 		
-		public String getValue() {
-			StringType type = getParameter("value").map(Parameters.ParametersParameterComponent::getValueStringType).orElse(null);
-			return type.getValueAsString();
+		public StringType getValue() {
+			return getParameterValue("value", Parameters.ParametersParameterComponent::getValueStringType);
 		}
 		
 		public Designation setLanguage(CodeType language) {
-			if (language == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("language")
-					.setValue(language));
+			addParameter("language", language);
+			return this;
 		}
 		
 		public Designation setUse(Coding use) {
-			if (use == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("use")
-					.setValue(use));
+			addParameter("use", use);
+			return this;
 		}
 		
 		public Designation setAdditionalUse(Coding additionalUse) {
-			if (additionalUse == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("additionalUse")
-					.setValue(additionalUse));
+			addParameter("additionalUse", additionalUse);
+			return this;
 		}
 		
 		public Designation setValue(String value) {
-			if (value == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("value")
-					.setValue(new StringType(value)));
+			return setValue(new StringType(value));
 		}
 		
-		public Designation addParameter(Parameters.ParametersParameterComponent parameter) {
-			part.add(parameter);
+		public Designation setValue(StringType value) {
+			addParameter("value", value);
 			return this;
 		}
 		
-		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
-			return part.stream()
-					.filter(param -> param.getName().equals(name))
-					.findFirst();
-		}
-		
-		private List<Parameters.ParametersParameterComponent> getParameters(String name) {
-			return part.stream()
-					.filter(param -> param.getName().equals(name))
-					.collect(Collectors.toList());
-		}
 	}
 	
-	public static class Property {
-		
-		private List<Parameters.ParametersParameterComponent> part;
+	public static final class Property extends BasePart {
 		
 		public Property() {
-			this(new ArrayList<>());
+			super(null);
 		}
 		
 		public Property(List<Parameters.ParametersParameterComponent> part) {
-			this.part = part == null ? new ArrayList<>(1) : part;
+			super(part);
 		}
 		
 		public CodeType getCode() {
-			return getParameter("code").map(Parameters.ParametersParameterComponent::getValueCodeType).orElse(null);
+			return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
 		}
 		
 		public DataType getValue() {
-			return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return getParameterValue("value", Parameters.ParametersParameterComponent::getValue);
 		}
 		
 		public StringType getDescription() {
-			return getParameter("description").map(Parameters.ParametersParameterComponent::getValueStringType).orElse(null);
+			return getParameterValue("description", Parameters.ParametersParameterComponent::getValueStringType);
 		}
 		
 		public CanonicalType getSource() {
-			return getParameter("source").map(Parameters.ParametersParameterComponent::getValueCanonicalType).orElse(null);
-		}
-		
-		public List<Parameters.ParametersParameterComponent> getPart() {
-			return part;
-		}
-		
-		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
-			return part.stream()
-					.filter(param -> param.getName().equals(name))
-					.findFirst();
+			return getParameterValue("source", Parameters.ParametersParameterComponent::getValueCanonicalType);
 		}
 		
 		public List<Property> getSubProperty() {
-			return part.stream()
-					.filter(param -> param.getName().equals("subproperty"))
-					.map(propertyParameter -> {
-						List<ParametersParameterComponent> part = propertyParameter.getPart();
-						return new Property(part);
-					})
-					.collect(Collectors.toList());
+			return getParameters("subproperty")
+					.map(propertyParameter -> new Property(propertyParameter.getPart()))
+					.toList();
 		}
 		
 		public Property setCode(CodeType code) {
-			if (code == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("code")
-					.setValue(code));
+			addParameter("code", code);
+			return this;
 		}
 		
 		public Property setValue(DataType value) {
-			if (value == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("value")
-					.setValue(value));
+			addParameter("value", value);
+			return this;
 		}
 		
 		public Property setDescription(StringType description) {
-			if (description == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("description")
-					.setValue(description));
+			addParameter("description", description);
+			return this;
 		}
 		
 		public Property setSource(CanonicalType source) {
-			if (source == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("source")
-					.setValue(source));
-		}
-		
-		public Property addParameter(Parameters.ParametersParameterComponent parameter) {
-			part.add(parameter);
+			addParameter("source", source);
 			return this;
 		}
+		
 	}
 
 }

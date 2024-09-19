@@ -15,42 +15,45 @@
  */
 package com.b2international.fhir.r5.operations;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import org.hl7.fhir.r5.model.DataType;
 import org.hl7.fhir.r5.model.Parameters;
+import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
 
 /**
  * @since 0.1
  */
-public abstract class BaseParameters {
+public abstract class BasePart {
 
-	private final Parameters parameters;
+	private final List<Parameters.ParametersParameterComponent> part;
 	
-	public BaseParameters(Parameters parameters) {
-		this.parameters = parameters;
+	public BasePart() {
+		this(null);
 	}
 	
-	public Parameters getParameters() {
-		return parameters;
+	public BasePart(List<Parameters.ParametersParameterComponent> part) {
+		this.part = part == null ? new ArrayList<>(1) : part;
 	}
 	
-	public List<Parameters.ParametersParameterComponent> getParameters(String name) {
-		return this.parameters.getParameters(name);
+	public final List<ParametersParameterComponent> getPart() {
+		return part;
 	}
 	
-	public Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
-		return getParameters(name).stream().findFirst();
+	protected final Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
+		return getParameters(name).findFirst();
 	}
 	
-	public <T> T getParameterValue(String name, Function<Parameters.ParametersParameterComponent, T> parameterValueExtractor) {
+	protected final Stream<Parameters.ParametersParameterComponent> getParameters(String name) {
+		return getPart().stream().filter(param -> param.getName().equals(name));
+	}
+	
+	protected final <T> T getParameterValue(String name, Function<Parameters.ParametersParameterComponent, T> parameterValueExtractor) {
 		return getParameter(name).map(parameterValueExtractor).orElse(null);
-	}
-	
-	public <T> boolean hasParameterWithValue(String name, Function<Parameters.ParametersParameterComponent, T> parameterValueExtractor, T expectedValue) {
-		return getParameters(name).stream().map(parameterValueExtractor).filter(expectedValue::equals).findFirst().isPresent();
 	}
 	
 	protected final void addParameter(String name, DataType value) {
@@ -64,7 +67,15 @@ public abstract class BaseParameters {
 			return;
 		}
 		
-		getParameters().addParameter(name, value);
+		addParameter(
+			new Parameters.ParametersParameterComponent()
+				.setName(name)
+				.setValue(value)
+		);
+	}
+	
+	protected final void addParameter(Parameters.ParametersParameterComponent parameter) {
+		part.add(parameter);
 	}
 	
 }
