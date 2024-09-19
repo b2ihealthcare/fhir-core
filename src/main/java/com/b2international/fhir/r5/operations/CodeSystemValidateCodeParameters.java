@@ -153,5 +153,27 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 		getParameters().addParameter("displayLanguage", displayLanguage);
 		return this;
 	}
+	
+	// Extractors that extract information from multiple parameters depending on which one they have value
+	
+	public String extractUrl() {
+		if (getUrl() != null) {
+			return getUrl().getValue();
+		} else if (getCoding() != null) {
+			return getCoding().getSystem();
+		} else {
+			return null;
+		}
+	}
+	
+	public String extractVersion() {
+		if (getVersion() != null) {
+			return getVersion().getValue();
+		} else if (getCoding() != null) {
+			return getCoding().getVersion();
+		} else {
+			return null;
+		}
+	}
 
 }
