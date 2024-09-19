@@ -55,10 +55,17 @@ public abstract class BaseParameters {
 	}
 	
 	protected final void addParameter(String name, DataType value) {
-		// prevent adding primitive wrapper types when the value is not set
-		if (name != null && value != null && value.hasPrimitiveValue()) {
-			getParameters().addParameter(name, value);
+		// prevent adding parameters without name and/or value
+		if (name == null || value == null) {
+			return;
 		}
+		
+		// prevent adding primitive types without actual value
+		if (value.canHavePrimitiveValue() && !value.hasPrimitiveValue()) {
+			return;
+		}
+		
+		getParameters().addParameter(name, value);
 	}
 	
 }
