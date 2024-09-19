@@ -158,7 +158,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 		return this;
 	}
 	
-	public ValueSetValidateCodeParameters setDate(String date) throws ParseException {
+	public ValueSetValidateCodeParameters setDate(String date) {
 		return setDate(new DateType(date));
 	}
 	
