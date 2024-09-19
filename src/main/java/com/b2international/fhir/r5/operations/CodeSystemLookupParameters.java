@@ -56,11 +56,6 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public UriType getSystem() {
-//		if (system != null) {
-//			return system.getUriValue();
-//		} else if (coding != null && coding.getSystem() != null) {
-//			return coding.getSystem().getUriValue();
-//		}
 		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
 	}
 
@@ -179,5 +174,26 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return hasParameterWithValue("property", Parameters.ParametersParameterComponent::getValueStringType, propertyValue);
 	}
 
+	// Extractors that extract information from multiple parameters depending on which one they have value
+	
+	public String extractSystem() {
+		if (getSystem() != null) {
+			return getSystem().getValue();
+		} else if (getCoding() != null && getCoding().getSystem() != null) {
+			return getCoding().getSystem();
+		} else {
+			return null;
+		}
+	}
+	
+	public String extractSystemVersion() {
+		if (getVersion() != null) {
+			return getVersion().getValue();
+		} else if (getCoding() != null && getCoding().getVersion() != null) {
+			return getCoding().getVersion();
+		} else {
+			return null;
+		}
+	}
 
 }
