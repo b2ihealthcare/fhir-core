@@ -166,7 +166,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public boolean isPropertyRequested(String propertyValue) {
-		return hasParameterWithValue("property", Parameters.ParametersParameterComponent::getValueStringType, propertyValue);
+		return hasParameterWithValue("property", param -> param.getValueStringType().getValue(), propertyValue);
 	}
 
 	// Extractors that extract information from multiple parameters depending on which one they have value
