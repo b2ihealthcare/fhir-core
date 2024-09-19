@@ -199,7 +199,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setIncludeDesignations(Boolean includeDesignations) {
-		return setIncludeDesignations(new BooleanType(includeDesignations));
+		return includeDesignations == null ? this : setIncludeDesignations(new BooleanType(includeDesignations));
 	}
 	
 	public ValueSetExpandParameters setIncludeDesignations(BooleanType includeDesignations) {
