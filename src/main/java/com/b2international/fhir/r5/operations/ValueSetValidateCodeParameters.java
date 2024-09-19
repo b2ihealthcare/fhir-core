@@ -20,8 +20,6 @@ import java.util.Date;
 
 import org.hl7.fhir.r5.model.*;
 
-import com.b2international.fhir.FhirDates;
-
 /**
  * @since 9.2 
  */
@@ -161,7 +159,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setDate(String date) throws ParseException {
-		return setDate(FhirDates.parse(date));
+		return setDate(new DateType(date));
 	}
 	
 	public ValueSetValidateCodeParameters setDate(Date date) {

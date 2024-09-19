@@ -15,12 +15,9 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import java.text.ParseException;
 import java.util.Date;
 
 import org.hl7.fhir.r5.model.*;
-
-import com.b2international.fhir.FhirDates;
 
 /**
  * @since 9.3 
@@ -126,8 +123,8 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 		return this;
 	}
 	
-	public CodeSystemValidateCodeParameters setDate(String date) throws ParseException {
-		return setDate(FhirDates.parse(date));
+	public CodeSystemValidateCodeParameters setDate(String date) {
+		return setDate(new DateType(date));
 	}
 	
 	public CodeSystemValidateCodeParameters setDate(Date date) {
