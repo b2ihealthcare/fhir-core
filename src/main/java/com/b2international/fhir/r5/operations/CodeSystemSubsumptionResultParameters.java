@@ -16,8 +16,8 @@
 package com.b2international.fhir.r5.operations;
 
 import org.hl7.fhir.r4.model.codesystems.ConceptSubsumptionOutcome;
+import org.hl7.fhir.r5.model.CodeType;
 import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.StringType;
 
 /**
  * @since 9.2 
@@ -33,7 +33,7 @@ public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionResultParameters setOutcome(ConceptSubsumptionOutcome outcome) {
-		addParameter("outcome", new StringType(outcome.toCode()));
+		addParameter("outcome", new CodeType(outcome.toCode()));
 		return this;
 	}
 	
