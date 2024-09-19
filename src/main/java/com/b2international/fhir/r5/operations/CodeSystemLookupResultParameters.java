@@ -147,5 +147,147 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	
 		return this;
 	}
+	
+	public static class Designation {
+		
+		private List<Parameters.ParametersParameterComponent> part;
+		
+		public Designation() {
+			this(new ArrayList<>());
+		}
+		
+		public Designation(List<Parameters.ParametersParameterComponent> part) {
+			this.part = part == null ? new ArrayList<>(1) : part;
+		}
+		
+		public CodeType getLanguage() {
+			StringType type = (StringType) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return new CodeType(type.getValueAsString());
+		}
+		
+		public Coding getUse() {
+			return (Coding) getParameter("use").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public String getValue() {
+			StringType type = (StringType) getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return type.getValueAsString();
+		}
+		
+		public Designation setLanguage(CodeType language) {
+			if (language == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("language")
+					.setValue(language));
+		}
+		
+		public Designation setUse(Coding use) {
+			if (use == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("use")
+					.setValue(use));
+		}
+		
+		public Designation setValue(String value) {
+			if (value == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("value")
+					.setValue(new StringType(value)));
+		}
+		
+		public Designation addParameter(Parameters.ParametersParameterComponent parameter) {
+			part.add(parameter);
+			return this;
+		}
+		
+		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
+			return part.stream()
+					.filter(param -> param.getName().equals(name))
+					.findFirst();
+		}
+	}
+	
+	public static class Property {
+		
+		private List<Parameters.ParametersParameterComponent> part;
+		
+		public Property() {
+			this(new ArrayList<>());
+		}
+		
+		public Property(List<Parameters.ParametersParameterComponent> part) {
+			this.part = part == null ? new ArrayList<>(1) : part;
+		}
+		
+		public CodeType getCode() {
+			return (CodeType) getParameter("code").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public DataType getValue() {
+			return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public StringType getDescription() {
+			return (StringType) getParameter("description").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+		}
+		
+		public List<Parameters.ParametersParameterComponent> getPart() {
+			return part;
+		}
+		
+		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
+			return part.stream()
+					.filter(param -> param.getName().equals(name))
+					.findFirst();
+		}
+		
+		public List<Property> getSubProperty() {
+			return part.stream()
+					.filter(param -> param.getName().equals("subproperty"))
+					.map(propertyParameter -> {
+						List<ParametersParameterComponent> part = propertyParameter.getPart();
+						return new Property(part);
+					})
+					.collect(Collectors.toList());
+		}
+		
+		public Property setCode(CodeType code) {
+			if (code == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("code")
+					.setValue(code));
+		}
+		
+		public Property setValue(DataType value) {
+			if (value == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("value")
+					.setValue(value));
+		}
+		
+		public Property setDescription(StringType description) {
+			if (description == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("description")
+					.setValue(description));
+		}
+		
+		public Property addParameter(Parameters.ParametersParameterComponent parameter) {
+			part.add(parameter);
+			return this;
+		}
+	}
 
 }
