@@ -33,7 +33,7 @@ public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionResultParameters setOutcome(ConceptSubsumptionOutcome outcome) {
-		addParameter("outcome", new StringType(outcome.getDefinition()));
+		addParameter("outcome", new StringType(outcome.toCode()));
 		return this;
 	}
 	
