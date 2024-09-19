@@ -18,6 +18,9 @@ package com.b2international.fhir.r5.operations;
 import java.util.List;
 
 import org.hl7.fhir.r5.model.*;
+import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
+
+import com.google.common.primitives.Ints;
 
 /**
  * @since 0.1
@@ -111,6 +114,8 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	
 	public static final class Designation extends BasePart {
 		
+		private static final List<String> PARAMETER_ORDER = List.of("language", "use", "additionalUse", "value");
+		
 		public Designation() {
 			super(null);
 		}
@@ -161,9 +166,16 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return this;
 		}
 		
+		@Override
+		protected int sortBy(ParametersParameterComponent parameterA, ParametersParameterComponent parameterB) {
+			return Ints.compare(PARAMETER_ORDER.indexOf(parameterA.getName()), PARAMETER_ORDER.indexOf(parameterB.getName()));
+		}
+		
 	}
 	
 	public static final class Property extends BasePart {
+		
+		private static final List<String> PARAMETER_ORDER = List.of("code", "value", "description", "source", "subproperty");
 		
 		public Property() {
 			super(null);
@@ -213,6 +225,11 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		public Property setSource(CanonicalType source) {
 			addParameter("source", source);
 			return this;
+		}
+		
+		@Override
+		protected int sortBy(ParametersParameterComponent parameterA, ParametersParameterComponent parameterB) {
+			return Ints.compare(PARAMETER_ORDER.indexOf(parameterA.getName()), PARAMETER_ORDER.indexOf(parameterB.getName()));
 		}
 		
 	}

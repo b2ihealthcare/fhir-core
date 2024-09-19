@@ -44,6 +44,10 @@ public abstract class BasePart {
 		return part;
 	}
 	
+	public final List<ParametersParameterComponent> getPartSorted() {
+		return part.stream().sorted(this::sortBy).toList();
+	}
+	
 	protected final Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
 		return getParameters(name).findFirst();
 	}
@@ -76,6 +80,10 @@ public abstract class BasePart {
 	
 	protected final void addParameter(Parameters.ParametersParameterComponent parameter) {
 		part.add(parameter);
+	}
+
+	protected int sortBy(Parameters.ParametersParameterComponent parameterA, Parameters.ParametersParameterComponent parameterB) {
+		return 0;
 	}
 	
 }
