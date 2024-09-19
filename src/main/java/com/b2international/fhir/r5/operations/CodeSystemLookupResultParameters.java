@@ -44,7 +44,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupResultParameters setName(StringType name) {
-		getParameters().addParameter("name", name);
+		addParameter("name", name);
 		return this;
 	}
 	
@@ -57,7 +57,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupResultParameters setDisplay(StringType display) {
-		getParameters().addParameter("display", display);
+		addParameter("display", display);
 		return this;
 	}
 
@@ -70,7 +70,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupResultParameters setVersion(StringType version) {
-		getParameters().addParameter("version", version);
+		addParameter("version", version);
 		return this;
 	}
 

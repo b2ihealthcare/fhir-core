@@ -77,12 +77,14 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 
 	public CodeSystemValidateCodeParameters setUrl(UriType url) {
-		getParameters().addParameter("url", url);
+		addParameter("url", url);
 		return this;
 	}
 	
 	public CodeSystemValidateCodeParameters setCodeSystem(CodeSystem codeSystem) {
-		getParameters().addParameter(new Parameters.ParametersParameterComponent("codeSystem").setResource(codeSystem));
+		if (codeSystem != null) {
+			getParameters().addParameter(new Parameters.ParametersParameterComponent("codeSystem").setResource(codeSystem));
+		}
 		return this;
 	}
 	
@@ -91,17 +93,17 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 
 	public CodeSystemValidateCodeParameters setCode(CodeType code) {
-		getParameters().addParameter("code", code);
+		addParameter("code", code);
 		return this;
 	}
 	
 	public CodeSystemValidateCodeParameters setCoding(Coding coding) {
-		getParameters().addParameter("coding", coding);
+		addParameter("coding", coding);
 		return this;
 	}
 	
 	public CodeSystemValidateCodeParameters setCodeableConcept(CodeableConcept codeableConcept) {
-		getParameters().addParameter("codeableConcept", codeableConcept);
+		addParameter("codeableConcept", codeableConcept);
 		return this;
 	}
 	
@@ -110,7 +112,7 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 
 	public CodeSystemValidateCodeParameters setVersion(StringType version) {
-		getParameters().addParameter("version", version);
+		addParameter("version", version);
 		return this;
 	}
 	
@@ -119,7 +121,7 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 
 	public CodeSystemValidateCodeParameters setDisplay(StringType display) {
-		getParameters().addParameter("display", display);
+		addParameter("display", display);
 		return this;
 	}
 	
@@ -132,7 +134,7 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 	
 	public CodeSystemValidateCodeParameters setDate(DateType date) {
-		getParameters().addParameter("date", date);
+		addParameter("date", date);
 		return this;
 	}
 	
@@ -141,7 +143,7 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 	
 	public CodeSystemValidateCodeParameters setAbstract(BooleanType isAbstract) {
-		getParameters().addParameter("abstract", isAbstract);
+		addParameter("abstract", isAbstract);
 		return this;
 	}
 	
@@ -150,7 +152,7 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 	
 	public CodeSystemValidateCodeParameters setDisplayLanguage(CodeType displayLanguage) {
-		getParameters().addParameter("displayLanguage", displayLanguage);
+		addParameter("displayLanguage", displayLanguage);
 		return this;
 	}
 	

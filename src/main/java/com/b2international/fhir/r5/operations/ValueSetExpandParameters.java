@@ -126,12 +126,14 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setUrl(UriType url) {
-		getParameters().addParameter("url", url);
+		addParameter("url", url);
 		return this;
 	}
 	
 	public ValueSetExpandParameters setValueSet(ValueSet valueSet) {
-		getParameters().addParameter(new Parameters.ParametersParameterComponent("valueSet").setResource(valueSet));
+		if (valueSet != null) {
+			getParameters().addParameter(new Parameters.ParametersParameterComponent("valueSet").setResource(valueSet));
+		}
 		return this;
 	}
 	
@@ -140,7 +142,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setValueSetVersion(StringType valueSetVersion) {
-		getParameters().addParameter("valueSetVersion", valueSetVersion);
+		addParameter("valueSetVersion", valueSetVersion);
 		return this;
 	}
 	
@@ -149,7 +151,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 
 	public ValueSetExpandParameters setContext(UriType context) {
-		getParameters().addParameter("context", context);
+		addParameter("context", context);
 		return this;
 	}
 	
@@ -158,7 +160,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setContextDirection(CodeType contextDirection) {
-		getParameters().addParameter("contextDirection", contextDirection);
+		addParameter("contextDirection", contextDirection);
 		return this;
 	}
 	
@@ -167,7 +169,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setFilter(StringType filter) {
-		getParameters().addParameter("filter", filter);
+		addParameter("filter", filter);
 		return this;
 	}
 	
@@ -176,7 +178,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setDate(DateType date) {
-		getParameters().addParameter("date", date);
+		addParameter("date", date);
 		return this;
 	}
 	
@@ -185,7 +187,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setOffset(IntegerType offset) {
-		getParameters().addParameter("offset", offset);
+		addParameter("offset", offset);
 		return this;
 	}
 	
@@ -194,7 +196,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setCount(IntegerType count) {
-		getParameters().addParameter("count", count);
+		addParameter("count", count);
 		return this;
 	}
 	
@@ -203,7 +205,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setIncludeDesignations(BooleanType includeDesignations) {
-		getParameters().addParameter("includeDesignations", includeDesignations);
+		addParameter("includeDesignations", includeDesignations);
 		return this;
 	}
 	
@@ -217,7 +219,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'designation' is not of string type. Got: ", d.getClass()));
 				}
-			}).forEach(designationValue -> getParameters().addParameter("designation", designationValue));
+			}).forEach(designationValue -> addParameter("designation", designationValue));
 		}
 		return this;
 	}
@@ -227,7 +229,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setIncludeDefinition(BooleanType includeDefinition) {
-		getParameters().addParameter("includeDefinition", includeDefinition);
+		addParameter("includeDefinition", includeDefinition);
 		return this;
 	}
 	
@@ -236,7 +238,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setActiveOnly(BooleanType activeOnly) {
-		getParameters().addParameter("activeOnly", activeOnly);
+		addParameter("activeOnly", activeOnly);
 		return this;
 	}
 	
@@ -245,7 +247,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNested(BooleanType excludeNested) {
-		getParameters().addParameter("excludeNested", excludeNested);
+		addParameter("excludeNested", excludeNested);
 		return this;
 	}
 	
@@ -254,7 +256,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNestedForUI(BooleanType excludeNestedForUI) {
-		getParameters().addParameter("excludeNestedForUI", excludeNestedForUI);
+		addParameter("excludeNestedForUI", excludeNestedForUI);
 		return this;
 	}
 	
@@ -263,7 +265,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNestedPostCoordinated(BooleanType excludeNestedPostCoordinated) {
-		getParameters().addParameter("excludeNestedPostCoordinated", excludeNestedPostCoordinated);
+		addParameter("excludeNestedPostCoordinated", excludeNestedPostCoordinated);
 		return this;
 	}
 	
@@ -272,7 +274,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setDisplayLanguage(CodeType displayLanguage) {
-		getParameters().addParameter("displayLanguage", displayLanguage);
+		addParameter("displayLanguage", displayLanguage);
 		return this;
 	}
 	
@@ -281,7 +283,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeSystem(UriType excludeSystem) {
-		getParameters().addParameter("excludeSystem", excludeSystem);
+		addParameter("excludeSystem", excludeSystem);
 		return this;
 	}
 	
@@ -290,7 +292,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setSystemVersion(UriType systemVersion) {
-		getParameters().addParameter("systemVersion", systemVersion);
+		addParameter("systemVersion", systemVersion);
 		return this;
 	}
 	
@@ -299,7 +301,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setCheckSystemVersion(UriType checkSystemVersion) {
-		getParameters().addParameter("checkSystemVersion", checkSystemVersion);
+		addParameter("checkSystemVersion", checkSystemVersion);
 		return this;
 	}
 	
@@ -308,7 +310,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setForceSystemVersion(UriType forceSystemVersion) {
-		getParameters().addParameter("forceSystemVersion", forceSystemVersion);
+		addParameter("forceSystemVersion", forceSystemVersion);
 		return this;
 	}
 	
@@ -327,7 +329,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setAfter(StringType after) {
-		getParameters().addParameter("after", after);
+		addParameter("after", after);
 		return this;
 	}
 	
@@ -336,7 +338,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setWithHistorySupplements(BooleanType withHistorySupplements) {
-		getParameters().addParameter("withHistorySupplements", withHistorySupplements);
+		addParameter("withHistorySupplements", withHistorySupplements);
 		return this;
 	}
  

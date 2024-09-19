@@ -89,12 +89,14 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setUrl(UriType url) {
-		getParameters().addParameter("url", url);
+		addParameter("url", url);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setConceptMap(ConceptMap conceptMap) {
-		getParameters().addParameter(new Parameters.ParametersParameterComponent("conceptMap").setResource(conceptMap));
+		if (conceptMap != null) {
+			getParameters().addParameter(new Parameters.ParametersParameterComponent("conceptMap").setResource(conceptMap));
+		}
 		return this;
 	}
 	
@@ -103,7 +105,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setConceptMapVersion(StringType conceptMapVersion) {
-		getParameters().addParameter("conceptMapVersion", conceptMapVersion);
+		addParameter("conceptMapVersion", conceptMapVersion);
 		return this;
 	}
 	
@@ -112,7 +114,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setSystem(StringType system) {
-		getParameters().addParameter("system", system);
+		addParameter("system", system);
 		return this;
 	}
 	
@@ -121,7 +123,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setVersion(StringType version) {
-		getParameters().addParameter("version", version);
+		addParameter("version", version);
 		return this;
 	}
 
@@ -130,17 +132,17 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setSourceCode(CodeType sourceCode) {
-		getParameters().addParameter("sourceCode", sourceCode);
+		addParameter("sourceCode", sourceCode);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setSourceCoding(Coding sourceCoding) {
-		getParameters().addParameter("sourceCoding", sourceCoding);
+		addParameter("sourceCoding", sourceCoding);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setSourceCodeableConcept(CodeableConcept sourceCodeableConcept) {
-		getParameters().addParameter("sourceCodeableConcept", sourceCodeableConcept);
+		addParameter("sourceCodeableConcept", sourceCodeableConcept);
 		return this;
 	}
 	
@@ -149,7 +151,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setSourceScope(UriType sourceScope) {
-		getParameters().addParameter("sourceScope", sourceScope);
+		addParameter("sourceScope", sourceScope);
 		return this;
 	}
 	
@@ -158,17 +160,17 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setTargetCode(CodeType targetCode) {
-		getParameters().addParameter("targetCode", targetCode);
+		addParameter("targetCode", targetCode);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setTargetCoding(Coding targetCoding) {
-		getParameters().addParameter("targetCoding", targetCoding);
+		addParameter("targetCoding", targetCoding);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setTargetCodeableConcept(CodeableConcept targetCodeableConcept) {
-		getParameters().addParameter("targetCodeableConcept", targetCodeableConcept);
+		addParameter("targetCodeableConcept", targetCodeableConcept);
 		return this;
 	}
 	
@@ -177,7 +179,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setTargetScope(UriType targetScope) {
-		getParameters().addParameter("targetScope", targetScope);
+		addParameter("targetScope", targetScope);
 		return this;
 	}
 	

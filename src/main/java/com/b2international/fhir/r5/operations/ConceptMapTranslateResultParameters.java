@@ -15,7 +15,9 @@
  */
 package com.b2international.fhir.r5.operations;
 
+import org.hl7.fhir.r5.model.BooleanType;
 import org.hl7.fhir.r5.model.Parameters;
+import org.hl7.fhir.r5.model.StringType;
 
 /**
  * @since 9.3 
@@ -31,12 +33,12 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 	}
 
 	public ConceptMapTranslateResultParameters setResult(boolean result) {
-		getParameters().addParameter("result", result);
+		addParameter("result", new BooleanType(result));
 		return this;
 	}
 	
 	public ConceptMapTranslateResultParameters setMessage(String message) {
-		getParameters().addParameter("message", message);
+		addParameter("message", new StringType(message));
 		return this;
 	}
 	

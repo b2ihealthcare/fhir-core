@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+import org.hl7.fhir.r5.model.DataType;
 import org.hl7.fhir.r5.model.Parameters;
 
 /**
@@ -51,6 +52,13 @@ public abstract class BaseParameters {
 	
 	public <T> boolean hasParameterWithValue(String name, Function<Parameters.ParametersParameterComponent, T> parameterValueExtractor, T expectedValue) {
 		return getParameters(name).stream().map(parameterValueExtractor).filter(expectedValue::equals).findFirst().isPresent();
+	}
+	
+	protected final void addParameter(String name, DataType value) {
+		// prevent adding primitive wrapper types when the value is not set
+		if (name != null && value != null && value.hasPrimitiveValue()) {
+			getParameters().addParameter(name, value);
+		}
 	}
 	
 }

@@ -83,7 +83,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setCode(CodeType code) {
-		getParameters().addParameter("code", code);
+		addParameter("code", code);
 		return this;
 	}
 	
@@ -92,7 +92,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setSystem(UriType system) {
-		getParameters().addParameter("system", system);
+		addParameter("system", system);
 		return this;
 	}
 	
@@ -101,12 +101,12 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setVersion(StringType version) {
-		getParameters().addParameter("version", version);
+		addParameter("version", version);
 		return this;
 	}
 	
 	public CodeSystemLookupParameters setCoding(Coding coding) {
-		getParameters().addParameter("coding", coding);
+		addParameter("coding", coding);
 		return this;
 	}
 	
@@ -119,7 +119,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDate(DateType date) {
-		getParameters().addParameter("date", date);
+		addParameter("date", date);
 		return this;
 	}
 	
@@ -128,7 +128,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDisplayLanguage(CodeType displayLanguage) {
-		getParameters().addParameter("displayLanguage", displayLanguage);
+		addParameter("displayLanguage", displayLanguage);
 		return this;
 	}
 	
@@ -137,7 +137,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setUseSupplement(CanonicalType useSupplement) {
-		getParameters().addParameter("useSupplement", useSupplement);
+		addParameter("useSupplement", useSupplement);
 		return this;
 	}
 	
@@ -154,9 +154,9 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		var list = propertyValues == null ? List.of() : propertyValues;
 		list.forEach(propertyValue -> {
 			if (propertyValue instanceof StringType) {
-				getParameters().addParameter("property", (StringType) propertyValue);
+				addParameter("property", (StringType) propertyValue);
 			} else if (propertyValue instanceof String) {
-				getParameters().addParameter("property", new StringType((String) propertyValue));
+				addParameter("property", new StringType((String) propertyValue));
 			} else {
 				throw new UnsupportedOperationException();
 //				throw new BadRequestException(String.format("Value type '%s' is not supported in property values. Need to be String or StringType.", propertyValue));

@@ -45,17 +45,17 @@ public class CodeSystemValidateCodeResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemValidateCodeResultParameters setResult(boolean result) {
-		getParameters().addParameter("result", result);
+		addParameter("result", new BooleanType(result));
 		return this;
 	}
 	
 	public CodeSystemValidateCodeResultParameters setMessage(String message) {
-		getParameters().addParameter("message", message);
+		addParameter("message", new StringType(message));
 		return this;
 	}
 	
 	public CodeSystemValidateCodeResultParameters setDisplay(String display) {
-		getParameters().addParameter("display", display);
+		addParameter("display", new StringType(display));
 		return this;
 	}
 

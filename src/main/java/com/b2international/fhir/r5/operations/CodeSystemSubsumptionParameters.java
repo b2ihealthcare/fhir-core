@@ -61,7 +61,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setSystem(StringType system) {
-		getParameters().addParameter("system", system);
+		addParameter("system", system);
 		return this;
 	}
 	
@@ -70,7 +70,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setVersion(StringType version) {
-		getParameters().addParameter("version", version);
+		addParameter("version", version);
 		return this;
 	}
 	
@@ -79,7 +79,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeA(StringType codeA) {
-		getParameters().addParameter("codeA", codeA);
+		addParameter("codeA", codeA);
 		return this;
 	}
 	
@@ -88,17 +88,17 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeB(StringType codeB) {
-		getParameters().addParameter("codeB", codeB);
+		addParameter("codeB", codeB);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodingA(Coding codingA) {
-		getParameters().addParameter("codingA", codingA);
+		addParameter("codingA", codingA);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodingB(Coding codingB) {
-		getParameters().addParameter("codingB", codingB);
+		addParameter("codingB", codingB);
 		return this;
 	}
 	

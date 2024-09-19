@@ -15,7 +15,6 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import java.text.ParseException;
 import java.util.Date;
 
 import org.hl7.fhir.r5.model.*;
@@ -90,7 +89,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 
 	public ValueSetValidateCodeParameters setUrl(UriType url) {
-		getParameters().addParameter("url", url);
+		addParameter("url", url);
 		return this;
 	}
 	
@@ -99,7 +98,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setContext(UriType context) {
-		getParameters().addParameter("context", context);
+		addParameter("context", context);
 		return this;
 	}
 	
@@ -108,7 +107,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setValueSetVersion(StringType valueSetVersion) {
-		getParameters().addParameter("valueSetVersion", valueSetVersion);
+		addParameter("valueSetVersion", valueSetVersion);
 		return this;
 	}
 	
@@ -117,7 +116,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 
 	public ValueSetValidateCodeParameters setCode(CodeType code) {
-		getParameters().addParameter("code", code);
+		addParameter("code", code);
 		return this;
 	}
 	
@@ -126,7 +125,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setSystem(UriType system) {
-		getParameters().addParameter("system", system);
+		addParameter("system", system);
 		return this;
 	}
 	
@@ -135,7 +134,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setSystemVersion(StringType systemVersion) {
-		getParameters().addParameter("systemVersion", systemVersion);
+		addParameter("systemVersion", systemVersion);
 		return this;
 	}
 	
@@ -144,17 +143,17 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 
 	public ValueSetValidateCodeParameters setDisplay(StringType display) {
-		getParameters().addParameter("display", display);
+		addParameter("display", display);
 		return this;
 	}
 	
 	public ValueSetValidateCodeParameters setCoding(Coding coding) {
-		getParameters().addParameter("coding", coding);
+		addParameter("coding", coding);
 		return this;
 	}
 	
 	public ValueSetValidateCodeParameters setCodeableConcept(CodeableConcept codeableConcept) {
-		getParameters().addParameter("codeableConcept", codeableConcept);
+		addParameter("codeableConcept", codeableConcept);
 		return this;
 	}
 	
@@ -167,7 +166,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setDate(DateType date) {
-		getParameters().addParameter("date", date);
+		addParameter("date", date);
 		return this;
 	}
 	
@@ -176,7 +175,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setAbstract(BooleanType isAbstract) {
-		getParameters().addParameter("abstract", isAbstract);
+		addParameter("abstract", isAbstract);
 		return this;
 	}
 	
@@ -185,7 +184,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setDisplayLanguage(CodeType displayLanguage) {
-		getParameters().addParameter("displayLanguage", displayLanguage);
+		addParameter("displayLanguage", displayLanguage);
 		return this;
 	}
 

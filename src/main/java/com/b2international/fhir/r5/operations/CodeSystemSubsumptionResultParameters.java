@@ -15,28 +15,15 @@
  */
 package com.b2international.fhir.r5.operations;
 
+import org.hl7.fhir.r4.model.codesystems.ConceptSubsumptionOutcome;
 import org.hl7.fhir.r5.model.Parameters;
+import org.hl7.fhir.r5.model.StringType;
 
 /**
  * @since 9.2 
  */
 public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 
-	public enum ConceptSubsumptionOutcome {
-		EQUIVALENT,
-		SUBSUMES,
-		SUBSUMED_BY,
-		NOT_SUBSUMED;
-		
-		public String getResultString() {
-			return name().toLowerCase().replaceAll("_", "-");
-		}
-		
-		public static ConceptSubsumptionOutcome fromRequestParameter(String requestParam) {
-			return valueOf(requestParam.toUpperCase().replaceAll("-", "_"));
-		}
-	}
-	
 	public CodeSystemSubsumptionResultParameters() {
 		this(new Parameters());
 	}
@@ -46,7 +33,7 @@ public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionResultParameters setOutcome(ConceptSubsumptionOutcome outcome) {
-		getParameters().addParameter("outcome", outcome.getResultString());
+		addParameter("outcome", new StringType(outcome.getDefinition()));
 		return this;
 	}
 	
@@ -55,7 +42,7 @@ public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 	}
 	
 	public static CodeSystemSubsumptionResultParameters subsumedBy() {
-		return new CodeSystemSubsumptionResultParameters().setOutcome(ConceptSubsumptionOutcome.SUBSUMED_BY);
+		return new CodeSystemSubsumptionResultParameters().setOutcome(ConceptSubsumptionOutcome.SUBSUMEDBY);
 	}
 	
 	public static CodeSystemSubsumptionResultParameters subsumes() {
@@ -63,7 +50,7 @@ public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 	}
 	
 	public static CodeSystemSubsumptionResultParameters notSubsumed() {
-		return new CodeSystemSubsumptionResultParameters().setOutcome(ConceptSubsumptionOutcome.NOT_SUBSUMED);
+		return new CodeSystemSubsumptionResultParameters().setOutcome(ConceptSubsumptionOutcome.NOTSUBSUMED);
 	}
 
 }
