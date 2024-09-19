@@ -94,7 +94,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		designations.stream()
-			.map(designation -> new Parameters.ParametersParameterComponent().setName("designation").setPart(designation.getPart()))
+			.map(designation -> new Parameters.ParametersParameterComponent().setName("designation").setPart(designation.getPartSorted()))
 			.forEach(getParameters()::addParameter);
 		
 		return this;
@@ -106,7 +106,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		properties.stream()
-			.map(property -> new Parameters.ParametersParameterComponent().setName("property").setPart(property.getPart()))
+			.map(property -> new Parameters.ParametersParameterComponent().setName("property").setPart(property.getPartSorted()))
 			.forEach(getParameters()::addParameter);
 	
 		return this;
