@@ -70,8 +70,8 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 
-	public List<StringType> getProperty() {
-		return getParameters("property").stream().map(ParametersParameterComponent::getValueStringType).toList();
+	public List<CodeType> getProperty() {
+		return getParameters("property").stream().map(ParametersParameterComponent::getValueCodeType).toList();
 	}
 	
 	public CanonicalType getUseSupplement() {
