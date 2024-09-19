@@ -196,7 +196,7 @@ public class LookupOperationResultSerializationTest {
 								{
 									"name": "description",
 									"valueString": "Test subdescription"
-								},
+								}
 							]
 						}
 					]
