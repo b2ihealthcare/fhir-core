@@ -47,11 +47,6 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeType getCode() {
-//		if (code != null) {
-//			return code.getCodeValue();
-//		} else if (coding != null) {
-//			return coding.getCode().getCodeValue();
-//		}
 		return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
@@ -191,6 +186,16 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 			return getVersion().getValue();
 		} else if (getCoding() != null && getCoding().getVersion() != null) {
 			return getCoding().getVersion();
+		} else {
+			return null;
+		}
+	}
+	
+	public String extractCode() {
+		if (getCode() != null) {
+			return getCode().getCode();
+		} else if (getCoding() != null) {
+			return getCoding().getCode();
 		} else {
 			return null;
 		}
