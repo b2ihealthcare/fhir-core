@@ -21,7 +21,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.hl7.fhir.r4.model.*;
-import org.hl7.fhir.r4.model.CodeSystem.ConceptPropertyComponent;
 import org.hl7.fhir.r4.model.Parameters.ParametersParameterComponent;
 
 /**
@@ -95,7 +94,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					return new Property(part);
 				})
 				.collect(Collectors.toList());
-	} 
+	}
 	
 	public CodeSystemLookupResultParameters setDesignation(List<Designation> designations) {
 		if (designations == null) {
@@ -133,7 +132,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 
-	public CodeSystemLookupResultParameters setProperty(List<ConceptPropertyComponent> properties) {
+	public CodeSystemLookupResultParameters setProperty(List<Property> properties) {
 		if (properties == null) {
 			return this;
 		}
@@ -146,7 +145,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 				propertyParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("code")
-						.setValue(property.getCodeElement())
+						.setValue(property.getCode())
 				);
 				
 				// property.value
@@ -155,6 +154,11 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 						.setName("value")
 						.setValue(property.getValue())
 				);
+				
+				// property.description
+				propertyParameter.addPart(new Parameters.ParametersParameterComponent()
+						.setName("description")
+						.setValue(property.getDescription()));
 				
 				return propertyParameter; 
 			})
@@ -262,10 +266,46 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.findFirst();
 		}
 		
-		private List<Parameters.ParametersParameterComponent> getSubPropertyParameters() {
+		public List<Property> getSubProperty() {
 			return part.stream()
 					.filter(param -> param.getName().equals("subproperty"))
+					.map(propertyParameter -> {
+						List<ParametersParameterComponent> part = propertyParameter.getPart();
+						return new Property(part);
+					})
 					.collect(Collectors.toList());
+		}
+		
+		public Property setCode(CodeType code) {
+			if (code == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("code")
+					.setValue(code));
+		}
+		
+		public Property setValue(Type value) {
+			if (value == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("value")
+					.setValue(value));
+		}
+		
+		public Property setDescription(StringType description) {
+			if (description == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("description")
+					.setValue(description));
+		}
+		
+		public Property addParameter(Parameters.ParametersParameterComponent parameter) {
+			part.add(parameter);
+			return this;
 		}
 	}
 }
