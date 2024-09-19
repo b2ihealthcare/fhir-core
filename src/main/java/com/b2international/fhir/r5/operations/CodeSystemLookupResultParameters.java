@@ -15,12 +15,15 @@
  */
 package com.b2international.fhir.r5.operations;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.hl7.fhir.r5.model.*;
 import org.hl7.fhir.r5.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.r5.model.CodeSystem.ConceptPropertyComponent;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.StringType;
+import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
 
 /**
  * @since 0.1
@@ -73,6 +76,20 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		addParameter("version", version);
 		return this;
 	}
+	
+	public StringType getDefinition() {
+		return getParameterValue("definition", Parameters.ParametersParameterComponent::getValueStringType);
+	}
+	
+	public CodeSystemLookupResultParameters setDefinition(String definition) {
+		return setDefinition(new StringType(definition));
+	}
+	
+	public CodeSystemLookupResultParameters setDefinition(StringType definition) {
+		addParameter("definition", definition);
+		return this;
+	}
+	
 
 	public CodeSystemLookupResultParameters setDesignation(List<ConceptDefinitionDesignationComponent> designations) {
 		if (designations == null) {
