@@ -21,8 +21,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.hl7.fhir.r5.model.*;
-import org.hl7.fhir.r5.model.CodeSystem.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.r5.model.CodeSystem.ConceptPropertyComponent;
 import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
 
 /**
@@ -91,7 +89,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 	}
 	
 
-	public CodeSystemLookupResultParameters setDesignation(List<ConceptDefinitionDesignationComponent> designations) {
+	public CodeSystemLookupResultParameters setDesignation(List<Designation> designations) {
 		if (designations == null) {
 			return this;
 		}
@@ -104,13 +102,13 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 				designationParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("value")
-						.setValue(designation.getValueElement())
+						.setValue(new StringType(designation.getValue()))
 				);
 				// add language part
 				designationParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("language")
-						.setValue(designation.getLanguageElement())
+						.setValue(designation.getLanguage())
 				);
 				// add use part
 				designationParameter.addPart(
@@ -118,7 +116,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 						.setName("use")
 						.setValue(designation.getUse())
 				);
-				// add language part
+				// add additional use part
 				designation.getAdditionalUse().forEach(additionalUse -> {
 					designationParameter.addPart(
 						new Parameters.ParametersParameterComponent()
@@ -126,16 +124,14 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 						.setValue(additionalUse)
 					);
 				});
-				
-				
-				return designationParameter; 
+				return designationParameter;
 			})
 			.forEach(getParameters()::addParameter);
 		
 		return this;
 	}
 
-	public CodeSystemLookupResultParameters setProperty(List<ConceptPropertyComponent> properties) {
+	public CodeSystemLookupResultParameters setProperty(List<Property> properties) {
 		if (properties == null) {
 			return this;
 		}
@@ -148,7 +144,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 				propertyParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("code")
-						.setValue(property.getCodeElement())
+						.setValue(property.getCode())
 				);
 				
 				// property.value
@@ -157,6 +153,16 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 						.setName("value")
 						.setValue(property.getValue())
 				);
+				
+				// property.description
+				propertyParameter.addPart(new Parameters.ParametersParameterComponent()
+						.setName("description")
+						.setValue(property.getDescription()));
+				
+				// property.source
+				propertyParameter.addPart(new Parameters.ParametersParameterComponent()
+						.setName("source")
+						.setValue(property.getSource()));
 				
 				return propertyParameter; 
 			})
@@ -178,16 +184,22 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public CodeType getLanguage() {
-			StringType type = (StringType) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			StringType type = getParameter("language").map(Parameters.ParametersParameterComponent::getValueStringType).orElse(null);
 			return new CodeType(type.getValueAsString());
 		}
 		
 		public Coding getUse() {
-			return (Coding) getParameter("use").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return getParameter("use").map(Parameters.ParametersParameterComponent::getValueCoding).orElse(null);
+		}
+		
+		public List<Coding> getAdditionalUse() {
+			return getParameters("additionalUse").stream()
+					.map(Parameters.ParametersParameterComponent::getValueCoding)
+					.collect(Collectors.toList());
 		}
 		
 		public String getValue() {
-			StringType type = (StringType) getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			StringType type = getParameter("value").map(Parameters.ParametersParameterComponent::getValueStringType).orElse(null);
 			return type.getValueAsString();
 		}
 		
@@ -209,6 +221,15 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.setValue(use));
 		}
 		
+		public Designation setAdditionalUse(Coding additionalUse) {
+			if (additionalUse == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("additionalUse")
+					.setValue(additionalUse));
+		}
+		
 		public Designation setValue(String value) {
 			if (value == null) {
 				return this;
@@ -228,6 +249,12 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.filter(param -> param.getName().equals(name))
 					.findFirst();
 		}
+		
+		private List<Parameters.ParametersParameterComponent> getParameters(String name) {
+			return part.stream()
+					.filter(param -> param.getName().equals(name))
+					.collect(Collectors.toList());
+		}
 	}
 	
 	public static class Property {
@@ -243,7 +270,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public CodeType getCode() {
-			return (CodeType) getParameter("code").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return getParameter("code").map(Parameters.ParametersParameterComponent::getValueCodeType).orElse(null);
 		}
 		
 		public DataType getValue() {
@@ -251,7 +278,11 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public StringType getDescription() {
-			return (StringType) getParameter("description").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
+			return getParameter("description").map(Parameters.ParametersParameterComponent::getValueStringType).orElse(null);
+		}
+		
+		public CanonicalType getSource() {
+			return getParameter("source").map(Parameters.ParametersParameterComponent::getValueCanonicalType).orElse(null);
 		}
 		
 		public List<Parameters.ParametersParameterComponent> getPart() {
@@ -299,6 +330,15 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return addParameter(new Parameters.ParametersParameterComponent()
 					.setName("description")
 					.setValue(description));
+		}
+		
+		public Property setSource(CanonicalType source) {
+			if (source == null) {
+				return this;
+			}
+			return addParameter(new Parameters.ParametersParameterComponent()
+					.setName("source")
+					.setValue(source));
 		}
 		
 		public Property addParameter(Parameters.ParametersParameterComponent parameter) {
