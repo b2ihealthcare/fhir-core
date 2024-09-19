@@ -80,6 +80,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
+	public List<CodeType> getProperty() {
+		return getParameters("property").stream().map(ParametersParameterComponent::getValueCodeType).toList();
+	}
+	
 	public CodeSystemLookupParameters setCode(String code) {
 		return setCode(new CodeType(code));
 	}
@@ -128,10 +132,6 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	public CodeSystemLookupParameters setDisplayLanguage(CodeType displayLanguage) {
 		getParameters().addParameter("displayLanguage", displayLanguage);
 		return this;
-	}
-
-	public List<StringType> getProperty() {
-		return getParameters("property").stream().map(ParametersParameterComponent::getValueStringType).toList();
 	}
 	
 	/**

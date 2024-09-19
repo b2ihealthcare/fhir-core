@@ -80,6 +80,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return (CodeType) getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValue);
 	}
 	
+	public List<CodeType> getProperty() {
+		return getParameters("property").stream().map(ParametersParameterComponent::getValue).map(t -> (CodeType) t).toList();
+	}
+	
 	public CodeSystemLookupParameters setCode(String code) {
 		return setCode(new CodeType(code));
 	}
@@ -130,10 +134,6 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return this;
 	}
 
-	public List<StringType> getProperty() {
-		return getParameters("property").stream().map(ParametersParameterComponent::getValue).map(t -> (StringType) t).toList();
-	}
-	
 	/**
 	 * Helper to get access to the raw property values.
 	 * @return the list of actual values instead of a list with wrapped {@link StringType} instances.
