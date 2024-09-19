@@ -102,4 +102,30 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 		return this;
 	}
 	
+	// Extractors that extract information from multiple parameters depending on which one they have value
+	
+	public String extractSystem() {
+		if (getSystem() != null) {
+			return getSystem().getValue();
+		} else if (getCodingA() != null && getCodingA().getSystem() != null) {
+			return getCodingA().getSystem();
+		} else if (getCodingB() != null && getCodingB().getSystem() != null) {
+			return getCodingB().getSystem();
+		} else {
+			return null;
+		}
+	}
+	
+	public String extractSystemVersion() {
+		if (getVersion() != null) {
+			return getVersion().getValue();
+		} else if (getCodingA() != null && getCodingA().getVersion() != null) {
+			return getCodingA().getVersion();
+		} else if (getCodingB() != null && getCodingB().getVersion() != null) {
+			return getCodingB().getVersion();
+		} else {
+			return null;
+		}
+	}
+	
 }
