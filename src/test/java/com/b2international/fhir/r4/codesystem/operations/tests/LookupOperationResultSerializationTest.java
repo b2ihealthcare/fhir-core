@@ -225,8 +225,22 @@ public class LookupOperationResultSerializationTest {
 		// Property.value
 		Coding coding = (Coding) parameters.getProperty().get(0).getValue();
 		assertThat(coding.getSystem()).isEqualTo("testCodingSystem");
+		assertThat(coding.getCode()).isEqualTo("testCodingCode");
+		assertThat(coding.getDisplay()).isEqualTo("Display test");
 		
 		// Property.description
 		assertThat(parameters.getProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test description");
+		
+		// Property.subproperty.code
+		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getCode().getValueAsString()).isEqualTo("testSubPropertyCode");
+		
+		//Property.subproperty.value
+		Coding subpropertyCoding = (Coding) parameters.getProperty().get(0).getSubProperty().get(0).getValue();
+		assertThat(subpropertyCoding.getSystem()).isEqualTo("testSubCodingSystem");
+		assertThat(subpropertyCoding.getCode()).isEqualTo("testSubCodingCode");
+		assertThat(subpropertyCoding.getDisplay()).isEqualTo("Sub Display test");
+		
+		// Property.subproperty.description
+		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test subdescription");
 	}
 }
