@@ -20,12 +20,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.hl7.fhir.r4b.model.CodeType;
-import org.hl7.fhir.r4b.model.Coding;
-import org.hl7.fhir.r4b.model.DataType;
-import org.hl7.fhir.r4b.model.Parameters;
+import org.hl7.fhir.r4b.model.*;
 import org.hl7.fhir.r4b.model.Parameters.ParametersParameterComponent;
-import org.hl7.fhir.r4b.model.StringType;
 
 /**
  * @since 0.1
