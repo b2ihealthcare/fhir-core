@@ -232,7 +232,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setActiveOnly(Boolean activeOnly) {
-		return setActiveOnly(new BooleanType(activeOnly));
+		return activeOnly == null ? this : setActiveOnly(new BooleanType(activeOnly));
 	}
 	
 	public ValueSetExpandParameters setActiveOnly(BooleanType activeOnly) {
@@ -241,7 +241,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNested(Boolean excludeNested) {
-		return setExcludeNested(new BooleanType(excludeNested));
+		return excludeNested == null ? this : setExcludeNested(new BooleanType(excludeNested));
 	}
 	
 	public ValueSetExpandParameters setExcludeNested(BooleanType excludeNested) {
@@ -250,7 +250,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNestedForUI(Boolean excludeNestedForUI) {
-		return setExcludeNestedForUI(new BooleanType(excludeNestedForUI));
+		return excludeNestedForUI == null ? this : setExcludeNestedForUI(new BooleanType(excludeNestedForUI));
 	}
 	
 	public ValueSetExpandParameters setExcludeNestedForUI(BooleanType excludeNestedForUI) {
@@ -259,7 +259,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNestedPostCoordinated(Boolean excludeNestedPostCoordinated) {
-		return setExcludeNestedPostCoordinated(new BooleanType(excludeNestedPostCoordinated));
+		return excludeNestedPostCoordinated == null ? this : setExcludeNestedPostCoordinated(new BooleanType(excludeNestedPostCoordinated));
 	}
 	
 	public ValueSetExpandParameters setExcludeNestedPostCoordinated(BooleanType excludeNestedPostCoordinated) {
@@ -323,11 +323,19 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setAfter(String after) {
+		return setAfter(new StringType(after));
+	}
+	
+	public ValueSetExpandParameters setAfter(StringType after) {
 		getParameters().addParameter("after", after);
 		return this;
 	}
 	
 	public ValueSetExpandParameters setWithHistorySupplements(Boolean withHistorySupplements) {
+		return withHistorySupplements == null ? this : setWithHistorySupplements(new BooleanType(withHistorySupplements));
+	}
+	
+	public ValueSetExpandParameters setWithHistorySupplements(BooleanType withHistorySupplements) {
 		getParameters().addParameter("withHistorySupplements", withHistorySupplements);
 		return this;
 	}
