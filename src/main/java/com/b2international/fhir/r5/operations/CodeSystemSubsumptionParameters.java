@@ -15,9 +15,7 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import org.hl7.fhir.r5.model.Coding;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.StringType;
+import org.hl7.fhir.r5.model.*;
 
 /**
  * @since 9.2
@@ -32,20 +30,20 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 		super(parameters);
 	}
 	
-	public StringType getSystem() {
-		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueStringType);
+	public UriType getSystem() {
+		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
 	}
 	
 	public StringType getVersion() {
 		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
-	public StringType getCodeA() {
-		return getParameterValue("codeA", Parameters.ParametersParameterComponent::getValueStringType);
+	public CodeType getCodeA() {
+		return getParameterValue("codeA", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
-	public StringType getCodeB() {
-		return getParameterValue("codeB", Parameters.ParametersParameterComponent::getValueStringType);
+	public CodeType getCodeB() {
+		return getParameterValue("codeB", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public Coding getCodingA() {
@@ -57,10 +55,10 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 
 	public CodeSystemSubsumptionParameters setSystem(String system) {
-		return setSystem(new StringType(system));
+		return setSystem(new UriType(system));
 	}
 	
-	public CodeSystemSubsumptionParameters setSystem(StringType system) {
+	public CodeSystemSubsumptionParameters setSystem(UriType system) {
 		addParameter("system", system);
 		return this;
 	}
@@ -75,19 +73,19 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeA(String codeA) {
-		return setCodeA(new StringType(codeA));
+		return setCodeA(new CodeType(codeA));
 	}
 	
-	public CodeSystemSubsumptionParameters setCodeA(StringType codeA) {
+	public CodeSystemSubsumptionParameters setCodeA(CodeType codeA) {
 		addParameter("codeA", codeA);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeB(String codeB) {
-		return setCodeB(new StringType(codeB));
+		return setCodeB(new CodeType(codeB));
 	}
 	
-	public CodeSystemSubsumptionParameters setCodeB(StringType codeB) {
+	public CodeSystemSubsumptionParameters setCodeB(CodeType codeB) {
 		addParameter("codeB", codeB);
 		return this;
 	}
