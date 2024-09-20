@@ -87,6 +87,9 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 	
+	public List<Designation> getDesignation() {
+		return getParameters("designation").stream().map(param -> new Designation(param.getPart())).toList();
+	}
 
 	public CodeSystemLookupResultParameters setDesignation(List<Designation> designations) {
 		if (designations == null) {
@@ -100,6 +103,10 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 
+	public List<Property> getProperty() {
+		return getParameters("property").stream().map(param -> new Property(param.getPart())).toList();
+	}
+	
 	public CodeSystemLookupResultParameters setProperty(List<Property> properties) {
 		if (properties == null) {
 			return this;
