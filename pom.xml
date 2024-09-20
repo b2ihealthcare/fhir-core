@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.b2ihealthcare</groupId>
-	<artifactId>fhir-terminology-service-model</artifactId>
+	<groupId>com.b2international</groupId>
+	<artifactId>fhir-core</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
-	<name>FHIR Object Classes and Converters</name>
-	<description>FHIR Object Classes and Converters (R4, R4B, R5)</description>
+	<name>FHIR Core Classes and Converters</name>
+	<description>FHIR Core Classes and Converters (R4, R4B, R5)</description>
 	<packaging>bundle</packaging>
 
 	<properties>
@@ -121,6 +121,12 @@
 			<artifactId>gson</artifactId>
 			<version>${gson.version}</version>
 		</dependency>
+		
+<!--		<dependency>-->
+<!--    		<groupId>xpp3</groupId>-->
+<!--    		<artifactId>xpp3_min</artifactId>-->
+<!--    		<version>1.1.4c</version>-->
+<!--		</dependency>-->
 
 		<!-- Dependencies to depend on via MANIFEST.MF -->
 		<dependency>
@@ -196,7 +202,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Bundle-SymbolicName>com.b2ihealthcare.fhir.terminology.service.model</Bundle-SymbolicName>
+						<Bundle-SymbolicName>com.international.fhir.core</Bundle-SymbolicName>
 						<Embed-Directory>lib</Embed-Directory>
 						<Embed-Dependency>*;scope=compile</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
@@ -238,7 +244,7 @@
 						</Import-Package>
 						<!-- Using exportcontens directive instead of Export-Package header to prevent copying packages from embedded jars in the final bundle -->
 						<_exportcontents>
-							com.b2international.*,
+							com.b2international.fhir.*,
 							org.hl7.fhir.exceptions.*,
 							org.hl7.fhir.utilities.*,
 							org.hl7.fhir.r4.*,
@@ -299,9 +305,9 @@
 	</distributionManagement>
 
 	<scm>
-		<url>https://github.com/b2ihealthcare/fhir-terminology-service-model</url>
-		<connection>scm:git:ssh://github.com/b2ihealthcare/fhir-terminology-service-model.git</connection>
-		<developerConnection>scm:git:ssh@github.com:b2ihealthcare/fhir-terminology-service-model.git</developerConnection>
+		<url>https://github.com/b2ihealthcare/fhir-core</url>
+		<connection>scm:git:ssh://github.com/b2ihealthcare/fhir-core.git</connection>
+		<developerConnection>scm:git:ssh@github.com:b2ihealthcare/fhir-core.git</developerConnection>
 	</scm>
 
 </project>
