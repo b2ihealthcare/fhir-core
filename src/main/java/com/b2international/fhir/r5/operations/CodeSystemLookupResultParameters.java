@@ -61,7 +61,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 
-	public StringType getVersionDisplay() {
+	public StringType getVersion() {
 		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
