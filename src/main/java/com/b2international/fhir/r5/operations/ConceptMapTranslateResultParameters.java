@@ -32,9 +32,17 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 		super(parameters);
 	}
 
+	public BooleanType getResult() {
+		return getParameterValue("result", Parameters.ParametersParameterComponent::getValueBooleanType);
+	}
+	
 	public ConceptMapTranslateResultParameters setResult(boolean result) {
 		addParameter("result", new BooleanType(result));
 		return this;
+	}
+	
+	public StringType getMessage() {
+		return getParameterValue("message", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
 	public ConceptMapTranslateResultParameters setMessage(String message) {
