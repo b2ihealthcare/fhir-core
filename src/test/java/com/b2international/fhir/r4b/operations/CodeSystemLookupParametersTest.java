@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.b2international.fhir.r5.codesystem.operations.tests;
+package com.b2international.fhir.r4b.operations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.hl7.fhir.r5.formats.JsonParser;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.Resource;
+import org.hl7.fhir.r4b.formats.JsonParser;
+import org.hl7.fhir.r4b.model.Parameters;
+import org.hl7.fhir.r4b.model.Resource;
 import org.junit.Test;
 
-import com.b2international.fhir.r5.operations.CodeSystemLookupParameters;
+import com.b2international.fhir.r4b.operations.CodeSystemLookupParameters;
 
 /**
  * @since 0.1
  */
-public class LookupOperationInputSerializationTest {
+public class CodeSystemLookupParametersTest {
 	
 	private final JsonParser parser = new JsonParser();
 	
@@ -99,10 +99,6 @@ public class LookupOperationInputSerializationTest {
 				{
 					"name": "property",
 					"valueCode": "testCode"
-				},
-				{
-					"name": "useSupplement",
-					"valueCanonical": "testUri"
 				}
 			]
 		}""";
@@ -135,9 +131,6 @@ public class LookupOperationInputSerializationTest {
 		
 		// Property
 		assertThat(parameters.getProperty().get(0).getValueAsString()).isEqualTo("testCode");
-		
-		// Use supplement
-		assertThat(parameters.getUseSupplement().getCanonical()).isEqualTo("testUri");
 	}
 	
 }

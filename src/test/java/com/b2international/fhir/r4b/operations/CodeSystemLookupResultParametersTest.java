@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.b2international.fhir.r4b.codesystem.operations.tests;
+package com.b2international.fhir.r4b.operations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,7 +29,7 @@ import com.b2international.fhir.r4b.operations.CodeSystemLookupResultParameters;
 /**
  * @since 0.1
  */
-public class LookupOperationResultSerializationTest {
+public class CodeSystemLookupResultParametersTest {
 	
 	private final JsonParser parser = new JsonParser();
 	

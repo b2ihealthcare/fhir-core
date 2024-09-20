@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.b2international.fhir.r5.codesystem.operations.tests;
+package com.b2international.fhir.r4.operations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.hl7.fhir.r5.formats.JsonParser;
-import org.hl7.fhir.r5.model.Coding;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.Resource;
+import org.hl7.fhir.r4.formats.JsonParser;
+import org.hl7.fhir.r4.model.Coding;
+import org.hl7.fhir.r4.model.Parameters;
+import org.hl7.fhir.r4.model.Resource;
 import org.junit.Test;
 
-import com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters;
+import com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters;
 
 
 /**
  * @since 0.1
  */
-public class LookupOperationResultSerializationTest {
+public class CodeSystemLookupResultParametersTest {
 	
 	private final JsonParser parser = new JsonParser();
 	
@@ -50,11 +50,7 @@ public class LookupOperationResultSerializationTest {
 				{
 					"name": "display",
 					"valueString": "testDisplay"
-				},
-				{
-					"name": "definition",
-					"valueString": "Test definition"
-				}	
+				}
 			]
 		}""";
 		
@@ -72,9 +68,6 @@ public class LookupOperationResultSerializationTest {
 		
 		// Display
 		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
-		
-		// Definition
-		assertThat(parameters.getDefinition().getValueAsString()).isEqualTo("Test definition");
 	}
 	
 	@Test
@@ -97,10 +90,6 @@ public class LookupOperationResultSerializationTest {
 					"valueString": "testDisplay"
 				},
 				{
-					"name": "definition",
-					"valueString": "Test definition"
-				},
-				{
 					"name": "designation",
 					"part": [
 						{
@@ -113,14 +102,6 @@ public class LookupOperationResultSerializationTest {
 								"system": "testCodingSystem",
 								"code": "testCodingCode",
 								"display": "Display test"
-							}
-						},
-						{
-							"name": "additionalUse",
-							"valueCoding": {
-								"system": "addTestCodingSystem2",
-								"code": "addTestCodingCode",
-								"display": "Additional Display test"
 							}
 						},
 						{
@@ -147,9 +128,6 @@ public class LookupOperationResultSerializationTest {
 		// Display
 		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
 		
-		// Definition
-		assertThat(parameters.getDefinition().getValueAsString()).isEqualTo("Test definition");
-		
 		// Designation.language
 		assertThat(parameters.getDesignation().get(0).getLanguage().getValueAsString()).isEqualTo("en");
 		
@@ -158,14 +136,9 @@ public class LookupOperationResultSerializationTest {
 		assertThat(parameters.getDesignation().get(0).getUse().getCode()).isEqualTo("testCodingCode");
 		assertThat(parameters.getDesignation().get(0).getUse().getDisplay()).isEqualTo("Display test");
 		
-		
-		// Designation.additionalUse
-		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getSystem()).isEqualTo("addTestCodingSystem2");
-		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getCode()).isEqualTo("addTestCodingCode");
-		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getDisplay()).isEqualTo("Additional Display test");
-		
 		// Designation.value
-		assertThat(parameters.getDesignation().get(0).getValue().getValueAsString()).isEqualTo("testValue");
+		assertThat(parameters.getDesignation().get(0).getValue()).isEqualTo("testValue");
+		
 	}
 	
 	@Test
@@ -187,10 +160,6 @@ public class LookupOperationResultSerializationTest {
 					"valueString": "testDisplay"
 				},
 				{
-					"name": "definition",
-					"valueString": "Test definition"
-				},
-				{
 					"name": "property",
 					"part": [
 						{
@@ -210,10 +179,6 @@ public class LookupOperationResultSerializationTest {
 							"valueString": "Test description"
 						},
 						{
-							"name": "source",
-							"valueCanonical": "testUri"
-						},
-						{
 							"name": "subproperty",
 							"part": [
 								{
@@ -231,10 +196,6 @@ public class LookupOperationResultSerializationTest {
 								{
 									"name": "description",
 									"valueString": "Test subdescription"
-								},
-								{
-									"name": "source",
-									"valueCanonical": "testSubUri"
 								}
 							]
 						}
@@ -270,9 +231,6 @@ public class LookupOperationResultSerializationTest {
 		// Property.description
 		assertThat(parameters.getProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test description");
 		
-		// Property.source
-		assertThat(parameters.getProperty().get(0).getSource().getValueAsString()).isEqualTo("testUri");
-		
 		// Property.subproperty.code
 		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getCode().getValueAsString()).isEqualTo("testSubPropertyCode");
 		
@@ -284,8 +242,5 @@ public class LookupOperationResultSerializationTest {
 		
 		// Property.subproperty.description
 		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test subdescription");
-		
-		// Property.subproperty.source
-		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getSource().getValueAsString()).isEqualTo("testSubUri");
 	}
 }
