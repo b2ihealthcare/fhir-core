@@ -18,9 +18,12 @@ package com.b2international.fhir.r5.codesystem.operations.tests;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.hl7.fhir.r5.formats.JsonParser;
+import org.hl7.fhir.r5.model.Coding;
 import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.junit.Test;
+
+import com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters;
 
 
 /**
@@ -37,12 +40,12 @@ public class LookupOperationResultSerializationTest {
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueString": "testCode" 
+					"name": "name",
+					"valueString": "testName" 
 				},
 				{
-					"name": "system",
-					"valueString": "testSystem"
+					"name": "version",
+					"valueString": "testVersion"
 				},
 				{
 					"name": "display",
@@ -58,6 +61,20 @@ public class LookupOperationResultSerializationTest {
 		Resource resource = parser.parse(json);
 		
 		assertThat(resource).isInstanceOf(Parameters.class);
+		
+		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		// Name
+		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
+		
+		// Version
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		
+		// Display
+		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
+		
+		// Definition
+		assertThat(parameters.getDefinition().getValueAsString()).isEqualTo("Test definition");
 	}
 	
 	@Test
@@ -68,12 +85,12 @@ public class LookupOperationResultSerializationTest {
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueString": "testCode" 
+					"name": "name",
+					"valueString": "testName" 
 				},
 				{
-					"name": "system",
-					"valueString": "testSystem"
+					"name": "version",
+					"valueString": "testVersion"
 				},
 				{
 					"name": "display",
@@ -118,6 +135,37 @@ public class LookupOperationResultSerializationTest {
 		Resource resource = parser.parse(json);
 		
 		assertThat(resource).isInstanceOf(Parameters.class);
+		
+		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		// Name
+		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
+		
+		// Version
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		
+		// Display
+		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
+		
+		// Definition
+		assertThat(parameters.getDefinition().getValueAsString()).isEqualTo("Test definition");
+		
+		// Designation.language
+		assertThat(parameters.getDesignation().get(0).getLanguage().getValueAsString()).isEqualTo("en");
+		
+		// Designation.use
+		assertThat(parameters.getDesignation().get(0).getUse().getSystem()).isEqualTo("testCodingSystem");
+		assertThat(parameters.getDesignation().get(0).getUse().getCode()).isEqualTo("testCodingCode");
+		assertThat(parameters.getDesignation().get(0).getUse().getDisplay()).isEqualTo("Display test");
+		
+		
+		// Designation.additionalUse
+		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getSystem()).isEqualTo("addTestCodingSystem2");
+		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getCode()).isEqualTo("addTestCodingCode");
+		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getDisplay()).isEqualTo("Additional Display test");
+		
+		// Designation.value
+		assertThat(parameters.getDesignation().get(0).getValue().getValueAsString()).isEqualTo("testValue");
 	}
 	
 	@Test
@@ -127,12 +175,12 @@ public class LookupOperationResultSerializationTest {
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueString": "testCode" 
+					"name": "name",
+					"valueString": "testName" 
 				},
 				{
-					"name": "system",
-					"valueString": "testSystem"
+					"name": "version",
+					"valueString": "testVersion"
 				},
 				{
 					"name": "display",
@@ -198,9 +246,46 @@ public class LookupOperationResultSerializationTest {
 		Resource resource = parser.parse(json);
 		
 		assertThat(resource).isInstanceOf(Parameters.class);
-	}
-	
-	@Test
-	public void all_parameters() throws Exception {
+		
+		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		// Name
+		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
+		
+		// Version
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		
+		// Display
+		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
+		
+		// Property.code
+		assertThat(parameters.getProperty().get(0).getCode().getValueAsString()).isEqualTo("testPropertyCode");
+		
+		// Property.value
+		Coding coding = (Coding) parameters.getProperty().get(0).getValue();
+		assertThat(coding.getSystem()).isEqualTo("testCodingSystem");
+		assertThat(coding.getCode()).isEqualTo("testCodingCode");
+		assertThat(coding.getDisplay()).isEqualTo("Display test");
+		
+		// Property.description
+		assertThat(parameters.getProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test description");
+		
+		// Property.source
+		assertThat(parameters.getProperty().get(0).getSource().getValueAsString()).isEqualTo("testUri");
+		
+		// Property.subproperty.code
+		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getCode().getValueAsString()).isEqualTo("testSubPropertyCode");
+		
+		//Property.subproperty.value
+		Coding subpropertyCoding = (Coding) parameters.getProperty().get(0).getSubProperty().get(0).getValue();
+		assertThat(subpropertyCoding.getSystem()).isEqualTo("testSubCodingSystem");
+		assertThat(subpropertyCoding.getCode()).isEqualTo("testSubCodingCode");
+		assertThat(subpropertyCoding.getDisplay()).isEqualTo("Sub Display test");
+		
+		// Property.subproperty.description
+		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test subdescription");
+		
+		// Property.subproperty.source
+		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getSource().getValueAsString()).isEqualTo("testSubUri");
 	}
 }
