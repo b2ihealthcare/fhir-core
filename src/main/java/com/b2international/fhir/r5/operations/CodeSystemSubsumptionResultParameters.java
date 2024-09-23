@@ -32,6 +32,10 @@ public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 		super(parameters);
 	}
 	
+	public CodeType getOutcome() {
+		return getParameterValue("outcome", Parameters.ParametersParameterComponent::getValueCodeType);
+	}
+	
 	public CodeSystemSubsumptionResultParameters setOutcome(ConceptSubsumptionOutcome outcome) {
 		addParameter("outcome", new CodeType(outcome.toCode()));
 		return this;
