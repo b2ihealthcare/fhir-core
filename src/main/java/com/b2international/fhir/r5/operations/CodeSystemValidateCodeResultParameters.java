@@ -15,9 +15,7 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import org.hl7.fhir.r5.model.BooleanType;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.StringType;
+import org.hl7.fhir.r5.model.*;
 
 /**
  * @since 9.3 
@@ -44,21 +42,77 @@ public class CodeSystemValidateCodeResultParameters extends BaseParameters {
 		return getParameterValue("display", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
+	public CodeType getCode() {
+		return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
+	}
+	
+	public UriType getSytem() {
+		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
+	}
+	
+	public StringType getVersion() {
+		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
+	}
+	
+	public CodeableConcept getCodeableConcept() {
+		return getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
+	}
+	
 	public CodeSystemValidateCodeResultParameters setResult(boolean result) {
 		addParameter("result", new BooleanType(result));
 		return this;
 	}
 	
 	public CodeSystemValidateCodeResultParameters setMessage(String message) {
-		addParameter("message", new StringType(message));
+		return setMessage(new StringType(message));
+	}
+	
+	public CodeSystemValidateCodeResultParameters setMessage(StringType message) {
+		addParameter("message", message);
 		return this;
 	}
 	
 	public CodeSystemValidateCodeResultParameters setDisplay(String display) {
-		addParameter("display", new StringType(display));
+		return setDisplay(new StringType(display));
+	}
+	
+	public CodeSystemValidateCodeResultParameters setDisplay(StringType display) {
+		addParameter("display", display);
+		return this;
+	}
+	
+	public CodeSystemValidateCodeResultParameters setCode(String code) {
+		return setCode(new CodeType(code));
+	}
+	
+	public CodeSystemValidateCodeResultParameters setCode(CodeType codeType) {
+		addParameter("code", codeType);
+		return this;
+	}
+	
+	public CodeSystemValidateCodeResultParameters setSystem(String system) {
+		return setSysytem(new UriType(system));
+	}
+
+	public CodeSystemValidateCodeResultParameters setSysytem(UriType uriType) {
+		addParameter("system", uriType);
 		return this;
 	}
 
+	public CodeSystemValidateCodeResultParameters setVersion(String version) {
+		return setVersion(new StringType(version));
+	}
+	
+	public CodeSystemValidateCodeResultParameters setVersion(StringType version) {
+		addParameter("version", version);
+		return this;
+	}
+	
+	public CodeSystemValidateCodeResultParameters setCodeableConcept(CodeableConcept codeableConcept) {
+		addParameter("codeableConcept", codeableConcept);
+		return this;
+	}
+	
 	// TODO add issues
 	
 }
