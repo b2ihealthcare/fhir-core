@@ -15,6 +15,10 @@
  */
 package com.b2international.fhir.r5.operations;
 
+
+
+import java.util.List;
+
 import org.hl7.fhir.r5.model.*;
 
 /**
@@ -42,6 +46,10 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		return getParameterValue("conceptMapVersion", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
+	public CodeType getSourceCode() {
+		return getParameterValue("sourceCode", Parameters.ParametersParameterComponent::getValueCodeType);
+	}
+	
 	public UriType getSystem() {
 		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
 	}
@@ -50,8 +58,8 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
-	public CodeType getSourceCode() {
-		return getParameterValue("sourceCode", Parameters.ParametersParameterComponent::getValueCodeType);
+	public UriType getSourceScope() {
+		return getParameterValue("sourceScope", Parameters.ParametersParameterComponent::getValueUriType);
 	}
 
 	public Coding getSourceCoding() {
@@ -60,10 +68,6 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	
 	public CodeableConcept getSourceCodeableConcept() {
 		return getParameterValue("sourceCodeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
-	}
-	
-	public UriType getSourceScope() {
-		return getParameterValue("sourceScope", Parameters.ParametersParameterComponent::getValueUriType);
 	}
 	
 	public CodeType getTargetCode() {
@@ -82,7 +86,13 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		return getParameterValue("targetScope", Parameters.ParametersParameterComponent::getValueUriType);
 	}
 	
-	// TODO add Dependency getters
+	public UriType getTargetSystem() {
+		return getParameterValue("targetSystem", Parameters.ParametersParameterComponent::getValueUriType);
+	}
+	
+	public List<Dependency> getDependency() {
+		return getParameters("dependency").stream().map(param -> new Dependency(param.getPart())).toList();
+	}
 	
 	public ConceptMapTranslateParameters setUrl(String url) {
 		return setUrl(new UriType(url));
@@ -183,6 +193,61 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		return this;
 	}
 	
-	// TODO add Dependency setters
+	public ConceptMapTranslateParameters setTargetSystem(String targetSystem) {
+		return setTargetScope(new UriType(targetSystem));
+	}
 	
+	public ConceptMapTranslateParameters setTargetSystem(UriType targetSystem) {
+		addParameter("targetSystem", targetSystem);
+		return this;
+	}
+	
+	public ConceptMapTranslateParameters setDependency(List<Dependency> dependencies) {
+		if (dependencies == null) {
+			return this;
+		}
+		
+		dependencies.stream()
+			.map(dependency -> new Parameters.ParametersParameterComponent().setName("dependency").setPart(dependency.getPart()))
+			.forEach(getParameters()::addParameter);
+		
+		return this;
+	}
+	
+	public static final class Dependency extends BasePart  {
+		
+		public Dependency() {
+			super(null);
+		}
+		
+		public Dependency(List<Parameters.ParametersParameterComponent> part) {
+			super(part);
+		}
+		
+		public final UriType getAttribute() {
+			return getParameterValue("attribute", Parameters.ParametersParameterComponent::getValueUriType);
+		}
+		
+		public final DataType getValue() {
+			return getParameterValue("value", Parameters.ParametersParameterComponent::getValue);
+		}
+		
+		public Dependency setAttribute(String attribute) {
+			return setAttribute(new UriType(attribute));
+		}
+		
+		public Dependency setAttribute(UriType attribute) {
+			addParameter("attribute", attribute);
+			return this;
+		}
+		
+		public Dependency setValue(String value) {
+			return setValue(new StringType(value));
+		}
+		
+		public Dependency setValue(DataType value) {
+			addParameter("value", value);
+			return this;
+		}
+	}
 }
