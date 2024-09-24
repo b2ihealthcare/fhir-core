@@ -21,7 +21,7 @@ import org.hl7.fhir.r5.model.*;
  * @since 9.3 
  */
 public class CodeSystemValidateCodeResultParameters extends BaseParameters {
-
+	
 	public CodeSystemValidateCodeResultParameters() {
 		this(new Parameters());
 	}
@@ -57,6 +57,12 @@ public class CodeSystemValidateCodeResultParameters extends BaseParameters {
 	public CodeableConcept getCodeableConcept() {
 		return getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
 	}
+	
+	// TODO: revise issues parameter
+//	public OperationOutcome getIssues() {
+//		OperationOutcome operationOutcome = new OperationOutcome();
+//		getParameter("issues");
+//	}
 	
 	public CodeSystemValidateCodeResultParameters setResult(boolean result) {
 		addParameter("result", new BooleanType(result));
@@ -113,6 +119,51 @@ public class CodeSystemValidateCodeResultParameters extends BaseParameters {
 		return this;
 	}
 	
-	// TODO add issues
-	
+	// TODO: revise issues parameter
+//	public CodeSystemValidateCodeResultParameters setIssues(OperationOutcome issues) {
+//		if (issues == null) {
+//			return this;
+//		}
+//		
+//		List<OperationOutcomeIssueComponent> issue = issues.getIssue();
+//		
+//		List<ParametersParameterComponent> issueList = issue.stream()
+//			.map(iss -> {
+//				var issueParameter = new Parameters.ParametersParameterComponent().setName("issue");
+//				
+//				issueParameter.addPart(new Parameters.ParametersParameterComponent()
+//						.setName("severity")
+//						.setValue(new CodeType(iss.getSeverity().toString())));
+//				
+//				issueParameter.addPart(new Parameters.ParametersParameterComponent()
+//						.setName("code")
+//						.setValue(new CodeType(iss.getCode().toString())));
+//				
+//				issueParameter.addPart(new Parameters.ParametersParameterComponent()
+//						.setName("details")
+//						.setValue(iss.getDetails()));
+//				
+//				issueParameter.addPart(new Parameters.ParametersParameterComponent()
+//						.setName("diagnostics")
+//						.setValue(new StringType(iss.getDiagnostics())));
+//				
+//				iss.getLocation().stream().forEach(location -> issueParameter.addPart(
+//						new Parameters.ParametersParameterComponent()
+//							.setName("location")
+//							.setValue(location)
+//				));
+//				
+//				iss.getLocation().stream().forEach(expression -> issueParameter.addPart(
+//						new Parameters.ParametersParameterComponent()
+//							.setName("expression")
+//							.setValue(expression)
+//				));
+//				
+//				return issueParameter;
+//			})
+//			.collect(Collectors.toList());
+//		
+//		getParameters().addParameter(new ParametersParameterComponent("issues").setPart(issueList));
+//		return this;
+//	}
 }
