@@ -15,9 +15,9 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import org.hl7.fhir.r5.model.BooleanType;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.StringType;
+import java.util.List;
+
+import org.hl7.fhir.r5.model.*;
 
 /**
  * @since 9.3 
@@ -36,20 +36,128 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 		return getParameterValue("result", Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 	
-	public ConceptMapTranslateResultParameters setResult(boolean result) {
-		addParameter("result", new BooleanType(result));
-		return this;
-	}
 	
 	public StringType getMessage() {
 		return getParameterValue("message", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
-	public ConceptMapTranslateResultParameters setMessage(String message) {
-		addParameter("message", new StringType(message));
+	public List<Match> getMatch() {
+		return getParameters("match").stream().map(param -> new Match(param.getPart())).toList();
+	}
+	
+	public ConceptMapTranslateResultParameters setResult(boolean result) {
+		addParameter("result", new BooleanType(result));
 		return this;
 	}
 	
-	// TODO add Match object support
+	public ConceptMapTranslateResultParameters setMessage(String message) {
+		return setMessage(new StringType(message));
+	}
 	
+	public ConceptMapTranslateResultParameters setMessage(StringType message) {
+		addParameter("message", message);
+		return this;
+	}
+	
+	public ConceptMapTranslateResultParameters setMatch(List<Match> matches) {
+		if (matches == null) {
+			return this;
+		}
+		matches.stream()
+			.map(match -> new Parameters.ParametersParameterComponent().setName("match").setPart(match.getPartSorted()))
+			.forEach(getParameters()::addParameter);
+		
+		return this;
+	}
+	
+	public static final class Match extends BasePart {
+		
+		public Match() {
+			super(null);
+		}
+		
+		public Match(List<Parameters.ParametersParameterComponent> part) {
+			super(part);
+		}
+		
+		public CodeType getRelationship() {
+			return getParameterValue("relationship", Parameters.ParametersParameterComponent::getValueCodeType);
+		}
+		
+		public Coding getConcept() {
+			return getParameterValue("concept", Parameters.ParametersParameterComponent::getValueCoding);
+		}
+		
+		public List<Property> getProperty() {
+			return getParameters("property").map(param -> new Property(param.getPart())).toList();
+		}
+		
+		public List<Product> getProduct() {
+			return getParameters("product").map(param -> new Product(param.getPart())).toList();
+		}
+		
+		public List<Product> getDependsOn() {
+			return getParameters("dependsOn").map(param -> new Product(param.getPart())).toList();
+		}
+		
+		public UriType getOriginMap() {
+			return getParameterValue("originMap", Parameters.ParametersParameterComponent::getValueUriType);
+		}
+		
+		public Match setRelationship(String relationship) {
+			return setRelationship(new CodeType(relationship));
+		}
+		
+		public Match setRelationship(CodeType codeType) {
+			addParameter("relationship", codeType);
+			return this;
+		}
+		
+		public Match setConcept(Coding concept) {
+			addParameter("concept", concept);
+			return this;
+		}
+		
+		public static final class Property extends BasePart {
+			
+			public Property() {
+				super(null);
+			}
+			
+			public Property(List<Parameters.ParametersParameterComponent> part) {
+				super(part);
+			}
+			
+			// Mandatory
+			public UriType getUri() {
+				return getParameter("uri").map(Parameters.ParametersParameterComponent::getValueUriType).get();
+			}
+			
+			// Mandatory
+			public DataType getValue() {
+				return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).get();
+			}
+		}
+		
+		public static final class Product extends BasePart {
+			
+			public Product() {
+				super(null);
+			}
+			
+			public Product(List<Parameters.ParametersParameterComponent> part) {
+				super(part);
+			}
+			
+			// Mandatory
+			public UriType geAttribute() {
+				return getParameter("attribute").map(Parameters.ParametersParameterComponent::getValueUriType).get();
+			}
+			
+			// Mandatory
+			public DataType getValue() {
+				return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).get();
+			}
+		}
+	}
 }
