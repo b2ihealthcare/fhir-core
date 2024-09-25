@@ -88,6 +88,10 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	public BooleanType getActiveOnly() {
 		return getParameterValue("activeOnly", Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
+	
+	public List<CanonicalType> getUseSupplement() {
+		return getParameters("useSupplement").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
+	}
 
 	public BooleanType getExcludeNested() {
 		return getParameterValue("excludeNested", Parameters.ParametersParameterComponent::getValueBooleanType);
@@ -100,25 +104,29 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	public BooleanType getExcludePostCoordinated() {
 		return getParameterValue("excludePostCoordinated", Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
-
+	
 	public CodeType getDisplayLanguage() {
 		return getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
-	public UriType getExcludeSystem() {
-		return getParameterValue("excludeCodeSystem", Parameters.ParametersParameterComponent::getValueUriType);
+	public List<StringType> getProperty() {
+		return getParameters("property").stream().map(Parameters.ParametersParameterComponent::getValueStringType).toList();
 	}
 	
-	public UriType getSystemVersion() {
-		return getParameterValue("systemVersion", Parameters.ParametersParameterComponent::getValueUriType);
+	public List<CanonicalType> getExcludeSystem() {
+		return getParameters("exclude-system").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
-	public UriType getCheckSystemVersion() {
-		return getParameterValue("checkSystemVersion", Parameters.ParametersParameterComponent::getValueUriType);
+	public List<CanonicalType> getSystemVersion() {
+		return getParameters("system-version").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
-	public UriType getForceSystemVersion() {
-		return getParameterValue("forceSystemVersion", Parameters.ParametersParameterComponent::getValueUriType);
+	public List<CanonicalType> getCheckSystemVersion() {
+		return getParameters("check-system-version").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
+	}
+	
+	public List<CanonicalType> getForceSystemVersion() {
+		return getParameters("force-system-version").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 
 	public ValueSetExpandParameters setUrl(String url) {
@@ -242,6 +250,21 @@ public final class ValueSetExpandParameters extends BaseParameters {
 		return this;
 	}
 	
+	public ValueSetExpandParameters setUseSupplement(List<?> useSupplements) {
+		if (useSupplements != null && !useSupplements.isEmpty()) {
+			useSupplements.stream().map(u -> {
+				if (u instanceof CanonicalType) {
+					return (CanonicalType) u;
+				} else if (u instanceof String) {
+					return new CanonicalType((String) u);
+				} else {
+					throw new IllegalArgumentException(String.format("'useSupplement' is not of string type. Got: ", u.getClass()));
+				}
+			}).forEach(useSupplement -> addParameter("useSupplement", useSupplement));
+		}
+		return this;
+	}
+	
 	public ValueSetExpandParameters setExcludeNested(Boolean excludeNested) {
 		return excludeNested == null ? this : setExcludeNested(new BooleanType(excludeNested));
 	}
@@ -278,39 +301,78 @@ public final class ValueSetExpandParameters extends BaseParameters {
 		return this;
 	}
 	
-	public ValueSetExpandParameters setExcludeSystem(String excludeSystem) {
-		return setExcludeSystem(new UriType(excludeSystem));
-	}
-	
-	public ValueSetExpandParameters setExcludeSystem(UriType excludeSystem) {
-		addParameter("excludeSystem", excludeSystem);
+	public ValueSetExpandParameters setProperty(List<?> property) {
+		if (property != null && !property.isEmpty()) {
+			property.stream().map(prop -> {
+				if (prop instanceof StringType) {
+					return (StringType) prop;
+				} else if (prop instanceof String) {
+					return new StringType((String) prop);
+				} else {
+					throw new IllegalArgumentException(String.format("'property' is not of string type. Got: ", prop.getClass()));
+				}
+			}).forEach(propertyparam -> addParameter("designation", propertyparam));
+		}
 		return this;
 	}
 	
-	public ValueSetExpandParameters setSystemVersion(String systemVersion) {
-		return setSystemVersion(new UriType(systemVersion));
-	}
-	
-	public ValueSetExpandParameters setSystemVersion(UriType systemVersion) {
-		addParameter("systemVersion", systemVersion);
+	public ValueSetExpandParameters setExcludeSystem(List<?> excludeSystems) {
+		if (excludeSystems != null && !excludeSystems.isEmpty()) {
+			excludeSystems.stream().map(es -> {
+				if (es instanceof CanonicalType) {
+					return (CanonicalType) es;
+				} else if (es instanceof String) {
+					return new CanonicalType((String) es);
+				} else {
+					throw new IllegalArgumentException(String.format("'exclude-system' is not of string type. Got: ", es.getClass()));
+				}
+			}).forEach(excludeSystem -> addParameter("exclude-system", excludeSystem));
+		}
 		return this;
 	}
 	
-	public ValueSetExpandParameters setCheckSystemVersion(String checkSystemVersion) {
-		return setCheckSystemVersion(new UriType(checkSystemVersion));
-	}
-	
-	public ValueSetExpandParameters setCheckSystemVersion(UriType checkSystemVersion) {
-		addParameter("checkSystemVersion", checkSystemVersion);
+	public ValueSetExpandParameters setSystemVersion(List<?> systemVersions) {
+		if (systemVersions != null && !systemVersions.isEmpty()) {
+			systemVersions.stream().map(sv -> {
+				if (sv instanceof CanonicalType) {
+					return (CanonicalType) sv;
+				} else if (sv instanceof String) {
+					return new CanonicalType((String) sv);
+				} else {
+					throw new IllegalArgumentException(String.format("'system-version' is not of string type. Got: ", sv.getClass()));
+				}
+			}).forEach(systemVersion -> addParameter("system-version", systemVersion));
+		}
 		return this;
 	}
 	
-	public ValueSetExpandParameters setForceSystemVersion(String forceSystemVersion) {
-		return setForceSystemVersion(new UriType(forceSystemVersion));
+	public ValueSetExpandParameters setCheckSystemVersion(List<?> checkSystemVersions) {
+		if (checkSystemVersions != null && !checkSystemVersions.isEmpty()) {
+			checkSystemVersions.stream().map(csv -> {
+				if (csv instanceof CanonicalType) {
+					return (CanonicalType) csv;
+				} else if (csv instanceof String) {
+					return new CanonicalType((String) csv);
+				} else {
+					throw new IllegalArgumentException(String.format("'check-system-version' is not of string type. Got: ", csv.getClass()));
+				}
+			}).forEach(checkSystemVersion -> addParameter("check-system-version", checkSystemVersion));
+		}
+		return this;
 	}
 	
-	public ValueSetExpandParameters setForceSystemVersion(UriType forceSystemVersion) {
-		addParameter("forceSystemVersion", forceSystemVersion);
+	public ValueSetExpandParameters setForceSystemVersion(List<?> forceSystemVersions) {
+		if (forceSystemVersions != null && !forceSystemVersions.isEmpty()) {
+			forceSystemVersions.stream().map(fsv -> {
+				if (fsv instanceof CanonicalType) {
+					return (CanonicalType) fsv;
+				} else if (fsv instanceof String) {
+					return new CanonicalType((String) fsv);
+				} else {
+					throw new IllegalArgumentException(String.format("'force-system-version' is not of string type. Got: ", fsv.getClass()));
+				}
+			}).forEach(forceSystemVersion -> addParameter("force-system-version", forceSystemVersion));
+		}
 		return this;
 	}
 	
