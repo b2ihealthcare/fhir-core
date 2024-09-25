@@ -16,6 +16,7 @@
 package com.b2international.fhir.r5.operations;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hl7.fhir.r5.model.*;
 
@@ -51,19 +52,11 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	public CodeType getCode() {
 		return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
-
-	public Coding getCoding() {
-		return getParameterValue("coding", Parameters.ParametersParameterComponent::getValueCoding);
+	
+	public UriType getSystem() {
+		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType); 
 	}
 	
-	public CodeableConcept getCodeableConcept() {
-		return getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
-	}
-	
-	public StringType getSystem() {
-		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueStringType); 
-	}
-
 	public StringType getSystemVersion() {
 		return getParameterValue("systemVersion", Parameters.ParametersParameterComponent::getValueStringType);
 	}
@@ -72,16 +65,28 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 		return getParameterValue("display", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 
+	public Coding getCoding() {
+		return getParameterValue("coding", Parameters.ParametersParameterComponent::getValueCoding);
+	}
+	
+	public CodeableConcept getCodeableConcept() {
+		return getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
+	}
+
 	public DateType getDate() {
 		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateType);
 	}
 	
 	public BooleanType getIsAbstract() {
-		return getParameterValue("isAbstract", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue("abstract", Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 
 	public CodeType getDisplayLanguage() {
 		return getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValueCodeType);
+	}
+	
+	public List<CanonicalType> getUseSupplement() {
+		return getParameters("useSupplement").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 
 	public ValueSetValidateCodeParameters setUrl(String url) {
@@ -185,6 +190,21 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	
 	public ValueSetValidateCodeParameters setDisplayLanguage(CodeType displayLanguage) {
 		addParameter("displayLanguage", displayLanguage);
+		return this;
+	}
+	
+	public ValueSetValidateCodeParameters setUseSupplement(List<?> useSupplements) {
+		if (useSupplements != null && !useSupplements.isEmpty()) {
+			useSupplements.stream().map(u -> {
+				if (u instanceof CanonicalType) {
+					return (CanonicalType) u;
+				} else if (u instanceof String) {
+					return new CanonicalType((String) u);
+				} else {
+					throw new IllegalArgumentException(String.format("'useSupplement' is not of string type. Got: ", u.getClass()));
+				}
+			}).forEach(useSupplement -> addParameter("useSupplement", useSupplement));
+		}
 		return this;
 	}
 
