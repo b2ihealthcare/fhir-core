@@ -118,6 +118,51 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			return this;
 		}
 		
+		public Match setProperty(List<Property> property) {
+			if (property == null) {
+				return this;
+			}
+			
+			property.stream()
+				.map(prop -> new Parameters.ParametersParameterComponent().setName("property").setPart(prop.getPart()))
+				.forEach(getPartSorted()::add);
+			
+			return this;
+		}
+		
+		public Match setProduct(List<Product> product) {
+			if (product == null) {
+				return this;
+			}
+			
+			product.stream()
+				.map(prod -> new Parameters.ParametersParameterComponent().setName("product").setPart(prod.getPart()))
+				.forEach(getPartSorted()::add);
+			
+			return this;
+		}
+		
+		public Match setDependsOn(List<Product> dependsOn) {
+			if (dependsOn == null) {
+				return this;
+			}
+			
+			dependsOn.stream()
+				.map(dep -> new Parameters.ParametersParameterComponent().setName("dependsOn").setPart(dep.getPart()))
+				.forEach(getPartSorted()::add);
+			
+			return this;
+		}
+		
+		public Match setOriginMap(String originMap) {
+			return setOriginMap(new UriType(originMap));
+		}
+		
+		public Match setOriginMap(UriType originMap) {
+			addParameter("originMap", originMap);
+			return this;
+		}
+
 		public static final class Property extends BasePart {
 			
 			public Property() {
@@ -137,6 +182,21 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			public DataType getValue() {
 				return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).get();
 			}
+			
+			public Property setUri(String uri) {
+				return setUri(new UriType(uri));
+			}
+			
+			public Property setUri(UriType uriType) {
+				addParameter("uri", uriType);
+				return this;
+			}
+			
+			public Property setValue(DataType value) {
+				addParameter("value", value);
+				return this;
+			}
+						
 		}
 		
 		public static final class Product extends BasePart {
@@ -158,6 +218,21 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			public DataType getValue() {
 				return getParameter("value").map(Parameters.ParametersParameterComponent::getValue).get();
 			}
+			
+			public Product setAttribute(String attribute) {
+				return setAttribute(new UriType(attribute));
+			}
+
+			public Product setAttribute(UriType attribute) {
+				addParameter("attribute", attribute);
+				return this;
+			}
+			
+			public Product setValue(DataType value) {
+				addParameter("value", value);
+				return this;
+			}
+			
 		}
 	}
 }
