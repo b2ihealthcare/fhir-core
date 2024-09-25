@@ -15,9 +15,7 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import org.hl7.fhir.r5.model.BooleanType;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.StringType;
+import org.hl7.fhir.r5.model.*;
 
 /**
  * @since 9.3
@@ -31,6 +29,34 @@ public class ValueSetValidateCodeResultParameters extends BaseParameters {
 	public ValueSetValidateCodeResultParameters(Parameters parameters) {
 		super(parameters);
 	}
+	
+	public BooleanType getResult() {
+		return getParameterValue("result", Parameters.ParametersParameterComponent::getValueBooleanType);
+	}
+	
+	public StringType getMessage() {
+		return getParameterValue("message", Parameters.ParametersParameterComponent::getValueStringType);
+	}
+	
+	public StringType getDisplay() {
+		return getParameterValue("display", Parameters.ParametersParameterComponent::getValueStringType);
+	}
+	
+	public CodeType getCode() {
+		return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
+	}
+	
+	public UriType getSytem() {
+		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
+	}
+	
+	public StringType getVersion() {
+		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
+	}
+	
+	public CodeableConcept getCodeableConcept() {
+		return getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
+	}
 
 	public ValueSetValidateCodeResultParameters setResult(boolean result) {
 		addParameter("result", new BooleanType(result));
@@ -38,15 +64,53 @@ public class ValueSetValidateCodeResultParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeResultParameters setMessage(String message) {
-		addParameter("message", new StringType(message));
+		return setMessage(new StringType(message));
+	}
+	
+	public ValueSetValidateCodeResultParameters setMessage(StringType message) {
+		addParameter("message", message);
 		return this;
 	}
 	
 	public ValueSetValidateCodeResultParameters setDisplay(String display) {
-		addParameter("display", new StringType(display));
+		return setDisplay(new StringType(display));
+	}
+	
+	public ValueSetValidateCodeResultParameters setDisplay(StringType display) {
+		addParameter("display", display);
+		return this;
+	}
+	
+	public ValueSetValidateCodeResultParameters setCode(String code) {
+		return setCode(new CodeType(code));
+	}
+	
+	public ValueSetValidateCodeResultParameters setCode(CodeType codeType) {
+		addParameter("code", codeType);
+		return this;
+	}
+	
+	public ValueSetValidateCodeResultParameters setSystem(String system) {
+		return setSysytem(new UriType(system));
+	}
+
+	public ValueSetValidateCodeResultParameters setSysytem(UriType uriType) {
+		addParameter("system", uriType);
 		return this;
 	}
 
-	// TODO add issues
+	public ValueSetValidateCodeResultParameters setVersion(String version) {
+		return setVersion(new StringType(version));
+	}
 	
+	public ValueSetValidateCodeResultParameters setVersion(StringType version) {
+		addParameter("version", version);
+		return this;
+	}
+	
+	public ValueSetValidateCodeResultParameters setCodeableConcept(CodeableConcept codeableConcept) {
+		addParameter("codeableConcept", codeableConcept);
+		return this;
+	}
+	// TODO add issues
 }
