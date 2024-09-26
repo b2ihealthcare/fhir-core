@@ -22,8 +22,6 @@ import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.junit.Test;
 
-import com.b2international.fhir.r5.operations.CodeSystemLookupParameters;
-
 /**
  * @since 0.1
  */
