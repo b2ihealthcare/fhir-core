@@ -114,7 +114,7 @@ public class ConceptMapTranslateResultParametersTest {
 						{
 							"name": "originMap",
 							"valueUri": "testOriginMap"
-						},
+						}
 					]
 				}
 			]
