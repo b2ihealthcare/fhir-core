@@ -125,7 +125,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			
 			property.stream()
 				.map(prop -> new Parameters.ParametersParameterComponent().setName("property").setPart(prop.getPart()))
-				.forEach(getPartSorted()::add);
+				.forEach(getPart()::add);
 			
 			return this;
 		}
@@ -137,7 +137,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			
 			product.stream()
 				.map(prod -> new Parameters.ParametersParameterComponent().setName("product").setPart(prod.getPart()))
-				.forEach(getPartSorted()::add);
+				.forEach(getPart()::add);
 			
 			return this;
 		}
@@ -149,7 +149,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			
 			dependsOn.stream()
 				.map(dep -> new Parameters.ParametersParameterComponent().setName("dependsOn").setPart(dep.getPart()))
-				.forEach(getPartSorted()::add);
+				.forEach(getPart()::add);
 			
 			return this;
 		}
@@ -210,7 +210,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			}
 			
 			// Mandatory
-			public UriType geAttribute() {
+			public UriType getAttribute() {
 				return getParameter("attribute").map(Parameters.ParametersParameterComponent::getValueUriType).get();
 			}
 			
