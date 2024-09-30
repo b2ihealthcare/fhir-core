@@ -18,6 +18,7 @@ package com.b2international.fhir.r5.operations;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.hl7.fhir.r5.formats.JsonParser;
+import org.hl7.fhir.r5.model.Coding;
 import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.junit.Test;
@@ -125,5 +126,41 @@ public class ConceptMapTranslateResultParametersTest {
 		assertThat(resource).isInstanceOf(Parameters.class);
 		
 		var parameters = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		// result
+		assertThat(parameters.getResult().getValue()).isEqualTo(true);
+		
+		// message
+		assertThat(parameters.getMessage().getValueAsString()).isEqualTo("testMessage");
+		
+		// match.relationship
+		assertThat(parameters.getMatch().get(0).getRelationship().getValueAsString()).isEqualTo("testRelationship");
+		
+		// match.concept
+		assertThat(parameters.getMatch().get(0).getConcept().getSystem()).isEqualTo("testCodingSystem");
+		
+		// match.property.uri
+		assertThat(parameters.getMatch().get(0).getProperty().get(0).getUri().getValueAsString()).isEqualTo("testPropertyUri");
+		
+		// match.property.value
+		Coding propertyValue = (Coding) parameters.getMatch().get(0).getProperty().get(0).getValue();
+		assertThat(propertyValue.getSystem()).isEqualTo("testCodingPropertySystem");
+		
+		// match.product.attribute
+		assertThat(parameters.getMatch().get(0).getProduct().get(0).getAttribute().getValueAsString()).isEqualTo("testAttributeUri");
+		
+		// match.product.value
+		Coding productValue = (Coding) parameters.getMatch().get(0).getProduct().get(0).getValue();
+		assertThat(productValue.getSystem()).isEqualTo("testCodingProductSystem");
+		
+		// match.dependsOn.attribute
+		assertThat(parameters.getMatch().get(0).getDependsOn().get(0).getAttribute().getValueAsString()).isEqualTo("testDependsOnUri");
+		
+		// match.dependsOn.value
+		Coding dependsOnValue = (Coding) parameters.getMatch().get(0).getDependsOn().get(0).getValue();
+		assertThat(dependsOnValue.getSystem()).isEqualTo("testCodingDependsOnSystem");
+		
+		// match.originMap
+		assertThat(parameters.getMatch().get(0).getOriginMap().getValueAsString()).isEqualTo("testOriginMap");
 	}
 }
