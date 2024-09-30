@@ -55,7 +55,7 @@ public abstract class BasePart {
 	}
 	
 	protected final Stream<Parameters.ParametersParameterComponent> getParameters(String name) {
-		return getPart().stream().filter(param -> Objects.equal(param.getName(), name));
+		return getPart().stream().filter(param -> param.getName().equals(name));
 	}
 	
 	protected final <T> T getParameterValue(String name, Function<Parameters.ParametersParameterComponent, T> parameterValueExtractor) {
