@@ -25,8 +25,6 @@ import org.hl7.fhir.r5.model.DataType;
 import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
 
-import com.google.common.base.Objects;
-
 /**
  * @since 0.1
  */
