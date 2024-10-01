@@ -134,10 +134,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	
 	/**
 	 * Helper to get access to the raw property values.
-	 * @return the list of actual values instead of a list with wrapped {@link StringType} instances.
+	 * @return the list of actual values instead of a list with wrapped {@link CodeType} instances.
 	 */
 	public List<String> getPropertyValues() {
-		return getParameters("property").stream().map(ParametersParameterComponent::getValueStringType).map(StringType::getValue).toList();
+		return getParameters("property").stream().map(ParametersParameterComponent::getValueCodeType).map(CodeType::getValueAsString).toList();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
