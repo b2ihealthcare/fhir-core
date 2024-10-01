@@ -120,10 +120,10 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setSystem(String system) {
-		return setSystem(new StringType(system));
+		return setSystem(new UriType(system));
 	}
 	
-	public ConceptMapTranslateParameters setSystem(StringType system) {
+	public ConceptMapTranslateParameters setSystem(UriType system) {
 		addParameter("system", system);
 		return this;
 	}
