@@ -153,10 +153,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	public CodeSystemLookupParameters setProperty(List propertyValues) {
 		var list = propertyValues == null ? List.of() : propertyValues;
 		list.forEach(propertyValue -> {
-			if (propertyValue instanceof StringType) {
-				addParameter("property", (StringType) propertyValue);
+			if (propertyValue instanceof CodeType) {
+				addParameter("property", (CodeType) propertyValue);
 			} else if (propertyValue instanceof String) {
-				addParameter("property", new StringType((String) propertyValue));
+				addParameter("property", new CodeType((String) propertyValue));
 			} else {
 				throw new UnsupportedOperationException();
 //				throw new BadRequestException(String.format("Value type '%s' is not supported in property values. Need to be String or StringType.", propertyValue));
