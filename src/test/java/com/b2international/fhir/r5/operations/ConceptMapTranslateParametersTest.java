@@ -16,12 +16,12 @@
 package com.b2international.fhir.r5.operations;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.hl7.fhir.r5.formats.JsonParser;
-import org.hl7.fhir.r5.model.Coding;
-import org.hl7.fhir.r5.model.DataType;
-import org.hl7.fhir.r5.model.Parameters;
-import org.hl7.fhir.r5.model.Resource;
+import org.hl7.fhir.r5.model.*;
 import org.junit.Test;
 
 /**
@@ -32,16 +32,36 @@ public class ConceptMapTranslateParametersTest {
 	private final JsonParser parser = new JsonParser();
 	
 	@Test
-	public void all_params() throws Exception {
-	
-		String json = """
+	public void url() throws Exception {
+		String json = 
+		"""
 		{
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
 					"name": "url",
 					"valueUri": "testuri" 
-				},
+				}
+			]
+		}		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setUrl("testuri");
+		
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void conceptMap() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "conceptMap",
 					"resource" : {
@@ -51,27 +71,157 @@ public class ConceptMapTranslateParametersTest {
 						"name" : "testCM",
 						"title" : "Test concept map"
 					}
-				},
+				}
+			]
+		}		
+		""";
+				
+		Resource resource = parser.parse(json);
+				
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setConceptMap(
+				new ConceptMap()
+					.setUrl("testResourceUri")
+					.setVersion("testResourceVersion")
+					.setName("testCM").setTitle("Test concept map"));
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+				
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void conceptMapVersion() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "conceptMapVersion",
 					"valueString": "testConceptMapVersion"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setConceptMapVersion("testConceptMapVersion");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+				
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void sourceCode() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "sourceCode",
 					"valueCode": "testSourceCode"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCode("testSourceCode");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+				
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void system() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "system",
 					"valueUri": "testSystemUri"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSystem("testSystemUri");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	
+	@Test
+	public void version() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "version",
 					"valueString": "testVersion"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setVersion("testVersion");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void sourceScope() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "sourceScope",
 					"valueUri": "testSourceScope"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceScope("testSourceScope");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void sourceCoding() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "sourceCoding",
 					"valueCoding": {
@@ -79,7 +229,31 @@ public class ConceptMapTranslateParametersTest {
 						"code": "testCodingSourceCode",
 						"display": "testCodingSourceDisplay"
 					}	
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCoding(new Coding()
+				.setSystem("testCodingSourceSystem")
+				.setCode("testCodingSourceCode")
+				.setDisplay("testCodingSourceDisplay"));
+		
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void sourceCodeableConcept() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "sourceCodeableConcept",
 					"valueCodeableConcept": {
@@ -91,11 +265,60 @@ public class ConceptMapTranslateParametersTest {
 						}],
 						"text": "Test source codeableconcept text"
 					}
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCodeableConcept(
+				new CodeableConcept()
+					.setCoding(List.of(
+							new Coding()
+								.setSystem("sourceSystem")
+								.setCode("sourceCode")
+								.setDisplay("sourceDisplay")))
+					.setText("Test source codeableconcept text"));
+		
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void targetCode() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "targetCode",
 					"valueCode": "testTargetCode"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCode("testTargetCode");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+				
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void targetCoding() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "targetCoding",
 					"valueCoding": {
@@ -103,7 +326,31 @@ public class ConceptMapTranslateParametersTest {
 						"code": "testCodingTargetCode",
 						"display": "testCodingTargetDisplay"
 					}	
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCoding(new Coding()
+				.setSystem("testCodingTargetSystem")
+				.setCode("testCodingTargetCode")
+				.setDisplay("testCodingTargetDisplay"));
+		
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void targetCodeableConcept() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "targetCodeableConcept",
 					"valueCodeableConcept": {
@@ -115,15 +362,85 @@ public class ConceptMapTranslateParametersTest {
 						}],
 						"text": "Test target codeableconcept text"
 					}
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCodeableConcept(
+				new CodeableConcept()
+					.setCoding(List.of(
+							new Coding()
+								.setSystem("targetSystem")
+								.setCode("targetCode")
+								.setDisplay("targetDisplay")))
+					.setText("Test target codeableconcept text"));
+		
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void targetScope() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "targetScope",
 					"valueUri": "testTargetScope"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetScope("testTargetScope");
+				
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void targetSystem() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "targetSystem",
 					"valueUri": "testTargetSystem"
-				},
+				}
+			]
+		}
+		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetSystem("testTargetSystem");
+		
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void dependency() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "dependency",
 					"part": [
@@ -142,61 +459,23 @@ public class ConceptMapTranslateParametersTest {
 					]
 				}
 			]
-		}""";
-			
+		}
+		
+		""";
+		
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setDependency(
+				List.of(new ConceptMapTranslateParameters.Dependency()
+						.setAttribute("testDepAttribute")
+						.setValue(new Coding()
+								.setSystem("testDepCodingValue")
+								.setCode("testDepCodingCode")
+								.setDisplay("Dependency Display test")))
+				);
 		
-		var parameters = new ConceptMapTranslateParameters((Parameters) resource);
+		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 		
-		// url	
-		assertThat(parameters.getUrl().getValueAsString()).isEqualTo("testuri");
-		
-		// conceptMap
-		assertThat(parameters.getConceptMap().getName()).isEqualTo("testCM");
-		
-		// conceptMapVersion
-		assertThat(parameters.getConceptMapVersion().getValueAsString()).isEqualTo("testConceptMapVersion");
-		
-		// sourceCode
-		assertThat(parameters.getSourceCode().getValueAsString()).isEqualTo("testSourceCode");
-		
-		// system
-		assertThat(parameters.getSystem().getValueAsString()).isEqualTo("testSystemUri");
-		
-		// version
-		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
-		
-		// sourceScope
-		assertThat(parameters.getSourceScope().getValueAsString()).isEqualTo("testSourceScope");
-		
-		// sourceCoding
-		assertThat(parameters.getSourceCoding().getSystem()).isEqualTo("testCodingSourceSystem");
-		
-		// sourceCodeableConcept
-		assertThat(parameters.getSourceCodeableConcept().getCoding().get(0).getSystem()).isEqualTo("sourceSystem");
-		
-		// targetCode
-		assertThat(parameters.getTargetCode().getValueAsString()).isEqualTo("testTargetCode");
-		
-		// targetCoding
-		assertThat(parameters.getTargetCoding().getSystem()).isEqualTo("testCodingTargetSystem");
-		
-		// targetCodeableConcept
-		assertThat(parameters.getTargetCodeableConcept().getCoding().get(0).getSystem()).isEqualTo("targetSystem");
-		
-		// targetScope
-		assertThat(parameters.getTargetScope().getValueAsString()).isEqualTo("testTargetScope");
-		
-		// targetSystem
-		assertThat(parameters.getTargetSystem().getValueAsString()).isEqualTo("testTargetSystem");
-		
-		// dependency.attribute
-		assertThat(parameters.getDependency().get(0).getAttribute().getValueAsString()).isEqualTo("testDepAttribute");
-		
-		// dependency.value
-		Coding value = (Coding) parameters.getDependency().get(0).getValue();
-		assertThat(value.getSystem()).isEqualTo("testDepCodingValue");
+		assertEquals(expected, actual);
 	}
 }
