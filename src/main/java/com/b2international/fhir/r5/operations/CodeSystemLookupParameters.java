@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import org.hl7.fhir.r4.model.codesystems.ConceptProperties;
 import org.hl7.fhir.r5.model.*;
 import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
 
@@ -32,8 +33,8 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	public static final String PROPERTY_VERSION = "version";
 	public static final String PROPERTY_DISPLAY = "display";
 	public static final String PROPERTY_DESIGNATION = "designation";
-	public static final String PROPERTY_PARENT = "parent";
-	public static final String PROPERTY_CHILD = "child";
+	public static final String PROPERTY_PARENT = ConceptProperties.PARENT.toCode();
+	public static final String PROPERTY_CHILD = ConceptProperties.CHILD.toCode();
 	
 	//how to represent LANG.X here, just lang or lang.*?
 	public static final Set<String> OFFICIAL_R5_PROPERTY_VALUES = Set.of(PROPERTY_SYSTEM, PROPERTY_NAME, PROPERTY_VERSION, PROPERTY_DISPLAY, PROPERTY_DESIGNATION, PROPERTY_PARENT, PROPERTY_CHILD);
