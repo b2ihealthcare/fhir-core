@@ -15,9 +15,12 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
 
 import org.hl7.fhir.r5.formats.JsonParser;
+import org.hl7.fhir.r5.model.Coding;
 import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.junit.Test;
@@ -30,54 +33,88 @@ public class CodeSystemLookupParametersTest {
 	private final JsonParser parser = new JsonParser();
 	
 	@Test
-	public void code_and_system_param() throws Exception {
+	public void code() throws Exception {
 		
-		String json = """
+		String json = 
+		"""
 		{
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
 					"name": "code",
 					"valueCode": "testCode" 
-				},
-				{
-					"name": "system",
-					"valueUri": "testSystem"
-				}	
+				}
 			]
-		}""";
+		}
+		""";
 		
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setCode("testCode");
 		
-		var parameters = new CodeSystemLookupParameters((Parameters) resource);
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
 		
-		// Code
-		assertThat(parameters.getCode().getValueAsString()).isEqualTo("testCode");
-		
-		// System
-		assertThat(parameters.getSystem().getValueAsString()).isEqualTo("testSystem");
+		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void all_params() throws Exception {
-		String json = """
+	public void system() throws Exception {
+		
+		String json = 
+		"""
 		{
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "code",
-					"valueCode": "testCode" 
-				},
-				{
 					"name": "system",
 					"valueUri": "testSystem"
-				},
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setSystem("testSystem");
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void version() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "version",
 					"valueString": "testVersion"
-				},
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setVersion("testVersion");
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void coding() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "coding",
 					"valueCoding": {
@@ -85,57 +122,181 @@ public class CodeSystemLookupParametersTest {
 							"code": "testCodingValueCode",
 							"display": "testDisplay"
 					}
-				},
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setCoding(
+				new Coding()
+					.setSystem("testValueCodingSystem")
+					.setCode("testCodingValueCode")
+					.setDisplay("testDisplay")
+		);
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void date() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "date",
 					"valueDate": "2024"
-				},
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setDate("2024");
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void displayLanguage() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "displayLanguage",
 					"valueCode": "en"
-				},
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setDisplayLanguage("en");
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void property() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "property",
 					"valueCode": "testCode"
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setProperty(List.of("testCode"));
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void multiple_properties() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
+				{
+					"name": "property",
+					"valueCode": "testCode1"
 				},
+				{
+					"name": "property",
+					"valueCode": "testCode2"
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setProperty(List.of("testCode1", "testCode2"));
+		
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void useSupplement() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "useSupplement",
 					"valueCanonical": "testUri"
 				}
 			]
-		}""";
+		}
+		""";
 		
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setUseSupplement(List.of("testUri"));
 		
-		var parameters = new CodeSystemLookupParameters((Parameters) resource);
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
 		
-		// Code
-		assertThat(parameters.getCode().getValueAsString()).isEqualTo("testCode");
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void multiple_useSupplements() throws Exception {
 		
-		// System
-		assertThat(parameters.getSystem().getValueAsString()).isEqualTo("testSystem");
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
+				{
+					"name": "useSupplement",
+					"valueCanonical": "testUri1"
+				},
+				{
+					"name": "useSupplement",
+					"valueCanonical": "testUri2"
+				}
+			]
+		}
+		""";
 		
-		// Version
-		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
+		Resource resource = parser.parse(json);
 		
-		// Coding
-		assertThat(parameters.getCoding().getSystem()).isEqualTo("testValueCodingSystem");
-		assertThat(parameters.getCoding().getCode()).isEqualTo("testCodingValueCode");
-		assertThat(parameters.getCoding().getDisplay()).isEqualTo("testDisplay");
+		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setUseSupplement(List.of("testUri1", "testUri2"));
 		
-		// Date
-		assertThat(parameters.getDate().getValueAsString()).isEqualTo("2024");
+		CodeSystemLookupParameters actual = new CodeSystemLookupParameters((Parameters) resource);
 		
-		// Display language
-		assertThat(parameters.getDisplayLanguage().getValueAsString()).isEqualTo("en");
-		
-		// Property
-		assertThat(parameters.getProperty().get(0).getValueAsString()).isEqualTo("testCode");
-		
-		// Use supplement
-		assertThat(parameters.getUseSupplement().getCanonical()).isEqualTo("testUri");
+		assertEquals(expected, actual);
 	}
 	
 }
