@@ -16,6 +16,7 @@
 package com.b2international.fhir.r5.operations;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -66,5 +67,18 @@ public abstract class BaseParameters {
 		
 		getParameters().addParameter(name, value);
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(parameters);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		BaseParameters other = (BaseParameters) obj;
+		return this.parameters.equalsDeep(other.getParameters());
+	}
 }
