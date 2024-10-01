@@ -194,7 +194,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setTargetSystem(String targetSystem) {
-		return setTargetScope(new UriType(targetSystem));
+		return setTargetSystem(new UriType(targetSystem));
 	}
 	
 	public ConceptMapTranslateParameters setTargetSystem(UriType targetSystem) {
