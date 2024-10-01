@@ -74,8 +74,8 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return getParameters("property").stream().map(ParametersParameterComponent::getValueCodeType).toList();
 	}
 	
-	public CanonicalType getUseSupplement() {
-		return getParameterValue("useSupplement", Parameters.ParametersParameterComponent::getValueCanonicalType);
+	public List<CanonicalType> getUseSupplement() {
+		return getParameters("useSupplement").stream().map(ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
 	public CodeSystemLookupParameters setCode(String code) {
@@ -132,15 +132,6 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return this;
 	}
 	
-	public CodeSystemLookupParameters setUseSupplement(String useSupplement) {
-		return setUseSupplement(new CanonicalType(useSupplement));
-	}
-	
-	public CodeSystemLookupParameters setUseSupplement(CanonicalType useSupplement) {
-		addParameter("useSupplement", useSupplement);
-		return this;
-	}
-	
 	/**
 	 * Helper to get access to the raw property values.
 	 * @return the list of actual values instead of a list with wrapped {@link StringType} instances.
@@ -167,6 +158,30 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	
 	public boolean isPropertyRequested(String propertyValue) {
 		return hasParameterWithValue("property", param -> param.getValueStringType().getValue(), propertyValue);
+	}
+	
+	/**
+	 * Helper to get access to the raw use supplement values.
+	 * @return the list of actual values instead of a list with wrapped {@link CanonicalType} instances.
+	 */
+	public List<String> getUseSupplementValues() {
+		return getParameters("useSupplement").stream().map(ParametersParameterComponent::getValueCanonicalType).map(CanonicalType::getValueAsString).toList();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public CodeSystemLookupParameters setUseSupplement(List useSupplementValues) {
+		var list = useSupplementValues == null ? List.of() : useSupplementValues;
+		list.forEach(useSupplementValue -> {
+			if (useSupplementValue instanceof CanonicalType) {
+				addParameter("useSupplement", (CanonicalType) useSupplementValue);
+			} else if (useSupplementValue instanceof String) {
+				addParameter("useSupplement", new CanonicalType((String) useSupplementValue));
+			} else {
+				throw new UnsupportedOperationException();
+//				throw new BadRequestException(String.format("Value type '%s' is not supported in property values. Need to be String or CanonicalType.", propertyValue));
+			}
+		});
+		return this;
 	}
 
 	// Extractors that extract information from multiple parameters depending on which one they have value
