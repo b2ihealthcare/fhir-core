@@ -15,7 +15,9 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
 
 import org.hl7.fhir.r5.formats.JsonParser;
 import org.hl7.fhir.r5.model.Coding;
@@ -31,9 +33,33 @@ public class ConceptMapTranslateResultParametersTest {
 	private final JsonParser parser = new JsonParser();
 	
 	@Test
-	public void all_params() throws Exception {
-		
+	public void result() throws Exception {
 		String 	json = """
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true);
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void message() throws Exception {
+		
+		String json = """
 		{
 			"resourceType": "Parameters",
 			"parameter": [ 
@@ -44,6 +70,31 @@ public class ConceptMapTranslateResultParametersTest {
 				{
 					"name": "message",
 					"valueString": "testMessage"
+				}
+			]
+		}	
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMessage("testMessage");
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void match_with_relationship() throws Exception {
+		String json = """		
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
 				},
 				{
 					"name": "match",
@@ -51,7 +102,38 @@ public class ConceptMapTranslateResultParametersTest {
 						{
 							"name": "relationship",
 							"valueCode": "testRelationship"
-						},
+						}
+					]
+				}
+			]	
+		}		
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMatch(List.of(new ConceptMapTranslateResultParameters.Match().setRelationship("testRelationship")));
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void match_with_concept() throws Exception {
+		
+		String json = """
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
+				},
+				{
+					"name": "match",
+					"part": [
 						{
 							"name": "concept",
 							"valueCoding": {
@@ -59,7 +141,41 @@ public class ConceptMapTranslateResultParametersTest {
 								"code": "testCodingCode",
 								"display": "testCodingDisplay"
 							}
-						},
+						}
+					]
+				}
+			]	
+		}	
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMatch(List.of(new ConceptMapTranslateResultParameters.Match()
+						.setConcept(new Coding()
+								.setSystem("testCodingSystem")
+								.setCode("testCodingCode")
+								.setDisplay("testCodingDisplay"))));
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void match_with_property() throws Exception {
+		String json = """
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
+				},
+				{
+					"name": "match",
+					"part": [
 						{
 							"name": "property",
 							"part": [
@@ -76,7 +192,43 @@ public class ConceptMapTranslateResultParametersTest {
 									}
 								}
 							]
-						},
+						}
+					]
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMatch(List.of(new ConceptMapTranslateResultParameters.Match()
+						.setProperty(List.of(new ConceptMapTranslateResultParameters.Match.Property()
+								.setUri("testPropertyUri")
+								.setValue(new Coding()
+										.setSystem("testCodingPropertySystem")
+										.setCode("testCodingPropertyCode")
+										.setDisplay("testCodingPropertyDisplay"))))));
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void match_with_product() throws Exception {
+		String json = """
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
+				},
+				{
+					"name": "match",
+					"part": [
 						{
 							"name": "product",
 							"part": [
@@ -93,7 +245,43 @@ public class ConceptMapTranslateResultParametersTest {
 									}
 								}
 							]
-						},
+						}
+					]
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMatch(List.of(new ConceptMapTranslateResultParameters.Match()
+						.setProduct(List.of(new ConceptMapTranslateResultParameters.Match.Product()
+								.setAttribute("testAttributeUri")
+								.setValue(new Coding()
+										.setSystem("testCodingProductSystem")
+										.setCode("testCodingProductCode")
+										.setDisplay("testCodingProductDisplay"))))));
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void match_with_dependsOn() throws Exception {
+		String json = """
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
+				},
+				{
+					"name": "match",
+					"part": [
 						{
 							"name": "dependsOn",
 							"part": [
@@ -110,7 +298,43 @@ public class ConceptMapTranslateResultParametersTest {
 									}
 								}
 							]
-						},
+						}
+					]
+				}
+			]
+		}
+		""";
+				
+		Resource resource = parser.parse(json);
+		
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMatch(List.of(new ConceptMapTranslateResultParameters.Match()
+						.setDependsOn(List.of(new ConceptMapTranslateResultParameters.Match.Product()
+								.setAttribute("testDependsOnUri")
+								.setValue(new Coding()
+										.setSystem("testCodingDependsOnSystem")
+										.setCode("testCodingDependsOnCode")
+										.setDisplay("testCodingDependsOnDisplay"))))));
+		
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void match_with_originMap() throws Exception {
+		String json = """
+		{
+			"resourceType": "Parameters",
+			"parameter": [ 
+				{
+					"name": "result",
+					"valueBoolean": true
+				},
+				{
+					"name": "match",
+					"part": [
 						{
 							"name": "originMap",
 							"valueUri": "testOriginMap"
@@ -123,44 +347,13 @@ public class ConceptMapTranslateResultParametersTest {
 		
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		ConceptMapTranslateResultParameters expected = new ConceptMapTranslateResultParameters()
+				.setResult(true)
+				.setMatch(List.of(new ConceptMapTranslateResultParameters.Match()
+						.setOriginMap("testOriginMap")));
 		
-		var parameters = new ConceptMapTranslateResultParameters((Parameters) resource);
+		ConceptMapTranslateResultParameters actual = new ConceptMapTranslateResultParameters((Parameters) resource);
 		
-		// result
-		assertThat(parameters.getResult().getValue()).isEqualTo(true);
-		
-		// message
-		assertThat(parameters.getMessage().getValueAsString()).isEqualTo("testMessage");
-		
-		// match.relationship
-		assertThat(parameters.getMatch().get(0).getRelationship().getValueAsString()).isEqualTo("testRelationship");
-		
-		// match.concept
-		assertThat(parameters.getMatch().get(0).getConcept().getSystem()).isEqualTo("testCodingSystem");
-		
-		// match.property.uri
-		assertThat(parameters.getMatch().get(0).getProperty().get(0).getUri().getValueAsString()).isEqualTo("testPropertyUri");
-		
-		// match.property.value
-		Coding propertyValue = (Coding) parameters.getMatch().get(0).getProperty().get(0).getValue();
-		assertThat(propertyValue.getSystem()).isEqualTo("testCodingPropertySystem");
-		
-		// match.product.attribute
-		assertThat(parameters.getMatch().get(0).getProduct().get(0).getAttribute().getValueAsString()).isEqualTo("testAttributeUri");
-		
-		// match.product.value
-		Coding productValue = (Coding) parameters.getMatch().get(0).getProduct().get(0).getValue();
-		assertThat(productValue.getSystem()).isEqualTo("testCodingProductSystem");
-		
-		// match.dependsOn.attribute
-		assertThat(parameters.getMatch().get(0).getDependsOn().get(0).getAttribute().getValueAsString()).isEqualTo("testDependsOnUri");
-		
-		// match.dependsOn.value
-		Coding dependsOnValue = (Coding) parameters.getMatch().get(0).getDependsOn().get(0).getValue();
-		assertThat(dependsOnValue.getSystem()).isEqualTo("testCodingDependsOnSystem");
-		
-		// match.originMap
-		assertThat(parameters.getMatch().get(0).getOriginMap().getValueAsString()).isEqualTo("testOriginMap");
+		assertEquals(expected, actual);
 	}
 }
