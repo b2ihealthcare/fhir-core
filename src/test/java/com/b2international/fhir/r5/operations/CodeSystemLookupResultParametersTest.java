@@ -15,15 +15,15 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
 
 import org.hl7.fhir.r5.formats.JsonParser;
 import org.hl7.fhir.r5.model.Coding;
 import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.junit.Test;
-
-import com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters;
 
 
 /**
@@ -34,72 +34,113 @@ public class CodeSystemLookupResultParametersTest {
 	private final JsonParser parser = new JsonParser();
 	
 	@Test
-	public void basic_parameters() throws Exception {
-		String json = """
+	public void name() throws Exception {
+		
+		String json = 
+		"""
 		{
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
 					"name": "name",
 					"valueString": "testName" 
-				},
-				{
-					"name": "version",
-					"valueString": "testVersion"
-				},
-				{
-					"name": "display",
-					"valueString": "testDisplay"
-				},
-				{
-					"name": "definition",
-					"valueString": "Test definition"
-				}	
+				}
 			]
-		}""";
+		}
+		""";
 		
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setName("testName");
 		
-		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
 		
-		// Name
-		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
-		
-		// Version
-		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
-		
-		// Display
-		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
-		
-		// Definition
-		assertThat(parameters.getDefinition().getValueAsString()).isEqualTo("Test definition");
+		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void designation_without_property() throws Exception {
+	public void version() throws Exception {
 		
-		String json = """
+		String json = 
+		"""
 		{
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "name",
-					"valueString": "testName" 
-				},
-				{
 					"name": "version",
-					"valueString": "testVersion"
-				},
+					"valueString": "testVersion" 
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setVersion("testVersion");
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void display() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "display",
-					"valueString": "testDisplay"
-				},
+					"valueString": "testDisplay" 
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setDisplay("testDisplay");
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void definition() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "definition",
-					"valueString": "Test definition"
-				},
+					"valueString": "testDefinition" 
+				}
+			]
+		}
+		""";
+		
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setDefinition("testDefinition");
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void designation() throws Exception {
+		
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "designation",
 					"part": [
@@ -118,7 +159,7 @@ public class CodeSystemLookupResultParametersTest {
 						{
 							"name": "additionalUse",
 							"valueCoding": {
-								"system": "addTestCodingSystem2",
+								"system": "addTestCodingSystem",
 								"code": "addTestCodingCode",
 								"display": "Additional Display test"
 							}
@@ -130,66 +171,278 @@ public class CodeSystemLookupResultParametersTest {
 					]
 				}
 			]
-		}""";
-		
+		}
+		""";
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setDesignation(List.of(
+				new CodeSystemLookupResultParameters.Designation()
+					.setLanguage("en")
+					.setUse(new Coding()
+							.setSystem("testCodingSystem")
+							.setCode("testCodingCode")
+							.setDisplay("Display test"))
+					.setAdditionalUse(new Coding()
+							.setSystem("addTestCodingSystem")
+							.setCode("addTestCodingCode")
+							.setDisplay("Additional Display test"))
+					.setValue("testValue")
+		));
 		
-		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
 		
-		// Name
-		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
-		
-		// Version
-		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
-		
-		// Display
-		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
-		
-		// Definition
-		assertThat(parameters.getDefinition().getValueAsString()).isEqualTo("Test definition");
-		
-		// Designation.language
-		assertThat(parameters.getDesignation().get(0).getLanguage().getValueAsString()).isEqualTo("en");
-		
-		// Designation.use
-		assertThat(parameters.getDesignation().get(0).getUse().getSystem()).isEqualTo("testCodingSystem");
-		assertThat(parameters.getDesignation().get(0).getUse().getCode()).isEqualTo("testCodingCode");
-		assertThat(parameters.getDesignation().get(0).getUse().getDisplay()).isEqualTo("Display test");
-		
-		
-		// Designation.additionalUse
-		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getSystem()).isEqualTo("addTestCodingSystem2");
-		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getCode()).isEqualTo("addTestCodingCode");
-		assertThat(parameters.getDesignation().get(0).getAdditionalUse().get(0).getDisplay()).isEqualTo("Additional Display test");
-		
-		// Designation.value
-		assertThat(parameters.getDesignation().get(0).getValue().getValueAsString()).isEqualTo("testValue");
+		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void property_without_designation() throws Exception {
-		String json = """
+	public void multiple_designations() throws Exception {
+		
+		String json = 
+		"""
 		{
 			"resourceType": "Parameters",
 			"parameter" : [
 				{
-					"name": "name",
-					"valueString": "testName" 
+					"name": "designation",
+					"part": [
+						{
+							"name": "language",
+							"valueCode": "en"
+						},
+						{
+							"name": "use",
+							"valueCoding": {
+								"system": "testCodingSystem1",
+								"code": "testCodingCode1",
+								"display": "Display test1"
+							}
+						},
+						{
+							"name": "additionalUse",
+							"valueCoding": {
+								"system": "addTestCodingSystem1",
+								"code": "addTestCodingCode1",
+								"display": "Additional Display test1"
+							}
+						},
+						{
+							"name": "value",
+							"valueString": "testValue1"
+						}
+					]
 				},
 				{
-					"name": "version",
-					"valueString": "testVersion"
+					"name": "designation",
+					"part": [
+						{
+							"name": "language",
+							"valueCode": "en"
+						},
+						{
+							"name": "use",
+							"valueCoding": {
+								"system": "testCodingSystem2",
+								"code": "testCodingCode2",
+								"display": "Display test2"
+							}
+						},
+						{
+							"name": "additionalUse",
+							"valueCoding": {
+								"system": "addTestCodingSystem2",
+								"code": "addTestCodingCode2",
+								"display": "Additional Display test2"
+							}
+						},
+						{
+							"name": "value",
+							"valueString": "testValue2"
+						}
+					]
+				}
+			]
+		}
+		""";
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setDesignation(List.of(
+				new CodeSystemLookupResultParameters.Designation()
+					.setLanguage("en")
+					.setUse(new Coding()
+							.setSystem("testCodingSystem1")
+							.setCode("testCodingCode1")
+							.setDisplay("Display test1"))
+					.setAdditionalUse(new Coding()
+							.setSystem("addTestCodingSystem1")
+							.setCode("addTestCodingCode1")
+							.setDisplay("Additional Display test1"))
+					.setValue("testValue1"),
+				new CodeSystemLookupResultParameters.Designation()
+					.setLanguage("en")
+					.setUse(new Coding()
+							.setSystem("testCodingSystem2")
+							.setCode("testCodingCode2")
+							.setDisplay("Display test2"))
+					.setAdditionalUse(new Coding()
+							.setSystem("addTestCodingSystem2")
+							.setCode("addTestCodingCode2")
+							.setDisplay("Additional Display test2"))
+					.setValue("testValue2")
+		));
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void property() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
+				{
+					"name": "property",
+					"part": [
+						{
+							"name": "code",
+							"valueCode": "testPropertyCode"
+						},
+						{
+							"name": "value",
+							"valueCoding": {
+								"system": "testCodingSystem",
+								"code": "testCodingCode",
+								"display": "Display test"
+							}
+						},
+						{
+							"name": "description",
+							"valueString": "Test description"
+						},
+						{
+							"name": "source",
+							"valueCanonical": "testUri"
+						}
+					]
+				}
+			]
+		}
+		""";
+				
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setProperty(List.of(
+				new CodeSystemLookupResultParameters.Property()
+					.setCode("testPropertyCode")
+					.setValue(new Coding()
+							.setSystem("testCodingSystem")
+							.setCode("testCodingCode")
+							.setDisplay("Display test"))
+					.setDescription("Test description")
+					.setSource("testUri")
+		));
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void multiple_properties() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
+				{
+					"name": "property",
+					"part": [
+						{
+							"name": "code",
+							"valueCode": "testPropertyCode1"
+						},
+						{
+							"name": "value",
+							"valueCoding": {
+								"system": "testCodingSystem1",
+								"code": "testCodingCode1",
+								"display": "Display test1"
+							}
+						},
+						{
+							"name": "description",
+							"valueString": "Test description1"
+						},
+						{
+							"name": "source",
+							"valueCanonical": "testUri1"
+						}
+					]
 				},
 				{
-					"name": "display",
-					"valueString": "testDisplay"
-				},
-				{
-					"name": "definition",
-					"valueString": "Test definition"
-				},
+					"name": "property",
+					"part": [
+						{
+							"name": "code",
+							"valueCode": "testPropertyCode2"
+						},
+						{
+							"name": "value",
+							"valueCoding": {
+								"system": "testCodingSystem2",
+								"code": "testCodingCode2",
+								"display": "Display test2"
+							}
+						},
+						{
+							"name": "description",
+							"valueString": "Test description2"
+						},
+						{
+							"name": "source",
+							"valueCanonical": "testUri2"
+						}
+					]
+				}
+			]
+		}
+		""";
+				
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setProperty(List.of(
+				new CodeSystemLookupResultParameters.Property()
+					.setCode("testPropertyCode1")
+					.setValue(new Coding()
+							.setSystem("testCodingSystem1")
+							.setCode("testCodingCode1")
+							.setDisplay("Display test1"))
+					.setDescription("Test description1")
+					.setSource("testUri1"), 
+				new CodeSystemLookupResultParameters.Property()
+					.setCode("testPropertyCode2")
+					.setValue(new Coding()
+							.setSystem("testCodingSystem2")
+							.setCode("testCodingCode2")
+							.setDisplay("Display test2"))
+					.setDescription("Test description2")
+					.setSource("testUri2"))
+		);
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void property_with_subproperty() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
 				{
 					"name": "property",
 					"part": [
@@ -240,52 +493,154 @@ public class CodeSystemLookupResultParametersTest {
 						}
 					]
 				}
-			]
-		}""";
+			]		
+		}
+		""";
 				
 		Resource resource = parser.parse(json);
 		
-		assertThat(resource).isInstanceOf(Parameters.class);
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setProperty(List.of(
+				new CodeSystemLookupResultParameters.Property()
+					.setCode("testPropertyCode")
+					.setValue(new Coding()
+							.setSystem("testCodingSystem")
+							.setCode("testCodingCode")
+							.setDisplay("Display test"))
+					.setDescription("Test description")
+					.setSource("testUri")
+					.setSubProperty(List.of(new CodeSystemLookupResultParameters.Property()
+							.setCode("testSubPropertyCode")
+							.setValue(new Coding()
+									.setSystem("testSubCodingSystem")
+									.setCode("testSubCodingCode")
+									.setDisplay("Sub Display test"))
+							.setDescription("Test subdescription").setSource("testSubUri")))
+		));
 		
-		var parameters = new CodeSystemLookupResultParameters((Parameters) resource);
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
 		
-		// Name
-		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
-		
-		// Version
-		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
-		
-		// Display
-		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
-		
-		// Property.code
-		assertThat(parameters.getProperty().get(0).getCode().getValueAsString()).isEqualTo("testPropertyCode");
-		
-		// Property.value
-		Coding coding = (Coding) parameters.getProperty().get(0).getValue();
-		assertThat(coding.getSystem()).isEqualTo("testCodingSystem");
-		assertThat(coding.getCode()).isEqualTo("testCodingCode");
-		assertThat(coding.getDisplay()).isEqualTo("Display test");
-		
-		// Property.description
-		assertThat(parameters.getProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test description");
-		
-		// Property.source
-		assertThat(parameters.getProperty().get(0).getSource().getValueAsString()).isEqualTo("testUri");
-		
-		// Property.subproperty.code
-		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getCode().getValueAsString()).isEqualTo("testSubPropertyCode");
-		
-		//Property.subproperty.value
-		Coding subpropertyCoding = (Coding) parameters.getProperty().get(0).getSubProperty().get(0).getValue();
-		assertThat(subpropertyCoding.getSystem()).isEqualTo("testSubCodingSystem");
-		assertThat(subpropertyCoding.getCode()).isEqualTo("testSubCodingCode");
-		assertThat(subpropertyCoding.getDisplay()).isEqualTo("Sub Display test");
-		
-		// Property.subproperty.description
-		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getDescription().getValueAsString()).isEqualTo("Test subdescription");
-		
-		// Property.subproperty.source
-		assertThat(parameters.getProperty().get(0).getSubProperty().get(0).getSource().getValueAsString()).isEqualTo("testSubUri");
+		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void property_with_multiple_subproperties() throws Exception {
+		String json = 
+		"""
+		{
+			"resourceType": "Parameters",
+			"parameter" : [
+				{
+					"name": "property",
+					"part": [
+						{
+							"name": "code",
+							"valueCode": "testPropertyCode"
+						},
+						{
+							"name": "value",
+							"valueCoding": {
+								"system": "testCodingSystem",
+								"code": "testCodingCode",
+								"display": "Display test"
+							}
+						},
+						{
+							"name": "description",
+							"valueString": "Test description"
+						},
+						{
+							"name": "source",
+							"valueCanonical": "testUri"
+						},
+						{
+							"name": "subproperty",
+							"part": [
+								{
+									"name": "code",
+									"valueCode": "testSubPropertyCode1"
+								},
+								{
+									"name": "value",
+									"valueCoding": {
+										"system": "testSubCodingSystem1",
+										"code": "testSubCodingCode1",
+										"display": "Sub Display test1"
+									}
+								},
+								{
+									"name": "description",
+									"valueString": "Test subdescription1"
+								},
+								{
+									"name": "source",
+									"valueCanonical": "testSubUri1"
+								}
+							]
+						},
+						{
+							"name": "subproperty",
+							"part": [
+								{
+									"name": "code",
+									"valueCode": "testSubPropertyCode2"
+								},
+								{
+									"name": "value",
+									"valueCoding": {
+										"system": "testSubCodingSystem2",
+										"code": "testSubCodingCode2",
+										"display": "Sub Display test2"
+									}
+								},
+								{
+									"name": "description",
+									"valueString": "Test subdescription2"
+								},
+								{
+									"name": "source",
+									"valueCanonical": "testSubUri2"
+								}
+							]
+						}
+					]
+				}
+			]		
+		}
+		""";
+				
+		Resource resource = parser.parse(json);
+		
+		CodeSystemLookupResultParameters expected = new CodeSystemLookupResultParameters().setProperty(List.of(
+				new CodeSystemLookupResultParameters.Property()
+					.setCode("testPropertyCode")
+					.setValue(new Coding()
+							.setSystem("testCodingSystem")
+							.setCode("testCodingCode")
+							.setDisplay("Display test"))
+					.setDescription("Test description")
+					.setSource("testUri")
+					.setSubProperty(List.of(
+							new CodeSystemLookupResultParameters.Property()
+								.setCode("testSubPropertyCode1")
+								.setValue(new Coding()
+										.setSystem("testSubCodingSystem1")
+										.setCode("testSubCodingCode1")
+										.setDisplay("Sub Display test1"))
+								.setDescription("Test subdescription1")
+								.setSource("testSubUri1"),  
+							new CodeSystemLookupResultParameters.Property()
+								.setCode("testSubPropertyCode2")
+								.setValue(new Coding()
+										.setSystem("testSubCodingSystem2")
+										.setCode("testSubCodingCode2")
+										.setDisplay("Sub Display test2"))
+								.setDescription("Test subdescription2")
+								.setSource("testSubUri2")))
+		));
+		
+		CodeSystemLookupResultParameters actual = new CodeSystemLookupResultParameters((Parameters) resource);
+		
+		assertEquals(expected, actual);
+	}
+	
 }
