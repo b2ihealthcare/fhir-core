@@ -107,6 +107,13 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 		return this;
 	}
 	
+	public ValueSetValidateCodeParameters setValueSet(ValueSet valueSet) {
+		if (valueSet != null) {
+			getParameters().addParameter(new Parameters.ParametersParameterComponent("valueSet").setResource(valueSet));
+		}
+		return this;
+	}
+	
 	public ValueSetValidateCodeParameters setValueSetVersion(String valueSetVersion) {
 		return setValueSetVersion(new StringType(valueSetVersion));
 	}
