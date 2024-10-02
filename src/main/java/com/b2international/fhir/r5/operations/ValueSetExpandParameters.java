@@ -278,21 +278,21 @@ public final class ValueSetExpandParameters extends BaseParameters {
 		return this;
 	}
 	
-	public ValueSetExpandParameters setExcludeNestedForUI(Boolean excludeNestedForUI) {
-		return excludeNestedForUI == null ? this : setExcludeNestedForUI(new BooleanType(excludeNestedForUI));
+	public ValueSetExpandParameters setExcludeNotForUI(Boolean excludeNotForUI) {
+		return excludeNotForUI == null ? this : setExcludeNotForUI(new BooleanType(excludeNotForUI));
 	}
 	
-	public ValueSetExpandParameters setExcludeNestedForUI(BooleanType excludeNestedForUI) {
-		addParameter("excludeNestedForUI", excludeNestedForUI);
+	public ValueSetExpandParameters setExcludeNotForUI(BooleanType excludeNotForUI) {
+		addParameter("excludeNotForUI", excludeNotForUI);
 		return this;
 	}
 	
-	public ValueSetExpandParameters setExcludeNestedPostCoordinated(Boolean excludeNestedPostCoordinated) {
-		return excludeNestedPostCoordinated == null ? this : setExcludeNestedPostCoordinated(new BooleanType(excludeNestedPostCoordinated));
+	public ValueSetExpandParameters setExcludePostCoordinated(Boolean excludePostCoordinated) {
+		return excludePostCoordinated == null ? this : setExcludePostCoordinated(new BooleanType(excludePostCoordinated));
 	}
 	
-	public ValueSetExpandParameters setExcludeNestedPostCoordinated(BooleanType excludeNestedPostCoordinated) {
-		addParameter("excludeNestedPostCoordinated", excludeNestedPostCoordinated);
+	public ValueSetExpandParameters setExcludePostCoordinated(BooleanType excludePostCoordinated) {
+		addParameter("excludePostCoordinated", excludePostCoordinated);
 		return this;
 	}
 	
