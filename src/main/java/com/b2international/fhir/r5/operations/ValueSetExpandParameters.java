@@ -181,6 +181,10 @@ public final class ValueSetExpandParameters extends BaseParameters {
 		return this;
 	}
 	
+	public ValueSetExpandParameters setDate(String date) {
+		return setDate(new DateType(date));
+	}
+	
 	public ValueSetExpandParameters setDate(Date date) {
 		return setDate(new DateType(date));
 	}
