@@ -31,7 +31,7 @@ public class CodeSystemValidateCodeParametersTest {
 	private final JsonParser parser = new JsonParser();
 	
 	@Test
-	public void testName() throws Exception {
+	public void url() throws Exception {
 		
 		String json = 
 		"""
