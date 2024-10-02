@@ -254,6 +254,18 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return this;
 		}
 		
+		public Property setSubProperty(List<Property> subproperties) {
+			if (subproperties == null) {
+				return this;
+			}
+			
+			subproperties.stream()
+				.map(subproperty -> new Parameters.ParametersParameterComponent().setName("subproperty").setPart(subproperty.getPartSorted()))
+				.forEach(getPart()::add);
+			
+			return this;
+		}
+		
 		@Override
 		protected int sortBy(ParametersParameterComponent parameterA, ParametersParameterComponent parameterB) {
 			return Ints.compare(PARAMETER_ORDER.indexOf(parameterA.getName()), PARAMETER_ORDER.indexOf(parameterB.getName()));
