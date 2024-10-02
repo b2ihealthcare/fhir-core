@@ -328,7 +328,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else if (es instanceof String) {
 					return new CanonicalType((String) es);
 				} else {
-					throw new IllegalArgumentException(String.format("'exclude-system' is not of string type. Got: ", es.getClass()));
+					throw new IllegalArgumentException(String.format("'exclude-system' is not of canonical type. Got: ", es.getClass()));
 				}
 			}).forEach(excludeSystem -> addParameter("exclude-system", excludeSystem));
 		}
@@ -343,7 +343,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else if (sv instanceof String) {
 					return new CanonicalType((String) sv);
 				} else {
-					throw new IllegalArgumentException(String.format("'system-version' is not of string type. Got: ", sv.getClass()));
+					throw new IllegalArgumentException(String.format("'system-version' is not of canonical type. Got: ", sv.getClass()));
 				}
 			}).forEach(systemVersion -> addParameter("system-version", systemVersion));
 		}
@@ -358,7 +358,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else if (csv instanceof String) {
 					return new CanonicalType((String) csv);
 				} else {
-					throw new IllegalArgumentException(String.format("'check-system-version' is not of string type. Got: ", csv.getClass()));
+					throw new IllegalArgumentException(String.format("'check-system-version' is not of canonical type. Got: ", csv.getClass()));
 				}
 			}).forEach(checkSystemVersion -> addParameter("check-system-version", checkSystemVersion));
 		}
@@ -373,7 +373,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else if (fsv instanceof String) {
 					return new CanonicalType((String) fsv);
 				} else {
-					throw new IllegalArgumentException(String.format("'force-system-version' is not of string type. Got: ", fsv.getClass()));
+					throw new IllegalArgumentException(String.format("'force-system-version' is not of canonical type. Got: ", fsv.getClass()));
 				}
 			}).forEach(forceSystemVersion -> addParameter("force-system-version", forceSystemVersion));
 		}
