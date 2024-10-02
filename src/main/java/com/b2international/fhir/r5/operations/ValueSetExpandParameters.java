@@ -315,7 +315,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'property' is not of string type. Got: ", prop.getClass()));
 				}
-			}).forEach(propertyparam -> addParameter("designation", propertyparam));
+			}).forEach(propertyparam -> addParameter("property", propertyparam));
 		}
 		return this;
 	}
