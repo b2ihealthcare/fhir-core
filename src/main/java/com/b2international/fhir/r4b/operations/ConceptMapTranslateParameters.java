@@ -187,6 +187,15 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		return this;
 	}
 	
+	public ConceptMapTranslateParameters setReverse(Boolean isReverse) {
+		return isReverse == null ? this : setReverse(new BooleanType(isReverse));
+	}
+	
+	public ConceptMapTranslateParameters setReverse(BooleanType isReverse) {
+		addParameter("reverse", isReverse);
+		return this;
+	}
+	
 	public static final class Dependency extends BasePart  {
 		
 		public Dependency() {
