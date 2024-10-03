@@ -16,10 +16,13 @@
 package com.b2international.fhir.r4.operations;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
 import org.hl7.fhir.r4.model.Parameters;
+import org.hl7.fhir.r4.model.PrimitiveType;
+import org.hl7.fhir.r4.model.Type;
 
 /**
  * @since 0.1
@@ -48,9 +51,36 @@ public abstract class BaseParameters {
 		return getParameter(name).map(parameterValueExtractor).orElse(null);
 	}
 	
-	
 	public <T> boolean hasParameterWithValue(String name, Function<Parameters.ParametersParameterComponent, T> parameterValueExtractor, T expectedValue) {
 		return getParameters(name).stream().map(parameterValueExtractor).filter(expectedValue::equals).findFirst().isPresent();
+	}
+	
+	protected final void addParameter(String name, Type value) {
+		// prevent adding parameters without name and/or value
+		if (name == null || value == null) {
+			return;
+		}
+		
+		// prevent adding primitive types without actual value
+		if (value instanceof PrimitiveType<?> && !value.hasPrimitiveValue()) {
+			return;
+		}
+		
+		getParameters().addParameter(name, value);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(parameters);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		BaseParameters other = (BaseParameters) obj;
+		return this.parameters.equalsDeep(other.getParameters());
 	}
 	
 }
