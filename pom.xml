@@ -202,7 +202,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Bundle-SymbolicName>com.international.fhir.core</Bundle-SymbolicName>
+						<Bundle-SymbolicName>com.b2international.fhir.core</Bundle-SymbolicName>
 						<Embed-Directory>lib</Embed-Directory>
 						<Embed-Dependency>*;scope=compile</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
