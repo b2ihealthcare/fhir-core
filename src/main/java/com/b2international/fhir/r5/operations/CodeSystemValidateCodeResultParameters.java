@@ -64,8 +64,12 @@ public class CodeSystemValidateCodeResultParameters extends BaseParameters {
 //		getParameter("issues");
 //	}
 	
-	public CodeSystemValidateCodeResultParameters setResult(boolean result) {
-		addParameter("result", new BooleanType(result));
+	public CodeSystemValidateCodeResultParameters setResult(Boolean isResult) {
+		return isResult == null ? this : setResult(new BooleanType(isResult));
+	}
+	
+	public CodeSystemValidateCodeResultParameters setResult(BooleanType result) {
+		addParameter("result", result);
 		return this;
 	}
 	
