@@ -193,6 +193,10 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return type.getValueAsString();
 		}
 		
+		public Designation setLanguage(String language) {
+			return setLanguage(new CodeType(language));
+		}
+		
 		public Designation setLanguage(CodeType language) {
 			if (language == null) {
 				return this;
