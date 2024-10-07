@@ -109,7 +109,7 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 				designationParameter.addPart(
 					new Parameters.ParametersParameterComponent()
 						.setName("value")
-						.setValue(new StringType(designation.getValue()))
+						.setValue(new StringType(designation.getValue().getValue()))
 				);
 				
 				// add language part
@@ -188,9 +188,8 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return (Coding) getParameter("use").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
 		}
 		
-		public String getValue() {
-			StringType type = (StringType) getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
-			return type.getValueAsString();
+		public StringType getValue() {
+			return (StringType) getParameter("value").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
 		}
 		
 		public Designation setLanguage(String language) {
