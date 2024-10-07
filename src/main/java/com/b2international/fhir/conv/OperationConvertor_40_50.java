@@ -98,13 +98,28 @@ public class OperationConvertor_40_50 {
 	
 	//ValueSet validate-code
 	public static com.b2international.fhir.r4.operations.ValueSetValidateCodeParameters convert(com.b2international.fhir.r5.operations.ValueSetValidateCodeParameters parameters) {
-		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
-		return new com.b2international.fhir.r4.operations.ValueSetValidateCodeParameters(r4Parameters);
+		return new com.b2international.fhir.r4.operations.ValueSetValidateCodeParameters()
+				.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
+				.setContext(parameters.getContext() == null ? null : parameters.getContext().getValue())
+				.setValueSet(parameters.getValueSet() == null ? null : (org.hl7.fhir.r4.model.ValueSet) VersionConvertorFactory_40_50.convertResource(parameters.getValueSet()))
+				.setValueSetVersion(parameters.getValueSetVersion() == null ? null : parameters.getValueSetVersion().getValue())
+				.setCode(parameters.getCode() == null ? null : parameters.getCode().getValue())
+				.setSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
+				.setSystemVersion(parameters.getSystemVersion() == null ? null : parameters.getSystemVersion().getValue())
+				.setDisplay(parameters.getDisplay() == null ? null : parameters.getDisplay().getValue())
+				.setCoding(parameters.getCoding() == null ? null : (org.hl7.fhir.r4.model.Coding) VersionConvertorFactory_40_50.convertType(parameters.getCoding()))
+				.setCodeableConcept(parameters.getCodeableConcept() == null ? null : (org.hl7.fhir.r4.model.CodeableConcept) VersionConvertorFactory_40_50.convertType(parameters.getCodeableConcept()))
+				.setDate(parameters.getDate() == null ? null : parameters.getDate().getValue())
+				.setAbstract(parameters.getIsAbstract() == null ? null : parameters.getIsAbstract().getValue())
+				.setDisplayLanguage(parameters.getDisplayLanguage() == null ? null : parameters.getDisplayLanguage().getValue());
 	}
 	
+	// ValueSet validate-code result
 	public static com.b2international.fhir.r4.operations.ValueSetValidateCodeResultParameters convert(com.b2international.fhir.r5.operations.ValueSetValidateCodeResultParameters parameters) {
-		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
-		return new com.b2international.fhir.r4.operations.ValueSetValidateCodeResultParameters(r4Parameters);
+		return new com.b2international.fhir.r4.operations.ValueSetValidateCodeResultParameters()
+				.setResult(parameters.getResult() == null ? null : parameters.getResult().getValue())
+				.setMessage(parameters.getMessage() == null ? null : parameters.getMessage().getValue())
+				.setDisplay(parameters.getDisplay() == null ? null : parameters.getDisplay().getValue());
 	}
 	
 	//R4 to R5
@@ -141,4 +156,19 @@ public class OperationConvertor_40_50 {
 		return new com.b2international.fhir.r5.operations.CodeSystemValidateCodeResultParameters(r5Parameters);
 	}
 	
+	private static com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters.Designation convert(com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters.Designation designation) {
+		return new com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters.Designation()
+				.setLanguage(designation.getLanguage() == null ? null : designation.getLanguage().getValue())
+				.setUse((org.hl7.fhir.r4.model.Coding) VersionConvertorFactory_40_50.convertType(designation.getUse()))
+				.setValue(designation.getValue() == null ? null : designation.getValue().getValue());
+	}
+	
+	private static com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters.Property convert(com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters.Property property) {
+		return new com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters.Property()
+				.setCode(property.getCode() == null ? null : property.getCode().getValue())
+				.setValue(property.getValue() == null ? null : VersionConvertorFactory_40_50.convertType(property.getValue()))
+				.setDescription(property.getDescription() == null ? null : property.getDescription().getValue())
+				.setSubProperty(property.getSubProperty() == null ? null : property.getSubProperty().stream()
+						.map(subproperty -> convert(subproperty)).toList());
+	}
 }
