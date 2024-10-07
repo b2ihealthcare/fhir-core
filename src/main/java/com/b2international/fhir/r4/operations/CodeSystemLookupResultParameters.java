@@ -280,6 +280,10 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.collect(Collectors.toList());
 		}
 		
+		public Property setCode(String code) {
+			return setCode(new CodeType(code));
+		}
+		
 		public Property setCode(CodeType code) {
 			if (code == null) {
 				return this;
@@ -298,6 +302,10 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.setValue(value));
 		}
 		
+		public Property setDescription(String description) {
+			return setDescription(new StringType(description));
+		}
+		
 		public Property setDescription(StringType description) {
 			if (description == null) {
 				return this;
@@ -305,6 +313,17 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			return addParameter(new Parameters.ParametersParameterComponent()
 					.setName("description")
 					.setValue(description));
+		}
+		
+		public Property setSubProperty(List<Property> subproperties) {
+			if (subproperties == null) {
+				return this;
+			}
+			subproperties.stream()
+				.map(subproperty -> new Parameters.ParametersParameterComponent().setName("subproperty").setPart(subproperty.getPart()))
+				.forEach(getPart()::add);
+			
+			return this;
 		}
 		
 		public Property addParameter(Parameters.ParametersParameterComponent parameter) {
