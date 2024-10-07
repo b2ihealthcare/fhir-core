@@ -137,7 +137,7 @@ public class CodeSystemLookupResultParametersTest {
 		assertThat(parameters.getDesignation().get(0).getUse().getDisplay()).isEqualTo("Display test");
 		
 		// Designation.value
-		assertThat(parameters.getDesignation().get(0).getValue()).isEqualTo("testValue");
+		assertThat(parameters.getDesignation().get(0).getValue().getValue()).isEqualTo("testValue");
 		
 	}
 	
