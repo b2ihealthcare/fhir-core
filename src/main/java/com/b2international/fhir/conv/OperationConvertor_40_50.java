@@ -1,8 +1,6 @@
 package com.b2international.fhir.conv;
 
 import org.hl7.fhir.convertors.factory.VersionConvertorFactory_40_50;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.ValueSet;
 
 public class OperationConvertor_40_50 {
 	
@@ -13,45 +11,45 @@ public class OperationConvertor_40_50 {
 				.setCode(parameters.getCode() == null ? null : parameters.getCode().getValue())
 				.setSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
 				.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue())
-				.setCoding(parameters.getCoding() == null ? null : new Coding()
-						.setSystem(parameters.getCoding().getSystem() == null ? null : parameters.getCoding().getSystem())
-						.setVersion(parameters.getCoding().getVersion() == null ? null : parameters.getCoding().getVersion())
-						.setCode(parameters.getCoding().getCode() == null ? null : parameters.getCoding().getCode())
-						.setDisplay(parameters.getCoding().getDisplay() == null ? null : parameters.getCoding().getDisplay())
-						.setUserSelected(parameters.getCoding().getUserSelectedElement() == null ? null : parameters.getCoding().getUserSelectedElement().getValue()))
+				.setCoding(parameters.getCoding() == null ? null : (org.hl7.fhir.r4.model.Coding) VersionConvertorFactory_40_50.convertType(parameters.getCoding()))
 				.setDate(parameters.getDate() == null ? null : parameters.getDate().getValue())
 				.setDisplayLanguage(parameters.getDisplayLanguage() == null ? null : parameters.getDisplayLanguage().getValue())
 				.setProperty(parameters.getProperty() == null ? null : parameters.getProperty());
 	}
 	
-	// TODO: designation
+	// CodeSystem lookup result
 	public static com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters convert(com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters parameters) {
 		return new com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters()
 				.setName(parameters.getName() == null ? null : parameters.getName().getValue())
 				.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue())
 				.setDisplay(parameters.getDisplay() == null ? null : parameters.getDisplay().getValue())
-				.setDesignation(parameters.getDesignation() == null ? null : parameters.getDesignation().stream().map(designation -> {
-					return new com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters.Designation();
-				}).toList());
+				.setDesignation(parameters.getDesignation() == null ? null : parameters.getDesignation().stream()
+						.map(designation -> convert(designation))
+						.toList())
+				.setProperty(parameters.getProperty() == null ? null : parameters.getProperty().stream()
+						.map(property -> convert(property))
+						.toList());
 	}
 	
-	//CodeSystem subsumes
+	// CodeSystem subsumes
 	public static com.b2international.fhir.r4.operations.CodeSystemSubsumptionParameters convert(com.b2international.fhir.r5.operations.CodeSystemSubsumptionParameters parameters) {
 		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
 		return new com.b2international.fhir.r4.operations.CodeSystemSubsumptionParameters(r4Parameters);
 	}
 	
+	// CodeSystem subsumes result
 	public static com.b2international.fhir.r4.operations.CodeSystemSubsumptionResultParameters convert(com.b2international.fhir.r5.operations.CodeSystemSubsumptionResultParameters parameters) {
 		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
 		return new com.b2international.fhir.r4.operations.CodeSystemSubsumptionResultParameters(r4Parameters);
 	}
 	
-	//CodeSystem validate-code
+	// CodeSystem validate-code
 	public static com.b2international.fhir.r4.operations.CodeSystemValidateCodeParameters convert(com.b2international.fhir.r5.operations.CodeSystemValidateCodeParameters parameters) {
 		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
 		return new com.b2international.fhir.r4.operations.CodeSystemValidateCodeParameters(r4Parameters);
 	}
 	
+	//CodeSystem validate-code result
 	public static com.b2international.fhir.r4.operations.CodeSystemValidateCodeResultParameters convert(com.b2international.fhir.r5.operations.CodeSystemValidateCodeResultParameters parameters) {
 		return new com.b2international.fhir.r4.operations.CodeSystemValidateCodeResultParameters()
 				.setResult(parameters.getResult() == null ? null : parameters.getResult().getValue())
@@ -59,12 +57,18 @@ public class OperationConvertor_40_50 {
 				.setDisplay(parameters.getDisplay() == null ? null : parameters.getDisplay().getValue());
 	}
 	
-	//ConceptMap translate - TODO
+	// ConceptMap translate - TODO
 	public static com.b2international.fhir.r4.operations.ConceptMapTranslateParameters convert(com.b2international.fhir.r5.operations.ConceptMapTranslateParameters parameters) {
-		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
-		return new com.b2international.fhir.r4.operations.ConceptMapTranslateParameters(r4Parameters);
+		return new com.b2international.fhir.r4.operations.ConceptMapTranslateParameters()
+				.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
+				.setConceptMap(parameters.getConceptMap() == null ? null : (org.hl7.fhir.r4.model.ConceptMap) VersionConvertorFactory_40_50.convertResource(parameters.getConceptMap()))
+				.setConceptMapVersion(parameters.getConceptMapVersion() == null ? null : parameters.getConceptMapVersion().getValue())
+				.setCode(parameters.getSourceCode() == null ? null : parameters.getSourceCode().getValueAsString())
+				.setSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
+				.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue());
 	}
 	
+	// ConceptMap translate result - TODO
 	public static com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters convert(com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters parameters) {
 		var r4Parameters = (org.hl7.fhir.r4.model.Parameters) VersionConvertorFactory_40_50.convertResource(parameters.getParameters());
 		return new com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters(r4Parameters);
@@ -74,7 +78,7 @@ public class OperationConvertor_40_50 {
 	public static com.b2international.fhir.r4.operations.ValueSetExpandParameters convert(com.b2international.fhir.r5.operations.ValueSetExpandParameters parameters) {
 		return new com.b2international.fhir.r4.operations.ValueSetExpandParameters()
 				.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
-				.setValueSet(parameters.getValueSet() == null ? null : (ValueSet) VersionConvertorFactory_40_50.convertResource(parameters.getValueSet()))
+				.setValueSet(parameters.getValueSet() == null ? null : (org.hl7.fhir.r4.model.ValueSet) VersionConvertorFactory_40_50.convertResource(parameters.getValueSet()))
 				.setValueSetVersion(parameters.getValueSetVersion() == null ? null : parameters.getValueSetVersion().getValue())
 				.setContext(parameters.getContext() == null ? null : parameters.getContext().getValue())
 				.setContextDirection(parameters.getContextDirection() == null ? null : parameters.getContextDirection().getValue())
