@@ -17,6 +17,7 @@ package com.b2international.fhir.formats;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.xmlpull.mxp1.MXParser;
@@ -46,6 +47,24 @@ public class XmlParser {
 	
 	public static final org.hl7.fhir.r5.model.Resource parseR5(InputStream in) throws FHIRFormatError, IOException {
 		return new org.hl7.fhir.r5.formats.XmlParser().parse(in);
+	}
+	
+	public static final void composeR4(OutputStream out, org.hl7.fhir.r4.model.Resource resource, boolean pretty) throws FHIRFormatError, IOException {
+		new org.hl7.fhir.r4.formats.XmlParser()
+			.setOutputStyle(pretty ? org.hl7.fhir.r4.formats.IParser.OutputStyle.PRETTY : org.hl7.fhir.r4.formats.IParser.OutputStyle.NORMAL)
+			.compose(out, resource);
+	}
+
+	public static final void composeR4B(OutputStream out, org.hl7.fhir.r4b.model.Resource resource, boolean pretty) throws FHIRFormatError, IOException {
+		new org.hl7.fhir.r4b.formats.XmlParser()
+			.setOutputStyle(pretty ? org.hl7.fhir.r4b.formats.IParser.OutputStyle.PRETTY : org.hl7.fhir.r4b.formats.IParser.OutputStyle.NORMAL)
+			.compose(out, resource);
+	}
+	
+	public static final void composeR5(OutputStream out, org.hl7.fhir.r5.model.Resource resource, boolean pretty) throws FHIRFormatError, IOException {
+		new org.hl7.fhir.r5.formats.XmlParser()
+			.setOutputStyle(pretty ? org.hl7.fhir.r5.formats.IParser.OutputStyle.PRETTY : org.hl7.fhir.r5.formats.IParser.OutputStyle.NORMAL)
+			.compose(out, resource);
 	}
 	
 }
