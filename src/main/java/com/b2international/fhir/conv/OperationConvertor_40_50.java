@@ -59,18 +59,32 @@ public class OperationConvertor_40_50 {
 			.setDisplay(parameters.getDisplay() == null ? null : parameters.getDisplay().getValue());
 	}
 	
-	// ConceptMap translate - TODO
 	public static com.b2international.fhir.r4.operations.ConceptMapTranslateParameters convert(com.b2international.fhir.r5.operations.ConceptMapTranslateParameters parameters) {
 		return new com.b2international.fhir.r4.operations.ConceptMapTranslateParameters()
 			.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
 			.setConceptMap(parameters.getConceptMap() == null ? null : (org.hl7.fhir.r4.model.ConceptMap) VersionConvertorFactory_40_50.convertResource(parameters.getConceptMap()))
 			.setConceptMapVersion(parameters.getConceptMapVersion() == null ? null : parameters.getConceptMapVersion().getValue())
+			
+			// TODO: code (r4) - sourceCode(r5)?
 			.setCode(parameters.getSourceCode() == null ? null : parameters.getSourceCode().getValue())
+			
 			.setSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
-			.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue());
+			.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue())
+			
+			// TODO: source (r4) - sourceScope (r5)
+			.setSource(parameters.getSourceScope() == null ? null : parameters.getSourceScope().getValue())
+			
+			.setCoding(parameters.getSourceCoding() == null ? null : (org.hl7.fhir.r4.model.Coding) VersionConvertorFactory_40_50.convertType(parameters.getSourceCoding()))
+			.setCodeableConcept(parameters.getSourceCodeableConcept() == null ? null : (org.hl7.fhir.r4.model.CodeableConcept) VersionConvertorFactory_40_50.convertType(parameters.getSourceCodeableConcept()))
+			
+			// TODO: target (r4) - targetScope(r5)?
+			.setTarget(parameters.getTargetScope() == null ? null : parameters.getTargetScope().getValue())
+			
+			.setTargetSystem(parameters.getTargetSystem() == null ? null : parameters.getTargetSystem().getValue())
+			.setDependency(parameters.getDependency() == null ? null : parameters.getDependency().stream().map(dependency -> convert(dependency)).toList());
 	}
 	
-	// ConceptMap translate result - TODO
+	// ConceptMap translate result
 	public static com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters convert(com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters parameters) {
 		return new com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters()
 				.setResult(parameters.getResult() == null ? null : parameters.getResult().getValue())
