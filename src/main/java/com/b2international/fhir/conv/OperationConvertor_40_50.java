@@ -309,24 +309,19 @@ public class OperationConvertor_40_50 {
 			case RELATEDTO: 
 				r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.RELATEDTO.toCode());
 				break;
-				
 			case EQUIVALENT:
 				r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.EQUIVALENT.toCode());
 				break;
-				
 			case SOURCEISNARROWERTHANTARGET:
 				r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.WIDER.toCode());
 				break;
-			
 			case SOURCEISBROADERTHANTARGET:
 				r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.NARROWER.toCode());
 				break;
-				
 			case NOTRELATEDTO:
 				// OR: UNMATCHED?
 				r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.DISJOINT.toCode());
 				break;
-			
 			// TODO error msg?
 			default:
 				r4Match.setEquivalence("");
@@ -349,4 +344,44 @@ public class OperationConvertor_40_50 {
 		
 		return r4Product;
 	}
+	
+	private static com.b2international.fhir.r4.operations.ConceptMapTranslateParameters.Dependency convert (com.b2international.fhir.r5.operations.ConceptMapTranslateParameters.Dependency r5dependency) {
+		
+		var r4Dependency = new com.b2international.fhir.r4.operations.ConceptMapTranslateParameters.Dependency()
+			.setElement(r5dependency.getAttribute() == null ? null : r5dependency.getAttribute().getValue());
+		
+		if (r5dependency.getValue() instanceof org.hl7.fhir.r5.model.Coding) {
+			r4Dependency.setConcept(
+					new org.hl7.fhir.r4.model.CodeableConcept()
+					.setCoding(List.of((org.hl7.fhir.r4.model.Coding) VersionConvertorFactory_40_50.convertType(r5dependency.getValue())))
+			);
+		}
+		
+		return r4Dependency;
+	}
+	
+	private static com.b2international.fhir.r5.operations.ConceptMapTranslateParameters.Dependency convert (com.b2international.fhir.r4.operations.ConceptMapTranslateParameters.Dependency r4dependency) {
+		return new com.b2international.fhir.r5.operations.ConceptMapTranslateParameters.Dependency()
+				.setAttribute(r4dependency.getElement() == null ? null : r4dependency.getElement().getValue())
+				// TODO
+				.setValue(r4dependency.getConcept() == null ? null : (org.hl7.fhir.r5.model.Coding) VersionConvertorFactory_40_50.convertType(r4dependency.getConcept().getCoding().get(0)));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
