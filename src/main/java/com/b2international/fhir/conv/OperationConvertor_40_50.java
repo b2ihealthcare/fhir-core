@@ -1,5 +1,7 @@
 package com.b2international.fhir.conv;
 
+import java.util.List;
+
 import org.hl7.fhir.convertors.factory.VersionConvertorFactory_40_50;
 
 public class OperationConvertor_40_50 {
@@ -199,15 +201,44 @@ public class OperationConvertor_40_50 {
 			.setDisplay(parameters.getDisplay() == null ? null : parameters.getDisplay().getValue());
 	}
 	
-	// ConceptMap translate - TODO
+	// ConceptMap translate
 	public static com.b2international.fhir.r5.operations.ConceptMapTranslateParameters convert(com.b2international.fhir.r4.operations.ConceptMapTranslateParameters parameters) {
-		return new com.b2international.fhir.r5.operations.ConceptMapTranslateParameters()
+		
+		var r5params = new com.b2international.fhir.r5.operations.ConceptMapTranslateParameters()
 			.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
 			.setConceptMap(parameters.getConceptMap() == null ? null : (org.hl7.fhir.r5.model.ConceptMap) VersionConvertorFactory_40_50.convertResource(parameters.getConceptMap()))
 			.setConceptMapVersion(parameters.getConceptMapVersion() == null ? null : parameters.getConceptMapVersion().getValue())
-			.setSourceCode(parameters.getCode() == null ? null : parameters.getCode().getValue())
-			.setSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
 			.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue());
+		
+		if (parameters.getReverse().getValue()) {
+			r5params
+				.setTargetCode(parameters.getCode() == null ? null : parameters.getCode().getValue())
+				.setSystem(parameters.getTargetSystem() == null ? null : parameters.getTargetSystem().getValue())
+				.setTargetSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
+				.setTargetScope(parameters.getSource() == null ? null : parameters.getSource().getValue())
+				.setTargetCoding(parameters.getCoding() == null ? null : (org.hl7.fhir.r5.model.Coding) VersionConvertorFactory_40_50.convertType(parameters.getCoding()))
+				.setTargetCodeableConcept(parameters.getCodeableConcept() == null ? null : (org.hl7.fhir.r5.model.CodeableConcept) VersionConvertorFactory_40_50.convertType(parameters.getCodeableConcept()));
+		} else {
+			r5params
+				// TODO
+				.setSourceCode(parameters.getCode() == null ? null : parameters.getCode().getValue())
+				
+				.setSystem(parameters.getSystem() == null ? null : parameters.getSystem().getValue())
+				.setVersion(parameters.getVersion() == null ? null : parameters.getVersion().getValue())
+				
+				// TODO
+				.setSourceScope(parameters.getSource() == null ? null : parameters.getSource().getValue())
+				
+				.setSourceCoding(parameters.getCoding() == null ? null : (org.hl7.fhir.r5.model.Coding) VersionConvertorFactory_40_50.convertType(parameters.getCoding()))
+				.setSourceCodeableConcept(parameters.getCodeableConcept() == null ? null : (org.hl7.fhir.r5.model.CodeableConcept) VersionConvertorFactory_40_50.convertType(parameters.getCodeableConcept()))
+				
+				// TODO
+				.setTargetScope(parameters.getTarget() == null ? null : parameters.getTarget().getValue())
+				
+				.setTargetSystem(parameters.getTargetSystem() == null ? null : parameters.getTargetSystem().getValue());
+		}
+		return r5params
+			.setDependency(parameters.getDependency() == null ? null : parameters.getDependency().stream().map(dependency -> convert(dependency)).toList());
 	}
 	
 	// ConceptMap translate result - TODO
