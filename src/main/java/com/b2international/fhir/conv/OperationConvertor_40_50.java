@@ -50,6 +50,34 @@ public class OperationConvertor_40_50 {
 	// R5 to R4 //
 	//////////////
 	
+	public static com.b2international.fhir.r4.operations.BaseParameters convert(com.b2international.fhir.r5.operations.BaseParameters parameters) {
+		if (parameters instanceof com.b2international.fhir.r5.operations.CodeSystemLookupParameters) {
+			return convert((com.b2international.fhir.r5.operations.CodeSystemLookupParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters) {
+			return convert((com.b2international.fhir.r5.operations.CodeSystemLookupResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.CodeSystemSubsumptionParameters) {
+			return convert((com.b2international.fhir.r5.operations.CodeSystemSubsumptionParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.CodeSystemSubsumptionResultParameters) {
+			return convert((com.b2international.fhir.r5.operations.CodeSystemSubsumptionResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.CodeSystemValidateCodeParameters) {
+			return convert((com.b2international.fhir.r5.operations.CodeSystemValidateCodeParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.CodeSystemValidateCodeResultParameters) {
+			return convert((com.b2international.fhir.r5.operations.CodeSystemValidateCodeResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.ConceptMapTranslateParameters) {
+			return convert((com.b2international.fhir.r5.operations.ConceptMapTranslateParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters) {
+			return convert((com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.ValueSetExpandParameters) {
+			return convert((com.b2international.fhir.r5.operations.ValueSetExpandParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.ValueSetValidateCodeParameters) {
+			return convert((com.b2international.fhir.r5.operations.ValueSetValidateCodeParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r5.operations.ValueSetValidateCodeResultParameters) {
+			return convert((com.b2international.fhir.r5.operations.ValueSetValidateCodeResultParameters) parameters);
+		} else {
+			throw new FHIRFormatError(String.format("Unable to convert R5 parameters '%s' to R4.", parameters.getClass().getSimpleName()));
+		}
+	}
+	
 	// CodeSystem$lookup input parameters
 	public static com.b2international.fhir.r4.operations.CodeSystemLookupParameters convert(com.b2international.fhir.r5.operations.CodeSystemLookupParameters parameters) {
 		return new com.b2international.fhir.r4.operations.CodeSystemLookupParameters()
@@ -290,6 +318,34 @@ public class OperationConvertor_40_50 {
 	//////////////
 	// R4 to R5 //
 	//////////////
+	
+	public static com.b2international.fhir.r5.operations.BaseParameters convert(com.b2international.fhir.r4.operations.BaseParameters parameters) {
+		if (parameters instanceof com.b2international.fhir.r4.operations.CodeSystemLookupParameters) {
+			return convert((com.b2international.fhir.r4.operations.CodeSystemLookupParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters) {
+			return convert((com.b2international.fhir.r4.operations.CodeSystemLookupResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.CodeSystemSubsumptionParameters) {
+			return convert((com.b2international.fhir.r4.operations.CodeSystemSubsumptionParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.CodeSystemSubsumptionResultParameters) {
+			return convert((com.b2international.fhir.r4.operations.CodeSystemSubsumptionResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.CodeSystemValidateCodeParameters) {
+			return convert((com.b2international.fhir.r4.operations.CodeSystemValidateCodeParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.CodeSystemValidateCodeResultParameters) {
+			return convert((com.b2international.fhir.r4.operations.CodeSystemValidateCodeResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.ConceptMapTranslateParameters) {
+			return convert((com.b2international.fhir.r4.operations.ConceptMapTranslateParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters) {
+			return convert((com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.ValueSetExpandParameters) {
+			return convert((com.b2international.fhir.r4.operations.ValueSetExpandParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.ValueSetValidateCodeParameters) {
+			return convert((com.b2international.fhir.r4.operations.ValueSetValidateCodeParameters) parameters);
+		} else if (parameters instanceof com.b2international.fhir.r4.operations.ValueSetValidateCodeResultParameters) {
+			return convert((com.b2international.fhir.r4.operations.ValueSetValidateCodeResultParameters) parameters);
+		} else {
+			throw new FHIRFormatError(String.format("Unable to convert R5 parameters '%s' to R4.", parameters.getClass().getSimpleName()));
+		}
+	}
 	
 	// CodeSystem$lookup input parameters
 	public static com.b2international.fhir.r5.operations.CodeSystemLookupParameters convert(com.b2international.fhir.r4.operations.CodeSystemLookupParameters parameters) {
