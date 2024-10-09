@@ -279,6 +279,21 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.collect(Collectors.toList());
 		}
 		
+		public Property setSubProperty(List<Property> subproperties) {
+			if (subproperties == null) {
+				return this;
+			}
+			subproperties.stream()
+				.map(subproperty -> new Parameters.ParametersParameterComponent().setName("subproperty").setPart(subproperty.getPart()))
+				.forEach(getPart()::add);
+			
+			return this;
+		}
+		
+		public Property setCode(String code) {
+			return setCode(new CodeType(code));
+		}
+		
 		public Property setCode(CodeType code) {
 			if (code == null) {
 				return this;
