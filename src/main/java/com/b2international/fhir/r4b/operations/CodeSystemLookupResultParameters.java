@@ -312,6 +312,10 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 					.setValue(value));
 		}
 		
+		public Property setDescription(String description) {
+			return setDescription(new StringType(description));
+		}
+		
 		public Property setDescription(StringType description) {
 			if (description == null) {
 				return this;
