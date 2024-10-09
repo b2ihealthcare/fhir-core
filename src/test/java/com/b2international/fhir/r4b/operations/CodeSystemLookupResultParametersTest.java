@@ -64,7 +64,7 @@ public class CodeSystemLookupResultParametersTest {
 		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
 		
 		// Version
-		assertThat(parameters.getVersionDisplay().getValueAsString()).isEqualTo("testVersion");
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
 		
 		// Display
 		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
@@ -123,7 +123,7 @@ public class CodeSystemLookupResultParametersTest {
 		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
 		
 		// Version
-		assertThat(parameters.getVersionDisplay().getValueAsString()).isEqualTo("testVersion");
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
 		
 		// Display
 		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
@@ -137,7 +137,7 @@ public class CodeSystemLookupResultParametersTest {
 		assertThat(parameters.getDesignation().get(0).getUse().getDisplay()).isEqualTo("Display test");
 		
 		// Designation.value
-		assertThat(parameters.getDesignation().get(0).getValue()).isEqualTo("testValue");
+		assertThat(parameters.getDesignation().get(0).getValue().getValue()).isEqualTo("testValue");
 	}
 	
 	@Test
@@ -213,7 +213,7 @@ public class CodeSystemLookupResultParametersTest {
 		assertThat(parameters.getName().getValueAsString()).isEqualTo("testName");
 		
 		// Version
-		assertThat(parameters.getVersionDisplay().getValueAsString()).isEqualTo("testVersion");
+		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
 		
 		// Display
 		assertThat(parameters.getDisplay().getValueAsString()).isEqualTo("testDisplay");
