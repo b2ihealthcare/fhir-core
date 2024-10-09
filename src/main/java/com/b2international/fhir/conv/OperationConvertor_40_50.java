@@ -241,12 +241,15 @@ public class OperationConvertor_40_50 {
 			.setDependency(parameters.getDependency() == null ? null : parameters.getDependency().stream().map(dependency -> convert(dependency)).toList());
 	}
 	
-	// ConceptMap translate result - TODO
+	// ConceptMap translate result
 	public static com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters convert(com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters parameters) {
-		return null;
+		return new com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters()
+				.setResult(parameters.getResult() == null ? null : parameters.getResult().getValue())
+				.setMessage(parameters.getMessage() == null ? null : parameters.getMessage().getValue())
+				.setMatch(parameters.getMatch() == null ? null : parameters.getMatch().stream().map(match -> convert(match)).toList());
 	}
 	
-	//ValueSet expand
+	// ValueSet expand
 	public static com.b2international.fhir.r5.operations.ValueSetExpandParameters convert(com.b2international.fhir.r4.operations.ValueSetExpandParameters parameters) {
 		return new com.b2international.fhir.r5.operations.ValueSetExpandParameters()
 			.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
@@ -272,7 +275,7 @@ public class OperationConvertor_40_50 {
 			.setForceSystemVersion(parameters.getForceSystemVersion() == null ? null : parameters.getForceSystemVersion().stream().map(ex -> ex.getValue()).toList());
 	}
 	
-	//ValueSet validate-code
+	// ValueSet validate-code
 	public static com.b2international.fhir.r5.operations.ValueSetValidateCodeParameters convert(com.b2international.fhir.r4.operations.ValueSetValidateCodeParameters parameters) {
 		return new com.b2international.fhir.r5.operations.ValueSetValidateCodeParameters()
 			.setUrl(parameters.getUrl() == null ? null : parameters.getUrl().getValue())
@@ -364,6 +367,40 @@ public class OperationConvertor_40_50 {
 			.setSource(r5Match.getOriginMap() == null ? null : r5Match.getOriginMap().getValue());
 	}
 	
+	//TODO: revise r4 ConceptMapEquivalence to r5 ConceptMapRelationship conversion
+	private static com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match convert(com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match r4Match) {
+		
+		var r5Match = new com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match();
+		
+		switch(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.fromCode(r4Match.getEquivalence().getCode())) {
+			case RELATEDTO: 
+				break;
+			case EQUIVALENT:
+				r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.RELATEDTO.toCode());
+			case EQUAL:
+				break;
+			case WIDER:
+				r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.SOURCEISNARROWERTHANTARGET.toCode());
+			case SUBSUMES:
+				break;
+			case NARROWER:
+				r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.SOURCEISBROADERTHANTARGET.toCode());
+			case SPECIALIZES:
+				break;
+			case UNMATCHED:
+				break;
+			case DISJOINT:
+				r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.NOTRELATEDTO.toCode());
+			default:
+				r5Match.setRelationship("");
+		}
+		r5Match.setConcept(r4Match.getConcept() == null ? null : (org.hl7.fhir.r5.model.Coding) VersionConvertorFactory_40_50.convertType(r4Match.getConcept()))
+			.setProduct(r4Match.getProduct() == null ? null : r4Match.getProduct().stream().map(product -> convert(product)).toList())
+			.setOriginMap(r4Match.getSource() == null ? null : r4Match.getSource().getValue());
+		
+		return r5Match;
+	}
+	
 	private static com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match.Product convert(com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match.Product r5Product) {
 		var r4Product = new com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match.Product()
 				.setElement(r5Product.getAttribute() == null ? null : r5Product.getAttribute().getValue());
@@ -374,6 +411,12 @@ public class OperationConvertor_40_50 {
 		}
 		
 		return r4Product;
+	}
+	
+	private static com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match.Product convert(com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match.Product r4Product) {
+		return new com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match.Product()
+				.setAttribute(r4Product.getElement() == null ? null : r4Product.getElement().getValue())
+				.setValue(r4Product.getConcept() == null ? null : (org.hl7.fhir.r5.model.Coding) VersionConvertorFactory_40_50.convertType(r4Product.getConcept()));
 	}
 	
 	private static com.b2international.fhir.r4.operations.ConceptMapTranslateParameters.Dependency convert (com.b2international.fhir.r5.operations.ConceptMapTranslateParameters.Dependency r5dependency) {
