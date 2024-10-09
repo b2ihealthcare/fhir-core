@@ -116,6 +116,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return this;
 	}
 	
+	public CodeSystemLookupParameters setDate(String date) {
+		return setDate(new DateType(date));
+	}
+	
 	public CodeSystemLookupParameters setDate(Date date) {
 		return setDate(new DateType(date));
 	}
