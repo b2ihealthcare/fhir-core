@@ -18,7 +18,7 @@ package com.b2international.fhir.r5.operations;
 import org.hl7.fhir.r5.model.*;
 
 /**
- * @since 9.3
+ * @since 0.1
  */
 public class ValueSetValidateCodeResultParameters extends BaseParameters {
 
@@ -58,8 +58,12 @@ public class ValueSetValidateCodeResultParameters extends BaseParameters {
 		return getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValueCodeableConcept);
 	}
 
-	public ValueSetValidateCodeResultParameters setResult(boolean result) {
-		addParameter("result", new BooleanType(result));
+	public ValueSetValidateCodeResultParameters setResult(Boolean result) {
+		return setResult(new BooleanType(result));
+	}
+	
+	public ValueSetValidateCodeResultParameters setResult(BooleanType result) {
+		addParameter("result", result);
 		return this;
 	}
 	

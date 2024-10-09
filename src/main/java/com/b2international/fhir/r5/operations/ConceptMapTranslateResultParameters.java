@@ -18,9 +18,10 @@ package com.b2international.fhir.r5.operations;
 import java.util.List;
 
 import org.hl7.fhir.r5.model.*;
+import org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship;
 
 /**
- * @since 9.3 
+ * @since 0.1
  */
 public class ConceptMapTranslateResultParameters extends BaseParameters {
 
@@ -45,8 +46,12 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 		return getParameters("match").stream().map(param -> new Match(param.getPart())).toList();
 	}
 	
-	public ConceptMapTranslateResultParameters setResult(boolean result) {
-		addParameter("result", new BooleanType(result));
+	public ConceptMapTranslateResultParameters setResult(Boolean result) {
+		return setResult(new BooleanType(result));
+	}
+	
+	public ConceptMapTranslateResultParameters setResult(BooleanType result) {
+		addParameter("result", result);
 		return this;
 	}
 	
@@ -104,12 +109,16 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			return getParameterValue("originMap", Parameters.ParametersParameterComponent::getValueUriType);
 		}
 		
+		public Match setRelationship(ConceptMapRelationship relationship) {
+			return relationship == null ? this : setRelationship(relationship.toCode());
+		}
+		
 		public Match setRelationship(String relationship) {
 			return setRelationship(new CodeType(relationship));
 		}
 		
-		public Match setRelationship(CodeType codeType) {
-			addParameter("relationship", codeType);
+		public Match setRelationship(CodeType relationship) {
+			addParameter("relationship", relationship);
 			return this;
 		}
 		

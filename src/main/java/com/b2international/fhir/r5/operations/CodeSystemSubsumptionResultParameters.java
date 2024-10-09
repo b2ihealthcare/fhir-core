@@ -20,7 +20,7 @@ import org.hl7.fhir.r5.model.CodeType;
 import org.hl7.fhir.r5.model.Parameters;
 
 /**
- * @since 9.2 
+ * @since 0.1
  */
 public class CodeSystemSubsumptionResultParameters extends BaseParameters {
 

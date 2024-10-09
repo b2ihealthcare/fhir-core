@@ -46,7 +46,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateResultParameters setResult(Boolean isResult) {
-		return isResult == null ? this : setResult(new BooleanType(isResult));
+		return setResult(new BooleanType(isResult));
 	}
 	
 	public ConceptMapTranslateResultParameters setResult(BooleanType result) {
@@ -77,7 +77,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 	public static final class Match extends BasePart {
 		
 		public Match() {
-			super(null);
+			super();
 		}
 		
 		public Match(List<Parameters.ParametersParameterComponent> part) {
@@ -121,7 +121,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 			
 			product.stream()
 				.map(prod -> new Parameters.ParametersParameterComponent().setName("product").setPart(prod.getPart()))
-				.forEach(getPart()::add);
+				.forEach(this::addParameter);
 			
 			return this;
 		}
@@ -138,7 +138,7 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 		public static final class Product extends BasePart {
 			
 			public Product() {
-				super(null);
+				super();
 			}
 			
 			public Product(List<Parameters.ParametersParameterComponent> part) {

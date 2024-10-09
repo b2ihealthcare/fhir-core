@@ -15,9 +15,7 @@
  */
 package com.b2international.fhir.r4.operations;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.hl7.fhir.r4.model.*;
@@ -167,21 +165,18 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		return this;
 	}
 	
-	public static class Designation {
-		
-		private List<Parameters.ParametersParameterComponent> part;
+	public static class Designation extends BasePart {
 		
 		public Designation() {
-			this(new ArrayList<>());
+			super();
 		}
 		
 		public Designation(List<Parameters.ParametersParameterComponent> part) {
-			this.part = part == null ? new ArrayList<>(1) : part;
+			super(part);
 		}
 		
 		public CodeType getLanguage() {
-			StringType type = (StringType) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
-			return new CodeType(type.getValueAsString());
+			return (CodeType) getParameter("language").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
 		}
 		
 		public Coding getUse() {
@@ -197,54 +192,34 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public Designation setLanguage(CodeType language) {
-			if (language == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("language")
-					.setValue(language));
-		}
-		
-		public Designation setUse(Coding use) {
-			if (use == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("use")
-					.setValue(use));
-		}
-		
-		public Designation setValue(String value) {
-			if (value == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("value")
-					.setValue(new StringType(value)));
-		}
-		
-		public Designation addParameter(Parameters.ParametersParameterComponent parameter) {
-			part.add(parameter);
+			addParameter("language", language);
 			return this;
 		}
 		
-		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
-			return part.stream()
-					.filter(param -> param.getName().equals(name))
-					.findFirst();
+		public Designation setUse(Coding use) {
+			addParameter("use", use);
+			return this;
 		}
+		
+		public Designation setValue(String value) {
+			return setValue(new StringType(value));
+		}
+		
+		public Designation setValue(StringType value) {
+			addParameter("value", value);
+			return this;
+		}
+		
 	}
 	
-	public static class Property {
-		
-		private List<Parameters.ParametersParameterComponent> part;
+	public static class Property extends BasePart {
 		
 		public Property() {
-			this(new ArrayList<>());
+			super();
 		}
 		
 		public Property(List<Parameters.ParametersParameterComponent> part) {
-			this.part = part == null ? new ArrayList<>(1) : part;
+			super(part);
 		}
 		
 		public CodeType getCode() {
@@ -258,25 +233,11 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		public StringType getDescription() {
 			return (StringType) getParameter("description").map(Parameters.ParametersParameterComponent::getValue).orElse(null);
 		}
-		
-		public List<Parameters.ParametersParameterComponent> getPart() {
-			return part;
-		}
-		
-		private Optional<Parameters.ParametersParameterComponent> getParameter(String name) {
-			return part.stream()
-					.filter(param -> param.getName().equals(name))
-					.findFirst();
-		}
-		
+
 		public List<Property> getSubProperty() {
-			return part.stream()
-					.filter(param -> param.getName().equals("subproperty"))
-					.map(propertyParameter -> {
-						List<ParametersParameterComponent> part = propertyParameter.getPart();
-						return new Property(part);
-					})
-					.collect(Collectors.toList());
+			return getParameters("subproperty")
+					.map(propertyParameter -> new Property(propertyParameter.getPart()))
+					.toList();
 		}
 		
 		public Property setCode(String code) {
@@ -284,21 +245,13 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public Property setCode(CodeType code) {
-			if (code == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("code")
-					.setValue(code));
+			addParameter("code", code);
+			return this;
 		}
 		
 		public Property setValue(Type value) {
-			if (value == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("value")
-					.setValue(value));
+			addParameter("value", value);
+			return this;
 		}
 		
 		public Property setDescription(String description) {
@@ -306,28 +259,21 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public Property setDescription(StringType description) {
-			if (description == null) {
-				return this;
-			}
-			return addParameter(new Parameters.ParametersParameterComponent()
-					.setName("description")
-					.setValue(description));
+			addParameter("description", description);
+			return this;
 		}
 		
 		public Property setSubProperty(List<Property> subproperties) {
 			if (subproperties == null) {
 				return this;
 			}
+			
 			subproperties.stream()
 				.map(subproperty -> new Parameters.ParametersParameterComponent().setName("subproperty").setPart(subproperty.getPart()))
-				.forEach(getPart()::add);
+				.forEach(this::addParameter);
 			
 			return this;
 		}
 		
-		public Property addParameter(Parameters.ParametersParameterComponent parameter) {
-			part.add(parameter);
-			return this;
-		}
 	}
 }

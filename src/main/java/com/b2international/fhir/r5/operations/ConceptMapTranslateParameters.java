@@ -15,14 +15,12 @@
  */
 package com.b2international.fhir.r5.operations;
 
-
-
 import java.util.List;
 
 import org.hl7.fhir.r5.model.*;
 
 /**
- * @since 9.3 
+ * @since 0.1
  */
 public class ConceptMapTranslateParameters extends BaseParameters {
 
