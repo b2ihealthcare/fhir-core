@@ -101,29 +101,9 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		
 		designations.stream()
 			.map(designation -> {
-				var designationParameter = new Parameters.ParametersParameterComponent().setName("designation");
-				
-				// add value part, which is the term of the designation
-				designationParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("value")
-						.setValue(new StringType(designation.getValue().getValue()))
-				);
-				
-				// add language part
-				designationParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("language")
-						.setValue(designation.getLanguage())
-				);
-				// add use part
-				designationParameter.addPart(
-					new Parameters.ParametersParameterComponent()
-						.setName("use")
-						.setValue(designation.getUse())
-				);
-				
-				return designationParameter; 
+				ParametersParameterComponent param = new Parameters.ParametersParameterComponent().setName("designation").setPart(designation.getPartSorted());
+				param.setExtension(designation.getExtension());
+				return param;
 			})
 			.forEach(getParameters()::addParameter);
 		
@@ -274,6 +254,5 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 			
 			return this;
 		}
-		
 	}
 }
