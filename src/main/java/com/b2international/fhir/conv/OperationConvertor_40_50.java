@@ -210,33 +210,10 @@ public class OperationConvertor_40_50 {
 	}
 	
 	private static com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match convert(com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match r5Match) {
-		var r4Match = new com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match();
-		
 		var r5Relationship = org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.fromCode(r5Match.getRelationship().getCode());
-		switch (r5Relationship) {
-		case EQUIVALENT:
-			r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.EQUIVALENT.toCode());
-			break;
-		case SOURCEISNARROWERTHANTARGET:
-			r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.WIDER.toCode());
-			break;
-		case SOURCEISBROADERTHANTARGET:
-			r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.NARROWER.toCode());
-			break;
-		case RELATEDTO:
-			r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.RELATEDTO.toCode());
-			break;
-		case NOTRELATEDTO:
-			r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.DISJOINT.toCode());
-			break;
-		case NULL:
-			r4Match.setEquivalence(org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.UNMATCHED.toCode());
-			break;
-		default:
-			throw new FHIRFormatError("Unsupported R5 ConceptMapRelationship value: " + r5Relationship);
-		}
 		
-		return r4Match
+		return new com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match()
+			.setEquivalence(ConceptMapRelationshipConverter.convert(r5Relationship))
 			.setConcept(convertType(r5Match.getConcept()))
 			.setProduct(r5Match.getProduct() == null ? null : r5Match.getProduct().stream().map(OperationConvertor_40_50::convert).toList())
 			.setSource(convertType(r5Match.getOriginMap()));
@@ -478,39 +455,10 @@ public class OperationConvertor_40_50 {
 	}
 	
 	private static com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match convert(com.b2international.fhir.r4.operations.ConceptMapTranslateResultParameters.Match r4Match) {
-		
-		var r5Match = new com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match();
-		
 		var r4Equivalence = org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence.fromCode(r4Match.getEquivalence().getCode());
-		switch (r4Equivalence) {
-		case EQUIVALENT:
-		case EQUAL:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.EQUIVALENT);
-			break;
-		case WIDER:
-		case SUBSUMES:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.SOURCEISNARROWERTHANTARGET);
-			break;
-		case NARROWER:
-		case SPECIALIZES:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.SOURCEISBROADERTHANTARGET);
-			break;
-		case RELATEDTO:
-		case INEXACT:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.RELATEDTO);
-			break;
-		case UNMATCHED:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.NULL);
-			break;
-		case DISJOINT:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.NOTRELATEDTO);
-			break;
-		default:
-			r5Match.setRelationship(org.hl7.fhir.r5.model.Enumerations.ConceptMapRelationship.NULL);
-			break;
-		}
 
-		return r5Match
+		return new com.b2international.fhir.r5.operations.ConceptMapTranslateResultParameters.Match()
+			.setRelationship(ConceptMapRelationshipConverter.convert(r4Equivalence))
 			.setConcept(convertType(r4Match.getConcept()))
 			.setProduct(r4Match.getProduct() == null ? null : r4Match.getProduct().stream().map(OperationConvertor_40_50::convert).toList())
 			.setOriginMap(convertType(r4Match.getSource()))

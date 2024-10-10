@@ -18,6 +18,7 @@ package com.b2international.fhir.r4.operations;
 import java.util.List;
 
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.codesystems.ConceptMapEquivalence;
 
 /**
  * @since 0.1 
@@ -98,6 +99,10 @@ public class ConceptMapTranslateResultParameters extends BaseParameters {
 		
 		public UriType getSource() {
 			return (UriType) getParameterValue("source", Parameters.ParametersParameterComponent::getValue);
+		}
+		
+		public Match setEquivalence(ConceptMapEquivalence equivalence) {
+			return equivalence == null ? this : setEquivalence(equivalence.toCode());
 		}
 		
 		public Match setEquivalence(String equivalence) {
