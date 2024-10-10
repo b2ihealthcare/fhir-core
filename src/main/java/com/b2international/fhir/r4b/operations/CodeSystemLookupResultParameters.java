@@ -215,12 +215,16 @@ public final class CodeSystemLookupResultParameters extends BaseParameters {
 		}
 		
 		public Designation setValue(String value) {
+			return setValue(new StringType(value));
+		}
+		
+		public Designation setValue(StringType value) {
 			if (value == null) {
 				return this;
 			}
 			return addParameter(new Parameters.ParametersParameterComponent()
 					.setName("value")
-					.setValue(new StringType(value)));
+					.setValue(value));
 		}
 		
 		public Designation addParameter(Parameters.ParametersParameterComponent parameter) {
