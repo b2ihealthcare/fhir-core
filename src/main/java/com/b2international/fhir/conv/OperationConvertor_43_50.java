@@ -15,6 +15,7 @@
  */
 package com.b2international.fhir.conv;
 
+import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_43_50;
 import org.hl7.fhir.convertors.factory.VersionConvertorFactory_43_50;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 
@@ -26,24 +27,26 @@ import org.hl7.fhir.exceptions.FHIRFormatError;
  */
 public class OperationConvertor_43_50 {
 	
+	private static final BaseAdvisor_43_50 IGNORE_NULLS = new BaseAdvisor_43_50(false);
+	
 	@SuppressWarnings("unchecked")
 	public static final <T extends org.hl7.fhir.r5.model.DataType> T convertType(org.hl7.fhir.r4b.model.DataType type) {
-		return (T) VersionConvertorFactory_43_50.convertType(type);
+		return (T) VersionConvertorFactory_43_50.convertType(type, IGNORE_NULLS);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static final <T extends org.hl7.fhir.r4b.model.DataType> T convertType(org.hl7.fhir.r5.model.DataType type) {
-		return (T) VersionConvertorFactory_43_50.convertType(type);
+		return (T) VersionConvertorFactory_43_50.convertType(type, IGNORE_NULLS);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static final <T extends org.hl7.fhir.r5.model.Resource> T convertResource(org.hl7.fhir.r4b.model.Resource resource) {
-		return (T) VersionConvertorFactory_43_50.convertResource(resource);
+		return (T) VersionConvertorFactory_43_50.convertResource(resource, IGNORE_NULLS);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static final <T extends org.hl7.fhir.r4b.model.Resource> T convertResource(org.hl7.fhir.r5.model.Resource resource) {
-		return (T) VersionConvertorFactory_43_50.convertResource(resource);
+		return (T) VersionConvertorFactory_43_50.convertResource(resource, IGNORE_NULLS);
 	}
 	
 	//////////////
