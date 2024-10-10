@@ -22,6 +22,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import org.hl7.fhir.r4b.model.DataType;
+import org.hl7.fhir.r4b.model.Extension;
 import org.hl7.fhir.r4b.model.Parameters;
 import org.hl7.fhir.r4b.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.r4b.model.PrimitiveType;
@@ -32,6 +33,7 @@ import org.hl7.fhir.r4b.model.PrimitiveType;
 public abstract class BasePart {
 
 	private final List<Parameters.ParametersParameterComponent> part;
+	private List<Extension> extension;
 	
 	public BasePart() {
 		this(null);
@@ -85,6 +87,14 @@ public abstract class BasePart {
 
 	protected int sortBy(Parameters.ParametersParameterComponent parameterA, Parameters.ParametersParameterComponent parameterB) {
 		return 0;
+	}
+	
+	public List<Extension> getExtension() {
+		return extension;
+	}
+	
+	public void setExtension(List<Extension> extension) {
+		this.extension = extension;
 	}
 	
 }
