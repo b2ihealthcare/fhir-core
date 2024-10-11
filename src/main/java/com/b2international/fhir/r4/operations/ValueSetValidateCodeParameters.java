@@ -72,8 +72,8 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 		return (CodeableConcept) getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValue);
 	}
 
-	public DateType getDate() {
-		return (DateType) getParameterValue("date", Parameters.ParametersParameterComponent::getValue);
+	public DateTimeType getDate() {
+		return (DateTimeType) getParameterValue("date", Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public BooleanType getIsAbstract() {
@@ -165,14 +165,14 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setDate(String date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
 	public ValueSetValidateCodeParameters setDate(Date date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
-	public ValueSetValidateCodeParameters setDate(DateType date) {
+	public ValueSetValidateCodeParameters setDate(DateTimeType date) {
 		addParameter("date", date);
 		return this;
 	}

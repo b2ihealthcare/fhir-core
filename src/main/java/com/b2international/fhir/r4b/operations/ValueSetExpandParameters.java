@@ -61,8 +61,8 @@ public final class ValueSetExpandParameters extends BaseParameters {
 		return getParameterValue("filter", Parameters.ParametersParameterComponent::getValueStringType);
 	}
 
-	public DateType getDate() {
-		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateType);
+	public DateTimeType getDate() {
+		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateTimeType);
 	}
 
 	public IntegerType getOffset() {
@@ -174,14 +174,14 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setDate(String date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
 	public ValueSetExpandParameters setDate(Date date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
-	public ValueSetExpandParameters setDate(DateType date) {
+	public ValueSetExpandParameters setDate(DateTimeType date) {
 		addParameter("date", date);
 		return this;
 	}

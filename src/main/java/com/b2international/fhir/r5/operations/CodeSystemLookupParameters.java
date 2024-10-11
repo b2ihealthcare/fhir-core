@@ -63,8 +63,8 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return getParameterValue("coding", Parameters.ParametersParameterComponent::getValueCoding);
 	}
 
-	public DateType getDate() {
-		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateType);
+	public DateTimeType getDate() {
+		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateTimeType);
 	}
 
 	public CodeType getDisplayLanguage() {
@@ -112,14 +112,14 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDate(String date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
 	public CodeSystemLookupParameters setDate(Date date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
-	public CodeSystemLookupParameters setDate(DateType date) {
+	public CodeSystemLookupParameters setDate(DateTimeType date) {
 		addParameter("date", date);
 		return this;
 	}

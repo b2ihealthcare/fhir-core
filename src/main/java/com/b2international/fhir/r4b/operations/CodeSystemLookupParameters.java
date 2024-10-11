@@ -47,20 +47,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeType getCode() {
-//		if (code != null) {
-//			return code.getCodeValue();
-//		} else if (coding != null) {
-//			return coding.getCode().getCodeValue();
-//		}
 		return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public UriType getSystem() {
-//		if (system != null) {
-//			return system.getUriValue();
-//		} else if (coding != null && coding.getSystem() != null) {
-//			return coding.getSystem().getUriValue();
-//		}
 		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
 	}
 
@@ -72,8 +62,8 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		return getParameterValue("coding", Parameters.ParametersParameterComponent::getValueCoding);
 	}
 
-	public DateType getDate() {
-		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateType);
+	public DateTimeType getDate() {
+		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateTimeType);
 	}
 
 	public CodeType getDisplayLanguage() {
@@ -117,10 +107,10 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDate(Date date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
-	public CodeSystemLookupParameters setDate(DateType date) {
+	public CodeSystemLookupParameters setDate(DateTimeType date) {
 		getParameters().addParameter("date", date);
 		return this;
 	}

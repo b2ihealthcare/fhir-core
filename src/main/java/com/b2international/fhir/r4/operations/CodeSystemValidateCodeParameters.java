@@ -60,8 +60,8 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 		return (CodeableConcept) getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValue);
 	}
 	
-	public DateType getDate() {
-		return (DateType) getParameterValue("date", Parameters.ParametersParameterComponent::getValue);
+	public DateTimeType getDate() {
+		return (DateTimeType) getParameterValue("date", Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public BooleanType getAbstract() {
@@ -126,14 +126,14 @@ public class CodeSystemValidateCodeParameters extends BaseParameters {
 	}
 	
 	public CodeSystemValidateCodeParameters setDate(String date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
 	public CodeSystemValidateCodeParameters setDate(Date date) {
-		return setDate(new DateType(date));
+		return setDate(new DateTimeType(date));
 	}
 	
-	public CodeSystemValidateCodeParameters setDate(DateType date) {
+	public CodeSystemValidateCodeParameters setDate(DateTimeType date) {
 		addParameter("date", date);
 		return this;
 	}
