@@ -201,7 +201,7 @@ public class ValueSetExpandParametersTest {
 			"parameter": [ 
 				{
 					"name": "date",
-					"valueDate": "2024-10-02"
+					"valueDateTime": "2024-10-02"
 				}
 			]
 		}

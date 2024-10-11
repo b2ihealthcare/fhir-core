@@ -151,7 +151,7 @@ public class CodeSystemLookupParametersTest {
 			"parameter" : [
 				{
 					"name": "date",
-					"valueDate": "2024"
+					"valueDateTime": "2024"
 				}
 			]
 		}

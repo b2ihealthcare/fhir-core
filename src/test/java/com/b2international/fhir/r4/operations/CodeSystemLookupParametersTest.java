@@ -90,7 +90,7 @@ public class CodeSystemLookupParametersTest {
 				},
 				{
 					"name": "date",
-					"valueDate": "2024"
+					"valueDateTime": "2024"
 				},
 				{
 					"name": "displayLanguage",
