@@ -6,6 +6,8 @@ This library is based on the 6.3.30 version of org.hl7.fhir.core.
 
 ## Maven Usage
 
+The maven artifact is available in the B2i Healthcare Maven repository: https://artifacts.b2ihealthcare.com/repository/maven-releases/
+
 ```
     <dependency>
         <groupId>com.b2international</groupId>
