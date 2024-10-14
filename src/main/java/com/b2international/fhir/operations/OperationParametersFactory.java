@@ -22,9 +22,33 @@ public interface OperationParametersFactory {
 
 	com.b2international.fhir.r4.operations.BaseParameters create(org.hl7.fhir.r4.model.Parameters parameters);
 	
+	default com.b2international.fhir.r4.operations.BaseParameters create(org.hl7.fhir.r4.model.Parameters parameters, boolean strict) {
+		var result = create(parameters);
+		if (strict) {
+			result.checkParameters();
+		}
+		return result;
+	}
+	
 	com.b2international.fhir.r4b.operations.BaseParameters create(org.hl7.fhir.r4b.model.Parameters parameters);
 	
+	default com.b2international.fhir.r4b.operations.BaseParameters create(org.hl7.fhir.r4b.model.Parameters parameters, boolean strict) {
+		var result = create(parameters);
+		if (strict) {
+			result.checkParameters();
+		}
+		return result;
+	}
+	
 	com.b2international.fhir.r5.operations.BaseParameters create(org.hl7.fhir.r5.model.Parameters parameters);
+	
+	default com.b2international.fhir.r5.operations.BaseParameters create(org.hl7.fhir.r5.model.Parameters parameters, boolean strict) {
+		var result = create(parameters);
+		if (strict) {
+			result.checkParameters();
+		}
+		return result;
+	}
 	
 	/**
 	 * @since 0.1
