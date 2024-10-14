@@ -18,10 +18,13 @@ package com.b2international.fhir.r5.operations;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.hl7.fhir.r4.model.codesystems.ConceptProperties;
 import org.hl7.fhir.r5.model.*;
 import org.hl7.fhir.r5.model.Parameters.ParametersParameterComponent;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * @since 0.1
@@ -38,7 +41,27 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	
 	//how to represent LANG.X here, just lang or lang.*?
 	public static final Set<String> OFFICIAL_R5_PROPERTY_VALUES = Set.of(PROPERTY_SYSTEM, PROPERTY_NAME, PROPERTY_VERSION, PROPERTY_DISPLAY, PROPERTY_DESIGNATION, PROPERTY_PARENT, PROPERTY_CHILD);
+	
+	private static final String PARAM_CODE = "code";
+	private static final String PARAM_SYSTEM = "system";
+	private static final String PARAM_VERSION = "version";
+	private static final String PARAM_CODING = "coding";
+	private static final String PARAM_DATE = "date";
+	private static final String PARAM_DISPLAY_LANGUAGE = "displayLanguage";
+	private static final String PARAM_PROPERTY = "property";
+	private static final String PARAM_USE_SUPPLEMENT = "useSupplement";
 
+	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
+		PARAM_CODE,
+		PARAM_SYSTEM,
+		PARAM_VERSION,
+		PARAM_CODING,
+		PARAM_DATE,
+		PARAM_DISPLAY_LANGUAGE,
+		PARAM_PROPERTY,
+		PARAM_USE_SUPPLEMENT
+	);
+	
 	public CodeSystemLookupParameters() {
 		this(new Parameters());
 	}
@@ -48,35 +71,35 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeType getCode() {
-		return getParameterValue("code", Parameters.ParametersParameterComponent::getValueCodeType);
+		return getParameterValue(PARAM_CODE, Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public UriType getSystem() {
-		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
+		return getParameterValue(PARAM_SYSTEM, Parameters.ParametersParameterComponent::getValueUriType);
 	}
 
 	public StringType getVersion() {
-		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
+		return getParameterValue(PARAM_VERSION, Parameters.ParametersParameterComponent::getValueStringType);
 	}
 
 	public Coding getCoding() {
-		return getParameterValue("coding", Parameters.ParametersParameterComponent::getValueCoding);
+		return getParameterValue(PARAM_CODING, Parameters.ParametersParameterComponent::getValueCoding);
 	}
 
 	public DateTimeType getDate() {
-		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateTimeType);
+		return getParameterValue(PARAM_DATE, Parameters.ParametersParameterComponent::getValueDateTimeType);
 	}
 
 	public CodeType getDisplayLanguage() {
-		return getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValueCodeType);
+		return getParameterValue(PARAM_DISPLAY_LANGUAGE, Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 
 	public List<CodeType> getProperty() {
-		return getParameters("property").stream().map(ParametersParameterComponent::getValueCodeType).toList();
+		return getParameters(PARAM_PROPERTY).stream().map(ParametersParameterComponent::getValueCodeType).toList();
 	}
 	
 	public List<CanonicalType> getUseSupplement() {
-		return getParameters("useSupplement").stream().map(ParametersParameterComponent::getValueCanonicalType).toList();
+		return getParameters(PARAM_USE_SUPPLEMENT).stream().map(ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
 	public CodeSystemLookupParameters setCode(String code) {
@@ -84,7 +107,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setCode(CodeType code) {
-		addParameter("code", code);
+		addParameter(PARAM_CODE, code);
 		return this;
 	}
 	
@@ -93,7 +116,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setSystem(UriType system) {
-		addParameter("system", system);
+		addParameter(PARAM_SYSTEM, system);
 		return this;
 	}
 	
@@ -102,12 +125,12 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setVersion(StringType version) {
-		addParameter("version", version);
+		addParameter(PARAM_VERSION, version);
 		return this;
 	}
 	
 	public CodeSystemLookupParameters setCoding(Coding coding) {
-		addParameter("coding", coding);
+		addParameter(PARAM_CODING, coding);
 		return this;
 	}
 	
@@ -120,7 +143,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDate(DateTimeType date) {
-		addParameter("date", date);
+		addParameter(PARAM_DATE, date);
 		return this;
 	}
 	
@@ -129,7 +152,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDisplayLanguage(CodeType displayLanguage) {
-		addParameter("displayLanguage", displayLanguage);
+		addParameter(PARAM_DISPLAY_LANGUAGE, displayLanguage);
 		return this;
 	}
 	
@@ -138,7 +161,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	 * @return the list of actual values instead of a list with wrapped {@link CodeType} instances.
 	 */
 	public List<String> getPropertyValues() {
-		return getParameters("property").stream().map(ParametersParameterComponent::getValueCodeType).map(CodeType::getValueAsString).toList();
+		return getParameters(PARAM_PROPERTY).stream().map(ParametersParameterComponent::getValueCodeType).map(CodeType::getValueAsString).toList();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -146,9 +169,9 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		var list = propertyValues == null ? List.of() : propertyValues;
 		list.forEach(propertyValue -> {
 			if (propertyValue instanceof CodeType) {
-				addParameter("property", (CodeType) propertyValue);
+				addParameter(PARAM_PROPERTY, (CodeType) propertyValue);
 			} else if (propertyValue instanceof String) {
-				addParameter("property", new CodeType((String) propertyValue));
+				addParameter(PARAM_PROPERTY, new CodeType((String) propertyValue));
 			} else {
 				throw new UnsupportedOperationException();
 //				throw new BadRequestException(String.format("Value type '%s' is not supported in property values. Need to be String or StringType.", propertyValue));
@@ -158,7 +181,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public boolean isPropertyRequested(String propertyValue) {
-		return hasParameterWithValue("property", param -> param.getValueStringType().getValue(), propertyValue);
+		return hasParameterWithValue(PARAM_PROPERTY, param -> param.getValueStringType().getValue(), propertyValue);
 	}
 	
 	/**
@@ -166,7 +189,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	 * @return the list of actual values instead of a list with wrapped {@link CanonicalType} instances.
 	 */
 	public List<String> getUseSupplementValues() {
-		return getParameters("useSupplement").stream().map(ParametersParameterComponent::getValueCanonicalType).map(CanonicalType::getValueAsString).toList();
+		return getParameters(PARAM_USE_SUPPLEMENT).stream().map(ParametersParameterComponent::getValueCanonicalType).map(CanonicalType::getValueAsString).toList();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -174,15 +197,20 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		var list = useSupplementValues == null ? List.of() : useSupplementValues;
 		list.forEach(useSupplementValue -> {
 			if (useSupplementValue instanceof CanonicalType) {
-				addParameter("useSupplement", (CanonicalType) useSupplementValue);
+				addParameter(PARAM_USE_SUPPLEMENT, (CanonicalType) useSupplementValue);
 			} else if (useSupplementValue instanceof String) {
-				addParameter("useSupplement", new CanonicalType((String) useSupplementValue));
+				addParameter(PARAM_USE_SUPPLEMENT, new CanonicalType((String) useSupplementValue));
 			} else {
 				throw new UnsupportedOperationException();
 //				throw new BadRequestException(String.format("Value type '%s' is not supported in property values. Need to be String or CanonicalType.", propertyValue));
 			}
 		});
 		return this;
+	}
+	
+	@Override
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ACCEPTED_PARAMETER_NAMES;
 	}
 
 	// Extractors that extract information from multiple parameters depending on which one they have value

@@ -15,13 +15,14 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.r5.model.DataType;
 import org.hl7.fhir.r5.model.Parameters;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * @since 0.1
@@ -81,4 +82,33 @@ public abstract class BaseParameters {
 		BaseParameters other = (BaseParameters) obj;
 		return this.parameters.equalsDeep(other.getParameters());
 	}
+	
+	/**
+	 * @throws FHIRFormatError - if there are unknown/unrecognized parameters specified
+	 */ 
+	public final void checkParameters() {
+		Set<String> acceptedParameterNames = getAcceptedParameterNames();
+		
+		if (acceptedParameterNames == null || acceptedParameterNames.isEmpty()) {
+			return;
+		}
+		
+		var unsupportedParameters = this.parameters.getParameter().stream()
+			.map(Parameters.ParametersParameterComponent::getName)
+			.filter(parameterName -> !acceptedParameterNames.contains(parameterName))
+			.collect(ImmutableSortedSet.toImmutableSortedSet(String::compareTo));
+		
+		if (!unsupportedParameters.isEmpty()) {
+			throw new FHIRFormatError(String.format("Unknown/Unsupported parameters found in the request '%s'. Accepted parameters are: %s.", unsupportedParameters, acceptedParameterNames));
+		}
+	}
+	
+	/**
+	 * Subclasses may optionally override this method to provide support for parameter validation via the {@link #checkParameters(boolean)} method.
+	 * @return
+	 */
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ImmutableSortedSet.of();
+	}
+	
 }
