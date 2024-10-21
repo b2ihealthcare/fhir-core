@@ -22,14 +22,18 @@ import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Resource;
 import org.junit.Test;
 
-import com.b2international.fhir.r4.operations.CodeSystemLookupParameters;
+import com.b2international.fhir.operations.OperationParametersFactory.CodeSystemLookupParametersFactory;
 
 /**
  * @since 0.1
  */
-public class CodeSystemLookupParametersTest {
+public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSystemLookupParameters> {
 	
 	private final JsonParser parser = new JsonParser();
+	
+	public CodeSystemLookupParametersTest() {
+		super(CodeSystemLookupParametersFactory.INSTANCE);
+	}
 	
 	@Test
 	public void code_and_system_param() throws Exception {
@@ -50,14 +54,14 @@ public class CodeSystemLookupParametersTest {
 		}""";
 		
 		Resource resource = parser.parse(json);
-		
 		assertThat(resource).isInstanceOf(Parameters.class);
-		
-		var parameters = new CodeSystemLookupParameters((Parameters) resource);
+
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		var parameters = createFromResource(resource);
 		
 		// Code
 		assertThat(parameters.getCode().getValueAsString()).isEqualTo("testCode");
-		
 		// System
 		assertThat(parameters.getSystem().getValueAsString()).isEqualTo("testSystem");
 	}
@@ -104,31 +108,26 @@ public class CodeSystemLookupParametersTest {
 		}""";
 		
 		Resource resource = parser.parse(json);
-		
 		assertThat(resource).isInstanceOf(Parameters.class);
 		
-		var parameters = new CodeSystemLookupParameters((Parameters) resource);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		var parameters = createFromResource(resource);
 		
 		// Code
 		assertThat(parameters.getCode().getValueAsString()).isEqualTo("testCode");
-		
 		// System
 		assertThat(parameters.getSystem().getValueAsString()).isEqualTo("testSystem");
-		
 		// Version
 		assertThat(parameters.getVersion().getValueAsString()).isEqualTo("testVersion");
-		
 		// Coding
 		assertThat(parameters.getCoding().getSystem()).isEqualTo("testValueCodingSystem");
 		assertThat(parameters.getCoding().getCode()).isEqualTo("testCodingValueCode");
 		assertThat(parameters.getCoding().getDisplay()).isEqualTo("testDisplay");
-		
 		// Date
 		assertThat(parameters.getDate().getValueAsString()).isEqualTo("2024");
-		
 		// Display language
 		assertThat(parameters.getDisplayLanguage().getValueAsString()).isEqualTo("en");
-		
 		// Property
 		assertThat(parameters.getProperty().get(0).getValueAsString()).isEqualTo("testCode");
 	}

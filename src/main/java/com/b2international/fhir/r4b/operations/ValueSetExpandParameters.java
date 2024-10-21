@@ -17,17 +17,72 @@ package com.b2international.fhir.r4b.operations;
 
 import java.util.Date;
 import java.util.List;
+import java.util.SortedSet;
 
 import org.hl7.fhir.r4b.model.*;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * This class represents a FHIR ValueSet$expand operation request in the R5 version.
  * 
- * @see <a href="https://www.hl7.org/fhir/valueset-operations.html#expand">FHIR:ValueSet:Operations:expand</a>
+ * @see <a href="https://hl7.org/fhir/R4B/valueset-operation-expand.html">FHIR:ValueSet:Operations:expand</a>
  * 
  * @since 0.1
  */
 public final class ValueSetExpandParameters extends BaseParameters {
+
+	private static final String PARAM_URL = "url";
+	private static final String PARAM_VALUE_SET = "valueSet";
+	private static final String PARAM_VALUE_SET_VERSION = "valueSetVersion";
+	private static final String PARAM_CONTEXT = "context";
+	private static final String PARAM_CONTEXT_DIRECTION = "contextDirection";
+	private static final String PARAM_FILTER = "filter";
+	private static final String PARAM_DATE = "date";
+	private static final String PARAM_OFFSET = "offset";
+	private static final String PARAM_COUNT = "count";
+	private static final String PARAM_INCLUDE_DESIGNATIONS = "includeDesignations";
+	private static final String PARAM_DESIGNATION = "designation";
+	private static final String PARAM_INCLUDE_DEFINITION = "includeDefinition";
+	private static final String PARAM_ACTIVE_ONLY = "activeOnly";
+	private static final String PARAM_EXCLUDE_NESTED = "excludeNested";
+	private static final String PARAM_EXCLUDE_NOT_FOR_UI = "excludeNotForUI";
+	private static final String PARAM_EXCLUDE_POST_COORDINATED = "excludePostCoordinated";
+	private static final String PARAM_DISPLAY_LANGUAGE = "displayLanguage";
+	private static final String PARAM_EXCLUDE_SYSTEM = "exclude-system";
+	private static final String PARAM_SYSTEM_VERSION = "system-version";
+	private static final String PARAM_CHECK_SYSTEM_VERSION = "check-system-version";
+	private static final String PARAM_FORCE_SYSTEM_VERSION = "force-system-version";
+
+	private static final String PARAM_AFTER = "after";
+	private static final String PARAM_WITH_HISTORY_SUPPLEMENTS = "withHistorySupplements";
+
+	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
+		PARAM_URL,
+		PARAM_VALUE_SET,
+		PARAM_VALUE_SET_VERSION,
+		PARAM_CONTEXT,
+		PARAM_CONTEXT_DIRECTION,
+		PARAM_FILTER,
+		PARAM_DATE,
+		PARAM_OFFSET,
+		PARAM_COUNT,
+		PARAM_INCLUDE_DESIGNATIONS,
+		PARAM_DESIGNATION,
+		PARAM_INCLUDE_DEFINITION,
+		PARAM_ACTIVE_ONLY,
+		PARAM_EXCLUDE_NESTED,
+		PARAM_EXCLUDE_NOT_FOR_UI,
+		PARAM_EXCLUDE_POST_COORDINATED,
+		PARAM_DISPLAY_LANGUAGE,
+		PARAM_EXCLUDE_SYSTEM,
+		PARAM_SYSTEM_VERSION,
+		PARAM_CHECK_SYSTEM_VERSION,
+		PARAM_FORCE_SYSTEM_VERSION,
+		
+		PARAM_AFTER,
+		PARAM_WITH_HISTORY_SUPPLEMENTS
+	);
 
 	public ValueSetExpandParameters() {
 		super(new Parameters());
@@ -38,87 +93,87 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public UriType getUrl() {
-		return getParameterValue("url", Parameters.ParametersParameterComponent::getValueUriType);
+		return getParameterValue(PARAM_URL, Parameters.ParametersParameterComponent::getValueUriType);
 	}
 	
 	public ValueSet getValueSet() {
-		return getParameterValue("valueSet", value -> (ValueSet) value.getResource());
+		return getParameterValue(PARAM_VALUE_SET, value -> (ValueSet) value.getResource());
 	}
 	
 	public StringType getValueSetVersion() {
-		return getParameterValue("valueSetVersion", Parameters.ParametersParameterComponent::getValueStringType);
+		return getParameterValue(PARAM_VALUE_SET_VERSION, Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
 	public UriType getContext() {
-		return getParameterValue("context", Parameters.ParametersParameterComponent::getValueUriType);
+		return getParameterValue(PARAM_CONTEXT, Parameters.ParametersParameterComponent::getValueUriType);
 	}
 	
 	public CodeType getContextDirection() {
-		return getParameterValue("contextDirection", Parameters.ParametersParameterComponent::getValueCodeType);
+		return getParameterValue(PARAM_CONTEXT_DIRECTION, Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public StringType getFilter() {
-		return getParameterValue("filter", Parameters.ParametersParameterComponent::getValueStringType);
+		return getParameterValue(PARAM_FILTER, Parameters.ParametersParameterComponent::getValueStringType);
 	}
 
 	public DateTimeType getDate() {
-		return getParameterValue("date", Parameters.ParametersParameterComponent::getValueDateTimeType);
+		return getParameterValue(PARAM_DATE, Parameters.ParametersParameterComponent::getValueDateTimeType);
 	}
 
 	public IntegerType getOffset() {
-		return getParameterValue("offset", Parameters.ParametersParameterComponent::getValueIntegerType);
+		return getParameterValue(PARAM_OFFSET, Parameters.ParametersParameterComponent::getValueIntegerType);
 	}
 
 	public IntegerType getCount() {
-		return getParameterValue("count", Parameters.ParametersParameterComponent::getValueIntegerType);
+		return getParameterValue(PARAM_COUNT, Parameters.ParametersParameterComponent::getValueIntegerType);
 	}
 
 	public BooleanType getIncludeDesignations() {
-		return getParameterValue("includeDesignations", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_INCLUDE_DESIGNATIONS, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 	
 	public List<StringType> getDesignation() {
-		return getParameters("designation").stream().map(Parameters.ParametersParameterComponent::getValueStringType).toList();
+		return getParameters(PARAM_DESIGNATION).stream().map(Parameters.ParametersParameterComponent::getValueStringType).toList();
 	}
 
 	public BooleanType getIncludeDefinition() {
-		return getParameterValue("includeDefinition", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_INCLUDE_DEFINITION, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 
 	public BooleanType getActiveOnly() {
-		return getParameterValue("activeOnly", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_ACTIVE_ONLY, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 	
 	public BooleanType getExcludeNested() {
-		return getParameterValue("excludeNested", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_EXCLUDE_NESTED, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 
 	public BooleanType getExcludeNotForUI() {
-		return getParameterValue("excludeNotForUI", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_EXCLUDE_NOT_FOR_UI, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 
 	public BooleanType getExcludePostCoordinated() {
-		return getParameterValue("excludePostCoordinated", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_EXCLUDE_POST_COORDINATED, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 	
 	public CodeType getDisplayLanguage() {
-		return getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValueCodeType);
+		return getParameterValue(PARAM_DISPLAY_LANGUAGE, Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public List<CanonicalType> getExcludeSystem() {
-		return getParameters("exclude-system").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
+		return getParameters(PARAM_EXCLUDE_SYSTEM).stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
 	public List<CanonicalType> getSystemVersion() {
-		return getParameters("system-version").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
+		return getParameters(PARAM_SYSTEM_VERSION).stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
 	public List<CanonicalType> getCheckSystemVersion() {
-		return getParameters("check-system-version").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
+		return getParameters(PARAM_CHECK_SYSTEM_VERSION).stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 	
 	public List<CanonicalType> getForceSystemVersion() {
-		return getParameters("force-system-version").stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
+		return getParameters(PARAM_FORCE_SYSTEM_VERSION).stream().map(Parameters.ParametersParameterComponent::getValueCanonicalType).toList();
 	}
 
 	public ValueSetExpandParameters setUrl(String url) {
@@ -126,13 +181,13 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setUrl(UriType url) {
-		addParameter("url", url);
+		addParameter(PARAM_URL, url);
 		return this;
 	}
 	
 	public ValueSetExpandParameters setValueSet(ValueSet valueSet) {
 		if (valueSet != null) {
-			getParameters().addParameter(new Parameters.ParametersParameterComponent("valueSet").setResource(valueSet));
+			getParameters().addParameter(new Parameters.ParametersParameterComponent(PARAM_VALUE_SET).setResource(valueSet));
 		}
 		return this;
 	}
@@ -142,7 +197,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setValueSetVersion(StringType valueSetVersion) {
-		addParameter("valueSetVersion", valueSetVersion);
+		addParameter(PARAM_VALUE_SET_VERSION, valueSetVersion);
 		return this;
 	}
 	
@@ -151,7 +206,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 
 	public ValueSetExpandParameters setContext(UriType context) {
-		addParameter("context", context);
+		addParameter(PARAM_CONTEXT, context);
 		return this;
 	}
 	
@@ -160,7 +215,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setContextDirection(CodeType contextDirection) {
-		addParameter("contextDirection", contextDirection);
+		addParameter(PARAM_CONTEXT_DIRECTION, contextDirection);
 		return this;
 	}
 	
@@ -169,7 +224,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setFilter(StringType filter) {
-		addParameter("filter", filter);
+		addParameter(PARAM_FILTER, filter);
 		return this;
 	}
 	
@@ -182,7 +237,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setDate(DateTimeType date) {
-		addParameter("date", date);
+		addParameter(PARAM_DATE, date);
 		return this;
 	}
 	
@@ -191,7 +246,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setOffset(IntegerType offset) {
-		addParameter("offset", offset);
+		addParameter(PARAM_OFFSET, offset);
 		return this;
 	}
 	
@@ -200,7 +255,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setCount(IntegerType count) {
-		addParameter("count", count);
+		addParameter(PARAM_COUNT, count);
 		return this;
 	}
 	
@@ -209,7 +264,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setIncludeDesignations(BooleanType includeDesignations) {
-		addParameter("includeDesignations", includeDesignations);
+		addParameter(PARAM_INCLUDE_DESIGNATIONS, includeDesignations);
 		return this;
 	}
 	
@@ -223,7 +278,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'designation' is not of string type. Got: ", d.getClass()));
 				}
-			}).forEach(designationValue -> addParameter("designation", designationValue));
+			}).forEach(designationValue -> addParameter(PARAM_DESIGNATION, designationValue));
 		}
 		return this;
 	}
@@ -233,7 +288,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setIncludeDefinition(BooleanType includeDefinition) {
-		addParameter("includeDefinition", includeDefinition);
+		addParameter(PARAM_INCLUDE_DEFINITION, includeDefinition);
 		return this;
 	}
 	
@@ -242,7 +297,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setActiveOnly(BooleanType activeOnly) {
-		addParameter("activeOnly", activeOnly);
+		addParameter(PARAM_ACTIVE_ONLY, activeOnly);
 		return this;
 	}
 	
@@ -251,7 +306,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNested(BooleanType excludeNested) {
-		addParameter("excludeNested", excludeNested);
+		addParameter(PARAM_EXCLUDE_NESTED, excludeNested);
 		return this;
 	}
 	
@@ -260,7 +315,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludeNotForUI(BooleanType excludeNotForUI) {
-		addParameter("excludeNotForUI", excludeNotForUI);
+		addParameter(PARAM_EXCLUDE_NOT_FOR_UI, excludeNotForUI);
 		return this;
 	}
 	
@@ -269,7 +324,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setExcludePostCoordinated(BooleanType excludePostCoordinated) {
-		addParameter("excludePostCoordinated", excludePostCoordinated);
+		addParameter(PARAM_EXCLUDE_POST_COORDINATED, excludePostCoordinated);
 		return this;
 	}
 	
@@ -278,7 +333,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setDisplayLanguage(CodeType displayLanguage) {
-		addParameter("displayLanguage", displayLanguage);
+		addParameter(PARAM_DISPLAY_LANGUAGE, displayLanguage);
 		return this;
 	}
 	
@@ -292,7 +347,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'exclude-system' is not of canonical type. Got: ", es.getClass()));
 				}
-			}).forEach(excludeSystem -> addParameter("exclude-system", excludeSystem));
+			}).forEach(excludeSystem -> addParameter(PARAM_EXCLUDE_SYSTEM, excludeSystem));
 		}
 		return this;
 	}
@@ -307,7 +362,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'system-version' is not of canonical type. Got: ", sv.getClass()));
 				}
-			}).forEach(systemVersion -> addParameter("system-version", systemVersion));
+			}).forEach(systemVersion -> addParameter(PARAM_SYSTEM_VERSION, systemVersion));
 		}
 		return this;
 	}
@@ -322,7 +377,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'check-system-version' is not of canonical type. Got: ", csv.getClass()));
 				}
-			}).forEach(checkSystemVersion -> addParameter("check-system-version", checkSystemVersion));
+			}).forEach(checkSystemVersion -> addParameter(PARAM_CHECK_SYSTEM_VERSION, checkSystemVersion));
 		}
 		return this;
 	}
@@ -337,7 +392,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 				} else {
 					throw new IllegalArgumentException(String.format("'force-system-version' is not of canonical type. Got: ", fsv.getClass()));
 				}
-			}).forEach(forceSystemVersion -> addParameter("force-system-version", forceSystemVersion));
+			}).forEach(forceSystemVersion -> addParameter(PARAM_FORCE_SYSTEM_VERSION, forceSystemVersion));
 		}
 		return this;
 	}
@@ -345,11 +400,11 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	// XXX Snowy specific parameters
 	
 	public StringType getAfter() {
-		return getParameterValue("after", Parameters.ParametersParameterComponent::getValueStringType);
+		return getParameterValue(PARAM_AFTER, Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
 	public BooleanType getWithHistorySupplements() {
-		return getParameterValue("withHistorySupplements", Parameters.ParametersParameterComponent::getValueBooleanType);
+		return getParameterValue(PARAM_WITH_HISTORY_SUPPLEMENTS, Parameters.ParametersParameterComponent::getValueBooleanType);
 	}
 	
 	public ValueSetExpandParameters setAfter(String after) {
@@ -357,7 +412,7 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setAfter(StringType after) {
-		addParameter("after", after);
+		addParameter(PARAM_AFTER, after);
 		return this;
 	}
 	
@@ -366,8 +421,13 @@ public final class ValueSetExpandParameters extends BaseParameters {
 	}
 	
 	public ValueSetExpandParameters setWithHistorySupplements(BooleanType withHistorySupplements) {
-		addParameter("withHistorySupplements", withHistorySupplements);
+		addParameter(PARAM_WITH_HISTORY_SUPPLEMENTS, withHistorySupplements);
 		return this;
 	}
  
+	@Override
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ACCEPTED_PARAMETER_NAMES;
+	}
+
 }

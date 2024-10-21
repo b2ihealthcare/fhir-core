@@ -17,6 +17,7 @@ package com.b2international.fhir.r4.operations;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.r4.model.Parameters;
@@ -84,6 +85,25 @@ public abstract class BaseParameters {
 		return this.parameters.equalsDeep(other.getParameters());
 	}
 	
+	// Helper function of producing a recursive Stream of Parameter names and their Parts' names (and their Parts, etc.)
+	private static Stream<String> flattenNames(final Parameters.ParametersParameterComponent component) {
+		return flattenNames(component, "");
+	}
+	
+	private static Stream<String> flattenNames(
+		final Parameters.ParametersParameterComponent componentOrPart, 
+		final String prefix
+	) {
+		final String qualifiedName = prefix + componentOrPart.getName();
+		
+		return Stream.concat(
+			// The component name is prefixed with the... prefix
+			Stream.of(qualifiedName),  
+			// Parts are prefixed with an additional "."
+			componentOrPart.getPart().stream().flatMap(part -> flattenNames(part, qualifiedName + ".")) 
+		);
+	}
+	
 	/**
 	 * @throws FHIRFormatError - if there are unknown/unrecognized parameters specified
 	 */ 
@@ -94,8 +114,9 @@ public abstract class BaseParameters {
 			return;
 		}
 		
-		var unsupportedParameters = this.parameters.getParameter().stream()
-			.map(Parameters.ParametersParameterComponent::getName)
+		var unsupportedParameters = this.parameters.getParameter()
+			.stream()
+			.flatMap(component -> flattenNames(component))
 			.filter(parameterName -> !acceptedParameterNames.contains(parameterName))
 			.collect(ImmutableSortedSet.toImmutableSortedSet(String::compareTo));
 		

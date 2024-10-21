@@ -15,16 +15,49 @@
  */
 package com.b2international.fhir.r4.operations;
 
-
-
 import java.util.List;
+import java.util.SortedSet;
 
 import org.hl7.fhir.r4.model.*;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * @since 0.1 
  */
 public class ConceptMapTranslateParameters extends BaseParameters {
+
+	private static final String PARAM_URL = "url";
+	private static final String PARAM_CONCEPT_MAP = "conceptMap";
+	private static final String PARAM_CONCEPT_MAP_VERSION = "conceptMapVersion";
+	private static final String PARAM_CODE = "code";
+	private static final String PARAM_SYSTEM = "system";
+	private static final String PARAM_VERSION = "version";
+	private static final String PARAM_SOURCE = "source";
+	private static final String PARAM_CODING = "coding";
+	private static final String PARAM_CODEABLE_CONCEPT = "codeableConcept";
+	private static final String PARAM_TARGET = "target";
+	private static final String PARAM_TARGET_SYSTEM = "targetsystem";
+	private static final String PARAM_DEPENDENCY = "dependency";
+	private static final String PARAM_REVERSE = "reverse";
+	
+	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
+		PARAM_URL,
+		PARAM_CONCEPT_MAP,
+		PARAM_CONCEPT_MAP_VERSION,
+		PARAM_CODE,
+		PARAM_SYSTEM,
+		PARAM_VERSION,
+		PARAM_SOURCE,
+		PARAM_CODING,
+		PARAM_CODEABLE_CONCEPT,
+		PARAM_TARGET,
+		PARAM_TARGET_SYSTEM,
+		PARAM_DEPENDENCY,
+		String.join(".", PARAM_DEPENDENCY, Dependency.PARAM_ELEMENT),
+		String.join(".", PARAM_DEPENDENCY, Dependency.PARAM_CONCEPT),
+		PARAM_REVERSE
+	);
 
 	public ConceptMapTranslateParameters() {
 		super(new Parameters());
@@ -35,55 +68,55 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public UriType getUrl() {
-		return (UriType) getParameterValue("url", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_URL, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public ConceptMap getConceptMap() {
-		return getParameterValue("conceptMap", value -> (ConceptMap) value.getResource());
+		return getParameterValue(PARAM_CONCEPT_MAP, value -> (ConceptMap) value.getResource());
 	}
 	
 	public StringType getConceptMapVersion() {
-		return (StringType) getParameterValue("conceptMapVersion", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_CONCEPT_MAP_VERSION, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public StringType getCode() {
-		return (StringType) getParameterValue("code", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_CODE, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getSystem() {
-		return (UriType) getParameterValue("system", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_SYSTEM, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public StringType getVersion() {
-		return (StringType) getParameterValue("version", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_VERSION, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getSource() {
-		return (UriType) getParameterValue("source", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_SOURCE, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public Coding getCoding() {
-		return (Coding) getParameterValue("coding", Parameters.ParametersParameterComponent::getValue);
+		return (Coding) getParameterValue(PARAM_CODING, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public CodeableConcept getCodeableConcept() {
-		return (CodeableConcept) getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValue);
+		return (CodeableConcept) getParameterValue(PARAM_CODEABLE_CONCEPT, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getTarget() {
-		return (UriType) getParameterValue("target", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_TARGET, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getTargetSystem() {
-		return (UriType) getParameterValue("targetsystem", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_TARGET_SYSTEM, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public List<Dependency> getDependency() {
-		return getParameters("dependency").stream().map(param -> new Dependency(param.getPart())).toList();
+		return getParameters(PARAM_DEPENDENCY).stream().map(param -> new Dependency(param.getPart())).toList();
 	}
 	
 	public BooleanType getReverse() {
-		return (BooleanType) getParameterValue("reverse", Parameters.ParametersParameterComponent::getValue);
+		return (BooleanType) getParameterValue(PARAM_REVERSE, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public ConceptMapTranslateParameters setUrl(String url) {
@@ -91,13 +124,13 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setUrl(UriType url) {
-		addParameter("url", url);
+		addParameter(PARAM_URL, url);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setConceptMap(ConceptMap conceptMap) {
 		if (conceptMap != null) {
-			getParameters().addParameter(new Parameters.ParametersParameterComponent().setName("conceptMap").setResource(conceptMap));
+			getParameters().addParameter(new Parameters.ParametersParameterComponent().setName(PARAM_CONCEPT_MAP).setResource(conceptMap));
 		}
 		return this;
 	}
@@ -107,7 +140,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setConceptMapVersion(StringType conceptMapVersion) {
-		addParameter("conceptMapVersion", conceptMapVersion);
+		addParameter(PARAM_CONCEPT_MAP_VERSION, conceptMapVersion);
 		return this;
 	}
 	
@@ -116,7 +149,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setCode(CodeType code) {
-		addParameter("code", code);
+		addParameter(PARAM_CODE, code);
 		return this;
 	}
 	
@@ -125,7 +158,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setSystem(UriType system) {
-		addParameter("system", system);
+		addParameter(PARAM_SYSTEM, system);
 		return this;
 	}
 	
@@ -134,7 +167,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setVersion(StringType version) {
-		addParameter("version", version);
+		addParameter(PARAM_VERSION, version);
 		return this;
 	}
 	
@@ -143,17 +176,17 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setSource(UriType source) {
-		addParameter("source", source);
+		addParameter(PARAM_SOURCE, source);
 		return this;
 	}
 
 	public ConceptMapTranslateParameters setCoding(Coding coding) {
-		addParameter("coding", coding);
+		addParameter(PARAM_CODING, coding);
 		return this;
 	}
 	
 	public ConceptMapTranslateParameters setCodeableConcept(CodeableConcept codeableConcept) {
-		addParameter("codeableConcept", codeableConcept);
+		addParameter(PARAM_CODEABLE_CONCEPT, codeableConcept);
 		return this;
 	}
 	
@@ -162,7 +195,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setTarget(UriType target) {
-		addParameter("target", target);
+		addParameter(PARAM_TARGET, target);
 		return this;
 	}
 	
@@ -171,7 +204,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setTargetSystem(UriType targetSystem) {
-		addParameter("targetsystem", targetSystem);
+		addParameter(PARAM_TARGET_SYSTEM, targetSystem);
 		return this;
 	}
 	
@@ -181,7 +214,7 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		}
 		
 		dependencies.stream()
-			.map(dependency -> new Parameters.ParametersParameterComponent().setName("dependency").setPart(dependency.getPart()))
+			.map(dependency -> new Parameters.ParametersParameterComponent().setName(PARAM_DEPENDENCY).setPart(dependency.getPart()))
 			.forEach(getParameters()::addParameter);
 		
 		return this;
@@ -192,12 +225,20 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 	}
 	
 	public ConceptMapTranslateParameters setReverse(BooleanType isReverse) {
-		addParameter("reverse", isReverse);
+		addParameter(PARAM_REVERSE, isReverse);
 		return this;
 	}
-	
-	public static final class Dependency extends BasePart  {
+
+	@Override
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ACCEPTED_PARAMETER_NAMES;
+	}
+
+	public static final class Dependency extends BasePart {
 		
+		private static final String PARAM_ELEMENT = "element";
+		private static final String PARAM_CONCEPT = "concept";
+
 		public Dependency() {
 			super(null);
 		}
@@ -207,11 +248,11 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		}
 		
 		public final UriType getElement() {
-			return (UriType) getParameterValue("element", Parameters.ParametersParameterComponent::getValue);
+			return (UriType) getParameterValue(PARAM_ELEMENT, Parameters.ParametersParameterComponent::getValue);
 		}
 		
 		public final CodeableConcept getConcept() {
-			return (CodeableConcept) getParameterValue("concept", Parameters.ParametersParameterComponent::getValue);
+			return (CodeableConcept) getParameterValue(PARAM_CONCEPT, Parameters.ParametersParameterComponent::getValue);
 		}
 		
 		public Dependency setElement(String element) {
@@ -219,12 +260,12 @@ public class ConceptMapTranslateParameters extends BaseParameters {
 		}
 		
 		public Dependency setElement(UriType element) {
-			addParameter("element", element);
+			addParameter(PARAM_ELEMENT, element);
 			return this;
 		}
 		
 		public Dependency setConcept(CodeableConcept concept) {
-			addParameter("concept", concept);
+			addParameter(PARAM_CONCEPT, concept);
 			return this;
 		}
 	}

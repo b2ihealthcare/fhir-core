@@ -19,17 +19,21 @@ import static org.junit.Assert.assertEquals;
 
 import org.hl7.fhir.r5.formats.JsonParser;
 import org.hl7.fhir.r5.model.Coding;
-import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.junit.Test;
+
+import com.b2international.fhir.operations.OperationParametersFactory.CodeSystemSubsumptionParametersFactory;
 
 /**
  * @since 0.1
  */
-public class CodeSystemSubsumptionParametersTest {
+public class CodeSystemSubsumptionParametersTest extends InputParametersTest<CodeSystemSubsumptionParameters> {
 	
 	private final JsonParser parser = new JsonParser();
 	
+	public CodeSystemSubsumptionParametersTest() {
+		super(CodeSystemSubsumptionParametersFactory.INSTANCE);
+	}
 	
 	@Test
 	public void codeA() throws Exception {
@@ -47,11 +51,12 @@ public class CodeSystemSubsumptionParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemSubsumptionParameters actual = createFromResource(resource);
+
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
 				.setCodeA("testCodeA");
-		
-		CodeSystemSubsumptionParameters actual = new CodeSystemSubsumptionParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -72,11 +77,12 @@ public class CodeSystemSubsumptionParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 		
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
 				.setCodeB("testCodeB");
-		
-		CodeSystemSubsumptionParameters actual = new CodeSystemSubsumptionParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -97,11 +103,12 @@ public class CodeSystemSubsumptionParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemSubsumptionParameters actual = createFromResource(resource);
+
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
 				.setSystem("testUri");
-		
-		CodeSystemSubsumptionParameters actual = new CodeSystemSubsumptionParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -122,11 +129,12 @@ public class CodeSystemSubsumptionParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemSubsumptionParameters actual = createFromResource(resource);
+
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
 				.setVersion("testVersion");
-		
-		CodeSystemSubsumptionParameters actual = new CodeSystemSubsumptionParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -152,14 +160,15 @@ public class CodeSystemSubsumptionParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemSubsumptionParameters actual = createFromResource(resource);
+
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
 				.setCodingA(new Coding()
 						.setSystem("testCodingSystemA")
 						.setCode("testCodingCodeA")
 						.setDisplay("testCodingDisplayA"));
-		
-		CodeSystemSubsumptionParameters actual = new CodeSystemSubsumptionParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -185,14 +194,15 @@ public class CodeSystemSubsumptionParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemSubsumptionParameters actual = createFromResource(resource);
+
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
 				.setCodingB(new Coding()
 						.setSystem("testCodingSystemB")
 						.setCode("testCodingCodeB")
 						.setDisplay("testCodingDisplayB"));
-		
-		CodeSystemSubsumptionParameters actual = new CodeSystemSubsumptionParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}

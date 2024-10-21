@@ -23,12 +23,18 @@ import org.hl7.fhir.r5.formats.JsonParser;
 import org.hl7.fhir.r5.model.*;
 import org.junit.Test;
 
+import com.b2international.fhir.operations.OperationParametersFactory.CodeSystemValidateCodeParametersFactory;
+
 /**
  * @since 0.1
  */
-public class CodeSystemValidateCodeParametersTest {
+public class CodeSystemValidateCodeParametersTest extends InputParametersTest<CodeSystemValidateCodeParameters> {
 	
 	private final JsonParser parser = new JsonParser();
+
+	public CodeSystemValidateCodeParametersTest() {
+		super(CodeSystemValidateCodeParametersFactory.INSTANCE);
+	}
 	
 	@Test
 	public void url() throws Exception {
@@ -47,11 +53,11 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
+
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setUrl("tesUrl");
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -78,6 +84,9 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
 				.setCodeSystem(new CodeSystem()
@@ -85,8 +94,6 @@ public class CodeSystemValidateCodeParametersTest {
 						.setVersion("testResourceVersion")
 						.setName("testCS")
 						.setTitle("Test CodeSystem"));
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -133,11 +140,11 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setVersion("testVersion");
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -158,11 +165,11 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setDisplay("testDisplay");
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -187,14 +194,15 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
 				.setCoding(new Coding()
 						.setSystem("testCodingSystem")
 						.setCode("testCodingCode")
 						.setDisplay("testCodingDisplay"));
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -225,6 +233,9 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
 				.setCodeableConcept(new CodeableConcept()
@@ -234,8 +245,6 @@ public class CodeSystemValidateCodeParametersTest {
 									.setCode("testCode")
 									.setDisplay("testDisplay")))
 						.setText("Codeable conept test"));
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -256,11 +265,12 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
 				.setDate("2024-10-02");
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -281,11 +291,11 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setAbstract(true);
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -306,11 +316,11 @@ public class CodeSystemValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setDisplayLanguage("en");
-		
-		CodeSystemValidateCodeParameters actual = new CodeSystemValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 }

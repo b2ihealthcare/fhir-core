@@ -15,13 +15,33 @@
  */
 package com.b2international.fhir.r4b.operations;
 
+import java.util.SortedSet;
+
 import org.hl7.fhir.r4b.model.*;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * @since 0.1
  */
 public class CodeSystemSubsumptionParameters extends BaseParameters {
 
+	private static final String PARAM_CODE_A = "codeA";
+	private static final String PARAM_CODE_B = "codeB";
+	private static final String PARAM_SYSTEM = "system";
+	private static final String PARAM_VERSION = "version";
+	private static final String PARAM_CODING_A = "codingA";
+	private static final String PARAM_CODING_B = "codingB";
+	
+	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
+		PARAM_CODE_A,
+		PARAM_CODE_B,
+		PARAM_SYSTEM,
+		PARAM_VERSION,
+		PARAM_CODING_A,
+		PARAM_CODING_B
+	);
+	
 	public CodeSystemSubsumptionParameters() {
 		super(new Parameters());
 	}
@@ -31,27 +51,27 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeType getCodeA() {
-		return getParameterValue("codeA", Parameters.ParametersParameterComponent::getValueCodeType);
+		return getParameterValue(PARAM_CODE_A, Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public CodeType getCodeB() {
-		return getParameterValue("codeB", Parameters.ParametersParameterComponent::getValueCodeType);
+		return getParameterValue(PARAM_CODE_B, Parameters.ParametersParameterComponent::getValueCodeType);
 	}
 	
 	public UriType getSystem() {
-		return getParameterValue("system", Parameters.ParametersParameterComponent::getValueUriType);
+		return getParameterValue(PARAM_SYSTEM, Parameters.ParametersParameterComponent::getValueUriType);
 	}
 	
 	public StringType getVersion() {
-		return getParameterValue("version", Parameters.ParametersParameterComponent::getValueStringType);
+		return getParameterValue(PARAM_VERSION, Parameters.ParametersParameterComponent::getValueStringType);
 	}
 	
 	public Coding getCodingA() {
-		return getParameterValue("codingA", Parameters.ParametersParameterComponent::getValueCoding);
+		return getParameterValue(PARAM_CODING_A, Parameters.ParametersParameterComponent::getValueCoding);
 	}
 	
 	public Coding getCodingB() {
-		return getParameterValue("codingB", Parameters.ParametersParameterComponent::getValueCoding);
+		return getParameterValue(PARAM_CODING_B, Parameters.ParametersParameterComponent::getValueCoding);
 	}
 
 	public CodeSystemSubsumptionParameters setCodeA(String codeA) {
@@ -59,7 +79,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeA(CodeType codeA) {
-		addParameter("codeA", codeA);
+		addParameter(PARAM_CODE_A, codeA);
 		return this;
 	}
 	
@@ -68,7 +88,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeB(CodeType codeB) {
-		addParameter("codeB", codeB);
+		addParameter(PARAM_CODE_B, codeB);
 		return this;
 	}
 	
@@ -77,7 +97,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setSystem(UriType system) {
-		addParameter("system", system);
+		addParameter(PARAM_SYSTEM, system);
 		return this;
 	}
 	
@@ -86,17 +106,17 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setVersion(StringType version) {
-		addParameter("version", version);
+		addParameter(PARAM_VERSION, version);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodingA(Coding codingA) {
-		addParameter("codingA", codingA);
+		addParameter(PARAM_CODING_A, codingA);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodingB(Coding codingB) {
-		addParameter("codingB", codingB);
+		addParameter(PARAM_CODING_B, codingB);
 		return this;
 	}
 	
@@ -124,6 +144,11 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ACCEPTED_PARAMETER_NAMES;
 	}
 	
 }

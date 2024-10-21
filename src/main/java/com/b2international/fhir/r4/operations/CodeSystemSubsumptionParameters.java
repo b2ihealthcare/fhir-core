@@ -15,13 +15,33 @@
  */
 package com.b2international.fhir.r4.operations;
 
+import java.util.SortedSet;
+
 import org.hl7.fhir.r4.model.*;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * @since 0.1
  */
 public class CodeSystemSubsumptionParameters extends BaseParameters {
 
+	private static final String PARAM_CODE_A = "codeA";
+	private static final String PARAM_CODE_B = "codeB";
+	private static final String PARAM_SYSTEM = "system";
+	private static final String PARAM_VERSION = "version";
+	private static final String PARAM_CODING_A = "codingA";
+	private static final String PARAM_CODING_B = "codingB";
+	
+	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
+		PARAM_CODE_A,
+		PARAM_CODE_B,
+		PARAM_SYSTEM,
+		PARAM_VERSION,
+		PARAM_CODING_A,
+		PARAM_CODING_B
+	);
+	
 	public CodeSystemSubsumptionParameters() {
 		super(new Parameters());
 	}
@@ -31,27 +51,27 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeType getCodeA() {
-		return (CodeType) getParameterValue("codeA", Parameters.ParametersParameterComponent::getValue);
+		return (CodeType) getParameterValue(PARAM_CODE_A, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public CodeType getCodeB() {
-		return (CodeType) getParameterValue("codeB", Parameters.ParametersParameterComponent::getValue);
+		return (CodeType) getParameterValue(PARAM_CODE_B, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getSystem() {
-		return (UriType) getParameterValue("system", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_SYSTEM, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public StringType getVersion() {
-		return (StringType) getParameterValue("version", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_VERSION, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public Coding getCodingA() {
-		return (Coding) getParameterValue("codingA", Parameters.ParametersParameterComponent::getValue);
+		return (Coding) getParameterValue(PARAM_CODING_A, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public Coding getCodingB() {
-		return (Coding) getParameterValue("codingB", Parameters.ParametersParameterComponent::getValue);
+		return (Coding) getParameterValue(PARAM_CODING_B, Parameters.ParametersParameterComponent::getValue);
 	}
 
 	public CodeSystemSubsumptionParameters setCodeA(String codeA) {
@@ -59,7 +79,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeA(CodeType codeA) {
-		addParameter("codeA", codeA);
+		addParameter(PARAM_CODE_A, codeA);
 		return this;
 	}
 	
@@ -68,7 +88,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setCodeB(CodeType codeB) {
-		addParameter("codeB", codeB);
+		addParameter(PARAM_CODE_B, codeB);
 		return this;
 	}
 	
@@ -77,7 +97,7 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setSystem(UriType system) {
-		addParameter("system", system);
+		addParameter(PARAM_SYSTEM, system);
 		return this;
 	}
 	
@@ -86,17 +106,17 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 	}
 	
 	public CodeSystemSubsumptionParameters setVersion(StringType version) {
-		addParameter("version", version);
+		addParameter(PARAM_VERSION, version);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodingA(Coding codingA) {
-		addParameter("codingA", codingA);
+		addParameter(PARAM_CODING_A, codingA);
 		return this;
 	}
 	
 	public CodeSystemSubsumptionParameters setCodingB(Coding codingB) {
-		addParameter("codingB", codingB);
+		addParameter(PARAM_CODING_B, codingB);
 		return this;
 	}
 	
@@ -124,6 +144,11 @@ public class CodeSystemSubsumptionParameters extends BaseParameters {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ACCEPTED_PARAMETER_NAMES;
 	}
 	
 }

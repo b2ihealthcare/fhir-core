@@ -100,7 +100,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setCode(CodeType code) {
-		getParameters().addParameter(PARAM_CODE, code);
+		addParameter(PARAM_CODE, code);
 		return this;
 	}
 	
@@ -109,7 +109,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setSystem(UriType system) {
-		getParameters().addParameter(PARAM_SYSTEM, system);
+		addParameter(PARAM_SYSTEM, system);
 		return this;
 	}
 	
@@ -118,12 +118,12 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setVersion(StringType version) {
-		getParameters().addParameter(PARAM_VERSION, version);
+		addParameter(PARAM_VERSION, version);
 		return this;
 	}
 	
 	public CodeSystemLookupParameters setCoding(Coding coding) {
-		getParameters().addParameter(PARAM_CODING, coding);
+		addParameter(PARAM_CODING, coding);
 		return this;
 	}
 	
@@ -136,7 +136,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDate(DateTimeType date) {
-		getParameters().addParameter(PARAM_DATE, date);
+		addParameter(PARAM_DATE, date);
 		return this;
 	}
 	
@@ -145,7 +145,7 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 	}
 	
 	public CodeSystemLookupParameters setDisplayLanguage(CodeType displayLanguage) {
-		getParameters().addParameter(PARAM_DISPLAY_LANGUAGE, displayLanguage);
+		addParameter(PARAM_DISPLAY_LANGUAGE, displayLanguage);
 		return this;
 	}
 
@@ -162,9 +162,9 @@ public final class CodeSystemLookupParameters extends BaseParameters {
 		var list = propertyValues == null ? List.of() : propertyValues;
 		list.forEach(propertyValue -> {
 			if (propertyValue instanceof StringType) {
-				getParameters().addParameter(PARAM_PROPERTY, (StringType) propertyValue);
+				addParameter(PARAM_PROPERTY, (StringType) propertyValue);
 			} else if (propertyValue instanceof String) {
-				getParameters().addParameter(PARAM_PROPERTY, new StringType((String) propertyValue));
+				addParameter(PARAM_PROPERTY, new StringType((String) propertyValue));
 			} else {
 				throw new UnsupportedOperationException();
 //				throw new BadRequestException(String.format("Value type '%s' is not supported in property values. Need to be String or StringType.", propertyValue));

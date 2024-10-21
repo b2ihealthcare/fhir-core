@@ -16,13 +16,46 @@
 package com.b2international.fhir.r4.operations;
 
 import java.util.Date;
+import java.util.SortedSet;
 
 import org.hl7.fhir.r4.model.*;
+
+import com.google.common.collect.ImmutableSortedSet;
 
 /**
  * @since 0.1 
  */
 public class ValueSetValidateCodeParameters extends BaseParameters {
+
+	private static final String PARAM_URL = "url";
+	private static final String PARAM_CONTEXT = "context";
+	private static final String PARAM_VALUE_SET = "valueSet";
+	private static final String PARAM_VALUE_SET_VERSION = "valueSetVersion";
+	private static final String PARAM_CODE = "code";
+	private static final String PARAM_SYSTEM = "system";
+	private static final String PARAM_SYSTEM_VERSION = "systemVersion";
+	private static final String PARAM_DISPLAY = "display";
+	private static final String PARAM_CODING = "coding";
+	private static final String PARAM_CODEABLE_CONCEPT = "codeableConcept";
+	private static final String PARAM_DATE = "date";
+	private static final String PARAM_ABSTRACT = "abstract";
+	private static final String PARAM_DISPLAY_LANGUAGE = "displayLanguage";
+	
+	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
+		PARAM_URL,
+		PARAM_CONTEXT,
+		PARAM_VALUE_SET,
+		PARAM_VALUE_SET_VERSION,
+		PARAM_CODE,
+		PARAM_SYSTEM,
+		PARAM_SYSTEM_VERSION,
+		PARAM_DISPLAY,
+		PARAM_CODING,
+		PARAM_CODEABLE_CONCEPT,
+		PARAM_DATE,
+		PARAM_ABSTRACT,
+		PARAM_DISPLAY_LANGUAGE
+	);
 
 	public ValueSetValidateCodeParameters() {
 		super(new Parameters());
@@ -33,55 +66,55 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public UriType getUrl() {
-		return (UriType) getParameterValue("url", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_URL, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getContext() {
-		return (UriType) getParameterValue("context", Parameters.ParametersParameterComponent::getValue);
+		return (UriType) getParameterValue(PARAM_CONTEXT, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public ValueSet getValueSet() {
-		return getParameterValue("valueSet", value -> (ValueSet) value.getResource());
+		return getParameterValue(PARAM_VALUE_SET, value -> (ValueSet) value.getResource());
 	}
 	
 	public StringType getValueSetVersion() {
-		return (StringType) getParameterValue("valueSetVersion", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_VALUE_SET_VERSION, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public CodeType getCode() {
-		return (CodeType) getParameterValue("code", Parameters.ParametersParameterComponent::getValue);
+		return (CodeType) getParameterValue(PARAM_CODE, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public UriType getSystem() {
-		return (UriType) getParameterValue("system", Parameters.ParametersParameterComponent::getValue); 
+		return (UriType) getParameterValue(PARAM_SYSTEM, Parameters.ParametersParameterComponent::getValue); 
 	}
 	
 	public StringType getSystemVersion() {
-		return (StringType) getParameterValue("systemVersion", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_SYSTEM_VERSION, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public StringType getDisplay() {
-		return (StringType) getParameterValue("display", Parameters.ParametersParameterComponent::getValue);
+		return (StringType) getParameterValue(PARAM_DISPLAY, Parameters.ParametersParameterComponent::getValue);
 	}
 
 	public Coding getCoding() {
-		return (Coding) getParameterValue("coding", Parameters.ParametersParameterComponent::getValue);
+		return (Coding) getParameterValue(PARAM_CODING, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public CodeableConcept getCodeableConcept() {
-		return (CodeableConcept) getParameterValue("codeableConcept", Parameters.ParametersParameterComponent::getValue);
+		return (CodeableConcept) getParameterValue(PARAM_CODEABLE_CONCEPT, Parameters.ParametersParameterComponent::getValue);
 	}
 
 	public DateTimeType getDate() {
-		return (DateTimeType) getParameterValue("date", Parameters.ParametersParameterComponent::getValue);
+		return (DateTimeType) getParameterValue(PARAM_DATE, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public BooleanType getIsAbstract() {
-		return (BooleanType) getParameterValue("abstract", Parameters.ParametersParameterComponent::getValue);
+		return (BooleanType) getParameterValue(PARAM_ABSTRACT, Parameters.ParametersParameterComponent::getValue);
 	}
 
 	public CodeType getDisplayLanguage() {
-		return (CodeType) getParameterValue("displayLanguage", Parameters.ParametersParameterComponent::getValue);
+		return (CodeType) getParameterValue(PARAM_DISPLAY_LANGUAGE, Parameters.ParametersParameterComponent::getValue);
 	}
 	
 	public ValueSetValidateCodeParameters setUrl(String url) {
@@ -89,7 +122,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 
 	public ValueSetValidateCodeParameters setUrl(UriType url) {
-		addParameter("url", url);
+		addParameter(PARAM_URL, url);
 		return this;
 	}
 	
@@ -98,13 +131,13 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setContext(UriType context) {
-		addParameter("context", context);
+		addParameter(PARAM_CONTEXT, context);
 		return this;
 	}
 	
 	public ValueSetValidateCodeParameters setValueSet(ValueSet valueSet) {
 		if (valueSet != null) {
-			getParameters().addParameter(new Parameters.ParametersParameterComponent().setName("valueSet").setResource(valueSet));
+			getParameters().addParameter(new Parameters.ParametersParameterComponent().setName(PARAM_VALUE_SET).setResource(valueSet));
 		}
 		return this;
 	}
@@ -114,7 +147,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setValueSetVersion(StringType valueSetVersion) {
-		addParameter("valueSetVersion", valueSetVersion);
+		addParameter(PARAM_VALUE_SET_VERSION, valueSetVersion);
 		return this;
 	}
 	
@@ -123,7 +156,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 
 	public ValueSetValidateCodeParameters setCode(CodeType code) {
-		addParameter("code", code);
+		addParameter(PARAM_CODE, code);
 		return this;
 	}
 	
@@ -132,7 +165,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setSystem(UriType system) {
-		addParameter("system", system);
+		addParameter(PARAM_SYSTEM, system);
 		return this;
 	}
 	
@@ -141,7 +174,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setSystemVersion(StringType systemVersion) {
-		addParameter("systemVersion", systemVersion);
+		addParameter(PARAM_SYSTEM_VERSION, systemVersion);
 		return this;
 	}
 	
@@ -150,17 +183,17 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 
 	public ValueSetValidateCodeParameters setDisplay(StringType display) {
-		addParameter("display", display);
+		addParameter(PARAM_DISPLAY, display);
 		return this;
 	}
 	
 	public ValueSetValidateCodeParameters setCoding(Coding coding) {
-		addParameter("coding", coding);
+		addParameter(PARAM_CODING, coding);
 		return this;
 	}
 	
 	public ValueSetValidateCodeParameters setCodeableConcept(CodeableConcept codeableConcept) {
-		addParameter("codeableConcept", codeableConcept);
+		addParameter(PARAM_CODEABLE_CONCEPT, codeableConcept);
 		return this;
 	}
 	
@@ -173,7 +206,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setDate(DateTimeType date) {
-		addParameter("date", date);
+		addParameter(PARAM_DATE, date);
 		return this;
 	}
 	
@@ -182,7 +215,7 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setAbstract(BooleanType isAbstract) {
-		addParameter("abstract", isAbstract);
+		addParameter(PARAM_ABSTRACT, isAbstract);
 		return this;
 	}
 	
@@ -191,7 +224,13 @@ public class ValueSetValidateCodeParameters extends BaseParameters {
 	}
 	
 	public ValueSetValidateCodeParameters setDisplayLanguage(CodeType displayLanguage) {
-		addParameter("displayLanguage", displayLanguage);
+		addParameter(PARAM_DISPLAY_LANGUAGE, displayLanguage);
 		return this;
 	}
+	
+	@Override
+	protected SortedSet<String> getAcceptedParameterNames() {
+		return ACCEPTED_PARAMETER_NAMES;
+	}
+	
 }

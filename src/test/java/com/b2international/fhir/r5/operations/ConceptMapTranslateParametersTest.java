@@ -15,8 +15,7 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -24,12 +23,18 @@ import org.hl7.fhir.r5.formats.JsonParser;
 import org.hl7.fhir.r5.model.*;
 import org.junit.Test;
 
+import com.b2international.fhir.operations.OperationParametersFactory.ConceptMapTranslateParametersFactory;
+
 /**
  * @since 0.1
  */
-public class ConceptMapTranslateParametersTest {
+public class ConceptMapTranslateParametersTest extends InputParametersTest<ConceptMapTranslateParameters> {
 	
 	private final JsonParser parser = new JsonParser();
+
+	public ConceptMapTranslateParametersTest() {
+		super(ConceptMapTranslateParametersFactory.INSTANCE);
+	}
 	
 	@Test
 	public void url() throws Exception {
@@ -47,11 +52,11 @@ public class ConceptMapTranslateParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
+
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setUrl("testuri");
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -77,14 +82,15 @@ public class ConceptMapTranslateParametersTest {
 		""";
 				
 		Resource resource = parser.parse(json);
-				
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
+		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setConceptMap(
 				new ConceptMap()
 					.setUrl("testResourceUri")
 					.setVersion("testResourceVersion")
 					.setName("testCM").setTitle("Test concept map"));
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 				
 		assertEquals(expected, actual);
 	}
@@ -106,11 +112,11 @@ public class ConceptMapTranslateParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setConceptMapVersion("testConceptMapVersion");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-				
 		assertEquals(expected, actual);
 	}
 	
@@ -127,15 +133,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCode("testSourceCode");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-				
 		assertEquals(expected, actual);
 	}
 	
@@ -152,15 +157,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSystem("testSystemUri");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -178,15 +182,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setVersion("testVersion");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -203,15 +206,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceScope("testSourceScope");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -232,17 +234,17 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCoding(new Coding()
 				.setSystem("testCodingSourceSystem")
 				.setCode("testCodingSourceCode")
 				.setDisplay("testCodingSourceDisplay"));
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -268,10 +270,12 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCodeableConcept(
 				new CodeableConcept()
@@ -281,8 +285,6 @@ public class ConceptMapTranslateParametersTest {
 								.setCode("sourceCode")
 								.setDisplay("sourceDisplay")))
 					.setText("Test source codeableconcept text"));
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -300,15 +302,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCode("testTargetCode");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-				
 		assertEquals(expected, actual);
 	}
 	
@@ -329,17 +330,17 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCoding(new Coding()
 				.setSystem("testCodingTargetSystem")
 				.setCode("testCodingTargetCode")
 				.setDisplay("testCodingTargetDisplay"));
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -365,10 +366,12 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCodeableConcept(
 				new CodeableConcept()
@@ -378,8 +381,6 @@ public class ConceptMapTranslateParametersTest {
 								.setCode("targetCode")
 								.setDisplay("targetDisplay")))
 					.setText("Test target codeableconcept text"));
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -397,15 +398,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetScope("testTargetScope");
-				
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -422,15 +422,14 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetSystem("testTargetSystem");
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -460,10 +459,12 @@ public class ConceptMapTranslateParametersTest {
 				}
 			]
 		}
-		
 		""";
 		
 		Resource resource = parser.parse(json);
+		assertInvalidParameterThrows(resource);
+		assertInvalidPartThrows(resource);
+		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setDependency(
 				List.of(new ConceptMapTranslateParameters.Dependency()
@@ -473,8 +474,6 @@ public class ConceptMapTranslateParametersTest {
 								.setCode("testDepCodingCode")
 								.setDisplay("Dependency Display test")))
 				);
-		
-		ConceptMapTranslateParameters actual = new ConceptMapTranslateParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
