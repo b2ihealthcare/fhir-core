@@ -54,8 +54,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 		
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setCode("testCode");
@@ -79,8 +79,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 		
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setSystem("testSystem");
@@ -104,8 +104,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setVersion("testVersion");
@@ -133,8 +133,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setCoding(
@@ -164,8 +164,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setDate("2024");
@@ -189,8 +189,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setDisplayLanguage("en");
@@ -214,8 +214,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setProperty(List.of("testCode"));
@@ -243,8 +243,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setProperty(List.of("testCode1", "testCode2"));
@@ -268,8 +268,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setUseSupplement(List.of("testUri"));
@@ -297,8 +297,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemLookupParameters actual = createFromResource(resource);
 
 		CodeSystemLookupParameters expected = new CodeSystemLookupParameters().setUseSupplement(List.of("testUri1", "testUri2"));

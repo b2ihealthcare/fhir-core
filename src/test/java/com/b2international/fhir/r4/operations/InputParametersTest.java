@@ -16,6 +16,7 @@
 package com.b2international.fhir.r4.operations;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 
 import org.hl7.fhir.exceptions.FHIRFormatError;
@@ -34,18 +35,27 @@ public abstract class InputParametersTest<T extends BaseParameters> {
 		this.factory = factory;
 	}
 	
-	@SuppressWarnings("unchecked")
 	protected T createFromResource(Resource parameters) {
-		return (T) factory.create((Parameters) parameters, true);
+		return createFromResource(parameters, true);
+	}
+
+	@SuppressWarnings("unchecked")
+	private T createFromResource(Resource parameters, boolean strict) {
+		return (T) factory.create((Parameters) parameters, strict);
 	}
 	
-	protected void assertInvalidParameterThrows(Resource parameters) {
+	protected void checkInvalidParameter(Resource parameters) {
 		Parameters invalidParameters = ((Parameters) parameters).copy().addParameter("invalidKey", "invalidValue");
+		
+		// Strict mode should reject converting Parameters with an unknown parameter into an operation input object
 		FHIRFormatError formatError = assertThrows(FHIRFormatError.class, () -> createFromResource(invalidParameters));
 		assertThat(formatError).hasMessageContaining("invalidKey");
+		
+		// Lenient mode should create the operation input object just fine
+		assertNotNull(createFromResource(invalidParameters, false));
 	}
 	
-	protected void assertInvalidPartThrows(Resource parameters) {
+	protected void checkInvalidPart(Resource parameters) {
 		Parameters invalidParameters = ((Parameters) parameters).copy();
 		
 		ParametersParameterComponent invalidPartParent = invalidParameters.addParameter()
@@ -57,10 +67,14 @@ public abstract class InputParametersTest<T extends BaseParameters> {
 			.setValue(new StringType("valueA"));
 		partB.setName("nameB")
 			.setValue(new StringType("valueB"));
-		
+
+		// Strict mode should reject converting Parameters with an unknown parameter into an operation input object
 		FHIRFormatError formatError = assertThrows(FHIRFormatError.class, () -> createFromResource(invalidParameters));
 		assertThat(formatError)
 			.hasMessageContaining("invalidPart.nameA")
 			.hasMessageContaining("invalidPart.nameB");
+		
+		// Lenient mode should create the operation input object just fine
+		assertNotNull(createFromResource(invalidParameters, false));
 	}
 }

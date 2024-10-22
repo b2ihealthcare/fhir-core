@@ -52,8 +52,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setUrl("testuri");
@@ -82,8 +82,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 				
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setConceptMap(
@@ -112,8 +112,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setConceptMapVersion("testConceptMapVersion");
@@ -136,8 +136,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCode("testSourceCode");
@@ -160,8 +160,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSystem("testSystemUri");
@@ -185,8 +185,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setVersion("testVersion");
@@ -209,8 +209,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceScope("testSourceScope");
@@ -237,8 +237,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCoding(new Coding()
@@ -273,8 +273,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setSourceCodeableConcept(
@@ -305,8 +305,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCode("testTargetCode");
@@ -333,8 +333,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCoding(new Coding()
@@ -369,8 +369,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetCodeableConcept(
@@ -401,8 +401,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetScope("testTargetScope");
@@ -425,8 +425,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setTargetSystem("testTargetSystem");
@@ -462,8 +462,8 @@ public class ConceptMapTranslateParametersTest extends InputParametersTest<Conce
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		ConceptMapTranslateParameters actual = createFromResource(resource);
 		
 		ConceptMapTranslateParameters expected = new ConceptMapTranslateParameters().setDependency(

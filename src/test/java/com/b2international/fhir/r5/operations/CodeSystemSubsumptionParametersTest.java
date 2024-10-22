@@ -51,8 +51,8 @@ public class CodeSystemSubsumptionParametersTest extends InputParametersTest<Cod
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
@@ -77,8 +77,8 @@ public class CodeSystemSubsumptionParametersTest extends InputParametersTest<Cod
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 		
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
@@ -103,8 +103,8 @@ public class CodeSystemSubsumptionParametersTest extends InputParametersTest<Cod
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
@@ -129,8 +129,8 @@ public class CodeSystemSubsumptionParametersTest extends InputParametersTest<Cod
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
@@ -160,8 +160,8 @@ public class CodeSystemSubsumptionParametersTest extends InputParametersTest<Cod
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()
@@ -194,8 +194,8 @@ public class CodeSystemSubsumptionParametersTest extends InputParametersTest<Cod
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemSubsumptionParameters actual = createFromResource(resource);
 
 		CodeSystemSubsumptionParameters expected = new CodeSystemSubsumptionParameters()

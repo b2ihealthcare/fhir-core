@@ -56,8 +56,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		Resource resource = parser.parse(json);
 		assertThat(resource).isInstanceOf(Parameters.class);
 
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		var parameters = createFromResource(resource);
 		
 		// Code
@@ -110,8 +110,8 @@ public class CodeSystemLookupParametersTest extends InputParametersTest<CodeSyst
 		Resource resource = parser.parse(json);
 		assertThat(resource).isInstanceOf(Parameters.class);
 		
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		var parameters = createFromResource(resource);
 		
 		// Code

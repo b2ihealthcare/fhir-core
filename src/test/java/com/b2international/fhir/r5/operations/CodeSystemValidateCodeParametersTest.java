@@ -53,8 +53,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setUrl("tesUrl");
@@ -84,8 +84,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
@@ -140,8 +140,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setVersion("testVersion");
@@ -165,8 +165,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setDisplay("testDisplay");
@@ -194,8 +194,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
@@ -233,8 +233,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
@@ -265,8 +265,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters()
@@ -291,8 +291,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setAbstract(true);
@@ -316,8 +316,8 @@ public class CodeSystemValidateCodeParametersTest extends InputParametersTest<Co
 		""";
 		
 		Resource resource = parser.parse(json);
-		assertInvalidParameterThrows(resource);
-		assertInvalidPartThrows(resource);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
 		CodeSystemValidateCodeParameters actual = createFromResource(resource);
 		
 		CodeSystemValidateCodeParameters expected = new CodeSystemValidateCodeParameters().setDisplayLanguage("en");
