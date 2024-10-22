@@ -15,22 +15,27 @@
  */
 package com.b2international.fhir.r5.operations;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.hl7.fhir.r5.formats.JsonParser;
-import org.hl7.fhir.r5.model.Parameters;
 import org.hl7.fhir.r5.model.Resource;
 import org.hl7.fhir.r5.model.ValueSet;
 import org.junit.Test;
 
+import com.b2international.fhir.operations.OperationParametersFactory.ValueSetExpandParametersFactory;
+
 /**
  * @since 0.1
  */
-public class ValueSetExpandParametersTest {
+public class ValueSetExpandParametersTest extends InputParametersTest<ValueSetExpandParameters> {
 	
 	private final JsonParser parser = new JsonParser();
+
+	public ValueSetExpandParametersTest() {
+		super(ValueSetExpandParametersFactory.INSTANCE);
+	}
 	
 	@Test
 	public void url() throws Exception {
@@ -48,11 +53,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
 		
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setUrl("testUri");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -79,15 +85,16 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setValueSet(new ValueSet()
 						.setUrl("testResourceUri")
 						.setVersion("testResourceVersion")
 						.setName("testVS")
 						.setTitle("Test value set"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -108,11 +115,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setValueSetVersion("testValueSetVersion");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -133,11 +141,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setContext("testContext");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -158,11 +167,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setContextDirection("testContextDirection");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -183,11 +193,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setFilter("testFilter");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -208,11 +219,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setDate("2024-10-02");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -233,11 +245,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setOffset(10);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -258,11 +271,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setCount(8);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -283,11 +297,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setIncludeDesignations(false);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -308,11 +323,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setDesignation(List.of("testDesignation"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -337,11 +353,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setDesignation(List.of("testDesignation1", "testDesignation2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -362,11 +379,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setIncludeDefinition(false);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -387,11 +405,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setActiveOnly(true);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -412,11 +431,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setUseSupplement(List.of("testUseSupplement"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -441,11 +461,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setUseSupplement(List.of("testUseSupplement1", "testUseSupplement2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -466,11 +487,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setExcludeNested(true);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -491,11 +513,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setExcludeNotForUI(true);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -516,11 +539,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setExcludePostCoordinated(true);
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -541,11 +565,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setDisplayLanguage("en");
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -565,12 +590,14 @@ public class ValueSetExpandParametersTest {
 			]
 		}
 		""";
-		Resource resource = parser.parse(json);
 		
+		Resource resource = parser.parse(json);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setProperty(List.of("testProperty"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -593,12 +620,14 @@ public class ValueSetExpandParametersTest {
 			]
 		}
 		""";
-		Resource resource = parser.parse(json);
 		
+		Resource resource = parser.parse(json);
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setProperty(List.of("testProperty1", "testProperty2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -619,11 +648,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setExcludeSystem(List.of("testSystem"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -648,11 +678,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setExcludeSystem(List.of("testSystem1", "testSystem2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -673,11 +704,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setSystemVersion(List.of("testVersion"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -702,11 +734,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setSystemVersion(List.of("testVersion1", "testVersion2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -727,11 +760,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setCheckSystemVersion(List.of("testCheckVersion"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -756,11 +790,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setCheckSystemVersion(List.of("testCheckVersion1", "testCheckVersion2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -781,11 +816,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setForceSystemVersion(List.of("testForceVersion"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -810,11 +846,12 @@ public class ValueSetExpandParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetExpandParameters actual = createFromResource(resource);
+
 		ValueSetExpandParameters expected = new ValueSetExpandParameters()
 				.setForceSystemVersion(List.of("testForceVersion1", "testForceVersion2"));
-		
-		ValueSetExpandParameters actual = new ValueSetExpandParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}

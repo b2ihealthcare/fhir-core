@@ -23,12 +23,18 @@ import org.hl7.fhir.r5.formats.JsonParser;
 import org.hl7.fhir.r5.model.*;
 import org.junit.Test;
 
+import com.b2international.fhir.operations.OperationParametersFactory.ValueSetValidateCodeParametersFactory;
+
 /**
  * @since 0.1
  */
-public class ValueSetValidateCodeParametersTest {
+public class ValueSetValidateCodeParametersTest extends InputParametersTest<ValueSetValidateCodeParameters> {
 	
 	private final JsonParser parser = new JsonParser();
+
+	public ValueSetValidateCodeParametersTest() {
+		super(ValueSetValidateCodeParametersFactory.INSTANCE);
+	}
 	
 	@Test
 	public void url() throws Exception {
@@ -47,11 +53,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setUrl("testUrl");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -72,11 +78,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setContext("testContextUrl");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -102,15 +108,16 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setValueSet(new ValueSet()
 						.setUrl("testResourceUri")
 						.setVersion("testResourceVersion")
 						.setName("testVS")
 						.setTitle("Test value set"));
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -132,11 +139,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setValueSetVersion("testVersion");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -156,11 +163,12 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setCode("testCode");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -182,11 +190,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setSystem("testSystemUri");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -207,11 +215,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setSystemVersion("testSystemVersion");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -229,12 +237,13 @@ public class ValueSetValidateCodeParametersTest {
 			]
 		}
 		""";
+
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setDisplay ("testDisplay");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -259,14 +268,15 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setCoding(new Coding()
 						.setSystem("testCodingSystem")
 						.setCode("testCodingCode")
 						.setDisplay("testCodingDisplay"));
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -297,7 +307,10 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setCodeableConcept(new CodeableConcept()
 						.setCoding(List.of(
@@ -306,8 +319,6 @@ public class ValueSetValidateCodeParametersTest {
 									.setCode("testCode")
 									.setDisplay("testDisplay")))
 						.setText("Codeable conept test"));
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -328,11 +339,12 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setDate("2024-10-02");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -353,11 +365,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setAbstract(true);
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -378,11 +390,11 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters().setDisplayLanguage("en");
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
-		
 		assertEquals(expected, actual);
 	}
 	
@@ -402,11 +414,12 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setUseSupplement(List.of("testUseSupplement"));
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
@@ -431,11 +444,12 @@ public class ValueSetValidateCodeParametersTest {
 		""";
 		
 		Resource resource = parser.parse(json);
-		
+		checkInvalidParameter(resource);
+		checkInvalidPart(resource);
+		ValueSetValidateCodeParameters actual = createFromResource(resource);
+
 		ValueSetValidateCodeParameters expected = new ValueSetValidateCodeParameters()
 				.setUseSupplement(List.of("testUseSupplement1", "testUseSupplement2"));
-		
-		ValueSetValidateCodeParameters actual = new ValueSetValidateCodeParameters((Parameters) resource);
 		
 		assertEquals(expected, actual);
 	}
