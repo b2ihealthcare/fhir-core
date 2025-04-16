@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.b2international</groupId>
 	<artifactId>fhir-core</artifactId>
-	<version>0.3.1-SNAPSHOT</version>
+	<version>0.3.1</version>
 	<name>FHIR Core Classes and Converters</name>
 	<description>FHIR Core Classes and Converters (R4, R4B, R5)</description>
 	<packaging>bundle</packaging>
