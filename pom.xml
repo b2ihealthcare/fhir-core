@@ -19,6 +19,7 @@
 		<!-- Dependency Versions -->
 		<hl7.fhir.version>6.4.0</hl7.fhir.version>
 		<hapifhir.version>6.10.5</hapifhir.version>
+		<fhir.ucum.version>1.0.3</fhir.ucum.version>
 		<gson.version>2.10.1</gson.version>
 		<xpp3.version>1.1.4c</xpp3.version>
 
@@ -93,6 +94,11 @@
 					<artifactId>plantuml-mit</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.fhir</groupId>
+			<artifactId>ucum</artifactId>
+			<version>${fhir.ucum.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
