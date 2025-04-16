@@ -19,7 +19,7 @@
 		<!-- Dependency Versions -->
 		<hl7.fhir.version>6.4.0</hl7.fhir.version>
 		<hapifhir.version>6.10.5</hapifhir.version>
-		<fhir.ucum.version>1.0.3</fhir.ucum.version>
+		<fhir.ucum.version>1.0.9</fhir.ucum.version>
 		<gson.version>2.10.1</gson.version>
 		<xpp3.version>1.1.4c</xpp3.version>
 
