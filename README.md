@@ -12,7 +12,7 @@ The maven artifact is available in the B2i Healthcare Maven repository: https://
     <dependency>
         <groupId>com.b2international</groupId>
         <artifactId>fhir-core</artifactId>
-        <version>0.2.0</version>
+        <version>0.3.2</version>
     </dependency>
 ```
 
