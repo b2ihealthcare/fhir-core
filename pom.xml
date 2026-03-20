@@ -250,6 +250,7 @@
 							!org.w3c.dom.*,
 							!org.xml.sax.*,
 							!org.xmlpull.v1.*,
+							!org.eclipse.jgit.*,
 							*
 						</Import-Package>
 						<!-- Using exportcontens directive instead of Export-Package header to prevent copying packages from embedded jars in the final bundle -->
