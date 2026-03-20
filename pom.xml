@@ -93,6 +93,10 @@
 					<groupId>net.sourceforge.plantuml</groupId>
 					<artifactId>plantuml-mit</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.jgit</groupId>
+					<artifactId>org.eclipse.jgit</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
