@@ -2,7 +2,7 @@
 
 The main object of this library is to shrink the original [org.hl7.fhir.core](https://github.com/hapifhir/org.hl7.fhir.core) model (R4, R4B and R5) and convertor jars into a OSGi bundle with as few dependencies as possible.
 
-This library is based on the 6.4.0 version of org.hl7.fhir.core.
+This library is based on the 6.9.0 version of org.hl7.fhir.core.
 
 ## Maven Usage
 
@@ -12,7 +12,7 @@ The maven artifact is available in the B2i Healthcare Maven repository: https://
     <dependency>
         <groupId>com.b2international</groupId>
         <artifactId>fhir-core</artifactId>
-        <version>0.3.2</version>
+        <version>0.4.0</version>
     </dependency>
 ```
 
