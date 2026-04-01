@@ -17,13 +17,13 @@
 		<java.version>17</java.version>
 
 		<!-- Dependency Versions -->
-		<hl7.fhir.version>6.9.0</hl7.fhir.version>
+		<hl7.fhir.version>6.9.4</hl7.fhir.version>
 		<hapifhir.version>8.4.0</hapifhir.version>
-		<fhir.ucum.version>1.0.9</fhir.ucum.version>
-		<gson.version>2.10.1</gson.version>
+		<fhir.ucum.version>1.0.10</fhir.ucum.version>
+		<gson.version>2.13.1</gson.version>
 		<xpp3.version>1.1.4c</xpp3.version>
 
-		<slf4j.version>2.0.16</slf4j.version>
+		<slf4j.version>2.0.17</slf4j.version>
 		<guava.version>33.4.0-jre</guava.version>
 		<jsr305.version>3.0.2</jsr305.version>
 		<commons.lang3.version>3.18.0</commons.lang3.version>
