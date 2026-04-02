@@ -2,6 +2,9 @@ name: Java CI
 
 on:
   push:
+    paths-ignore:
+      # Note the double asterisk; a single asterisk does not suffice
+      - '**.md'
     branches:
       - main
   pull_request:
