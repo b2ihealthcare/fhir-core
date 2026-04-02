@@ -22,12 +22,20 @@ jobs:
       actions: read
 
     steps:
-    - uses: actions/checkout@v6.0.2
+    - name: Harden Runner
+      uses: step-security/harden-runner@v2.16.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+    - name: Checkout repository
+      uses: actions/checkout@v6.0.2
+
     - name: Set up JDK 17
       uses: actions/setup-java@v5.2.0
       with:
         distribution: temurin
         java-version: 17
+
     - name: Cache Maven Dependencies (~/.m2/repository)
       uses: actions/cache@v5.0.4
       with:
@@ -35,5 +43,6 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-:
+
     - name: Build Packages 
       run: ./mvnw -ntp clean verify
