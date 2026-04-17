@@ -17,7 +17,7 @@
 		<java.version>17</java.version>
 
 		<!-- Dependency Versions -->
-		<hl7.fhir.version>6.9.4</hl7.fhir.version>
+		<hl7.fhir.version>6.9.6</hl7.fhir.version>
 		<hapifhir.version>8.4.0</hapifhir.version>
 		<fhir.ucum.version>1.0.10</fhir.ucum.version>
 		<gson.version>2.13.1</gson.version>
