@@ -33,8 +33,8 @@ public final class LoadPackageParameters extends BaseParameters {
 	private static final String PARAM_NAME = "name";
 	private static final String PARAM_VERSION = "version";
 	private static final String PARAM_REGISTRY = "registry";
-	private static final String PARAM_RESOLVE_DEPENDENCIES = "resolve-dependencies";
-	private static final String PARAM_RESOURCE_URL = "resource-url";
+	private static final String PARAM_RESOLVE_DEPENDENCIES = "resolveDependencies";
+	private static final String PARAM_RESOURCE_URL = "resourceUrl";
 
 	private static final SortedSet<String> ACCEPTED_PARAMETER_NAMES = ImmutableSortedSet.of(
 		PARAM_NAME,
