@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 B2i Healthcare, https://b2ihealthcare.com
+ * Copyright 2024-2026 B2i Healthcare, https://b2ihealthcare.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -312,6 +312,52 @@ public interface OperationParametersFactory {
 			return new com.b2international.fhir.r5.operations.ValueSetValidateCodeResultParameters(parameters);
 		}
 		
+	}
+	
+	/**
+	 * @since 0.6
+	 */
+	enum LoadPackageParametersFactory implements OperationParametersFactory {
+		INSTANCE;
+
+		@Override
+		public com.b2international.fhir.r4.operations.BaseParameters create(org.hl7.fhir.r4.model.Parameters parameters) {
+			return new com.b2international.fhir.r4.operations.LoadPackageParameters(parameters);
+		}
+
+		@Override
+		public com.b2international.fhir.r4b.operations.BaseParameters create(org.hl7.fhir.r4b.model.Parameters parameters) {
+			return new com.b2international.fhir.r4b.operations.LoadPackageParameters(parameters);
+		}
+
+		@Override
+		public com.b2international.fhir.r5.operations.BaseParameters create(org.hl7.fhir.r5.model.Parameters parameters) {
+			return new com.b2international.fhir.r5.operations.LoadPackageParameters(parameters);
+		}
+
+	}
+	
+	/**
+	 * @since 0.6
+	 */
+	enum LoadPackageResultParametersFactory implements OperationParametersFactory {
+		INSTANCE;
+
+		@Override
+		public com.b2international.fhir.r4.operations.BaseParameters create(org.hl7.fhir.r4.model.Parameters parameters) {
+			return new com.b2international.fhir.r4.operations.LoadPackageResultParameters(parameters);
+		}
+
+		@Override
+		public com.b2international.fhir.r4b.operations.BaseParameters create(org.hl7.fhir.r4b.model.Parameters parameters) {
+			return new com.b2international.fhir.r4b.operations.LoadPackageResultParameters(parameters);
+		}
+
+		@Override
+		public com.b2international.fhir.r5.operations.BaseParameters create(org.hl7.fhir.r5.model.Parameters parameters) {
+			return new com.b2international.fhir.r5.operations.LoadPackageResultParameters(parameters);
+		}
+
 	}
 	
 }
